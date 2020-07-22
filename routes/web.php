@@ -42,3 +42,5 @@ Route::group(['middleware'=>['auth', 'roles'], 'roles'=>'admin'], function(){
 
 Route::get('logout', 'Auth\LoginController@logout');
 
+
+Route::resource('admin/products', 'Admin\\ProductsController');
