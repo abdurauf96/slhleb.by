@@ -1,16 +1,19 @@
 <?php
 
 namespace App;
-
+use Astrotomic\Translatable\Contracts\Translatable as TranslatableContract;
+use Astrotomic\Translatable\Translatable;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Activitylog\Traits\LogsActivity;
-use Illuminate\Database\Eloquent\SoftDeletes;
+
 
 class Category extends Model
 {
     use LogsActivity;
-    use SoftDeletes;
+   
+    use Translatable;
     
+    public $translatedAttributes = ['name', 'description'];
 
     /**
      * The database table used by the model.
@@ -31,7 +34,7 @@ class Category extends Model
      *
      * @var array
      */
-    protected $fillable = ['name', 'description', 'icon', 'image'];
+    protected $fillable = [ 'icon', 'image'];
 
     
 

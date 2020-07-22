@@ -69,13 +69,17 @@ class CategoriesController extends Controller
             $image=null;
         }
 
-        Category::create([
-            'name'=>$request->name,
-            'description'=>$request->description,
+        
+        $data=[
             'icon'=>$icon,
             'image'=>$image,
-        ]);
+            'ru'=>[ 'name'=>$request->ru_name, 'description'=>$request->ru_description ],
+            'en'=>[ 'name'=>$request->en_name, 'description'=>$request->en_description ],
+            'by'=>[ 'name'=>$request->by_name, 'description'=>$request->by_description ],
+        ];
+        Category::create($data);
 
+    
         return redirect('admin/categories')->with('flash_message', 'Category added!');
     }
 
@@ -118,8 +122,7 @@ class CategoriesController extends Controller
     public function update(Request $request, $id)
     {
         
-        
-        
+ 
         $category = Category::findOrFail($id);
         if ($request->hasFile('new_icon')) {
             $file=$request->file('new_icon');
@@ -136,12 +139,15 @@ class CategoriesController extends Controller
             $image=$request->last_image;
         }
 
-        $category->update([
-            'name'=>$request->name,
-            'description'=>$request->description,
+        $data=[
             'icon'=>$icon,
             'image'=>$image,
-        ]);
+            'ru'=>[ 'name'=>$request->ru_name, 'description'=>$request->ru_description ],
+            'en'=>[ 'name'=>$request->en_name, 'description'=>$request->en_description ],
+            'by'=>[ 'name'=>$request->by_name, 'description'=>$request->by_description ],
+        ];
+        
+        $category->update($data);
 
         return redirect('admin/categories')->with('flash_message', 'Category updated!');
     }
@@ -153,9 +159,9 @@ class CategoriesController extends Controller
      *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function destroy($id)
+    public function destroy(Category $category)
     {
-        Category::destroy($id);
+        $category->delete();
 
         return redirect('admin/categories')->with('flash_message', 'Category deleted!');
     }

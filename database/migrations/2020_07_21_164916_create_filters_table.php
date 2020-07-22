@@ -17,7 +17,6 @@ class CreateFiltersTable extends Migration
             $table->timestamps();
             $table->softDeletes();
             $table->integer('category_id')->nullable();
-            $table->string('name')->nullable();
             });
     }
 

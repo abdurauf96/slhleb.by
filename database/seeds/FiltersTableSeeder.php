@@ -12,23 +12,27 @@ class FiltersTableSeeder extends Seeder
      */
     public function run()
     {
-        collect([
-        	[
-				'name'=>'Хлеба для нагится',
-	        	'category_id'=>'1',
-        	],
+        // collect([
+        // 	[
+		// 		'ru'=>['name'=>'Хлеба для нагится'],
+		// 		'by'=>['name'=>'Хлеба для нагится'],
+		// 		'en'=>['name'=>'Bread to bend'],
+	    //     	'category_id'=>'1',
+        // 	],
 
-        	[
-				'name'=>'Хлеба ржаные',
-	        	'category_id'=>'1',
-        	]
+        // 	[
+		// 		'ru'=>['name'=>'Хлеба ржаные'],
+		// 		'by'=>['name'=>'Хлеба ржаные'],
+		// 		'en'=>['name'=>'Rye bread'],
+	    //     	'category_id'=>'2',
+        // 	],
         	
-        ])->each(function($data){
-        	Filter::create([
-        		'name'=>$data['name'],
-        		'category_id'=>$data['category_id'],
-        	]);
-        });
+        // ])->each(function($data){
+        // 	Filter::create([
+        // 		'name'=>$data['name'],
+        // 		'category_id'=>$data['category_id'],
+        // 	]);
+        // });
     
     }
 }

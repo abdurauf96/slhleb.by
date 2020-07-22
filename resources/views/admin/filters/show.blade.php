@@ -32,7 +32,9 @@
                                     <tr>
                                         <th>ID</th><td>{{ $filter->id }}</td>
                                     </tr>
-                                    <tr><th> Category Id </th><td> {{ $filter->category_id }} </td></tr><tr><th> Name </th><td> {{ $filter->name }} </td></tr>
+                                    <tr>
+                                        <th> Category </th><td> {{ $filter->category_id }} </td></tr><tr><th> Name </th><td> {{ $filter->name }} </td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>

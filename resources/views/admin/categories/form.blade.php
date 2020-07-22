@@ -1,13 +1,37 @@
 <div class="form-group{{ $errors->has('name') ? 'has-error' : ''}}">
-    {!! Form::label('name', 'Name', ['class' => 'control-label']) !!}
-    {!! Form::text('name', null, ('' == 'required') ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control']) !!}
-    {!! $errors->first('name', '<p class="help-block">:message</p>') !!}
+    <label class="control-label" for="name">Name RU</label>
+    <input type="text" name="ru_name" required="required" class="form-control" value="@isset($category) {{ $category->translate('ru')->name }} @endisset ">
+</div>
+<div class="form-group{{ $errors->has('name') ? 'has-error' : ''}}">
+    <label class="control-label" for="name">Name BY</label>
+    <input type="text" name="by_name" required class="form-control" value="@isset($category) {{ $category->translate('by')->name }} @endisset ">
+</div>
+<div class="form-group{{ $errors->has('name') ? 'has-error' : ''}}">
+    <label class="control-label" for="name">Name EN</label>
+    <input type="text" name="en_name" required class="form-control" value="@isset($category) {{ $category->translate('en')->name }} @endisset ">
+</div>
+
+
+
+<div class="form-group{{ $errors->has('description') ? 'has-error' : ''}}">
+    <label class="control-label" for="name">Description RU</label>
+    <textarea name="ru_description" id="" cols="50" rows="10" class="form-control" required="required">
+        @isset($category) {{ $category->translate('ru')->description }} @endisset 
+    </textarea>
 </div>
 <div class="form-group{{ $errors->has('description') ? 'has-error' : ''}}">
-    {!! Form::label('description', 'Description', ['class' => 'control-label']) !!}
-    {!! Form::textarea('description', null, ('' == 'required') ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control']) !!}
-    {!! $errors->first('description', '<p class="help-block">:message</p>') !!}
+    <label class="control-label" for="name">Description BY</label>
+    <textarea name="by_description" id="" cols="50" rows="10" class="form-control" required="required">
+        @isset($category) {{ $category->translate('by')->description }} @endisset 
+    </textarea>
 </div>
+<div class="form-group{{ $errors->has('description') ? 'has-error' : ''}}">
+    <label class="control-label" for="name">Description EN</label>
+    <textarea name="en_description" id="" cols="50" rows="10" class="form-control" required="required">
+        @isset($category) {{ $category->translate('en')->description }} @endisset 
+    </textarea>
+</div>
+
 <div class="form-group{{ $errors->has('icon') ? 'has-error' : ''}}">
     {!! Form::label('icon', 'Icon', ['class' => 'control-label']) !!}
     @if(isset($category))
@@ -17,7 +41,7 @@
     @else
      <input type="file" name="icon"  class="form-control" >
     @endif
-    {!! $errors->first('icon', '<p class="help-block">:message</p>') !!}
+   
 </div>
 <div class="form-group{{ $errors->has('image') ? 'has-error' : ''}}">
     {!! Form::label('image', 'Image', ['class' => 'control-label']) !!}

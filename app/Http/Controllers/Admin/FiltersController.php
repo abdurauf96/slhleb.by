@@ -53,9 +53,14 @@ class FiltersController extends Controller
     public function store(Request $request)
     {
         
-        $requestData = $request->all();
+        $requestData = [
+            'ru'=>[ 'name' => $request->ru_name ],
+            'by'=>[ 'name'=> $request->by_name],
+            'en'=>[ 'name'=> $request->en_name],
+            'category_id'=>$request->category_id,
+        ];
         
-        Filter::create($requestData);
+        Filter::create($request->all());
 
         return redirect('admin/filters')->with('flash_message', 'Filter added!');
     }
@@ -84,8 +89,9 @@ class FiltersController extends Controller
     public function edit($id)
     {
         $filter = Filter::findOrFail($id);
+        $categories=Category::all();
 
-        return view('admin.filters.edit', compact('filter'));
+        return view('admin.filters.edit', compact('filter', 'categories'));
     }
 
     /**
