@@ -1,18 +1,16 @@
 <?php
 
 namespace App;
-use Astrotomic\Translatable\Contracts\Translatable as TranslatableContract;
-use Astrotomic\Translatable\Translatable;
+
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Activitylog\Traits\LogsActivity;
-
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Filter extends Model
 {
     use LogsActivity;
-    use Translatable;
+    use SoftDeletes;
     
-    public $translatedAttributes = ['name'];
     public function category()
     {
         return $this->belongsTo(Category::class);
@@ -37,7 +35,7 @@ class Filter extends Model
      *
      * @var array
      */
-    protected $fillable = ['category_id'];
+    protected $fillable = ['category_id', 'name'];
 
     
 

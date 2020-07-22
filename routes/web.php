@@ -14,10 +14,6 @@
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/lang/{locale}', function ($locale) {
-    session(['locale'=>$locale]);
-    return back();
-});
 
 Auth::routes();
 
@@ -28,17 +24,17 @@ Route::group(['middleware'=>['auth', 'roles'], 'roles'=>'admin'], function(){
     Route::resource('admin/roles', 'Admin\RolesController');
     Route::resource('admin/permissions', 'Admin\PermissionsController');
     Route::resource('admin/users', 'Admin\UsersController');
+  
     Route::resource('admin/activitylogs', 'Admin\ActivityLogsController')->only([
         'index', 'show', 'destroy'
     ]);
     Route::resource('admin/settings', 'Admin\SettingsController');
     Route::get('admin/generator', ['uses' => '\Appzcoder\LaravelAdmin\Controllers\ProcessController@getGenerator']);
     Route::post('admin/generator', ['uses' => '\Appzcoder\LaravelAdmin\Controllers\ProcessController@postGenerator']);
-
-    Route::resource('admin/categories', 'Admin\\CategoriesController');
-    Route::resource('admin/filters', 'Admin\\FiltersController');
     
 });
 
 Route::get('logout', 'Auth\LoginController@logout');
 
+Route::resource('admin/categories', 'Admin\\CategoriesController');
+Route::resource('admin/filters', 'Admin\\FiltersController');
