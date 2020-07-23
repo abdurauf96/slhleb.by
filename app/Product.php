@@ -43,7 +43,10 @@ class Product extends Model
     {
         return $this->belongsTo('App\Filter');
     }
-    
+    public function attributes()
+    {
+        return $this->hasMany('App\ProductAttribute');
+    }
 
     /**
      * Change activity log event description

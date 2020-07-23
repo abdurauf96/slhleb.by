@@ -6,7 +6,7 @@
 
             <div class="col-md-9">
                 <div class="card">
-                    <div class="card-header">Category {{ $category->id }}</div>
+                    <div class="card-header">Категория {{ $category->id }}</div>
                     <div class="card-body">
 
                         <a href="{{ url('/admin/categories') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
@@ -32,8 +32,8 @@
                                     <tr>
                                         <th>ID</th><td>{{ $category->id }}</td>
                                     </tr>
-                                    <tr><th> Name </th><td> {{ $category->name }} </td></tr><tr><th> Description </th><td> {{ $category->description }} </td></tr><tr><th> Icon </th><td> <img width="50" height="50" src="/images/categories/{{ $category->icon }}" alt=""> </td></tr>
-                                    <tr><th> Image </th><td> <img width="50" height="50" src="/images/categories/{{ $category->image }}" alt=""> </td></tr>
+                                    <tr><th> Название </th><td> {{ $category->translate(app()->getLocale())->name }} </td></tr><tr><th> Описание </th><td> {{ $category->translate(app()->getLocale())->description }} </td></tr><tr><th> Иконка </th><td> <img width="50" height="50" src="/images/categories/{{ $category->icon }}" alt=""> </td></tr>
+                                    <tr><th> Фото </th><td> <img width="50" height="50" src="/images/categories/{{ $category->image }}" alt=""> </td></tr>
                                 </tbody>
                             </table>
                         </div>

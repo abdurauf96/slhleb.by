@@ -1,0 +1,12 @@
+.hide_form{
+    display: none;
+}
+.attr-hr{
+    background-color: rgb(9, 32, 54);
+    height: 2px;
+}
+.form-block{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

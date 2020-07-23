@@ -11,7 +11,7 @@
                         <a href="{{ url('/admin/products/create') }}" class="btn btn-success btn-sm" title="Add New Product">
                             <i class="fa fa-plus" aria-hidden="true"></i> Add New
                         </a>
-
+                        <hr>
                         {!! Form::open(['method' => 'GET', 'url' => '/admin/products', 'class' => 'form-inline my-2 my-lg-0 float-right', 'role' => 'search'])  !!}
                         <div class="input-group">
                             <input type="text" class="form-control" name="search" placeholder="Search..." value="{{ request('search') }}">
@@ -29,14 +29,22 @@
                             <table class="table table-borderless">
                                 <thead>
                                     <tr>
-                                        <th>#</th><th>Category </th><th>Filter </th><th>Name</th><th>Actions</th>
+                                        <th>#</th>
+                                        <th>Название продукта </th>
+                                        <th>Категория  </th>
+                                        <th>Фильтр</th>
+                                        <th>Фото продукта</th>
+                                        <th>Действия</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                 @foreach($products as $item)
                                     <tr>
-                                        <td>{{ $loop->iteration or $item->id }}</td>
-                                        <td>{{ $item->category->name }}</td><td>{{ $item->filter->name }}</td><td>{{ $item->name }}</td>
+                                        <td>{{ $loop->iteration }}</td>
+                                        <td>{{ $item->translate(app()->getLocale())->name }}</td>
+                                        <td>{{ $item->category->translate(app()->getLocale())->name }}</td>
+                                        <td>{{ $item->filter->translate(app()->getLocale())->name }}</td>
+                                        <td><img src="/images/products/{{ $item->image }}" width="50" height="50" alt=""></td>
                                         <td>
                                             <a href="{{ url('/admin/products/' . $item->id) }}" title="View Product"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i></button></a>
                                             <a href="{{ url('/admin/products/' . $item->id . '/edit') }}" title="Edit Product"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a>

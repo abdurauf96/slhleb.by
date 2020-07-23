@@ -18,7 +18,7 @@ class CreateCategoriesTable extends Migration
             $table->softDeletes();
             $table->string('icon')->nullable();
             $table->string('image')->nullable();
-            });
+        });
     }
 
     /**

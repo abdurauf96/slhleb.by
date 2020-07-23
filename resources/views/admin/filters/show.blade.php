@@ -6,7 +6,7 @@
 
             <div class="col-md-9">
                 <div class="card">
-                    <div class="card-header">Filter {{ $filter->id }}</div>
+                    <div class="card-header">Фильтр {{ $filter->id }}</div>
                     <div class="card-body">
 
                         <a href="{{ url('/admin/filters') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
@@ -33,7 +33,7 @@
                                         <th>ID</th><td>{{ $filter->id }}</td>
                                     </tr>
                                     <tr>
-                                        <th> Category </th><td> {{ $filter->category_id }} </td></tr><tr><th> Name </th><td> {{ $filter->name }} </td>
+                                        <th> Категория фильтра </th><td> {{ $filter->category->translate(app()->getLocale())->name }} </td></tr><tr><th> Name </th><td> {{ $filter->name }} </td>
                                     </tr>
                                 </tbody>
                             </table>

@@ -6,10 +6,10 @@
             
             <div class="col-md-9">
                 <div class="card">
-                    <div class="card-header">Filters</div>
+                    <div class="card-header">Фильры</div>
                     <div class="card-body">
                         <a href="{{ url('/admin/filters/create') }}" class="btn btn-success btn-sm" title="Add New Filter">
-                            <i class="fa fa-plus" aria-hidden="true"></i> Add New
+                            <i class="fa fa-plus" aria-hidden="true"></i> Добавить новый
                         </a>
                         <hr>
                         {!! Form::open(['method' => 'GET', 'url' => '/admin/filters', 'class' => 'form-inline my-2 my-lg-0 float-right', 'role' => 'search'])  !!}
@@ -29,14 +29,14 @@
                             <table class="table table-borderless">
                                 <thead>
                                     <tr>
-                                        <th>#</th><th>Category</th><th>Name</th><th>Actions</th>
+                                        <th>#</th><th>Категория</th><th>Название</th><th>Действия</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                 @foreach($filters as $item)
                                     <tr>
-                                        <td>{{ $loop->iteration or $item->id }}</td>
-                                        <td>{{ $item->category->name }}</td><td>{{ $item->name }}</td>
+                                        <td>{{ $loop->iteration  }}</td>
+                                        <td>{{ $item->category->translate(app()->getLocale())->name }}</td><td>{{ $item->name }}</td>
                                         <td>
                                             <a href="{{ url('/admin/filters/' . $item->id) }}" title="View Filter"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i></button></a>
                                             <a href="{{ url('/admin/filters/' . $item->id . '/edit') }}" title="Edit Filter"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a>

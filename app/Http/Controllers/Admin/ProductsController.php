@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Product;
 use App\Category;
 use App\Filter;
+use App\ProductAttribute;
 use Illuminate\Http\Request;
 
 class ProductsController extends Controller
@@ -125,8 +126,49 @@ class ProductsController extends Controller
         ];
         
         Product::create($requestData);
+        $product=Product::latest()->first();
+        $action='save';
+        return view('admin.products.add-attributes', compact('product', 'action'))->with('flash_message', 'Product added!');
+    }
 
-        return redirect('admin/products')->with('flash_message', 'Product added!');
+    public function saveAttributes(Request $request, $id)
+    {
+             
+        for ($i=0; $i <count($request->weights) ; $i++) { 
+
+            $data=[
+                'weight'=>$request->weights[$i],
+                'time'=>$request->times[$i],
+                'qty'=>$request->qtys[$i],
+                'product_id'=>$request->id,
+            ];
+            ProductAttribute::create($data);
+        }
+
+       return redirect('admin/products')->with('flash_message', 'Product attributes added!');
+    }
+
+    public function updateAttributes(Request $request, $id)
+    {
+        // $product=Product::findOrFail($id);
+        // $ids=[];
+        // dd($request->attr_id);
+        // for ($i=0; $i <count($request->weights) ; $i++) { 
+        //     array_push($ids, $request->attr_id[$i]);
+        //     $data=[
+        //         'weight'=>$request->weights[$i],
+        //         'time'=>$request->times[$i],
+        //         'qty'=>$request->qtys[$i],
+        //         'product_id'=>$request->id,
+        //     ];
+        //     $attr_id=$request->attr_id[$i];
+            
+        //     $product->attributes()->update($data);
+        //     $attr=ProductAttribute::findOrFail($attr_id);
+        //     $attr->product()->associate($product)->save();
+        // }
+        // dd($ids);
+        // return redirect('admin/products')->with('flash_message', 'Product attributes updated!');
     }
 
     /**
@@ -224,14 +266,12 @@ class ProductsController extends Controller
             'by'=>[ 'name'=>$request->name_by, 'description'=>$request->description_by, 'about'=>$request->about_by, 'consist'=>$request->consist_by ],
             'en'=>[ 'name'=>$request->name_en, 'description'=>$request->description_en, 'about'=>$request->about_en, 'consist'=>$request->consist_en ],
         ];
-        
-        
-       
-        
+
         $product = Product::findOrFail($id);
         $product->update($requestData);
-
-        return redirect('admin/products')->with('flash_message', 'Product updated!');
+        $action='update';
+        return view('admin.products.add-attributes', compact('product', 'action'))->with('flash_message', 'Product updated!');
+       
     }
 
     /**
@@ -243,8 +283,10 @@ class ProductsController extends Controller
      */
     public function destroy($id)
     {
+        Product::find($id)->attributes()->delete();
         Product::destroy($id);
-
+       
+        
         return redirect('admin/products')->with('flash_message', 'Product deleted!');
     }
 }

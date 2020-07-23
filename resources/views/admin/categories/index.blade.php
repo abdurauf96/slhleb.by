@@ -6,10 +6,10 @@
 
             <div class="col-md-9">
                 <div class="card">
-                    <div class="card-header">Categories</div>
+                    <div class="card-header">Категорий</div>
                     <div class="card-body">
                         <a href="{{ url('/admin/categories/create') }}" class="btn btn-success btn-sm" title="Add New Category">
-                            <i class="fa fa-plus" aria-hidden="true"></i> Add New
+                            <i class="fa fa-plus" aria-hidden="true"></i> Добавить новый
                         </a>
                         <hr>
                         {!! Form::open(['method' => 'GET', 'url' => '/admin/categories', 'class' => 'form-inline my-2 my-lg-0 float-right', 'role' => 'search'])  !!}
@@ -29,15 +29,15 @@
                             <table class="table table-borderless">
                                 <thead>
                                     <tr>
-                                        <th>#</th><th>Name</th><th>Description</th><th>Icon</th>
-                                        <th>Image</th><th>Actions</th>
+                                        <th>#</th><th>Название</th><th>Описание</th><th>Икон</th>
+                                        <th>Фото</th><th>Действия</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                 @foreach($categories as $item)
                                     <tr>
-                                        <td>{{ $loop->iteration or $item->id }}</td>
-                                        <td>{{ $item->name }}</td><td>{{ $item->description }}</td>
+                                        <td>{{ $loop->iteration }}</td>
+                                        <td>{{ $item->translate(app()->getLocale())->name }}</td><td>{{ $item->category->translate(app()->getLocale())->description }}</td>
                                         <td><img width="50" height="50" src="/images/categories/{{ $item->icon }}" alt=""></td>
                                         <td><img width="50" height="50" src="/images/categories/{{ $item->image }}" alt=""></td>
                                         <td>

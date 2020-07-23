@@ -32,7 +32,53 @@
                                     <tr>
                                         <th>ID</th><td>{{ $product->id }}</td>
                                     </tr>
-                                    <tr><th> Category Id </th><td> {{ $product->category_id }} </td></tr><tr><th> Filter Id </th><td> {{ $product->filter_id }} </td></tr><tr><th> Name </th><td> {{ $product->name }} </td></tr>
+                                    <tr>
+                                        <th> Категория продукта </th>
+                                        <td> {{ $product->category->translate(app()->getLocale())->name }} </td>
+                                    </tr>
+                                    <tr><th> Фильтр продукта  </th>
+                                        <td> {{ $product->filter->translate(app()->getLocale())->name }}  </td>
+                                    </tr>
+                                    <tr>
+                                        <th> Название продукта </th>
+                                        <td> {{ $product->translate(app()->getLocale())->name }} </td>
+                                    </tr>
+                                    <tr>
+                                        <th>О продукте </th>
+                                        <td> {{ $product->translate(app()->getLocale())->about }} </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Описание продукта </th>
+                                        <td> {{ $product->translate(app()->getLocale())->description }} </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Состав продукта </th>
+                                        <td> {{ $product->translate(app()->getLocale())->consist }} </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Белков </th>
+                                        <td> {{ $product->protein }} </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Углеводов </th>
+                                        <td> {{ $product->carbo }} </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Жиров </th>
+                                        <td> {{ $product->fat }} </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Энергетическая ценност (калорийность) </th>
+                                        <td> {{ $product->callory }} </td>
+                                    </tr>
+                                    <tr>
+                                        <th> Вес одного продукта </th>
+                                        <td> {{ $product->weight }} </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Фото продукта </th>
+                                        <td> <img src="/images/products/{{ $product->image }}" width="50" height="50" alt=""> </td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
