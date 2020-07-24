@@ -47,3 +47,7 @@ Route::resource('admin/products', 'Admin\\ProductsController');
 Route::post('/admin/products/{id}/attribute', 'Admin\ProductsController@saveAttributes')->name('saveAttributes');
 Route::post('/admin/products/attribute/{id}/update', 'Admin\ProductsController@updateAttributes')->name('updateAttributes');
 Route::post('/admin/products/delete-attribute', 'Admin\ProductsController@deleteAttribute')->name('deleteProductAttribute');
+Route::resource('admin/requisites', 'Admin\\RequisitesController');
+Route::resource('admin/appeals', 'Admin\\AppealsController');
+Route::resource('admin/contacts', 'Admin\\ContactsController');
+Route::resource('admin/personals', 'Admin\\PersonalsController');

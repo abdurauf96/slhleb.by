@@ -178,7 +178,7 @@
             selector: '.crud-richtext'
         });
     </script>
-    <script type="text/javascript">
+    {{-- <script type="text/javascript">
         $( document ).ready(function() {
             $(document).on('click', '.btn-add', function(e) {
                 e.preventDefault();
@@ -200,7 +200,7 @@
             });
 
         });
-    </script>
+    </script> --}}
     @yield('scripts')
     
   </body>
