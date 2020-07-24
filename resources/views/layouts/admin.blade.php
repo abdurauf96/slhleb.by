@@ -18,7 +18,7 @@
          folder instead of downloading all of them to reduce the load. -->
     <link href="/dist/css/skins/_all-skins.min.css" rel="stylesheet" type="text/css" />
     <link href="/css/my.css" rel="stylesheet" type="text/css" />
-
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -201,23 +201,7 @@
 
         });
     </script>
-    <script type="text/javascript">
-
-      $(document).ready(function() {
-  
-        $(".addMore").click(function(e){
-            e.preventDefault();
-            var html = $(".hide_form").html();
-            $(".attr-hr").after(html);
-        });
-  
-        $("body").on("click",".removeAttr",function(e){ 
-          e.preventDefault();
-            $(this).parents(".form-block").remove();
-        });
-  
-      });
-  
-  </script>
+    @yield('scripts')
+    
   </body>
 </html>

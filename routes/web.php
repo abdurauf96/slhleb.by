@@ -46,3 +46,4 @@ Route::get('logout', 'Auth\LoginController@logout');
 Route::resource('admin/products', 'Admin\\ProductsController');
 Route::post('/admin/products/{id}/attribute', 'Admin\ProductsController@saveAttributes')->name('saveAttributes');
 Route::post('/admin/products/attribute/{id}/update', 'Admin\ProductsController@updateAttributes')->name('updateAttributes');
+Route::post('/admin/products/delete-attribute', 'Admin\ProductsController@deleteAttribute')->name('deleteProductAttribute');

@@ -150,25 +150,30 @@ class ProductsController extends Controller
 
     public function updateAttributes(Request $request, $id)
     {
-        // $product=Product::findOrFail($id);
-        // $ids=[];
-        // dd($request->attr_id);
-        // for ($i=0; $i <count($request->weights) ; $i++) { 
-        //     array_push($ids, $request->attr_id[$i]);
-        //     $data=[
-        //         'weight'=>$request->weights[$i],
-        //         'time'=>$request->times[$i],
-        //         'qty'=>$request->qtys[$i],
-        //         'product_id'=>$request->id,
-        //     ];
-        //     $attr_id=$request->attr_id[$i];
+        $product=Product::findOrFail($id);
+       
+        for ($i=0; $i <count($request->weights) ; $i++) { 
+            $data=[
+                'weight'=>$request->weights[$i],
+                'time'=>$request->times[$i],
+                'qty'=>$request->qtys[$i],
+                'product_id'=>$request->id,
+            ];
+            if(!empty($request->attr_id[$i])){
+                ProductAttribute::find($request->attr_id[$i])->update($data);
+            }else{
+                ProductAttribute::create($data);
+            }
             
-        //     $product->attributes()->update($data);
-        //     $attr=ProductAttribute::findOrFail($attr_id);
-        //     $attr->product()->associate($product)->save();
-        // }
-        // dd($ids);
-        // return redirect('admin/products')->with('flash_message', 'Product attributes updated!');
+        }
+        
+        return redirect('admin/products')->with('flash_message', 'Product attributes updated!');
+    }
+    public function deleteAttribute(Request $request)
+    {
+       
+        ProductAttribute::destroy($request->attr_id);
+        
     }
 
     /**
@@ -285,8 +290,6 @@ class ProductsController extends Controller
     {
         Product::find($id)->attributes()->delete();
         Product::destroy($id);
-       
-        
         return redirect('admin/products')->with('flash_message', 'Product deleted!');
     }
 }
