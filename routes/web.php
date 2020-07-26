@@ -42,6 +42,8 @@ Route::group(['middleware'=>['auth', 'roles'], 'roles'=>'admin'], function(){
 
 Route::get('logout', 'Auth\LoginController@logout');
 
+Route::post('ckeditor/image_upload', 'Admin\PostsController@uploadImage')->name('upload');
+
 
 Route::resource('admin/products', 'Admin\\ProductsController');
 Route::post('/admin/products/{id}/attribute', 'Admin\ProductsController@saveAttributes')->name('saveAttributes');
@@ -57,3 +59,10 @@ Route::resource('admin/stores', 'Admin\\StoresController');
 Route::resource('admin/sertificats', 'Admin\\SertificatsController');
 Route::resource('admin/histories', 'Admin\\HistoriesController');
 Route::resource('admin/activities', 'Admin\\ActivitiesController');
+Route::resource('admin/posts', 'Admin\\PostsController');
+Route::resource('admin/recipes', 'Admin\\RecipesController');
+Route::resource('admin/tags', 'Admin\\TagsController');
+//routes for Meal steps
+Route::post('admin/recipes/add-step', 'Admin\\RecipesController@saveStep')->name('saveStep');
+Route::post('admin/recipes/add-step', 'Admin\\RecipesController@updateStep')->name('updateStep');
+Route::post('admin/recipes/delete-step', 'Admin\\RecipesController@deleteStep')->name('deleteStep');
