@@ -4,9 +4,9 @@
     <div class="container">
         <div class="row">
 
-            <div class="col-md-9">
+            <div class="col-md-10">
                 <div class="card">
-                    <div class="card-header">Appeals</div>
+                    <div class="card-header">Заявки</div>
                     <div class="card-body">
                         <a href="{{ url('/admin/appeals/create') }}" class="btn btn-success btn-sm" title="Add New Appeal">
                             <i class="fa fa-plus" aria-hidden="true"></i> Add New
@@ -29,14 +29,31 @@
                             <table class="table table-borderless">
                                 <thead>
                                     <tr>
-                                        <th>#</th><th>Name</th><th>Addres</th><th>Fullname</th><th>Actions</th>
+                                        <th>#</th>
+                                        <th>Тип обрашения</th>
+                                        <th>Имя</th>                    
+                                        <th>Полное наименование (если юридическое лицо)</th>
+                                        <th>Телефон</th>
+                                        <th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                 @foreach($appeals as $item)
                                     <tr>
-                                        <td>{{ $loop->iteration or $item->id }}</td>
-                                        <td>{{ $item->name }}</td><td>{{ $item->addres }}</td><td>{{ $item->fullname }}</td>
+                                        <td>{{ $loop->iteration }}</td>
+                                        <td> @if($item->type=='yur_lits') обрашение от юридического лица
+                                             @elseif($item->type=='fiz_lits') обрашение от физического лица 
+                                             @else
+                                             обрашение для обратной связи
+                                             @endif
+                                        </td>
+                                        <td>{{ $item->name }}</td>
+                                        
+                                        <td>{{ $item->fullname }}</td>
+                                        <td>{{ $item->phone }}</td>
+                                        
+                                        
+                                        <td><a href="/files/{{ $item->file }}">Файл</a> </td>
                                         <td>
                                             <a href="{{ url('/admin/appeals/' . $item->id) }}" title="View Appeal"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i></button></a>
                                             <a href="{{ url('/admin/appeals/' . $item->id . '/edit') }}" title="Edit Appeal"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a>

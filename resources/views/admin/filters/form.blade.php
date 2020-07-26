@@ -8,19 +8,19 @@
     {!! $errors->first('category_id', '<p class="help-block">:message</p>') !!}
 </div>
 <div class="form-group{{ $errors->has('name') ? 'has-error' : ''}}">
-    <label class="control-label" for="name">Name RU</label>
+    <label class="control-label" for="name">Название RU</label>
     <input type="text" name="name:ru" required="required" class="form-control" value="@isset($filter) {{ $filter->translate('ru')->name }} @endisset ">
 </div>
 <div class="form-group{{ $errors->has('name') ? 'has-error' : ''}}">
-    <label class="control-label" for="name">Name BY</label>
+    <label class="control-label" for="name">Название BY</label>
     <input type="text" name="name:by" required class="form-control" value="@isset($filter) {{ $filter->translate('by')->name }} @endisset ">
 </div>
 <div class="form-group{{ $errors->has('name') ? 'has-error' : ''}}">
-    <label class="control-label" for="name">Name EN</label>
+    <label class="control-label" for="name">Название EN</label>
     <input type="text" name="name:en" required class="form-control" value="@isset($filter) {{ $filter->translate('en')->name }} @endisset ">
 </div>
 
 
 <div class="form-group">
-    {!! Form::submit($formMode === 'edit' ? 'Update' : 'Create', ['class' => 'btn btn-primary']) !!}
+    {!! Form::submit($formMode === 'edit' ? 'Обновить' : 'Создать', ['class' => 'btn btn-primary']) !!}
 </div>

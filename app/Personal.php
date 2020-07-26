@@ -8,7 +8,16 @@ use Spatie\Activitylog\Traits\LogsActivity;
 class Personal extends Model
 {
     use LogsActivity;
-    
+    public function getName()
+    {
+        $name='name_'.\App::getLocale();
+        return $this->$name;
+    }
+    public function getPosition()
+    {
+        $position='position_'.\App::getLocale();
+        return $this->$position;
+    }
 
     /**
      * The database table used by the model.

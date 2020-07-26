@@ -32,7 +32,15 @@
                                     <tr>
                                         <th>ID</th><td>{{ $appeal->id }}</td>
                                     </tr>
-                                    <tr><th> Name </th><td> {{ $appeal->name }} </td></tr><tr><th> Addres </th><td> {{ $appeal->addres }} </td></tr><tr><th> Fullname </th><td> {{ $appeal->fullname }} </td></tr>
+                                    <tr><th> Тип обрашения </th><td> {{ $appeal->type }} </td></tr>
+                                    <tr><th> Имя </th><td> {{ $appeal->name }} </td></tr>
+                                    <tr><th> Адрес </th><td> {{ $appeal->addres }} </td></tr>
+                                    <tr><th> Полное наименование (если юридическое лицо) </th><td> {{ $appeal->fullname }} </td></tr>
+                                    <tr><th> Телефон </th><td> {{ $appeal->phone }} </td></tr>
+                                    <tr><th> Почта </th><td> {{ $appeal->email }} </td></tr>
+                                    <tr><th> Текст сообщения </th><td> {{ $appeal->msg }} </td></tr>
+                                    <tr><th> Файл </th><td> {{ $appeal->file }} </td></tr>
+                                    
                                 </tbody>
                             </table>
                         </div>

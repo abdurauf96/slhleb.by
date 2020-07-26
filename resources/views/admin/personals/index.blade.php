@@ -29,14 +29,20 @@
                             <table class="table table-borderless">
                                 <thead>
                                     <tr>
-                                        <th>#</th><th>Name Ru</th><th>Name By</th><th>Name En</th><th>Actions</th>
+                                        <th>#</th>
+                                        <th>Имя</th>
+                                        <th>Должность</th>
+                                        <th>Телефон</th>
+                                        <th>Действия</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                 @foreach($personals as $item)
                                     <tr>
-                                        <td>{{ $loop->iteration or $item->id }}</td>
-                                        <td>{{ $item->name_ru }}</td><td>{{ $item->name_by }}</td><td>{{ $item->name_en }}</td>
+                                        <td>{{ $loop->iteration }}</td>
+                                        <td>{{ $item->getName() }}</td>
+                                        <td>{{ $item->getPosition() }}</td>
+                                        <td>{{ $item->phone }}</td>
                                         <td>
                                             <a href="{{ url('/admin/personals/' . $item->id) }}" title="View Personal"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i></button></a>
                                             <a href="{{ url('/admin/personals/' . $item->id . '/edit') }}" title="Edit Personal"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a>

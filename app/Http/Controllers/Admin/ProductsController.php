@@ -150,8 +150,7 @@ class ProductsController extends Controller
 
     public function updateAttributes(Request $request, $id)
     {
-        $product=Product::findOrFail($id);
-       
+        
         for ($i=0; $i <count($request->weights) ; $i++) { 
             $data=[
                 'weight'=>$request->weights[$i],

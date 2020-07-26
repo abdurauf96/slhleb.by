@@ -6,7 +6,7 @@
 
             <div class="col-md-9">
                 <div class="card">
-                    <div class="card-header">Requisites</div>
+                    <div class="card-header">Реквизиты</div>
                     <div class="card-body">
                         <a href="{{ url('/admin/requisites/create') }}" class="btn btn-success btn-sm" title="Add New Requisite">
                             <i class="fa fa-plus" aria-hidden="true"></i> Добавить 
@@ -29,14 +29,18 @@
                             <table class="table table-borderless">
                                 <thead>
                                     <tr>
-                                        <th>#</th><th>Title</th><th>Content</th><th>Actions</th>
+                                        <th>#</th>
+                                        <th>Заголовок</th>
+                                        <th>Контент</th>
+                                        <th>Действия</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                 @foreach($requisites as $item)
                                     <tr>
-                                        <td>{{ $loop->iteration or $item->id }}</td>
-                                        <td>{{ $item->title }}</td><td>{{ $item->content }}</td>
+                                        <td>{{ $loop->iteration }}</td>
+                                        <td>{{ $item->translate(\App::getLocale())->title }}</td>
+                                        <td>{{ $item->translate(\App::getLocale())->content }}</td>
                                         <td>
                                             <a href="{{ url('/admin/requisites/' . $item->id) }}" title="View Requisite"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i></button></a>
                                             <a href="{{ url('/admin/requisites/' . $item->id . '/edit') }}" title="Edit Requisite"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a>

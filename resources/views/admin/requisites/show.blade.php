@@ -6,7 +6,7 @@
 
             <div class="col-md-9">
                 <div class="card">
-                    <div class="card-header">Requisite {{ $requisite->id }}</div>
+                    <div class="card-header">Реквизит {{ $requisite->id }}</div>
                     <div class="card-body">
 
                         <a href="{{ url('/admin/requisites') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
@@ -32,7 +32,13 @@
                                     <tr>
                                         <th>ID</th><td>{{ $requisite->id }}</td>
                                     </tr>
-                                    <tr><th> Title </th><td> {{ $requisite->title }} </td></tr><tr><th> Content </th><td> {{ $requisite->content }} </td></tr>
+                                    <tr><th> Заголовок RU </th><td> {{ $requisite->translate('ru')->title }} </td></tr>
+                                    <tr><th> Заголовок BY </th><td> {{ $requisite->translate('by')->title }} </td></tr>
+                                    <tr><th> Заголовок EN </th><td> {{ $requisite->translate('en')->title }} </td></tr>
+                                    <tr><th> Контент RU </th><td> {{ $requisite->translate('ru')->content }} </td></tr>
+                                    <tr><th> Контент BY </th><td> {{ $requisite->translate('by')->content }} </td></tr>
+                                    <tr><th> Контент EN </th><td> {{ $requisite->translate('en')->content }} </td></tr>
+                                    
                                 </tbody>
                             </table>
                         </div>
