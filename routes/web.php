@@ -66,3 +66,6 @@ Route::resource('admin/tags', 'Admin\\TagsController');
 Route::post('admin/recipes/add-step', 'Admin\\RecipesController@saveStep')->name('saveStep');
 Route::post('admin/recipes/add-step', 'Admin\\RecipesController@updateStep')->name('updateStep');
 Route::post('admin/recipes/delete-step', 'Admin\\RecipesController@deleteStep')->name('deleteStep');
+
+Route::resource('admin/story-categories', 'Admin\\StoryCategoriesController');
+Route::resource('admin/stories', 'Admin\\StoriesController');
