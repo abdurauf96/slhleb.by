@@ -6,7 +6,7 @@
             
             <div class="col-md-9">
                 <div class="card">
-                    <div class="card-header">Фильры</div>
+                    <div class="card-header">Фильтры</div>
                     <div class="card-body">
                         <a href="{{ url('/admin/filters/create') }}" class="btn btn-success btn-sm" title="Add New Filter">
                             <i class="fa fa-plus" aria-hidden="true"></i> Добавить новый

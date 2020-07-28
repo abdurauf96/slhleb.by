@@ -10,3 +10,13 @@
     justify-content: space-between;
     align-items: center;
 }
+
+.form-block-participant{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center; 
+}
+.flex1,.flex2,.flex3, .flex4, .flex5, .flex6{
+    flex-basis: 350px;
+}
