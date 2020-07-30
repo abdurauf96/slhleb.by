@@ -13,6 +13,16 @@ class Menu extends Model
     {
         return $this->find($id);
     }
+    public function children($id)
+    {
+        return $this->where('parent_id', $id)->get();
+    }
+
+    public function getNameByUrl($data)
+    {
+        $url='/'.$data;
+        return $this->where('url', $url)->first();
+    }
     /**
      * The database table used by the model.
      *

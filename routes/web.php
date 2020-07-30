@@ -23,10 +23,10 @@ Route::group(['namespace'=>'Site'], function(){
     Route::get('/page/company-news', 'PageController@companyNews');
     Route::get('/news/{id}', 'PageController@viewNews');
 
-    Route::get('/page/company-recipes', 'PageController@companyRecipes');
+    Route::get('/page/recipes', 'PageController@companyRecipes');
     Route::get('/recipe/{id}', 'PageController@viewRecipe')->name('viewRecipe');
 
-    Route::get('/page/company-stories', 'PageController@companyStories')->name('stories');
+    Route::get('/page/stories', 'PageController@companyStories')->name('stories');
     Route::get('/story/{id}', 'PageController@viewStory')->name('viewStory');
 
     Route::get('/page/about-city', 'PageController@aboutCity')->name('aboutCity');

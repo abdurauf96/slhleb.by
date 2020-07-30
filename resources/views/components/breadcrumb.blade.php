@@ -13,8 +13,10 @@
                     <div class="header__breadcrumbs">
                         <ul>
                             <li class="breadcrumb-item"><a href="/">Главная</a></li>
-                            <li class="breadcrumb-item"><a href="/">Внутренняя</a></li>
-                            <li class="breadcrumb-item">Внутренняя 2</li>
+                            @if($child->parent_id!=null)
+                            <li class="breadcrumb-item"><a href="/">{{ $child->getParent($child->parent_id)['title_'.\App::getLocale()] }}</a></li>
+                            @endif
+                            <li class="breadcrumb-item"> {{ $child['title_'.\App::getLocale()] }}</li>
                         </ul>
                     </div>
                 </div>	

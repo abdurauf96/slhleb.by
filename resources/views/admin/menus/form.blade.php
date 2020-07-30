@@ -1,7 +1,7 @@
 <div class="form-group{{ $errors->has('parent_id') ? 'has-error' : ''}}">
     {!! Form::label('parent_id', 'Тип меню', ['class' => 'control-label']) !!}
     <select name="parent_id" class="form-control" id="">
-        <option>Родительское меню</option>
+        <option value="">Родительское меню</option>
         @foreach ($parent_menus as $item)
             <option @if(isset($menu)) @if($menu->parent_id==$item->id) selected @endif @endif value="{{ $item->id }}">{{ $item->title_ru }}</option>
             

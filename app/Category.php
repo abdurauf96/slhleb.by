@@ -36,7 +36,10 @@ class Category extends Model
      */
     protected $fillable = [ 'icon', 'image'];
 
-    
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
 
     /**
      * Change activity log event description

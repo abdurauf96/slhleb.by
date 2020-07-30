@@ -59,8 +59,9 @@
 			@if (\Request::route()->getName()=='home')
 				@include('layouts.home-menu')
 			@else
-				@include('layouts.page-menu')
+				@component('components.breadcrumb')
 				
+				@endcomponent
 			@endif
 			
 			<div class="header-block__left">
