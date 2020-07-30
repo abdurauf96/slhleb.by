@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use App\Requisite;
+use App\Models\Requisite;
 use Illuminate\Http\Request;
 
 class RequisitesController extends Controller

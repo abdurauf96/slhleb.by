@@ -11,16 +11,64 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::group(['namespace'=>'Site'], function(){
+
+    Route::get('/', 'IndexController@index')->name('home');
+    Route::get('/page/company', 'PageController@company');
+    Route::get('/page/company-today', 'PageController@companyToday');
+    Route::get('/page/company-history', 'PageController@companyHistory');
+    Route::get('/page/company-activities', 'PageController@companyActivities');
+    Route::get('/page/interesting', 'PageController@interesting');
+
+    Route::get('/page/company-news', 'PageController@companyNews');
+    Route::get('/news/{id}', 'PageController@viewNews');
+
+    Route::get('/page/company-recipes', 'PageController@companyRecipes');
+    Route::get('/recipe/{id}', 'PageController@viewRecipe')->name('viewRecipe');
+
+    Route::get('/page/company-stories', 'PageController@companyStories')->name('stories');
+    Route::get('/story/{id}', 'PageController@viewStory')->name('viewStory');
+
+    Route::get('/page/about-city', 'PageController@aboutCity')->name('aboutCity');
+    Route::get('/page/about/{key}', 'PageController@aboutView')->name('aboutView');
+
+    Route::get('/page/holiday-scripts', 'PageController@holidayScripts')->name('holidayScripts');
+    Route::get('/holiday-scripts/{id}', 'PageController@viewHolidayScript')->name('viewHolidayScript');
+    
+    Route::get('/page/stock-competitions', 'PageController@stockCompetitions')->name('stockCompetitions');
+    Route::get('/stock/{id}', 'PageController@viewStock')->name('viewStock');
+    Route::get('/competition/{id}', 'PageController@viewCompetition')->name('viewCompetition');
+
+    Route::get('/page/contact', 'PageController@contact')->name('contact');
+    Route::get('/page/feedback', 'PageController@feedback')->name('feedback');
+    Route::get('/page/requisites', 'PageController@requisites')->name('requisites');
+    Route::get('/page/schema', 'PageController@schema')->name('schema');
+    Route::get('/page/stores', 'PageController@stores')->name('stores');
+    Route::get('/page/appeals', 'PageController@appeals')->name('appeals');
+    Route::get('/page/privacy-policy', 'PageController@privacyPolicy');
+    Route::get('/search', 'PageController@search');
+    Route::get('/site-map', 'PageController@siteMap');
+
+    Route::get('/category/{id}', 'ProductController@products')->name('products');
+    Route::get('/product/{id}', 'ProductController@viewProduct')->name('viewProduct');
+
 });
+
+
+
 Route::get('/lang/{locale}', function ($locale) {
     session(['locale'=>$locale]);
     return back();
 });
 
-Auth::routes();
 
+
+
+
+
+
+Auth::routes();
+//routes for admin panel
 Route::group(['middleware'=>'auth'], function(){
     
     Route::get('/admin/dashboard', 'HomeController@index')->name('home');
@@ -77,3 +125,5 @@ Route::group(['middleware'=>'auth'], function(){
 });
 
 Route::get('logout', 'Auth\LoginController@logout');
+
+Route::resource('admin/menus', 'Admin\\MenusController');
