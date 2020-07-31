@@ -1,5 +1,7 @@
 @extends('layouts.site')
-
+@section('child')
+    О городе Слуцк
+@endsection
 @section('content')
 <div class="section__wrapper company">
     <div class="section__header h-100" style="background-image: url('/frontend/images/city.jpg')">
@@ -17,11 +19,8 @@
                         </div>
                         
                     </div>
-                </div>
-                
-            </div>
-            
-            
+                </div>             
+            </div>         
         </div>
 
         <div class="scroll-down">

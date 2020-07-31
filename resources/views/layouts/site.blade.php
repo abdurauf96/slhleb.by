@@ -60,7 +60,12 @@
 				@include('layouts.home-menu')
 			@else
 				@component('components.breadcrumb')
-				
+					@slot('parent')
+						@yield('parent')	
+					@endslot
+					@slot('child')
+						@yield('child')	
+					@endslot
 				@endcomponent
 			@endif
 			
