@@ -42,7 +42,7 @@ class Menu extends Model
      *
      * @var array
      */
-    protected $fillable = ['parent_id', 'title_ru', 'title_by', 'title_en', 'url'];
+    protected $fillable = ['parent_id', 'title_ru', 'title_by', 'title_en', 'url', 'image'];
 
     
 

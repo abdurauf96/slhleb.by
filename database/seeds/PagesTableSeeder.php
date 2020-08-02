@@ -24,7 +24,7 @@ class PagesTableSeeder extends Seeder
                 'title_ru'=>'Сотрудничество',
                 'title_by'=>'Сотрудничество',
                 'title_en'=>'Cooperation',
-                'key'=>'#',
+                'key'=>'page/cooperation',
             ],
             [
                 

@@ -9,8 +9,8 @@
                 <div class="name">{{ $cat->translate(\App::getLocale())->name }}</div>
             </a>
             <ul class="sub__menu">
-                @foreach ($cat->products as $prod)
-                <li><a href="{{ route('viewProduct', $prod->id) }}">{{ $prod->translate(\App::getLocale())->name }}</a></li>
+                @foreach ($cat->filters as $filter)
+                <li><a href="/products/{{$cat->id}}?filter={{ $filter->id }}">{{ $filter->translate(\App::getLocale())->name }}</a></li>
                 @endforeach
             </ul>
         </li>  

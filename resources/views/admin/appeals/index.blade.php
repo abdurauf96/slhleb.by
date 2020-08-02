@@ -41,11 +41,9 @@
                                 @foreach($appeals as $item)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td> @if($item->type=='yur_lits') обрашение от юридического лица
-                                             @elseif($item->type=='fiz_lits') обрашение от физического лица 
-                                             @else
-                                             обрашение для обратной связи
-                                             @endif
+                                        <td> 
+                                            {{ $item->type }}
+                                             
                                         </td>
                                         <td>{{ $item->name }}</td>
                                         
@@ -53,7 +51,7 @@
                                         <td>{{ $item->phone }}</td>
                                         
                                         
-                                        <td><a href="/files/{{ $item->file }}">Файл</a> </td>
+                                        <td><a href="/files/appeals/{{ $item->file }}">Файл</a> </td>
                                         <td>
                                             <a href="{{ url('/admin/appeals/' . $item->id) }}" title="View Appeal"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i></button></a>
                                             <a href="{{ url('/admin/appeals/' . $item->id . '/edit') }}" title="Edit Appeal"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a>

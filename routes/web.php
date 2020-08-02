@@ -21,6 +21,7 @@ Route::group(['namespace'=>'Site'], function(){
     Route::get('/page/company-news', 'PageController@companyNews')->name('companyNews'); //done ++
     Route::get('/news/{id}', 'PageController@viewNews')->name('viewNews'); //done ++
 
+    Route::get('/page/cooperation', 'PageController@cooperation')->name('cooperation'); //done ++
     Route::get('/page/interesting', 'PageController@interesting')->name('interesting'); //done ++
 
     Route::get('/page/recipes', 'PageController@companyRecipes')->name('recipes'); //done ++
@@ -49,8 +50,12 @@ Route::group(['namespace'=>'Site'], function(){
     Route::get('/search', 'PageController@search');
     Route::get('/page/site-map', 'PageController@siteMap'); //done ++
 
-    Route::get('/category/{id}', 'ProductController@products')->name('products');
+    Route::get('/products/{id}', 'ProductController@products')->name('products');
     Route::get('/product/{id}', 'ProductController@viewProduct')->name('viewProduct');
+
+    //sending messages
+    Route::post('/appeal', 'IndexController@appeal')->name('appeal');
+    Route::post('/appeal2', 'IndexController@appeal')->name('appeal');
 
 });
 
@@ -130,3 +135,6 @@ Route::group(['middleware'=>'auth'], function(){
 Route::get('logout', 'Auth\LoginController@logout');
 
 Route::resource('admin/menus', 'Admin\\MenusController');
+Route::resource('admin/product-banners', 'Admin\\ProductBannersController');
+Route::resource('admin/sliders', 'Admin\\SlidersController');
+Route::resource('admin/main-bloks', 'Admin\\MainBloksController');

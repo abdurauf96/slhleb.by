@@ -46,8 +46,9 @@
                                 </div>
                                 <div class="ct-search">
                                     <div class="ct-search__form">
-                                        <form action="">
-                                            <input type="search" class="ct-form-control form-control" placeholder="Поиск по названия">
+                                        <form method="GET" action="/products/{{ $category->id }}">
+                                            @csrf
+                                            <input type="search" name="q" class="ct-form-control form-control" placeholder="Поиск по названия">
                                         </form>
                                     </div>
                                 </div>
@@ -60,28 +61,12 @@
         <div class="section-catalog__list">
             <div class="container">
                 <div class="cl-slider">
-                    <div class="cl-slider-wrap">
-                        <div class="catalog-slider">
-                            <div class="cl-slider-item item__card">
-                                <img src="/frontend/images/banner-catalog.jpg" alt="">
-                            </div>
-                            <div class="cl-slider-item item__card">
-                                <img src="/frontend/images/banner-catalog.jpg" alt="">
-                            </div>
-                            <div class="cl-slider-item item__card">
-                                <img src="/frontend/images/banner-catalog.jpg" alt="">
-                            </div>
-                        </div>
-                        <div class="slider-nav style-dots">
-                            <div class="catalog__slider-dots"></div>
-                            <div class="catalog__slider-arrows d-flex"></div>
-                        </div>
-                    </div>
+                    @include('sections.product-banner')
                 </div>
                 <div class="catalog-list">
                     <div class="row">
                         @foreach ($products as $prod)
-                        <a href="/catalog-cart.php" class="col-md-6 col-lg-4 catalog-list__item">
+                        <a href="{{ route('viewProduct', $prod->id) }}" class="col-md-6 col-lg-4 catalog-list__item">
                             <div class="item-image">
                                 <img src="/images/products/{{ $prod->image }}" alt="">
                             </div>
@@ -109,13 +94,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="pagination">
-                                <ul class="list-inline">
-                                    <li class="list-inline-item active"><a href="">1</a></li>
-                                    <li class="list-inline-item"><a href="">2</a></li>
-                                    <li class="list-inline-item"><a href="">3</a></li>
-                                    <li class="list-inline-item"><a href="">4</a></li>
-                                    <li class="list-inline-item"><a href="">5</a></li>
-                                </ul>
+                                {{ $products->links('components.pagination') }}
                             </div>
                         </div>
                     </div>

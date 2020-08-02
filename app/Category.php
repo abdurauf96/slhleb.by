@@ -41,6 +41,11 @@ class Category extends Model
         return $this->hasMany(Product::class);
     }
 
+    public function filters()
+    {
+        return $this->hasMany(Filter::class);
+    }
+
     /**
      * Change activity log event description
      *

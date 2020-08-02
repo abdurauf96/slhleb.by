@@ -5,7 +5,7 @@
 @section('content')
 
 <div class="section__wrapper company">
-    <div class="section__header" style="background-image: url('/frontend/images/company-bg.jpg')">
+    <div class="section__header" style="background-image: url('/images/pages/{{ $page->image }}')">
         <div class="container">
             <div class="header-wrapper">
                 <div class="row">
@@ -34,27 +34,13 @@
     </div>
     <div class="section__content" style="background-image: url('/frontend/images/bg-main.jpg')">
         <div class="container-custom">
-            <a href="{{ route('companyToday') }}" class="item__card"  data-aos="fade-up" data-aos-delay="100" style="background-image: url('/frontend/images/news-bg.png')">
+            @foreach ($menu->children() as $item)
+            <a href="{{ $item->url }}" class="item__card"  data-aos="fade-up" data-aos-delay="100" style="background-image: url('/images/menus/{{ $item->image }}')">
                 <div class="item__card-tittle">
-                    <h2>Компания сегодня</h2>
+                    <h2>{{ $item['title_'.\App::getLocale()] }}</h2>
                 </div>
             </a>
-            <a href="{{ route('companyHistory') }}" class="item__card"  data-aos="fade-up" data-aos-delay="100" style="background-image: url('/frontend/images/news-bg.png')">
-                <div class="item__card-tittle">
-                    <h2>История</h2>
-                </div>
-            </a>
-            <a href="{{ route('companyNews') }}" class="item__card"  data-aos="fade-up" data-aos-delay="100" style="background-image: url('/frontend/images/news-bg.png')">
-                <div class="item__card-tittle">
-                    <h2>Новости и достижения</h2>
-                </div>
-            </a>
-            <a href="{{ route('companyActivities') }}" class="item__card"  data-aos="fade-up" data-aos-delay="100" style="background-image: url('/frontend/images/news-bg.png')">
-                <div class="item__card-tittle">
-                    <h2>Информация о деятельности 
-                    общества</h2>
-                </div>
-            </a>
+            @endforeach
         </div>
         
         @include('layouts.footer')

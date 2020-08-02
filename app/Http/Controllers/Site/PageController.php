@@ -13,7 +13,8 @@ class PageController extends Controller
     public function company(Request $request)
     {
         $page=Page::where('key', $request->path())->first();
-        return view('frontend.company', compact('page'));
+        $menu=Menu::where('url', '/'.$request->path())->first();
+        return view('frontend.company', compact('page', 'menu'));
     }
 
     public function companyToday(Request $request)
@@ -62,10 +63,16 @@ class PageController extends Controller
     public function interesting(Request $request)
     {
         $page=Page::where('key', $request->path())->first();
-        return view('frontend.interesting', compact('page'));
+        $menu=Menu::where('url', '/'.$request->path())->first();
+        return view('frontend.interesting', compact('page', 'menu'));
     }
 
-    
+    public function cooperation(Request $request)
+    {
+        $page=Page::where('key', $request->path())->first();
+        
+        return view('frontend.cooperation', compact('page'));
+    }
 
     public function companyRecipes(Request $request)
     {

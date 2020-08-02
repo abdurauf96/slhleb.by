@@ -1,7 +1,7 @@
 <div class="form-group{{ $errors->has('type') ? 'has-error' : ''}}">
     {!! Form::label('type', 'Тип', ['class' => 'control-label']) !!}
-    <input type="radio"  {{ $stock->type=='stock' ? 'checked': '' }}   value="stock"  name="type">Акция
-    <input type="radio"  {{ $stock->type=='competition' ? 'checked': '' }}   value="competition" name="type">Конкурс
+    <input type="radio" @if($formMode === 'edit')  {{ $stock->type=='stock' ? 'checked': '' }} @endif  value="stock"  name="type">Акция
+    <input type="radio"  @if($formMode === 'edit') {{ $stock->type=='competition' ? 'checked': '' }} @endif  value="competition" name="type">Конкурс
 </div>
 <div class="form-group{{ $errors->has('title_ru') ? 'has-error' : ''}}">
     {!! Form::label('title_ru', 'Заголовок Ru', ['class' => 'control-label']) !!}

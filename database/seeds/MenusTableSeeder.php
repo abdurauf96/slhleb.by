@@ -24,7 +24,7 @@ class MenusTableSeeder extends Seeder
                 'title_ru'=>'Сотрудничество',
                 'title_by'=>'Сотрудничество',
                 'title_en'=>'Cooperation',
-                'url'=>'/#',
+                'url'=>'/page/cooperation',
             ],
             [
                 'parent_id'=>null,

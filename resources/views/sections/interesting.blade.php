@@ -32,20 +32,15 @@
                 </div>
                 <div class="col-lg-6">
                     <div class="row">
+                        @foreach ($bloks as $blok)
                         <div class="col-xl-12">
-                            <a href="{{ route('companyNews') }}" class="item__card card__small" style="background-image: url('/frontend/images/news-bg.png')">
+                            <a href="{{ $blok->url }}" class="item__card card__small" style="background-image: url('/images/bloks/{{ $blok->image }}')">
                                 <div class="item__card-tittle">
-                                    <h2>Новости</h2>
+                                    <h2>{{ $blok['title_'.\App::getLocale()] }}</h2>
                                 </div>
                             </a>
                         </div>
-                        <div class="col-xl-12">
-                            <a href="{{ route('holidayScripts') }}" class="item__card card__small" style="background-image: url('/frontend/images/scenariy.png')">
-                                <div class="item__card-tittle">
-                                    <h2>Сценарии</h2>
-                                </div>
-                            </a>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>	

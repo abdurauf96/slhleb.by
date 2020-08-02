@@ -7,7 +7,7 @@
 @section('content')
 
 <div class="section__wrapper company">
-    <div class="section__header h-100" style="background-image: url('/frontend/images/interesting-bg.jpg')">
+    <div class="section__header h-100" style="background-image: url('/images/pages/{{ $page->image }}')">
         <div class="container">
             <div class="header-wrapper">
                 <div class="row">
@@ -39,31 +39,14 @@
     </div>
     <div class="section__content" style="background-image: url('/frontend/images/bg-main.jpg')">
         <div class="container-custom">
-            <a href="{{ route('recipes') }}" class="item__card" style="background-image: url('/frontend/images/recipes-image.jpg')">
+            @foreach ($menu->children() as $item)
+            <a href="{{ $item->url }}" class="item__card" style="background-image: url('/images/menus/{{ $item->image }}')">
                 <div class="item__card-tittle">
-                    <h2>Рецепты</h2>
+                    <h2>{{ $item['title_'.\App::getLocale()] }}</h2>
                 </div>
             </a>
-            <a href="{{ route('stories') }}" class="item__card" style="background-image: url('/frontend/images/history-image.jpg')">
-                <div class="item__card-tittle">
-                    <h2>Истории</h2>
-                </div>
-            </a>
-            <a href="{{ route('aboutCity') }}" class="item__card" style="background-image: url('/frontend/images/city-image.jpg')">
-                <div class="item__card-tittle">
-                    <h2>О городе Слуцк</h2>
-                </div>
-            </a>
-            <a href="{{ route('holidayScripts') }}" class="item__card" style="background-image: url('/frontend/images/holidays-image.jpg')">
-                <div class="item__card-tittle">
-                    <h2>Сценарии праздников</h2>
-                </div>
-            </a>
-            <a href="{{ route('stockCompetitions') }}" class="item__card" style="background-image: url('/frontend/images/stoks-image.jpg')">
-                <div class="item__card-tittle">
-                    <h2>Акции и конкурсы</h2>
-                </div>
-            </a>
+            @endforeach
+            
         </div>
         
        @include('layouts.footer')

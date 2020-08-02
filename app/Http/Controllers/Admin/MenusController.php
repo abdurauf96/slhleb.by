@@ -56,7 +56,12 @@ class MenusController extends Controller
     {
         
         $requestData = $request->all();
-        
+        if($request->hasFile('image')){
+            $file=$request->file('image');
+            $image=time().$file->getClientOriginalName();
+            $file->move('images/menus', $image);
+            $requestData['image']=$image;
+        }
         Menu::create($requestData);
 
         return redirect('admin/menus')->with('flash_message', 'Menu added!');
@@ -102,7 +107,12 @@ class MenusController extends Controller
     {
         
         $requestData = $request->all();
-        
+        if($request->hasFile('image')){
+            $file=$request->file('image');
+            $image=time().$file->getClientOriginalName();
+            $file->move('images/menus', $image);
+            $requestData['image']=$image;
+        }
         $menu = Menu::findOrFail($id);
         $menu->update($requestData);
 

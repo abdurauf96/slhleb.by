@@ -9,7 +9,7 @@
 
 @section('content')
 <div class="section__wrapper company">
-    <div class="section__header h-100" style="background-image: url('/frontend/images/city.jpg')">
+    <div class="section__header h-100" style="background-image: url('/images/pages/{{ $page->image }}')">
         <div class="container">
             <div class="header-wrapper">
                 <div class="row">

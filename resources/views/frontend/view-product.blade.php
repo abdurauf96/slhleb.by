@@ -1,5 +1,13 @@
 @extends('layouts.site')
 
+
+@section('parent')
+<li class="breadcrumb-item"><a href="{{ route('products',$product->category->id) }}">{{ $product->category->translate(\App::getLocale())->name }}</a></li>
+@endsection
+@section('child')
+{{ $product->translate(\App::getLocale())->name }}
+@endsection
+
 @section('content')
 <div class="section__wrapper">
     <div class="section-product__header" style="background-image: url('/frontend/images/catalog-cart-bg.jpg')">
@@ -14,54 +22,54 @@
                                         <div class="section-product-slider">
                                             <div class="product-slider">
                                                 <div class="product-slider-item">
-                                                    <div class="product-hit"><img src="/frontend/images/hit.png" alt=""></div>
+                                                    <div class="product-hit">
+                                                        @if($product->status=='new')
+                                                        <img src="/frontend/images/new-catalog.png" alt="">
+                                                        @elseif($product->status=='xit')
+                                                        <img src="/frontend/images/hit-catalog.png" alt="">
+                                                        @else
+                                                        @endif
+                                                    </div>
                                                     <div class="img-comp-container">
                                                         <div class="img-comp-container">
                                                             <div class="img-comp-img img-comp-overlay">
-                                                                <img src="/frontend/images/chusovskoy1.png">
+                                                                <img src="/images/products/{{ $product->image_out }}">
                                                             </div>
                                                             <div class="img-comp-img ">
                                                                 
-                                                                <img src="/frontend/images/chusovskoy.png">
+                                                                <img src="/images/products/{{ $product->image_in}}">
                                                             </div>
                                                         </div>									
                                                     </div>
-                                                    <div class="product-weight"><p>460 гр.</p></div>
+                                                    <div class="product-weight"><p>{{ $product->weight }}</p></div>
                                                 </div>
-                                            <div class="product-slider-item" style="background-image: url('/frontend/images/slider-nav-2.jpg')">
-                                                <div class="product-hit"><img src="/frontend/images/hit.png" alt=""></div>
-                                            </div>
-                                            <div class="product-slider-item" style="background-image: url('/frontend/images/slider-nav-1.jpg')">
                                                 
-                                            </div>
-                                            <div class="product-slider-item" style="background-image: url('/frontend/images/slider-nav-2.jpg')">
+                                                @php
+                                                    $images=json_decode($product->images);
+                                                @endphp
+                                                @isset($images)
+                                                @foreach ($images as $image)
+                                                <div class="product-slider-item" style="background-image: url('/images/products/{{ $image }}')">  
+                                                </div>
+                                                @endforeach
+                                                @endisset
                                                 
-                                            </div>
-                                            <div class="product-slider-item" style="background-image: url('/frontend/images/slider-nav-1.jpg')">
-                                                
-                                            </div>
-                                            <div class="product-slider-item" style="background-image: url('/frontend/images/slider-nav-1.jpg')">
-                                                
-                                            </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-xl-12">
                                         <div class="product-nav-wrapper">
                                             <div class="product-nav-slider">
-                                                <div class="product-nav-slider-item" style="background-image: url('/frontend/images/slider-nav-1.jpg')">
-                                                    <div><img src="/frontend/images/icon/weight-icon-2.png" alt="">560 г.</div>
+                                                
+                                                @php
+                                                    $images=json_decode($product->images);
+                                                @endphp
+                                               @isset($images)
+                                                @foreach ($images as $image)
+                                                <div class="product-nav-slider-item" style="background-image: url('/images/products/{{ $image }}')">   
                                                 </div>
-                                                <div class="product-nav-slider-item" style="background-image: url('/frontend/images/slider-nav-2.jpg')">
-                                                </div>
-                                                <div class="product-nav-slider-item" style="background-image: url('/frontend/images/slider-nav-1.jpg')">
-                                                </div>
-                                                <div class="product-nav-slider-item" style="background-image: url('/frontend/images/slider-nav-2.jpg')">
-                                                </div>
-                                                <div class="product-nav-slider-item" style="background-image: url('/frontend/images/slider-nav-1.jpg')">
-                                                </div>
-                                                <div class="product-nav-slider-item" style="background-image: url('/frontend/images/slider-nav-2.jpg')">
-                                                </div>
+                                                @endforeach
+                                                @endisset
                                             </div>
                                             <div class="scrollbar">
                                                 <input type="range" id="range" min="1" value="1" step="1" max="" />
@@ -93,9 +101,9 @@
                                     </div>
                                     <div class="product-description">
                                         <div class="product-title">
-                                            <span data-aos="fade-left">Хлеб</span>
-                                            <h2 class="title" data-aos="fade-left" data-aos-delay="100">«Слуцкий»</h2>
-                                            <p data-aos="fade-left" data-aos-delay="300">Есть такой хлеб, аромат и вкус которого мы помним с детства, он напоминает о воскресном утре и становится дорог для каждой белорусской семьи, о таком хлебе говорят – классический!</p>
+                                            {{-- <span data-aos="fade-left">Хлеб</span> --}}
+                                            <h2 class="title" data-aos="fade-left" data-aos-delay="100">{{ $product->translate(\App::getLocale())->name }}</h2>
+                                            <p data-aos="fade-left" data-aos-delay="300">{{ $product->translate(\App::getLocale())->description }}</p>
                                         </div>
                                         <div class="panel-product panel-group wrap" id="accordion" role="tablist" aria-multiselectable="true" data-aos="fade-left" data-aos-delay="400">
                                             <div class="panel">
@@ -110,7 +118,7 @@
                                                 </div>
                                                 <div id="collapse-1" class="panel-collapse collapse in show" role="tabpanel" aria-labelledby="headingOne">
                                                     <div class="panel-body">
-                                                        мука пшеничная  2 с М12-25, мука ржаная сеяная, вода, солод ржаной сухой, соль поваренная пищевая йодированная (противослеживающая добавка Е 536), дрожжи хлебопекарные прессованные, сахар белый кристаллический.
+                                                        {{ $product->translate(\App::getLocale())->consist }}
                                                     </div>
                                                 </div>
                                             </div>
@@ -127,7 +135,7 @@
                                                 </div>
                                                 <div id="collapse-2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
                                                     <div class="panel-body">
-                                                        мука пшеничная  2 с М12-25, мука ржаная сеяная, вода, солод ржаной сухой, соль поваренная пищевая йодированная (противослеживающая добавка Е 536), дрожжи хлебопекарные прессованные, сахар белый кристаллический.
+                                                        {{ $product->translate(\App::getLocale())->about }}
                                                     </div>
                                                 </div>
                                             </div>
@@ -140,23 +148,23 @@
                                                         Белков
                                                     </div>
                                                     <div class="info-item__body">
-                                                        7,0 г
+                                                        {{ $product->protein }}
                                                     </div>
                                                 </div>
                                                 <div class="info-item">
                                                     <div class="info-item__title">
-                                                        Белков
+                                                        Углеводов
                                                     </div>
                                                     <div class="info-item__body">
-                                                        7,0 г
+                                                        {{ $product->carbo }}
                                                     </div>
                                                 </div>
                                                 <div class="info-item">
                                                     <div class="info-item__title">
-                                                        Белков
+                                                        Жиров
                                                     </div>
                                                     <div class="info-item__body">
-                                                        7,0 г
+                                                        {{ $product->fat }}
                                                     </div>
                                                 </div>
                                                 <div class="info-item">
@@ -165,8 +173,7 @@
                                                         (калорийность)</small>
                                                     </div>
                                                     <div class="info-item__body">
-                                                        <small>998 кДж <br>
-                                                        228 кал</small>	
+                                                        <small>{{ $product->callory }}</small>	
 
                                                     </div>
                                                 </div>
@@ -174,24 +181,26 @@
                                         </div>
                                         <div class="product-block-table">
                                             <table>
+                                                
                                                 <tr>
                                                     <td class="td-desc"><img src="/images/icon/weight-icon.png" alt="">kg</td>
-                                                    <td>0,5/0,55</td>
-                                                    <td>0,25 <br>упак. нарез.</td>
-                                                    <td class="br-none">0,25 <br>упак. нарез.</td>
+                                                    @foreach ($product->attributes  as $attr)
+                                                    <td>{{ $attr->weight }}</td>
+                                                    @endforeach
                                                 </tr>
                                                 <tr>
-                                                    <td class="td-desc"><img src="/images/icon/icon-time.png" alt="">час</td>
-                                                    <td>24</td>
-                                                    <td>24</td>
-                                                    <td class="br-none">48</td>
+                                                    <td class="td-desc">час</td>
+                                                    @foreach ($product->attributes  as $attr)
+                                                    <td>{{ $attr->time }}</td>
+                                                    @endforeach
                                                 </tr>
                                                 <tr>
-                                                    <td class="td-desc bb-none"><img src="/images/icon/weight-icon.png" alt="">шт.</td>
-                                                    <td class="bb-none">10/5</td>
-                                                    <td class="bb-none">10/5</td>
-                                                    <td class="br-none brb-none">8</td>
+                                                    <td class="td-desc">шт</td>
+                                                    @foreach ($product->attributes  as $attr)
+                                                    <td>{{ $attr->qty }}</td>
+                                                    @endforeach
                                                 </tr>
+                                                
                                             </table>
                                         </div>
                                     </div>
@@ -220,76 +229,22 @@
                         <div class="recommend__slider-arrows d-flex"></div>
                     </div>
                     <div class="recommend-slider">
-                        <a href="" class="recommend-slider-item catalog-list__item">
+                        @foreach ($product->filter->products as $prod)
+                        <a href="{{ route('viewProduct', $prod->id) }}" class="recommend-slider-item catalog-list__item">
                             <div class="item-image">
-                                <img src="/frontend/images/product-2.png" alt="">
+                                <img src="/images/products/{{ $prod->image }}" alt="">
                             </div>
                             <div class="item-info">
                                 <div class="item-info-title">
-                                    <h2>Хлеб «Слуцкий»</h2>
+                                    <h2>{{ $prod->translate(\App::getLocale())->name }}</h2>
                                 </div>
                                 <div class="item-info-weight">
-                                    <span><img src="/frontend/images/icon//weight-icon.png" alt=""></span>
-                                    <p>10 / 20</p>
+                                    <span><img src="/frontend/images/icon/weight-icon.png" alt=""></span>
+                                    <p>{{ $prod->weight }}</p>
                                 </div>
                             </div>	
                         </a>
-                        <a href="" class="recommend-slider-item catalog-list__item">
-                            <div class="item-image">
-                                <img src="/frontend/images/product-2.png" alt="">
-                            </div>
-                            <div class="item-info">
-                                <div class="item-info-title">
-                                    <h2>Хлеб «Слуцкий»</h2>
-                                </div>
-                                <div class="item-info-weight">
-                                    <span><img src="/frontend/images/icon//weight-icon.png" alt=""></span>
-                                    <p>10 / 20</p>
-                                </div>
-                            </div>	
-                        </a>
-                        <a href="" class="recommend-slider-item catalog-list__item">
-                            <div class="item-image">
-                                <img src="/frontend/images/product-2.png" alt="">
-                            </div>
-                            <div class="item-info">
-                                <div class="item-info-title">
-                                    <h2>Хлеб «Слуцкий»</h2>
-                                </div>
-                                <div class="item-info-weight">
-                                    <span><img src="/frontend/images/icon//weight-icon.png" alt=""></span>
-                                    <p>10 / 20</p>
-                                </div>
-                            </div>	
-                        </a>
-                        <a href="" class="recommend-slider-item catalog-list__item">
-                            <div class="item-image">
-                                <img src="/frontend/images/product-2.png" alt="">
-                            </div>
-                            <div class="item-info">
-                                <div class="item-info-title">
-                                    <h2>Хлеб «Слуцкий»</h2>
-                                </div>
-                                <div class="item-info-weight">
-                                    <span><img src="/frontend/images/icon//weight-icon.png" alt=""></span>
-                                    <p>10 / 20</p>
-                                </div>
-                            </div>	
-                        </a>
-                        <a href="" class="recommend-slider-item catalog-list__item">
-                            <div class="item-image">
-                                <img src="/frontend/images/product-2.png" alt="">
-                            </div>
-                            <div class="item-info">
-                                <div class="item-info-title">
-                                    <h2>Хлеб «Слуцкий»</h2>
-                                </div>
-                                <div class="item-info-weight">
-                                    <span><img src="/frontend/images/icon//weight-icon.png" alt=""></span>
-                                    <p>10 / 20</p>
-                                </div>
-                            </div>	
-                        </a>
+                        @endforeach         
                     </div>
                 </div>
             </div>

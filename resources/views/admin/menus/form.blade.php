@@ -29,7 +29,11 @@
     {!! $errors->first('url', '<p class="help-block">:message</p>') !!}
 </div>
 
-
+<div class="form-group{{ $errors->has('url') ? 'has-error' : ''}}">
+    {!! Form::label('url', 'Фото', ['class' => 'control-label']) !!}
+    {!! Form::file('image', null, ('' == 'required') ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control']) !!}
+    {!! $errors->first('url', '<p class="help-block">:message</p>') !!}
+</div>
 <div class="form-group">
     {!! Form::submit($formMode === 'edit' ? 'Обновить' : 'Создать', ['class' => 'btn btn-primary']) !!}
 </div>

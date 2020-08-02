@@ -17,7 +17,7 @@
                     <li><a href="" class="fab fa-instagram"></a></li>
                     <li><a href="" class="fab fa-instagram"></a></li>
                 </ul>
-                <a href="/contact-obrashcheniye.html" class="btn btn-transparent">Электронное обращение</a>
+                <a href="{{ route('appeals') }}" class="btn btn-transparent">Электронное обращение</a>
             </div>
 
         </div>
