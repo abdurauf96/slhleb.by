@@ -1,5 +1,12 @@
 @extends('layouts.site')
 
+@section('parent')
+<li class="breadcrumb-item"><a href="/page/interesting">Это интересно</a></li>
+@endsection
+@section('child')
+{{ $page['title_'.\App::getLocale()] }}
+@endsection
+
 @section('content')
 <div class="section__wrapper">
     <div class="section__header h-100" style="background-image: url('/frontend/images/holidays-image.jpg')">
@@ -7,12 +14,10 @@
             <div class="row">
                 <div class="col-xl-7 col-md-7">
                     <div class="title title-style">
-                        Сценарии праздников
+                        {{ $page['title_'.\App::getLocale()] }}
                     </div>
                     <div class="text scroll-pane">
-                        <p>В данном разделе собраны лучшие рецепты присланные Вами.
-                            <br>
-                        Если у Вас есть предложения, сценарии, рецепты, истории и другая познавательная информация, напишите, пожалуйста, нам об этом в гостевой книге. Самые  интересные мы разместим на сайте.  </p>
+                        <p>{{ $page['desc_'.\App::getLocale()] }}</p>
 
                     </div>
                 </div>
@@ -33,11 +38,10 @@
                             <div class="row">
                                 <div class="col-md-10">
                                     <ul class="list-inline">
-                                        <li class="list-inline-item active"><a href="">Все сценарии</a></li>
-                                        <li class="list-inline-item"><a href="">Сценарий 1</a></li>
-                                        <li class="list-inline-item"><a href="">Сценарий 2</a></li>
-                                        <li class="list-inline-item"><a href="">Сценарий 3</a></li>
-                                        <li class="list-inline-item"><a href="">Сценарий 4</a></li>
+                                        <li class="list-inline-item {{ \Request::get('script')==''? 'active' : '' }} "><a href="{{ route('holidayScripts') }}">Все сценарии </a></li>
+                                        @foreach ($scripts as $script)
+                                        <li class="list-inline-item {{ \Request::get('script')==$script->id ? 'active' : '' }}"><a href="/page/holiday-scripts?script={{ $script->id }}">{{ $script['name_'.\App::getLocale()] }}</a></li>
+                                        @endforeach
                                          
                                     </ul>
                                 </div>
@@ -52,82 +56,17 @@
             <div class="container-custom">
                 <div class="item-list">
                     <div class="row mb-5">
-                        <div class="col-xl-8">
-                            <div class="row">
-                                <div class="col-xl-12">
-                                    <a href="/interesting-holiday-script-page.php" class="item-card item-small mb-5 f-large" style="background-image: url(/frontend/images/holidays-image.jpg)">
+                        @foreach ($holidays as $holiday)
+                        <div class="col-xl-6">
+                            <a href="{{ route('viewHolidayScript', $holiday->id) }}" class="item-card item-small mb-5 f-large" style="background-image: url(/images/holidays/{{$holiday->image}})">
 
-                                        <div class="item-card__tittle">
-                                            <h2>Праздник 1</h2>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="col-xl-12">
-                                    <div class="row">
-                                        <div class="col-xl-6">
-                                            <a href="/interesting-holiday-script-page.php" class="item-card item-small f-small" style="background-image: url(/frontend/images/holidays-image.jpg)">
-                                                <div class="item-card__tittle">
-                                                    <h2>Праздник 2</h2>
-                                                </div>
-                                            </a>
-                                        </div>
-                                        <div class="col-xl-6"><h2>
-                                            <a href="/interesting-holiday-script-page.php" class="item-card item-small f-small" style="background-image: url(/frontend/images/holidays-image.jpg)">
-                                                <div class="item-card__tittle">
-                                                    <h2>Праздник 3</h2>
-                                                </div>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-4">
-                            <a href="/interesting-holiday-script-page.php" class="item-card item-big f-small" style="background-image: url(/frontend/images/holidays-image.jpg)">
                                 <div class="item-card__tittle">
-                                    <h2>Праздник 4</h2>
+                                    <h2>{{ $holiday['title_'.\App::getLocale()] }} </h2>
                                 </div>
                             </a>
-                        </div>
-                    </div>
-                    
-                    <div class="row mb-5">
-                        <div class="col-xl-4">
-                            <a href="/interesting-holiday-script-page.php" class="item-card item-big f-small" style="background-image: url(/frontend/images/recipe-big-image.jpg)">
-                                <div class="item-card__tittle">
-                                    <h2>Праздник 5</h2>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-xl-8">
-                            <div class="row">
-                                <div class="col-xl-12">
-                                    <a href="" class="item-card item-small mb-5 f-large" style="background-image: url(/frontend/images/recipie-img.png)">
-                                        <div class="item-card__tittle">
-                                            <h2>Праздник 6</h2>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="col-xl-12">
-                                    <div class="row">
-                                        <div class="col-xl-6">
-                                            <a href="" class="item-card item-small f-small" style="background-image: url(/frontend/images/recipie-img.png)">
-                                                <div class="item-card__tittle">
-                                                    <h2>Праздник 6</h2>
-                                                </div>
-                                            </a>
-                                        </div>
-                                        <div class="col-xl-6"><h2>
-                                            <a href="" class="item-card item-small f-small" style="background-image: url(/frontend/images/recipie-img.png)">
-                                                <div class="item-card__tittle">
-                                                    <h2>Праздник 7</h2>
-                                                </div>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        </div>  
+                        @endforeach
+                         
                     </div>
                 </div>
             </div>
@@ -135,13 +74,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="pagination">
-                            <ul class="list-inline">
-                                <li class="list-inline-item active"><a href="">1</a></li>
-                                <li class="list-inline-item"><a href="">2</a></li>
-                                <li class="list-inline-item"><a href="">3</a></li>
-                                <li class="list-inline-item"><a href="">4</a></li>
-                                <li class="list-inline-item"><a href="">5</a></li>
-                            </ul>
+                            {{ $holidays->links('components.pagination')}}
                         </div>
                     </div>
                 </div>

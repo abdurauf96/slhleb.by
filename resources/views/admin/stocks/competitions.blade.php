@@ -8,9 +8,6 @@
                 <div class="card">
                     <div class="card-header"><h3>Конкурцы</h3></div>
                     <div class="card-body">
-                        
-
-
                         <br/>
                         <br/>
                         <hr>

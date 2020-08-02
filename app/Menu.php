@@ -13,9 +13,9 @@ class Menu extends Model
     {
         return $this->find($id);
     }
-    public function children($id)
+    public function children()
     {
-        return $this->where('parent_id', $id)->get();
+        return $this->where('parent_id', $this->id)->get();
     }
 
     public function getNameByUrl($data)

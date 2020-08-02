@@ -1,5 +1,12 @@
 @extends('layouts.site')
 
+@section('parent')
+<li class="breadcrumb-item"><a href="/page/contact">Контакты</a></li>
+@endsection
+@section('child')
+Реквизиты
+@endsection
+
 @section('content')
 <div class="section__wrapper">
     <div class="section__content section-contact s-requisite" style="background-image: url('/frontend/images/common-bg-section2.jpg')">
@@ -16,16 +23,10 @@
                         </div>
                         <div class="col-xl-8">
                             <div class="description">
-                                <h3>Банковские реквизиты 
-                                Открытое акционерное общество «Слуцкий хлебозавод»</h3>
+                                <h3> {{ $req->translate(\App::getLocale())->title }}</h3>
                             </div>
                             <div class="content">
-                                <p>расчетный счет: № BY26BAPB30123418400100000000 </p>
-                                <p>код: BAPBBY2X </p>
-                                <p>в ОАО "Белагропромбанк" г.Минск пр-т Жукова,3 </p>
-                                <p>Режим работы администрации: понедельник — пятница 8:00 - 17:00</p>
-                                <p>обед: 13:00 - 14:00 </p>
-                                <p>суббота, воскресенье — выходной.</p>
+                                {!! $req->translate(\App::getLocale())->content !!}
                             </div>
                         </div>
                     </div>

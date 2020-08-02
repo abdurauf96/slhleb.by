@@ -66,6 +66,7 @@ class HolidaysController extends Controller
             $file->move('images/holidays', $image);
             $requestData['image']=$image;
         }
+        
         Holiday::create($requestData);
 
         return redirect('admin/holidays')->with('flash_message', 'Holiday added!');

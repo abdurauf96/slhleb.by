@@ -8,7 +8,10 @@ use Spatie\Activitylog\Traits\LogsActivity;
 class StoryCategory extends Model
 {
     use LogsActivity;
-    
+    public function stories()
+    {
+        return $this->hasMany(Story::class, 'category_id');
+    }
 
     /**
      * The database table used by the model.

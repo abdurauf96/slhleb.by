@@ -35,8 +35,8 @@
                                 <tbody>
                                 @foreach($contacts as $item)
                                     <tr>
-                                        <td>{{ $loop->iteration or $item->id }}</td>
-                                        <td>{{ $item->addres }}</td><td>{{ $item->email_addres }}</td><td>{{ $item->unn }}</td>
+                                        <td>{{ $loop->iteration  }}</td>
+                                        <td>{{ $item->addres_ru }}</td><td>{{ $item->email_addres }}</td><td>{{ $item->unn }}</td>
                                         <td>
                                             <a href="{{ url('/admin/contacts/' . $item->id) }}" title="View Contact"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i></button></a>
                                             <a href="{{ url('/admin/contacts/' . $item->id . '/edit') }}" title="Edit Contact"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a>

@@ -32,7 +32,7 @@ class Product extends Model
      *
      * @var array
      */
-    protected $fillable = ['category_id', 'filter_id', 'protein', 'carbo', 'fat', 'callory', 'image', 'images', 'image_in', 'image_out', 'weight'];
+    protected $fillable = ['category_id', 'filter_id', 'protein', 'carbo', 'fat', 'callory', 'image', 'images', 'image_in', 'image_out', 'weight','slide_image', 'status'];
 
     public function category()
     {

@@ -1,6 +1,9 @@
 <?php
 
 namespace App\Http\Controllers\Site;
+use App\Recipe;
+use App\Page;
+use App\Menu;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -9,122 +12,188 @@ class PageController extends Controller
 {
     public function company(Request $request)
     {
-        return view('frontend.company');
+        $page=Page::where('key', $request->path())->first();
+        return view('frontend.company', compact('page'));
     }
 
     public function companyToday(Request $request)
     {
-        return view('frontend.company-today');
+        $features=\App\Feature::all();
+        $page=Page::where('key', $request->path())->first();
+        return view('frontend.company-today', compact('page', 'features'));
     }
 
     public function companyHistory(Request $request)
     {
-        return view('frontend.company-history');
-    }
-
-    public function companyNews(Request $request)
-    {
-        return view('frontend.company-news');
-    }
-
-    public function viewNews($id)
-    {
-        return view('frontend.view-news');
-    }
-
-    public function interesting()
-    {
-        return view('frontend.interesting');
+        $page=Page::where('key', $request->path())->first();
+        $sertificats=\App\Sertificat::all();
+        $years=\App\History::all();
+        return view('frontend.company-history', compact('page', 'sertificats', 'years'));
     }
 
     public function companyActivities(Request $request)
     {
-        return view('frontend.company-activities');
+        $page=Page::where('key', $request->path())->first();
+        $activities=\App\Activity::all();
+        return view('frontend.company-activities', compact('page', 'activities'));
     }
+
+    public function companyNews(Request $request)
+    {
+        if($year=$request->get('year')){
+            
+            $posts=\App\Post::whereYear('created_at', $year)->paginate(5);
+            
+        }else{
+            $posts=\App\Post::whereYear('created_at', date('Y'))->paginate(5);
+        }
+        $page=Page::where('key', $request->path())->first();
+        
+        return view('frontend.company-news', compact('posts', 'page'));
+    }
+
+    public function viewNews($id)
+    {
+        $post=\App\Post::findOrFail($id);
+        $posts=\App\Post::all();
+        return view('frontend.view-news', compact('post', 'posts'));
+    }
+
+    public function interesting(Request $request)
+    {
+        $page=Page::where('key', $request->path())->first();
+        return view('frontend.interesting', compact('page'));
+    }
+
+    
 
     public function companyRecipes(Request $request)
     {
-        return view('frontend.company-recipes');
+        $page=Page::where('key', $request->path())->first();
+        $tags=\App\Tag::all();
+        if($tag=$request->get('tag')){
+            $recipes=Recipe::where('tag_id', $tag)->paginate(6);
+        }else{
+            $recipes=Recipe::paginate(6);
+        }
+       
+        
+        return view('frontend.company-recipes', compact('recipes', 'page', 'tags'));
     }
 
     public function viewRecipe($id)
     {
-        return view('frontend.view-recipe');
+        $recipe=Recipe::with('steps')->findOrFail($id);
+        
+        return view('frontend.view-recipe', compact('recipe'));
     }
 
     public function companyStories(Request $request)
     {
-        return view('frontend.company-stories');
+        $page=Page::where('key', $request->path())->first();
+        $categories=\App\StoryCategory::all();
+        if($cat_id=$request->get('category_id')){
+            $stories=\App\Story::where('category_id', $cat_id)->paginate(6);
+        }else{
+            $stories=\App\Story::paginate(6);
+        }
+        
+        return view('frontend.company-stories', compact('page', 'categories', 'stories'));
     }
 
     public function viewStory($id)
     {
-        return view('frontend.view-story');
+        $story=\App\Story::findOrFail($id);
+        return view('frontend.view-story', compact('story'));
     }
 
     public function aboutCity(Request $request)
     {
-        return view('frontend.about-city');
+        $page=Page::where('key', $request->path())->first();
+        return view('frontend.about-city', compact('page'));
     }
 
     public function aboutView($key)
     {
-        return view('frontend.about-view');
+        $page=\App\AboutCity::where('key', $key)->first();
+        return view('frontend.about-view', compact('page'));
     }
 
     public function holidayScripts(Request $request)
     {
-        return view('frontend.holiday-scripts');
+        $page=Page::where('key', $request->path())->first();
+        $scripts=\App\Script::all();
+        if($script=$request->get('script')){
+            $holidays=\App\Holiday::where('script_id', $script)->paginate(6);
+        }else{
+            $holidays=\App\Holiday::paginate(6);
+        }
+        return view('frontend.holiday-scripts', compact('page', 'scripts', 'holidays'));
     }
 
-    public function viewHolidayScript(Request $request)
+    public function viewHolidayScript($id)
     {
-        return view('frontend.view-holiday-scripts');
+        $holiday=\App\Holiday::findOrFail($id);
+        return view('frontend.view-holiday-scripts', compact('holiday'));
     }
 
     public function stockCompetitions(Request $request)
     {
-        return view('frontend.stock-competitions');
+        $page=Page::where('key', $request->path())->first();
+        $stocks=\App\Stock::paginate(6);
+        return view('frontend.stock-competitions', compact('page', 'stocks'));
     }
 
     public function viewStock($id)
     {
-        return view('frontend.view-stock');
+        $stock=\App\Stock::findOrFail($id);
+
+        return view('frontend.view-stock', compact('stock'));
     }
 
     public function viewCompetition($id)
     {
-        return view('frontend.view-competition');
+        $competition=\App\Stock::findOrFail($id);
+        return view('frontend.view-competition', compact('competition'));
     }
 
     public function contact(Request $request)
     {
-        return view('frontend.contact');
+        
+        $contact=\App\Contact::first();
+        $personals=\App\Personal::all();
+        return view('frontend.contact',compact('personals', 'contact'));
     }
 
     public function feedback(Request $request)
     {
-        return view('frontend.feedback');
+        $page=Page::where('key', $request->path())->first();
+        return view('frontend.feedback', compact('page'));
     }
 
     public function requisites(Request $request)
     {
-        return view('frontend.requisites');
+        $req=\App\Requisite::first();
+        return view('frontend.requisites', compact('req'));
     }
 
     public function schema(Request $request)
     {
+        $page=Page::where('key', $request->path())->first();
         return view('frontend.schema');
     }
 
     public function stores(Request $request)
     {
-        return view('frontend.stores');
+        $page=Page::where('key', $request->path())->first();
+        $stores=\App\Store::all();
+        return view('frontend.stores',compact('page', 'stores'));
     }
 
     public function appeals(Request $request)
     {
-        return view('frontend.appeals');
+        $page=Page::where('key', $request->path())->first();
+        return view('frontend.appeals', compact('page'));
     }
 
     public function search(Request $request)
@@ -134,12 +203,17 @@ class PageController extends Controller
 
     public function privacyPolicy(Request $request)
     {
-        return view('frontend.privacy-policy');
+        $page=Page::where('key', $request->path())->first();
+        
+        return view('frontend.privacy-policy', compact('page'));
     }
 
     public function siteMap()
     {
-        return view('frontend.site-map');
+        $menus=\App\Menu::whereNull('parent_id')->get();
+        $products=\App\Product::all();
+
+        return view('frontend.site-map', compact('menus', 'products'));
     }
 
    

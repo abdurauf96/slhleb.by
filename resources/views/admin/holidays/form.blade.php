@@ -2,7 +2,7 @@
     {!! Form::label('script_id', 'Сценарии', ['class' => 'control-label']) !!}
    <select name="script_id" class="form-control" id="">
        @foreach ($scripts as $script)
-       <option value="{{ $script->id }}">{{ $script->name_ru }}</option>
+       <option @if($formMode=='edit') {{ $holiday->script_id==$script->id ? 'selected' : '' }} @endif value="{{ $script->id }}">{{ $script->name_ru }}</option>
        @endforeach
    </select>
 </div>
@@ -40,6 +40,11 @@
     {!! Form::label('image', 'Фото', ['class' => 'control-label']) !!}
     {!! Form::file('image', null, ('' == 'required') ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control']) !!}
     {!! $errors->first('image', '<p class="help-block">:message</p>') !!}
+</div>
+<div class="form-group">
+    {!! Form::label('image', 'День праздника', ['class' => 'control-label']) !!}
+    {!! Form::date('day', null, ('' == 'required') ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control']) !!}
+   
 </div>
 
 

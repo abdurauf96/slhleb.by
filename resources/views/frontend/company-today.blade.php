@@ -1,5 +1,12 @@
 @extends('layouts.site')
 
+@section('parent')
+<li class="breadcrumb-item"><a href="/page/company">Компания</a></li>
+@endsection
+@section('child')
+{{ $page['title_'.\App::getLocale()] }}
+@endsection
+
 @section('content')
 <div class="section__wrapper company-activity">
     <div class="section__header h-100" style="background-image: url('/frontend/images/company-history.jpg')">
@@ -8,25 +15,14 @@
                 <div class="row">
                     <div class="col-xl-8 col-md-8">
                         <div class="header-title" data-aos="fade-down" data-aos-delay="100">
-                            Компания сегодня
+                            {{ $page['title_'.\App::getLocale()] }}
                         </div>
                         <div class="text scroll-pane">
-                            <p>Слуцкий хлебозавод - это динамично развивающаяся компания с более чем полувековой историей. Правильное сочетание современных технологий и многовековых традиций с творческим и добросовестным отношением к любимому занятию - вот секрет команды.
-
-                                Продукция, выпускаемая на заводе, под брендом «Слуцкий хлеб» широко известна не только в своем регионе, но и во многих районах Минской области. Наш свежий хлеб всегда приносит дому особую атмосферу уюта и благополучия - для этого и даже за необычный вкус и выбор его покупателей. Сегодня ассортимент хлебобулочных изделий включает около 50 наименований хлебобулочных изделий и столько же кондитерских изделий.
-                                Широкий ассортимент продукции, индивидуальный подход к каждому клиенту, 
-                                Продукция, выпускаемая на заводе, под брендом «Слуцкий хлеб» широко известна не только в своем регионе, но и во многих районах Минской области. Наш свежий хлеб всегда приносит дому особую атмосферу уюта и благополучия - для этого и даже за необычный вкус и выбор его покупателей. Сегодня ассортимент хлебобулочных изделий включает около 50 наименований хлебобулочных изделий и столько же кондитерских изделий.
-                                Широкий ассортимент продукции, индивидуальный подход к каждому клиенту,
-                                атмосферу уюта и благополучия - для этого и даже за необычный вкус и выбор его покупателей. Сегодня ассортимент хлебобулочных изделий включает около 50 наименований хлебобулочных изделий и столько же кондитерских изделий.
-                            Широкий ассортимент продукции, индивидуальный подход к каждому клиенту, </p>
-
-                        </div>
-                        
+                            <p>{{ $page['desc_'.\App::getLocale()] }} </p>
+                        </div>      
                     </div>
                 </div>
             </div>
-            
-            
         </div>
 
         <div class="scroll-down">
@@ -43,54 +39,16 @@
                 <div class="description-block">
                     <div class="container">
                         <div class="row">
+                            @foreach ($features as $f)
                             <div class="col-xl-4 item" data-aos="fade-up" data-aos-delay="100">
                                 <div class="item-image">
-                                    <img src="/frontend/images/icon/c-today-1.png" alt="">
+                                    <img src="/images/features/{{ $f->image }}" alt="">
                                 </div>
                                 <div class="item-title">
-                                    Компания - лидер по объемам перерабатываемого сырья
+                                    {{ $f['title_'.\App::getLocale()] }}
                                 </div>
                             </div>
-                            <div class="col-xl-4 item" data-aos="fade-up" data-aos-delay="200">
-                                <div class="item-image">
-                                    <img src="/frontend/images/icon/c-today-2.png" alt="">
-                                </div>
-                                <div class="item-title">
-                                    Компания - лидер по объемам перерабатываемого сырья
-                                </div>
-                            </div>
-                            <div class="col-xl-4 item" data-aos="fade-up" data-aos-delay="300">
-                                <div class="item-image">
-                                    <img src="/frontend/images/icon/c-today-3.png" alt="">
-                                </div>
-                                <div class="item-title">
-                                    Компания - лидер по объемам перерабатываемого сырья
-                                </div>
-                            </div>
-                            <div class="col-xl-4 item" data-aos="fade-up" data-aos-delay="100">
-                                <div class="item-image">
-                                    <img src="/frontend/images/icon/c-today-4.png" alt="">
-                                </div>
-                                <div class="item-title">
-                                    Компания - лидер по объемам перерабатываемого сырья
-                                </div>
-                            </div>
-                            <div class="col-xl-4 item" data-aos="fade-up" data-aos-delay="200">
-                                <div class="item-image">
-                                    <img src="/frontend/images/icon/c-today-1.png" alt="">
-                                </div>
-                                <div class="item-title">
-                                    Компания - лидер по объемам перерабатываемого сырья
-                                </div>
-                            </div>
-                            <div class="col-xl-4 item" data-aos="fade-up" data-aos-delay="300">
-                                <div class="item-image">
-                                    <img src="/frontend/images/icon/c-today-1.png" alt="">
-                                </div>
-                                <div class="item-title">
-                                    Компания - лидер по объемам перерабатываемого сырья
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>

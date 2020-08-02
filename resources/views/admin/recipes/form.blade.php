@@ -2,7 +2,7 @@
     {!! Form::label('tag_id', 'Тег', ['class' => 'control-label']) !!}
    <select name="tag_id" id="" class="form-control">
        @foreach ($tags as $item)
-       <option value="{{ $item->id }}">{{ $item->name_ru }}</option>
+       <option @if($formMode=='edit') {{ $recipe->tag_id==$item->id ? 'selected' : '' }} @endif value="{{ $item->id }}">{{ $item->name_ru }}</option>
        @endforeach
    </select>
 </div>
@@ -35,6 +35,11 @@
     {!! Form::label('consist_en', 'Ингредиенты En', ['class' => 'control-label']) !!}
     {!! Form::textarea('consist_en', null, ['id'=>'recipeContent3'], ('' == 'required') ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control']) !!}
     {!! $errors->first('consist_en', '<p class="help-block">:message</p>') !!}
+</div>
+<div class="form-group{{ $errors->has('image') ? 'has-error' : ''}}">
+    {!! Form::label('time', 'Время готовления', ['class' => 'control-label']) !!}
+    {!! Form::text('time', null, ('' == 'required') ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control']) !!}
+    {!! $errors->first('time', '<p class="help-block">:message</p>') !!}
 </div>
 <div class="form-group{{ $errors->has('image') ? 'has-error' : ''}}">
     {!! Form::label('image', 'Фото', ['class' => 'control-label']) !!}

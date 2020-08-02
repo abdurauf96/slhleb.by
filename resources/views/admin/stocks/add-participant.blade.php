@@ -48,7 +48,7 @@
                                     </div>
                                     <div class="form-group flex7">
                                         <label for="exampleInputPassword1">Место</label>
-                                        <input type="text" class="form-control" value="{{ $part->point }}" name="point[]" >
+                                        <input type="number" class="form-control" value="{{ $part->point }}" name="point[]" >
                                     </div>
                                     <div class="form-group flex8">
                                         <label for="exampleInputPassword1">Фото</label>
@@ -58,9 +58,10 @@
                                         <label for="">Удалить </label>
                                         <button class="form-control btn btn-danger deleteParticipant" data-id="{{ $part->id }}"> <i class="fa fa-minus"></i></button>                              
                                     </div>
-                                    {{-- <input type="hidden" name="step_id[]" value="">
-                                    <input type="hidden" name="recipe_id[]" value=""> --}}
+                                    <input type="hidden" name="part_id[]" value="{{ $part->id }}">
+                                   
                                 </div>
+                                
                                 @empty
                                     
                                 
@@ -91,7 +92,7 @@
                                     </div>
                                     <div class="form-group flex7">
                                         <label for="exampleInputPassword1">Место</label>
-                                        <input type="text" class="form-control" value="" name="point[]" >
+                                        <input type="number" class="form-control" value="" name="point[]" >
                                     </div>
                                     <div class="form-group flex8">
                                         <label for="exampleInputPassword1">Фото</label>

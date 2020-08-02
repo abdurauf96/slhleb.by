@@ -1,5 +1,12 @@
 @extends('layouts.site')
 
+@section('parent')
+<li class="breadcrumb-item"><a href="{{ route('holidayScripts') }}">Сценарии праздников</a></li>
+@endsection
+@section('child')
+{{ $holiday['title_'.\App::getLocale()] }}
+@endsection
+
 @section('content')
 <div class="section__wrapper news-page inner__page">
     <div class="section__header h-100" style="background-image: url('/frontend/images/news.jpg')">
@@ -8,10 +15,10 @@
                 <div class="row">
                     <div class="col-xl-8 col-md-8">
                         <div class="header-date">
-                            <p><span>21</span>сентября 2020</p>
+                            <p><span>{{ \Carbon\Carbon::parse($holiday->day)->format('d') }} </span>{{ \Carbon\Carbon::parse($holiday->day)->format('M Y') }}</p>
                         </div>
                         <div class="header-title">
-                            Праздник 1
+                            {{ $holiday['title_'.\App::getLocale()] }}
                         </div>
                     </div>
                 </div>
@@ -30,15 +37,8 @@
                 <div class="row">
                     <div class="col-xl-8 offset-xl-2 item">
                         <div class="content">
-
-                            <p>Международный Женский день официально утвержден ООН в 1977 году, но история праздника начинается весной 1901 года. Тогда 8 Марта американские домохозяйки нарушили тишину чикагских улиц грохотом пустых кастрюль и ведер. Таким необычным способом они требовали законного равноправия с мужчинами.
-
-                            В 1910 году с предложением учредить День солидарности женщин всего мира выступила Клара Цеткин — известная коммунистка и реформатор. Главной идеей праздника было отстаивание прав трудящихся женского пола. Первые два года праздник отмечали в разные дни марта, а начиная с 1914, женщины сразу нескольких стран сплотились в борьбе за свои права в один день — 8 марта. Сейчас праздник утратил первоначальную политическую окраску и превратился в цветочный день почитания прекрасных дам.</p>
-
-                            <img src="/frontend/images/news-page.jpg" alt="">
-                        </div>
-                        
-                        
+                            {{ $holiday['body_'.\App::getLocale()] }}
+                        </div>       
                     </div>
                 </div>
             </div>

@@ -1,5 +1,12 @@
 @extends('layouts.site')
 
+@section('parent')
+<li class="breadcrumb-item"><a href="/page/company-news">Новости и достижения</a></li>
+@endsection
+@section('child')
+{{ $post['title_'.\App::getLocale()] }}
+@endsection
+
 @section('content')
 <div class="section__wrapper news-page inner__page">
     <div class="section__header h-100" style="background-image: url('/frontend/images/news.jpg')">
@@ -21,10 +28,10 @@
                 <div class="row">
                     <div class="col-xl-8 col-md-8">
                         <div class="header-date">
-                            <p><span>21</span>сентября 2020</p>
+                            <p><span>{{ $post->created_at->format('d') }} </span>{{ $post->created_at->format('M , Y') }}</p>
                         </div>
                         <div class="header-title">
-                            Поздравляем с 8 марта!
+                            {{ $post['title_'.\App::getLocale()] }}
                         </div>
                     </div>
                 </div>
@@ -44,11 +51,7 @@
                     <div class="col-xl-8 offset-xl-2 item">
                         <div class="content">
 
-                            <p>Международный Женский день официально утвержден ООН в 1977 году, но история праздника начинается весной 1901 года. Тогда 8 Марта американские домохозяйки нарушили тишину чикагских улиц грохотом пустых кастрюль и ведер. Таким необычным способом они требовали законного равноправия с мужчинами.
-                                <br><br>
-                            В 1910 году с предложением учредить День солидарности женщин всего мира выступила Клара Цеткин — известная коммунистка и реформатор. Главной идеей праздника было отстаивание прав трудящихся женского пола. Первые два года праздник отмечали в разные дни марта, а начиная с 1914, женщины сразу нескольких стран сплотились в борьбе за свои права в один день — 8 марта. Сейчас праздник утратил первоначальную политическую окраску и превратился в цветочный день почитания прекрасных дам.</p>
-                            <br>
-                            <img src="/frontend/images/news-page.jpg" alt="" style="width: 100%">
+                            {!! $post['body_'.\App::getLocale()] !!} 
                         </div>
                         
                         
@@ -67,47 +70,17 @@
                 <div class="recommend-slider-wrap">
                     
                     <div class="news-slider">
-                        <a href="" class="slider-item item__card" style="background-image: url('/frontend/images/recommend-news.jpg')">
+                        @foreach ($posts as $post)
+                        <a href="{{ route('viewNews', $post->id) }}" class="slider-item item__card" style="background-image: url('/images/posts/{{ $post->image }}')">
                             <div class="item__card-date">
-                                <span>21 сентября 2020</span>
+                                <span>{{ $post->created_at->format('d M Y') }}</span>
                             </div>
                             <div class="item__card-tittle">
-                                <h2>Новинка от 
-                                ОАО «Слуцкий хлебозавод»</h2>
+                                <h2>{{ $post['title_'.\App::getLocale()] }}</h2>
                             </div>
                         </a>
-                        <a href="" class="slider-item item__card" style="background-image: url('/frontend/images/recommend-news.jpg')">
-                            <div class="item__card-date">
-                                <span>21 сентября 2020</span>
-                            </div>
-                            <div class="item__card-tittle">
-                                <h2>Компания сегодня</h2>
-                            </div>
-                        </a>
-                        <a href="" class="slider-item item__card" style="background-image: url('/frontend/images/recommend-news.jpg')">
-                            <div class="item__card-date">
-                                <span>21 сентября 2020</span>
-                            </div>
-                            <div class="item__card-tittle">
-                                <h2>Компания сегодня</h2>
-                            </div>
-                        </a>
-                        <a href="" class="slider-item item__card" style="background-image: url('/frontend/images/recommend-news.jpg')">
-                            <div class="item__card-date">
-                                <span>21 сентября 2020</span>
-                            </div>
-                            <div class="item__card-tittle">
-                                <h2>Компания сегодня</h2>
-                            </div>
-                        </a>
-                        <a href="" class="slider-item item__card" style="background-image: url('/frontend/images/recommend-news.jpg')">
-                            <div class="item__card-date">
-                                <span>21 сентября 2020</span>
-                            </div>
-                            <div class="item__card-tittle">
-                                <h2>Компания сегодня</h2>
-                            </div>
-                        </a>
+                        @endforeach
+                        
                     </div>
                     <div class="slider-nav">
                         <div class="news__slider-dots"></div>

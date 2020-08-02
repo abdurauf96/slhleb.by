@@ -14,40 +14,40 @@
 Route::group(['namespace'=>'Site'], function(){
 
     Route::get('/', 'IndexController@index')->name('home');
-    Route::get('/page/company', 'PageController@company');
-    Route::get('/page/company-today', 'PageController@companyToday');
-    Route::get('/page/company-history', 'PageController@companyHistory');
-    Route::get('/page/company-activities', 'PageController@companyActivities');
-    Route::get('/page/interesting', 'PageController@interesting');
+    Route::get('/page/company', 'PageController@company')->name('company'); //done+
+    Route::get('/page/company-today', 'PageController@companyToday')->name('companyToday'); // done++
+    Route::get('/page/company-history', 'PageController@companyHistory')->name('companyHistory'); // done ++
+    Route::get('/page/company-activities', 'PageController@companyActivities')->name('companyActivities'); //done ++
+    Route::get('/page/company-news', 'PageController@companyNews')->name('companyNews'); //done ++
+    Route::get('/news/{id}', 'PageController@viewNews')->name('viewNews'); //done ++
 
-    Route::get('/page/company-news', 'PageController@companyNews');
-    Route::get('/news/{id}', 'PageController@viewNews');
+    Route::get('/page/interesting', 'PageController@interesting')->name('interesting'); //done ++
 
-    Route::get('/page/recipes', 'PageController@companyRecipes');
-    Route::get('/recipe/{id}', 'PageController@viewRecipe')->name('viewRecipe');
+    Route::get('/page/recipes', 'PageController@companyRecipes')->name('recipes'); //done ++
+    Route::get('/recipe/{id}', 'PageController@viewRecipe')->name('viewRecipe'); //done ++
 
-    Route::get('/page/stories', 'PageController@companyStories')->name('stories');
-    Route::get('/story/{id}', 'PageController@viewStory')->name('viewStory');
+    Route::get('/page/stories', 'PageController@companyStories')->name('stories'); //done ++
+    Route::get('/story/{id}', 'PageController@viewStory')->name('viewStory'); //done ++
 
-    Route::get('/page/about-city', 'PageController@aboutCity')->name('aboutCity');
-    Route::get('/page/about/{key}', 'PageController@aboutView')->name('aboutView');
+    Route::get('/page/about-city', 'PageController@aboutCity')->name('aboutCity'); //done ++
+    Route::get('/page/city/{key}', 'PageController@aboutView')->name('aboutView'); //done ++
 
-    Route::get('/page/holiday-scripts', 'PageController@holidayScripts')->name('holidayScripts');
-    Route::get('/holiday-scripts/{id}', 'PageController@viewHolidayScript')->name('viewHolidayScript');
+    Route::get('/page/holiday-scripts', 'PageController@holidayScripts')->name('holidayScripts'); //done ++
+    Route::get('/holiday-scripts/{id}', 'PageController@viewHolidayScript')->name('viewHolidayScript'); //done++
     
-    Route::get('/page/stock-competitions', 'PageController@stockCompetitions')->name('stockCompetitions');
-    Route::get('/stock/{id}', 'PageController@viewStock')->name('viewStock');
-    Route::get('/competition/{id}', 'PageController@viewCompetition')->name('viewCompetition');
+    Route::get('/page/stock-competitions', 'PageController@stockCompetitions')->name('stockCompetitions'); //done ++
+    Route::get('/stock/{id}', 'PageController@viewStock')->name('viewStock'); //done ++
+    Route::get('/competition/{id}', 'PageController@viewCompetition')->name('viewCompetition'); //done ++
 
-    Route::get('/page/contact', 'PageController@contact')->name('contact');
-    Route::get('/page/feedback', 'PageController@feedback')->name('feedback');
-    Route::get('/page/requisites', 'PageController@requisites')->name('requisites');
-    Route::get('/page/schema', 'PageController@schema')->name('schema');
-    Route::get('/page/stores', 'PageController@stores')->name('stores');
-    Route::get('/page/appeals', 'PageController@appeals')->name('appeals');
-    Route::get('/page/privacy-policy', 'PageController@privacyPolicy');
+    Route::get('/page/contact', 'PageController@contact')->name('contact'); //done++
+    Route::get('/page/feedback', 'PageController@feedback')->name('feedback'); //done ++
+    Route::get('/page/requisites', 'PageController@requisites')->name('requisites'); //done ++
+    Route::get('/page/schema', 'PageController@schema')->name('schema'); //done ++
+    Route::get('/page/stores', 'PageController@stores')->name('stores'); //done ++
+    Route::get('/page/appeals', 'PageController@appeals')->name('appeals'); //done ++
+    Route::get('/page/privacy-policy', 'PageController@privacyPolicy'); //done ++
     Route::get('/search', 'PageController@search');
-    Route::get('/site-map', 'PageController@siteMap');
+    Route::get('/page/site-map', 'PageController@siteMap'); //done ++
 
     Route::get('/category/{id}', 'ProductController@products')->name('products');
     Route::get('/product/{id}', 'ProductController@viewProduct')->name('viewProduct');
@@ -106,7 +106,7 @@ Route::group(['middleware'=>'auth'], function(){
     Route::resource('admin/tags', 'Admin\\TagsController');
     //routes for Meal steps
     Route::post('admin/recipes/add-step', 'Admin\\RecipesController@saveStep')->name('saveStep');
-    Route::post('admin/recipes/add-step', 'Admin\\RecipesController@updateStep')->name('updateStep');
+    Route::post('admin/recipes/update-step', 'Admin\\RecipesController@updateStep')->name('updateStep');
     Route::post('admin/recipes/delete-step', 'Admin\\RecipesController@deleteStep')->name('deleteStep');
 
     Route::resource('admin/story-categories', 'Admin\\StoryCategoriesController');
@@ -115,9 +115,12 @@ Route::group(['middleware'=>'auth'], function(){
     Route::resource('admin/scripts', 'Admin\\ScriptsController');
     Route::resource('admin/holidays', 'Admin\\HolidaysController');
     Route::resource('admin/stocks', 'Admin\\StocksController');
+
     Route::get('admin/competitions', 'Admin\\StocksController@competitions');
     Route::get('admin/competitions/{id}/add-participant', 'Admin\\StocksController@addParticipant');
-    Route::post('admin/competitions/{id}/add-participant', 'Admin\\StocksController@saveParticipant');
+    Route::post('admin/competitions/{id}/add-participant', 'Admin\\StocksController@saveParticipant')->name('saveParticipant');
+    Route::post('admin/competitions/{id}/save-participant', 'Admin\\StocksController@updateParticipant')->name('updateParticipant');
+
     Route::get('admin/competitions/participants', 'Admin\\StocksController@participants');
     Route::post('/admin/participants/delete', 'Admin\\StocksController@participantDelete');
 

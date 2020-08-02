@@ -1,5 +1,12 @@
 @extends('layouts.site')
 
+@section('parent')
+<li class="breadcrumb-item"><a href="/page/contact">Контакты</a></li>
+@endsection
+@section('child')
+{{ $page['title_'.\App::getLocale()] }}
+@endsection
+
 @section('content')
 <div class="section__wrapper">
     <div class="section__content section-contact s-obrashcheniye" style="background-image: url('/frontend/images/common-bg-section2.jpg')">
@@ -13,7 +20,7 @@
                     <div class="row">
                         <div class="col-xl-12">
                             <div class="header-title">
-                                Электронное обращение
+                                {{ $page['title_'.\App::getLocale()] }}
                             </div>
                         </div>
                         <div class="col-xl-8">
@@ -30,7 +37,7 @@
                                     <li><a data-toggle="tab" class="btn-tabs" href="#tab2">Для юридических лиц и индивидуальных предпринимателей</a></li>
                                 </ul>
                             </div>
-                            <p>Обращения, поступившие посредством форм «Обращения граждан» и «Обращения юридических лиц», рассматриваются в соответствии с Законом Республики Беларусь от 18.07.2011 № 300-З «Об обращениях граждан и юридических лиц».</p>
+                            <p>{{ $page['desc_'.\App::getLocale()] }}</p>
                         </div>
                     </div>
                     <div class="row">

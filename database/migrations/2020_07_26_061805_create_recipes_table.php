@@ -22,6 +22,7 @@ class CreateRecipesTable extends Migration
             $table->text('consist_ru')->nullable();
             $table->text('consist_by')->nullable();
             $table->text('consist_en')->nullable();
+            $table->string('time')->nullable();
             $table->string('image')->nullable();
             });
     }

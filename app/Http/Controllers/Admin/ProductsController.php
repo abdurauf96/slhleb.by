@@ -107,6 +107,14 @@ class ProductsController extends Controller
              $images=null;
          }
 
+         if ($request->hasFile('slide_image')) {
+            $file=$request->file('slide_image');
+            $slide_image=time().$file->getClientOriginalName();
+            $file->move('images/products', $slide_image);
+        }else{
+            $slide_image=null;
+        }
+
         $requestData=[
             'category_id'=>$request->category_id,
             'filter_id'=>$request->filter_id,
@@ -119,6 +127,8 @@ class ProductsController extends Controller
             'image_in'=>$image_in,
             'image_out'=>$image_out,
             'images'=>json_encode($images),
+            'slide_image'=>$slide_image,
+            'status'=>$request->status,
 
             'ru'=>[ 'name'=>$request->name_ru, 'description'=>$request->description_ru, 'about'=>$request->about_ru, 'consist'=>$request->consist_ru ],
             'by'=>[ 'name'=>$request->name_by, 'description'=>$request->description_by, 'about'=>$request->about_by, 'consist'=>$request->consist_by ],
@@ -253,6 +263,14 @@ class ProductsController extends Controller
              $images=json_decode($request->last_images);
          }
 
+         if ($request->hasFile('slide_image')) {
+            $file=$request->file('slide_image');
+            $slide_image=time().$file->getClientOriginalName();
+            $file->move('images/products', $slide_image);
+        }else{
+            $slide_image=null;
+        }
+
         $requestData=[
             'category_id'=>$request->category_id,
             'filter_id'=>$request->filter_id,
@@ -265,7 +283,8 @@ class ProductsController extends Controller
             'image_in'=>$image_in,
             'image_out'=>$image_out,
             'images'=>json_encode($images),
-
+            'slide_image'=>$slide_image,
+            'status'=>$request->status,
             'ru'=>[ 'name'=>$request->name_ru, 'description'=>$request->description_ru, 'about'=>$request->about_ru, 'consist'=>$request->consist_ru ],
             'by'=>[ 'name'=>$request->name_by, 'description'=>$request->description_by, 'about'=>$request->about_by, 'consist'=>$request->consist_by ],
             'en'=>[ 'name'=>$request->name_en, 'description'=>$request->description_en, 'about'=>$request->about_en, 'consist'=>$request->consist_en ],

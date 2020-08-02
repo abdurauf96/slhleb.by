@@ -11,7 +11,7 @@ class Story extends Model
     
     public function category()
     {
-        return $this->belongsTo(StoryCategory::class, 'category_id');
+        return $this->belongsTo(StoryCategory::class);
     }
     /**
      * The database table used by the model.

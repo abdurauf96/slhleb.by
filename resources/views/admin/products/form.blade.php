@@ -39,57 +39,57 @@
 
 <div class="form-group{{ $errors->has('description') ? 'has-error' : ''}}">
     <label class="control-label" for="name">Описание RU</label>
-    <textarea name="description_ru" id="" cols="50" rows="10" class="form-control" required="required">
+    <textarea name="description_ru" id=""  class="form-control" required="required">
         @isset($product) {{ $product->translate('ru')->description }} @endisset 
     </textarea>
 </div>
 <div class="form-group{{ $errors->has('about') ? 'has-error' : ''}}">
     <label class="control-label" for="name">Описание BY</label>
-    <textarea name="description_by" id="" cols="50" rows="10" class="form-control" required="required">
+    <textarea name="description_by" id=""  class="form-control" required="required">
         @isset($product) {{ $product->translate('by')->description }} @endisset 
     </textarea>
 </div>
 <div class="form-group{{ $errors->has('about') ? 'has-error' : ''}}">
     <label class="control-label" for="name">Описание EN</label>
-    <textarea name="description_en" id="" cols="50" rows="10" class="form-control" required="required">
+    <textarea name="description_en" id=""  class="form-control" required="required">
         @isset($product) {{ $product->translate('en')->description }} @endisset 
     </textarea>
 </div>
 
 <div class="form-group{{ $errors->has('about') ? 'has-error' : ''}}">
     <label class="control-label" for="name">О продукте RU</label>
-    <textarea name="about_ru" id="" cols="50" rows="10" class="form-control" required="required">
+    <textarea name="about_ru" id=""  class="form-control" required="required">
         @isset($product) {{ $product->translate('ru')->about }} @endisset 
     </textarea>
 </div>
 <div class="form-group{{ $errors->has('about') ? 'has-error' : ''}}">
     <label class="control-label" for="name">О продукте BY</label>
-    <textarea name="about_by" id="" cols="50" rows="10" class="form-control" required="required">
+    <textarea name="about_by" id=""  class="form-control" required="required">
         @isset($product) {{ $product->translate('by')->about }} @endisset 
     </textarea>
 </div>
 <div class="form-group{{ $errors->has('about') ? 'has-error' : ''}}">
     <label class="control-label" for="name">О продукте EN</label>
-    <textarea name="about_en" id="" cols="50" rows="10" class="form-control" required="required">
+    <textarea name="about_en" id=""  class="form-control" required="required">
         @isset($product) {{ $product->translate('en')->about }} @endisset 
     </textarea>
 </div>
 
 <div class="form-group{{ $errors->has('consist') ? 'has-error' : ''}}">
     <label class="control-label" for="name">Состав продукта RU</label>
-    <textarea name="consist_ru" id="" cols="50" rows="10" class="form-control" required="required">
+    <textarea name="consist_ru" id=""  class="form-control" required="required">
         @isset($product) {{ $product->translate('ru')->consist }} @endisset 
     </textarea>
 </div>
 <div class="form-group{{ $errors->has('consist') ? 'has-error' : ''}}">
     <label class="control-label" for="name">Состав продукта BY</label>
-    <textarea name="consist_by" id="" cols="50" rows="10" class="form-control" required="required">
+    <textarea name="consist_by" id=""  class="form-control" required="required">
         @isset($product) {{ $product->translate('by')->consist }} @endisset 
     </textarea>
 </div>
 <div class="form-group{{ $errors->has('consist') ? 'has-error' : ''}}">
     <label class="control-label" for="name">Состав продукта EN</label>
-    <textarea name="consist_en" id="" cols="50" rows="10" class="form-control" required="required">
+    <textarea name="consist_en" id=""  class="form-control" required="required">
         @isset($product) {{ $product->translate('en')->consist }} @endisset 
     </textarea>
 </div>
@@ -172,8 +172,15 @@
     {!! Form::text('weight', null, ('' == 'required') ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control']) !!}
     {!! $errors->first('weight', '<p class="help-block">:message</p>') !!}
 </div>
-
-
+<div class="form-group">
+   <label class="control-label" for="">Статус продукта</label> <br>
+   Хит <input type="radio" value="xit" @if($formMode === 'edit')  {{ $product->status=='xit' ? 'checked' : '' }} @endif name="status">
+   Новинка <input type="radio" value="new" @if($formMode === 'edit') {{ $product->status=='new' ? 'checked' : '' }} @endif name="status">
+</div>
+<div class="form-group">
+    <label for="" class="control-label">Фото для слайдера (крупный)</label>
+    <input type="file" class="form-control" name="slide_image" id="" >
+</div>
 <div class="form-group">
     {!! Form::submit($formMode === 'edit' ? 'Обновить' : 'Создать', ['class' => 'btn btn-primary']) !!}
 </div>

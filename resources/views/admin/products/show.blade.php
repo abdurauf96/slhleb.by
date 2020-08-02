@@ -79,6 +79,14 @@
                                         <th>Фото продукта </th>
                                         <td> <img src="/images/products/{{ $product->image }}" width="50" height="50" alt=""> </td>
                                     </tr>
+                                    <tr>
+                                        <th>Статус </th>
+                                        <td> @if ($product->status=='new')
+                                            Новинка
+                                            @elseif($product->status=='xit')
+                                            Хит
+                                        @endif </td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>

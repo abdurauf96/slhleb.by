@@ -41,7 +41,7 @@
                                     <tr>
                                         <td>{{ $loop->iteration  }}</td>
                                         <td>{{ $item->year }}</td>
-                                        <td><img src="/images/histories/{{ $item->image }}" alt=""></td>
+                                        <td><img src="/images/histories/{{ $item->image }}" width="100" alt=""></td>
                                        
                                         <td>
                                             <a href="{{ url('/admin/histories/' . $item->id) }}" title="View History"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i></button></a>

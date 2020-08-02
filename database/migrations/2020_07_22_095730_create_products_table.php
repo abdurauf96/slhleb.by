@@ -26,6 +26,8 @@ class CreateProductsTable extends Migration
             $table->string('image_in')->nullable();
             $table->string('image_out')->nullable();
             $table->string('weight')->nullable();
+            $table->string('status')->nullable();
+            $table->string('slide_image')->nullable();
             });
     }
 

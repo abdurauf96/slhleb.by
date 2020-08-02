@@ -1,5 +1,12 @@
 @extends('layouts.site')
 
+@section('parent')
+<li class="breadcrumb-item"><a href="/page/recipes">Рецепты</a></li>
+@endsection
+@section('child')
+{{ $recipe['name_'.\App::getLocale()] }}
+@endsection
+
 @section('content')
 <div class="section__wrapper inner__page">
     <div class="section__header h-100" style="background-image: url('/frontend/images/recipe-page-bg.jpg')">
@@ -20,10 +27,7 @@
             <div class="row">
                 <div class="col-xl-8 col-md-8">
                     <div class="title title-style">
-                        Сырный суп 
-                        с сухариками 
-                        из хлеба 
-                        «Деревенского»
+                        {{ $recipe['name_'.\App::getLocale()] }}
                     </div>
                     
                 </div>
@@ -51,105 +55,33 @@
                                 <h2>Ингредиенты</h2>
                             </div>
                             <div class="recipe-page-description">
-                                <p class="decoration">Хлеб «Деревенский»</p>
-                                <p>Вода — 1.0 литра</p>
-                                <p>Куриное филе — 350 гр</p>
-                                <p>Плавленый сырок — 1 шт</p>
-                                <p>Картофель — 2 шт</p>
-                                <p>Морковь — ½ средней моркови</p>
-                                <p>1 небольшая луковица</p>
-                                <p>Чеснок, растительное масло, соль, перец</p>
+                                {!! $recipe['consist_'.\App::getLocale()] !!}
                             </div>	
                         </div>
                         <div class="col-xl-6">
                             <div class="recipe-page-title">
                                 <h2>Приготовление</h2>
                             </div>
+                            @foreach ($recipe->steps as $step)
                             <div class="row">
                                 <div class="col-xl-4">
                                     <div class="recipe-thumbnail-gallery">
-                                        <a href="/frontend/images/recipe-page-thumbnail.jpg" class="recipe-thumbnail">
+                                        <a href="/images/recipes/steps/{{ $step->image }}" class="recipe-thumbnail">
                                             <div class="zoom"><i class="fal fa-search-plus"></i></div>
-                                            <img src="/frontend/images/recipe-page-thumbnail.jpg" alt="">
+                                            <img src="/images/recipes/steps/{{ $step->image }}" alt="">
                                         </a>
                                     </div>
                                     
                                 </div>
                                 <div class="col-xl-8">
                                     <div class="item-card__tittle">
-                                        <h2>Шаг 1</h2>
-                                        <p>Чеснок пропустить через пресс, куриное филе и лук нарезать кубиками. Все вместе поставить обжариваться в сковороде. Поставить воду на газ.</p>
+                                        <h2>Шаг {{ $loop->iteration }}</h2>
+                                        <p>{{ $step['title_'.\App::getLocale()] }}</p>
                                     </div>
                                 </div>	
-                            </div>
-                            <div class="row">
-                                <div class="col-xl-4">
-                                    <div class="recipe-thumbnail-gallery">
-                                        <a href="/frontend/images/recipe-page-thumbnail.jpg" class="recipe-thumbnail">
-                                            <div class="zoom"><i class="fal fa-search-plus"></i></div>
-                                            <img src="/frontend/images/recipe-page-thumbnail.jpg" alt="">
-                                        </a>
-                                    </div>
-                                    
-                                </div>
-                                <div class="col-xl-8">
-                                    <div class="item-card__tittle">
-                                        <h2>Шаг 2</h2>
-                                        <p>Чеснок пропустить через пресс, куриное филе и лук нарезать кубиками.</p>
-                                    </div>
-                                </div>	
-                            </div>
-                            <div class="row">
-                                <div class="col-xl-4">
-                                    <div class="recipe-thumbnail-gallery">
-                                        <a href="/frontend/images/recipe-page-thumbnail.jpg" class="recipe-thumbnail">
-                                            <div class="zoom"><i class="fal fa-search-plus"></i></div>
-                                            <img src="/frontend/images/recipe-page-thumbnail.jpg" alt="">
-                                        </a>
-                                    </div>
-                                    
-                                </div>
-                                <div class="col-xl-8">
-                                    <div class="item-card__tittle">
-                                        <h2>Шаг 3</h2>
-                                        <p>Чеснок пропустить через пресс, куриное филе и лук нарезать кубиками.</p>
-                                    </div>
-                                </div>	
-                            </div>
-                            <div class="row">
-                                <div class="col-xl-4">
-                                    <div class="recipe-thumbnail-gallery">
-                                        <a href="/frontend/images/recipe-page-thumbnail.jpg" class="recipe-thumbnail">
-                                            <div class="zoom"><i class="fal fa-search-plus"></i></div>
-                                            <img src="/frontend/images/recipe-page-thumbnail.jpg" alt="">
-                                        </a>
-                                    </div>
-                                    
-                                </div>
-                                <div class="col-xl-8">
-                                    <div class="item-card__tittle">
-                                        <h2>Шаг 4</h2>
-                                        <p>Чеснок пропустить через пресс, куриное филе и лук нарезать кубиками. Все вместе поставить обжариваться в сковороде. Поставить воду на газ.</p>
-                                    </div>
-                                </div>	
-                            </div>
-                            <div class="row">
-                                <div class="col-xl-4">
-                                    <div class="recipe-thumbnail-gallery">
-                                        <a href="/frontend/images/recipe-page-thumbnail.jpg" class="recipe-thumbnail">
-                                            <div class="zoom"><i class="fal fa-search-plus"></i></div>
-                                            <img src="/frontend/images/recipe-page-thumbnail.jpg" alt="">
-                                        </a>
-                                    </div>
-                                    
-                                </div>
-                                <div class="col-xl-8">
-                                    <div class="item-card__tittle">
-                                        <h2>Шаг 5</h2>
-                                        <p>Чеснок пропустить через пресс, куриное филе и лук нарезать кубиками. Все вместе поставить обжариваться в сковороде. Поставить воду на газ.</p>
-                                    </div>
-                                </div>	
-                            </div>
+                            </div> 
+                            @endforeach
+                          
                         </div>
                     </div>
 
@@ -168,50 +100,19 @@
             </div>
             <div class="section-recipe__slider section-recipe-page">
                 <div class="recipie-slider">
-                    <a href="" class="recipie-slider__item">
-                        <div class="slider__item-image" style="background-image: url('/frontend/images/recipie-img.png')"></div>
+                    @foreach ($recipe->tag->recipes as $item)
+                    <a href="{{ route('viewRecipe', $item->id) }}" class="recipie-slider__item">
+                        <div class="slider__item-image" style="background-image: url('/images/recipes/{{ $item->image }}')"></div>
                         <div class="slider__item-info">                   
                             <div class="top">
-                                <h2>Суп с гренками с хлебом«Сафийски»</h2>
+                                <h2>{{ $item['name_'.\App::getLocale()] }}</h2>
                             </div>                        
                             <div class="absolute">  
-                                <span><img src="/frontend/images/clock.png" alt="">30 мин</span>
+                                <span><img src="/frontend/images/clock.png" alt="">{{ $item->time }}</span>
                             </div>                   
                         </div>
                     </a>
-                    <a href="" class="recipie-slider__item">
-                        <div class="slider__item-image" style="background-image: url('/frontend/images/recipie-img.png')"></div>
-                        <div class="slider__item-info">                   
-                            <div class="top">
-                                <h2>Суп с гренками с хлебом«Сафийски»</h2>
-                            </div>                        
-                            <div class="absolute">  
-                                <span><img src="/frontend/images/clock.png" alt="">30 мин</span>
-                            </div>                   
-                        </div>
-                    </a>
-                    <a href="" class="recipie-slider__item">
-                        <div class="slider__item-image" style="background-image: url('/frontend/images/recipie-img.png')"></div>
-                        <div class="slider__item-info">                   
-                            <div class="top">
-                                <h2>Суп с гренками с хлебом«Сафийски»</h2>
-                            </div>                        
-                            <div class="absolute">  
-                                <span><img src="/frontend/images/clock.png" alt="">30 мин</span>
-                            </div>                   
-                        </div>
-                    </a>
-                    <a href="" class="recipie-slider__item">
-                        <div class="slider__item-image" style="background-image: url('/frontend/images/recipie-img.png')"></div>
-                        <div class="slider__item-info">                   
-                            <div class="top">
-                                <h2>Суп с гренками с хлебом«Сафийски»</h2>
-                            </div>                        
-                            <div class="absolute">  
-                                <span><img src="/frontend/images/clock.png" alt="">30 мин</span>
-                            </div>                   
-                        </div>
-                    </a>
+                   @endforeach
                 </div>
                 <div class="slider-nav">
                     <div class="recipie__slider-dots"></div>

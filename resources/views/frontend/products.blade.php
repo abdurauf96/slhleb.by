@@ -1,23 +1,20 @@
 @extends('layouts.site')
 
+@section('child')
+{{ $category->translate(\App::getLocale())->name }}
+@endsection
+
 @section('content')
 <div class="section__wrapper">
-    <div class="section__header" style="background-image: url('/frontend/images/catalog-bg.jpg')">
+    <div class="section__header" style="background-image: url('/images/categories/{{ $category->image }}')">
         <div class="container">
             <div class="row">
                 <div class="col-xl-7 col-md-7">
                     <div class="title title-style">
-                        Хлеб
+                        {{ $category->translate(\App::getLocale())->name }}
                     </div>
                     <div class="text scroll-pane">
-                        <p>Слуцкий хлебозавод - это динамично развивающаяся компания с более чем полувековой историей. Правильное сочетание современных технологий и многовековых традиций с творческим и добросовестным отношением к любимому занятию - вот секрет команды.
-
-                            Продукция, выпускаемая на заводе, под брендом «Слуцкий хлеб» широко известна не только в своем регионе, но и во многих районах Минской области. Наш свежий хлеб всегда приносит дому особую атмосферу уюта и благополучия - для этого и даже за необычный вкус и выбор его покупателей. Сегодня ассортимент хлебобулочных изделий включает около 50 наименований хлебобулочных изделий и столько же кондитерских изделий.
-                            Широкий ассортимент продукции, индивидуальный подход к каждому клиенту, 
-                            Продукция, выпускаемая на заводе, под брендом «Слуцкий хлеб» широко известна не только в своем регионе, но и во многих районах Минской области. Наш свежий хлеб всегда приносит дому особую атмосферу уюта и благополучия - для этого и даже за необычный вкус и выбор его покупателей. Сегодня ассортимент хлебобулочных изделий включает около 50 наименований хлебобулочных изделий и столько же кондитерских изделий.
-                            Широкий ассортимент продукции, индивидуальный подход к каждому клиенту,
-                            атмосферу уюта и благополучия - для этого и даже за необычный вкус и выбор его покупателей. Сегодня ассортимент хлебобулочных изделий включает около 50 наименований хлебобулочных изделий и столько же кондитерских изделий.
-                        Широкий ассортимент продукции, индивидуальный подход к каждому клиенту, </p>
+                        <p>{{ $category->translate(\App::getLocale())->description }}</p>
 
                     </div>
                 </div>
@@ -41,10 +38,10 @@
                             <div class="row">
                                 <div class="col-md-8">
                                     <ul class="list-inline">
-                                        <li class="list-inline-item"><a href="">Вся продукция</a></li>
-                                        <li class="list-inline-item active"><a href="">Хлеба для нагитса</a></li>
-                                        <li class="list-inline-item"><a href="">Хлеба ржаные</a></li>
-                                        <li class="list-inline-item"><a href="">Хлеба пшеничные</a></li>
+                                        <li class="list-inline-item {{ \Request::get('filter')==''? 'active' : '' }} "><a href="{{ route('products', $category->id) }}">Все сценарии </a></li>
+                                        @foreach ($filters as $filter)
+                                        <li class="list-inline-item {{ \Request::get('filter')==$filter->id ? 'active' : '' }}"><a href="?filter={{ $filter->id }}">{{ $filter->translate(\App::getLocale())->name }}</a></li>
+                                        @endforeach
                                     </ul>
                                 </div>
                                 <div class="ct-search">
@@ -83,94 +80,31 @@
                 </div>
                 <div class="catalog-list">
                     <div class="row">
+                        @foreach ($products as $prod)
                         <a href="/catalog-cart.php" class="col-md-6 col-lg-4 catalog-list__item">
                             <div class="item-image">
-                                <img src="/frontend/images/product-1.png" alt="">
+                                <img src="/images/products/{{ $prod->image }}" alt="">
                             </div>
                             <div class="item-info">
                                 <div class="item-info-title">
-                                    <h2>Хлеб «Слуцкий»</h2>
+                                    <h2>{{ $prod->translate(\App::getLocale())->name }}</h2>
                                 </div>
                                 <div class="item-info-weight">
-                                    <span><img src="/frontend/images/icon//weight-icon.png" alt=""></span>
-                                    <p>10 / 20</p>
+                                    <span><img src="/frontend/images/icon/weight-icon.png" alt=""></span>
+                                    <p>{{ $prod->weight }}</p>
                                 </div>
                             </div>
-                            <div class="new"><img src="/frontend/images/new-catalog.png" alt=""></div>
+                            <div class="new">
+                                @if($prod->status=='new')
+                                <img src="/frontend/images/new-catalog.png" alt="">
+                                @elseif($prod->status=='xit')
+                                <img src="/frontend/images/hit-catalog.png" alt="">
+                                @else
+                                @endif
+                            </div>
                         </a>
-                        <a href="/catalog-cart.php" class="col-md-6 col-lg-4 catalog-list__item">
-                            <div class="item-image">
-                                <img src="/frontend/images/product-2.png" alt="">
-                            </div>
-                            <div class="item-info">
-                                <div class="item-info-title">
-                                    <h2>Хлеб «Слуцкий»</h2>
-                                </div>
-                                <div class="item-info-weight">
-                                    <span><img src="/frontend/images/icon//weight-icon.png" alt=""></span>
-                                    <p>10 / 20</p>
-                                </div>
-                            </div>
-                            <div class="new"><img src="/frontend/images/new-catalog.png" alt=""></div>
-                        </a>
-                        <a href="/catalog-cart.php" class="col-md-6 col-lg-4 catalog-list__item">
-                            <div class="item-image">
-                                <img src="/frontend/images/product-1.png" alt="">
-                                
-                            </div>
-                            <div class="item-info">
-                                <div class="item-info-title">
-                                    <h2>Хлеб «Слуцкий»</h2>
-                                </div>
-                                <div class="item-info-weight">
-                                    <span><img src="/frontend/images/icon//weight-icon.png" alt=""></span>
-                                    <p>10 / 20</p>
-                                </div>
-                            </div>
-                            <div class="hit"><img src="/frontend/images/hit-catalog.png" alt=""></div>
-                        </a>
-                        <a href="/catalog-cart.php" class="col-md-6 col-lg-4 catalog-list__item">
-                            <div class="item-image">
-                                <img src="/frontend/images/product-1.png" alt="">
-                            </div>
-                            <div class="item-info">
-                                <div class="item-info-title">
-                                    <h2>Хлеб «Слуцкий»</h2>
-                                </div>
-                                <div class="item-info-weight">
-                                    <span><img src="/frontend/images/icon//weight-icon.png" alt=""></span>
-                                    <p>10 / 20</p>
-                                </div>
-                            </div>	
-                        </a>
-                        <a href="/catalog-cart.php" class="col-md-6 col-lg-4 catalog-list__item">
-                            <div class="item-image">
-                                <img src="/frontend/images/product-1.png" alt="">
-                            </div>
-                            <div class="item-info">
-                                <div class="item-info-title">
-                                    <h2>Хлеб «Слуцкий»</h2>
-                                </div>
-                                <div class="item-info-weight">
-                                    <span><img src="/frontend/images/icon//weight-icon.png" alt=""></span>
-                                    <p>10 / 20</p>
-                                </div>
-                            </div>	
-                        </a>
-                        <a href="" class="col-md-6 col-lg-4 catalog-list__item">
-                            <div class="item-image">
-                                <img src="/frontend/images/product-1.png" alt="">
-                            </div>
-                            <div class="item-info">
-                                <div class="item-info-title">
-                                    <h2>Хлеб «Слуцкий»</h2>
-                                </div>
-                                <div class="item-info-weight">
-                                    <span><img src="/frontend/images/icon//weight-icon.png" alt=""></span>
-                                    <p>10 / 20</p>
-                                </div>
-                            </div>	
-                        </a>
+                        @endforeach
+                        
                     </div>
                     <div class="row">
                         <div class="col-md-12">

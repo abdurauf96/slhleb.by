@@ -164,14 +164,19 @@ class StocksController extends Controller
                 'point'=>$request->point[$i],
                 'competition_id'=>$id,
             ];
-            if (isset($request->images)) {
+            if (isset($request->images[$i])) {
                 $file=$request->images[$i];
                 $image=time().$file->getClientOriginalName();
                 $file->move('images/competitions/participiants', $image);
                 $data['image']=$image;
-            }   
+            }
+            if(empty($request->part_id[$i])){
+                Participant::create($data);
+            }else{
+                Participant::find($request->part_id[$i])->update($data);
+            }
                
-            Participant::create($data);
+            
         }
         return redirect('/admin/competitions')->with('flash_message', 'участник добавлен!');;
     }

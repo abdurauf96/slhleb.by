@@ -1,5 +1,12 @@
 @extends('layouts.site')
 
+@section('parent')
+<li class="breadcrumb-item"><a href="/page/contact">Контакты</a></li>
+@endsection
+@section('child')
+Схема проезда
+@endsection
+
 @section('content')
 <div class="section__wrapper section-sheme">
     <div class="section__content section-contact s-sheme" style="background-image: url('/frontend/images/bg-main.jpg')">

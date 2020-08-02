@@ -37,3 +37,20 @@
         </div>
     </div>
 @endsection
+@section('scripts')
+<script src="/plugins/ckeditor/ckeditor.js"></script>
+<script>
+    CKEDITOR.replace( 'pageContent1' , {
+        filebrowserUploadUrl: "{{route('upload', ['_token' => csrf_token() ])}}",
+        filebrowserUploadMethod: 'form'
+    } );
+    CKEDITOR.replace( 'pageContent2', {
+        filebrowserUploadUrl: "{{route('upload', ['_token' => csrf_token() ])}}",
+        filebrowserUploadMethod: 'form'
+    }  );
+    CKEDITOR.replace( 'pageContent3', {
+        filebrowserUploadUrl: "{{route('upload', ['_token' => csrf_token() ])}}",
+        filebrowserUploadMethod: 'form'
+    }  );
+</script>
+@endsection

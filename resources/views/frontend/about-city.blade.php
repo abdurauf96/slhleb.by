@@ -1,7 +1,12 @@
 @extends('layouts.site')
-@section('child')
-    О городе Слуцк
+
+@section('parent')
+<li class="breadcrumb-item"><a href="/page/interesting">Это интересно</a></li>
 @endsection
+@section('child')
+{{ $page['title_'.\App::getLocale()] }}
+@endsection
+
 @section('content')
 <div class="section__wrapper company">
     <div class="section__header h-100" style="background-image: url('/frontend/images/city.jpg')">
@@ -10,14 +15,12 @@
                 <div class="row">
                     <div class="col-xl-8 col-md-8">
                         <div class="title">
-                            О городе Слуцк
+                            {{ $page['title_'.\App::getLocale()] }}
                         </div>
                         <div class="text scroll-pane">
-                            <p>Впервые Случеск упоминается в Повести временных лет как город Туровского княжества под 1116 годом. В XII веке Слуцк становится столицей удельного княжества наследников туровского князя Юрия Ярославовича. В первой половине XIV века он входит в состав Великого княжества Литовского. XV веком датируется знаменитая Слуцкая летопись.
+                            <p>{{ $page['desc_'.\App::getLocale()] }}
                             </p>
-
                         </div>
-                        
                     </div>
                 </div>             
             </div>         
@@ -33,12 +36,12 @@
     </div>
     <div class="section__content" style="background-image: url('/frontend/images/bg-main.jpg')">
         <div class="container-custom">
-            <a href="/interesting-about-history-city.php" class="item__card" style="background-image: url('/frontend/images/city-history.jpg')">
+            <a href="/page/city/history" class="item__card" style="background-image: url('/frontend/images/city-history.jpg')">
                 <div class="item__card-tittle">
                     <h2>История города Слуцк</h2>
                 </div>
             </a>
-            <a href="/interesting-about-where-go.php" class="item__card" style="background-image: url('/frontend/images/city-history-2.jpg')">
+            <a href="/page/city/travel" class="item__card" style="background-image: url('/frontend/images/city-history-2.jpg')">
                 <div class="item__card-tittle">
                     <h2>Слуцк. Куда пойти?</h2>
                 </div>

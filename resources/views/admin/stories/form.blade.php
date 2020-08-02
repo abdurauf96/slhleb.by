@@ -2,7 +2,7 @@
     <label for="" class="control-label">Категория</label>
     <select name="category_id" id="" class="form-control">
         @foreach ($categories as $category)
-            <option value="{{ $category->id }}">{{ $category->name_ru }}</option>
+            <option @if($formMode=='edit') {{ $story->category_id==$category->id ? 'selected' : '' }} @endif value="{{ $category->id }}">{{ $category->name_ru }}</option>
         @endforeach
     </select>
 </div>

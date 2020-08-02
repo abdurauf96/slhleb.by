@@ -1,5 +1,9 @@
 @extends('layouts.site')
 
+@section('child')
+{{ $page['title_'.\App::getLocale()] }}
+@endsection
+
 @section('content')
 
 <div class="section__wrapper company">
@@ -9,21 +13,10 @@
                 <div class="row">
                     <div class="col-xl-8 col-md-8">
                         <div class="title">
-                            Это интересно
+                            {{ $page['title_'.\App::getLocale()] }}
                         </div>
                         <div class="text scroll-pane">
-                            <p>Рады Вас приветствовать на страничке «Это интересно»
-                                Здесь Вы можете можете узнать для себя много интересных сценариев, познавательной информации о праздниках,  смешных, занимательных историй про хлеб, квас, пряник, поделиться любимым рецептом, рассказать миру о  городе Слуцке, и главной достопримечательности города Софии Слуцкой.
-                                <br>
-                                роме того Вы можете принимать участие в конкурсах, делиться своими впечатлениями и конечно же предлагать свои. Всегда будем рады сотрудничать с Вами!
-
-                                Если у Вас есть предложения, сценарии, рецепты, истории и другая познавательная 
-                                роме того Вы можете принимать участие в конкурсах, делиться своими впечатлениями и конечно же предлагать свои. Всегда будем рады сотрудничать с Вами!
-
-                                Если у Вас есть предложения, сценарии, рецепты, истории и другая познавательная 
-                                роме того Вы можете принимать участие в конкурсах, делиться своими впечатлениями и конечно же предлагать свои. Всегда будем рады сотрудничать с Вами!
-
-                                Если у Вас есть предложения, сценарии, рецепты, истории и другая познавательная 
+                            <p>{{ $page['desc_'.\App::getLocale()] }}
                             </p>
 
                         </div>
@@ -46,27 +39,27 @@
     </div>
     <div class="section__content" style="background-image: url('/frontend/images/bg-main.jpg')">
         <div class="container-custom">
-            <a href="/interesting-recipes.php" class="item__card" style="background-image: url('/frontend/images/recipes-image.jpg')">
+            <a href="{{ route('recipes') }}" class="item__card" style="background-image: url('/frontend/images/recipes-image.jpg')">
                 <div class="item__card-tittle">
                     <h2>Рецепты</h2>
                 </div>
             </a>
-            <a href="/interesting-stories.php" class="item__card" style="background-image: url('/frontend/images/history-image.jpg')">
+            <a href="{{ route('stories') }}" class="item__card" style="background-image: url('/frontend/images/history-image.jpg')">
                 <div class="item__card-tittle">
                     <h2>Истории</h2>
                 </div>
             </a>
-            <a href="/interesting-about.php" class="item__card" style="background-image: url('/frontend/images/city-image.jpg')">
+            <a href="{{ route('aboutCity') }}" class="item__card" style="background-image: url('/frontend/images/city-image.jpg')">
                 <div class="item__card-tittle">
                     <h2>О городе Слуцк</h2>
                 </div>
             </a>
-            <a href="/interesting-holiday-scripts.php" class="item__card" style="background-image: url('/frontend/images/holidays-image.jpg')">
+            <a href="{{ route('holidayScripts') }}" class="item__card" style="background-image: url('/frontend/images/holidays-image.jpg')">
                 <div class="item__card-tittle">
                     <h2>Сценарии праздников</h2>
                 </div>
             </a>
-            <a href="/interesting-stock-competition.php" class="item__card" style="background-image: url('/frontend/images/stoks-image.jpg')">
+            <a href="{{ route('stockCompetitions') }}" class="item__card" style="background-image: url('/frontend/images/stoks-image.jpg')">
                 <div class="item__card-tittle">
                     <h2>Акции и конкурсы</h2>
                 </div>

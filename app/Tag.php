@@ -9,6 +9,10 @@ class Tag extends Model
 {
     use LogsActivity;
     
+    public function recipes()
+    {
+        return $this->hasMany(Recipe::class);
+    }
 
     /**
      * The database table used by the model.

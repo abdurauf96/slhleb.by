@@ -1,50 +1,19 @@
 
     <div class="section-recipe__slider">
         <div class="recipie-slider">
-            <a href="" class="recipie-slider__item">
-                <div class="slider__item-image" style="background-image: url('/frontend/images/recipie-img.png')"></div>
+            @foreach ($recipes as $item)
+            <a href="{{ route('viewRecipe', $item->id) }}" class="recipie-slider__item">
+                <div class="slider__item-image" style="background-image: url('/images/recipes/{{ $item->image }}')"></div>
                 <div class="slider__item-info">                   
                     <div class="top">
-                        <h2>Суп с гренками с хлебом«Сафийски»</h2>
+                        <h2>{{ $item['name_'.\App::getLocale()] }}</h2>
                     </div>                        
                     <div class="absolute">  
-                        <span><img src="/frontend/images/clock.png" alt="">30 мин</span>
+                        <span><img src="/frontend/images/clock.png" alt="">{{ $item->time }}</span>
                     </div>                   
                 </div>
             </a>
-            <a href="" class="recipie-slider__item">
-                <div class="slider__item-image" style="background-image: url('/frontend/images/recipie-img.png')"></div>
-                <div class="slider__item-info">                   
-                    <div class="top">
-                        <h2>Суп с гренками с хлебом«Сафийски»</h2>
-                    </div>                        
-                    <div class="absolute">  
-                        <span><img src="/frontend/images/clock.png" alt="">30 мин</span>
-                    </div>                   
-                </div>
-            </a>
-            <a href="" class="recipie-slider__item">
-                <div class="slider__item-image" style="background-image: url('/frontend/images/recipie-img.png')"></div>
-                <div class="slider__item-info">                   
-                    <div class="top">
-                        <h2>Суп с гренками с хлебом«Сафийски»</h2>
-                    </div>                        
-                    <div class="absolute">  
-                        <span><img src="/frontend/images/clock.png" alt="">30 мин</span>
-                    </div>                   
-                </div>
-            </a>
-            <a href="" class="recipie-slider__item">
-                <div class="slider__item-image" style="background-image: url('/frontend/images/recipie-img.png')"></div>
-                <div class="slider__item-info">                   
-                    <div class="top">
-                        <h2>Суп с гренками с хлебом«Сафийски»</h2>
-                    </div>                        
-                    <div class="absolute">  
-                        <span><img src="/frontend/images/clock.png" alt="">30 мин</span>
-                    </div>                   
-                </div>
-            </a>
+            @endforeach
         </div>
         <div class="slider-nav">
             <div class="recipie__slider-dots"></div>

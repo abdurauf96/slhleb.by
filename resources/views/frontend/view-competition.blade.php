@@ -1,5 +1,12 @@
 @extends('layouts.site')
 
+@section('parent')
+<li class="breadcrumb-item"><a href="{{ route('stockCompetitions') }}">Акции и конкурсы</a></li>
+@endsection
+@section('child')
+{{ $competition['title_'.\App::getLocale()] }}
+@endsection
+
 @section('content')
 <div class="section__wrapper">
     <div class="section__header h-100" style="background-image: url('/frontend/images/stocks-page-bg.jpg')">
@@ -7,9 +14,7 @@
             <div class="row">
                 <div class="col-xl-8 col-md-8">
                     <div class="title title-style">
-                        Фотоконкурс
-                        «Я люблю сладости»
-                        2019
+                        {{ $competition['title_'.\App::getLocale()] }}
                     </div>
                     <div class="block-group-btn">
                         <h2>Ознакомиться подробнее:</h2>
@@ -38,51 +43,60 @@
                         Победители
                     </div>
                     <div class="row">
+                        @foreach ($competition->participants as $item)
+                        @if ($item->point==1)
                         <div class="col-md-4">
                             <div class="item">
                                 <span><img src="/frontend/images/icon/place-1.png" alt="">1 место</span>
 
                                 <div class="item-thumbnail-gallery">
-                                    <a href="/frontend/images/stock-img1.jpg" class="item-thumbnail">
+                                    <a href="/images/competitions/participiants/{{ $item->image }}" class="item-thumbnail">
                                         <div class="zoom"><i class="fal fa-search-plus"></i></div>
-                                        <img src="/frontend/images/stock-img1.jpg" alt="">
+                                        <img src="/images/competitions/participiants/{{ $item->image }}" alt="">
                                     </a>
                                 </div>
                                 <div class="item-name">
-                                    <h3>Ясли-сад № 7</h3>
+                                    <h3>{{ $item['name_'.\App::getLocale()] }}</h3>
                                 </div>
                             </div>
                         </div>
+                        @endif
+                        @if ($item->point==2)
                         <div class="col-md-4">
                             <div class="item">
                                 <span><img src="/frontend/images/icon/place-2.png" alt="">2 место</span>
 
                                 <div class="item-thumbnail-gallery">
-                                    <a href="/frontend/images/stock-img1.jpg" class="item-thumbnail">
+                                    <a href="/images/competitions/participiants/{{ $item->image }}" class="item-thumbnail">
                                         <div class="zoom"><i class="fal fa-search-plus"></i></div>
-                                        <img src="/frontend/images/stock-img1.jpg" alt="">
+                                        <img src="/images/competitions/participiants/{{ $item->image }}" alt="">
                                     </a>
                                 </div>
                                 <div class="item-name">
-                                    <h3>Казак Вадим</h3>
+                                    <h3>{{ $item['name_'.\App::getLocale()] }}</h3>
                                 </div>
                             </div>
                         </div>
+                        @endif
+                        @if ($item->point==3)
                         <div class="col-md-4">
                             <div class="item">
                                 <span><img src="/frontend/images/icon/place-3.png" alt="">3 место</span>
 
                                 <div class="item-thumbnail-gallery">
-                                    <a href="/frontend/images/stock-img1.jpg" class="item-thumbnail">
+                                    <a href="/images/competitions/participiants/{{ $item->image }}" class="item-thumbnail">
                                         <div class="zoom"><i class="fal fa-search-plus"></i></div>
-                                        <img src="/frontend/images/stock-img1.jpg" alt="">
+                                        <img src="/images/competitions/participiants/{{ $item->image }}" alt="">
                                     </a>
                                 </div>
                                 <div class="item-name">
-                                    <h3>Ясли-сад № 7</h3>
+                                    <h3>{{ $item['name_'.\App::getLocale()] }}</h3>
                                 </div>
                             </div>
                         </div>
+                        @endif
+                        @endforeach
+                      
                     </div>
                 </div>
                 <div class="section-stock-wrap">
@@ -90,96 +104,23 @@
                         Участники
                     </div>
                     <div class="row">
+                        @foreach ($competition->participants as $part)
                         <div class="col-md-4">
                             <div class="item">
                                 <div class="item-thumbnail-gallery">
-                                    <a href="/frontend/images/stock-img1.jpg" class="item-thumbnail">
+                                    <a href="/images/competitions/participiants/{{ $part->image }}" class="item-thumbnail">
                                         <div class="zoom"><i class="fal fa-search-plus"></i></div>
-                                        <img src="/frontend/images/stock-img1.jpg" alt="">
+                                        <img src="/images/competitions/participiants/{{ $part->image }}" alt="">
                                     </a>
                                 </div>
                                 <div class="item-name">
-                                    <h2>Участник № 1</h2>
-                                    <h3>Ясли-сад № 7</h3>
-                                    <p>«Ну оооочень хочется попробовать эту вкуснятину»</p>
+                                    <h2>Участник № {{ $loop->iteration }}</h2>
+                                    <h3>{{ $part['name_'.\App::getLocale()] }}</h3>
+                                    <p>{{ $part['desc_'.\App::getLocale()] }}</p>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-4">
-                            <div class="item">
-                                <div class="item-thumbnail-gallery">
-                                    <a href="/frontend/images/stock-img1.jpg" class="item-thumbnail">
-                                        <div class="zoom"><i class="fal fa-search-plus"></i></div>
-                                        <img src="/frontend/images/stock-img1.jpg" alt="">
-                                    </a>
-                                </div>
-                                <div class="item-name">
-                                    <h2>Участник № 2</h2>
-                                    <h3>Ясли-сад № 7</h3>
-                                    <p>«Ну оооочень хочется попробовать эту вкуснятину»</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="item">
-                                <div class="item-thumbnail-gallery">
-                                    <a href="/frontend/images/stock-img1.jpg" class="item-thumbnail">
-                                        <div class="zoom"><i class="fal fa-search-plus"></i></div>
-                                        <img src="/frontend/images/stock-img1.jpg" alt="">
-                                    </a>
-                                </div>
-                                <div class="item-name">
-                                    <h2>Участник №3</h2>
-                                    <h3>Ясли-сад № 7</h3>
-                                    <p>«Ну оооочень хочется попробовать эту вкуснятину»</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="item">
-                                <div class="item-thumbnail-gallery">
-                                    <a href="/frontend/images/stock-img1.jpg" class="item-thumbnail">
-                                        <div class="zoom"><i class="fal fa-search-plus"></i></div>
-                                        <img src="/frontend/images/stock-img1.jpg" alt="">
-                                    </a>
-                                </div>
-                                <div class="item-name">
-                                    <h2>Участник №3</h2>
-                                    <h3>Ясли-сад № 7</h3>
-                                    <p>«Ну оооочень хочется попробовать эту вкуснятину»</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="item">
-                                <div class="item-thumbnail-gallery">
-                                    <a href="/frontend/images/stock-img1.jpg" class="item-thumbnail">
-                                        <div class="zoom"><i class="fal fa-search-plus"></i></div>
-                                        <img src="/frontend/images/stock-img1.jpg" alt="">
-                                    </a>
-                                </div>
-                                <div class="item-name">
-                                    <h2>Участник №3</h2>
-                                    <h3>Ясли-сад № 7</h3>
-                                    <p>«Ну оооочень хочется попробовать эту вкуснятину»</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="item">
-                                <div class="item-thumbnail-gallery">
-                                    <a href="/frontend/images/stock-img1.jpg" class="item-thumbnail">
-                                        <div class="zoom"><i class="fal fa-search-plus"></i></div>
-                                        <img src="/frontend/images/stock-img1.jpg" alt="">
-                                    </a>
-                                </div>
-                                <div class="item-name">
-                                    <h2>Участник №3</h2>
-                                    <h3>Ясли-сад № 7</h3>
-                                    <p>«Ну оооочень хочется попробовать эту вкуснятину»</p>
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
@@ -190,5 +131,54 @@
 
     </div>
 
+</div>
+
+
+<div class="modal fade modal-competition-conditions" id="modal-competition-conditions">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"><i class="fal fa-times"></i></span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="container">
+                    <a href="#" class="modal-logo">
+                        <img src="/frontend/images/logo.png" alt="">
+                    </a>
+                    <h5 class="header-title">Условия проведения</h5>
+                    <div class="content">
+                        <p>Условия проведения конкурса</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade modal-position" id="modal-position">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"><i class="fal fa-times"></i></span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="container">
+                    <a href="#" class="modal-logo">
+                        <img src="/frontend/images/logo.png" alt="">
+                    </a>
+                    <h5 class="header-title">Положение</h5>
+                    <div class="content">
+                        <p>Условия проведения конкурса</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
 </div>
 @endsection

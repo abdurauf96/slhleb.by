@@ -13,9 +13,9 @@
                     <div class="header__breadcrumbs">
                         <ul>
                             <li class="breadcrumb-item"><a href="/">Главная</a></li>
-                            @if($parent!='')
-                            <li class="breadcrumb-item"><a href="">{{ $parent }}</a></li>
-                            @endif
+                            
+                            {{ $parent }}
+                            
                             <li class="breadcrumb-item"> {{ $child }}</li>
                         </ul>
                     </div>
