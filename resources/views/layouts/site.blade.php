@@ -32,9 +32,10 @@
 				<div class="col-md-4">
 				</div>
 				<div class="col-md-8">
-					<form action="/poisk.html" method="GET" role="form">
+					<form action="/search" method="GET" role="form">
+						@csrf
 						<div class="form-group">
-							<input type="text" name="query" value="" class="form-control" placeholder="Введите ваш поисковый запрос" required="">
+							<input type="text" name="q" value="" class="form-control" placeholder="Введите ваш поисковый запрос" required="">
 							<button type="submit" class="btn">
 								<i class="fal fa-search"></i>
 							</button>
@@ -71,17 +72,19 @@
 			
 			<div class="header-block__left">
 				@if(\Request::route()->getName()=='stories')
-				<a href="#modal-send-history" data-toggle="modal" class="btn btn-red">Отправить свою историю</a>
+				<a href="#modal-send-history" data-toggle="modal" class="btn btn-red">@lang('messages.send_hist')</a>
 				@elseif(\Request::route()->getName()=='viewProduct')
-				<a href="#modal-order" data-toggle="modal" class="btn btn-red">Заказать</a>
+				<a href="#modal-order" data-toggle="modal" class="btn btn-red">@lang('messages.order')</a>
 				@elseif(\Request::route()->getName()=='viewStory')
-				<a href="#modal-send-history" data-toggle="modal" class="btn btn-red">Отправить свою историю</a>
-				@elseif(\Request::route()->getName()=='viewRecipe')
-				<a href="#modal-send-recipe" data-toggle="modal" class="btn btn-red">Отправить свой рецепт</a>
+				<a href="#modal-send-history" data-toggle="modal" class="btn btn-red">@lang('messages.send_hist')</a>
+				@elseif(\Request::route()->getName()=='recipes')
+				<a href="#modal-send-recipe" data-toggle="modal" class="btn btn-red">@lang('messages.send_rec')</a>
 				@endif
-				<a href="" class="block__left-icon"><img src="/frontend/images/icon/eye.svg" alt=""></a>
+				<a id="specialButton" href="" class="block__left-icon"><img src="/frontend/images/icon/eye.svg" alt=""></a>
 				<a href="" class="block__left-icon search-btn"><img src="/frontend/images/icon/search.svg" alt=""></a>
-				<a href="" class="block__left-icon">RU</a>
+				<a href="/lang/ru" class="block__left-icon">RU</a>
+				<a href="/lang/en" class="block__left-icon">EN</a>
+				<a href="/lang/by" class="block__left-icon">BY</a>
 			</div>
 		</div>
 	</header>
@@ -94,7 +97,9 @@
     @yield('content')
 
 	@include('layouts.modals')
-
+	<script src="https://lidrekon.ru/slep/js/jquery.js"></script>
+	<script src="https://lidrekon.ru/slep/js/uhpv-full.min.js"></script>
+	  
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>

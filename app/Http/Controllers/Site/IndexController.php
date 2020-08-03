@@ -33,4 +33,42 @@ class IndexController extends Controller
         Appeal::create($requestData);
         return back();
     }
+
+    public function sendRecipe(Request $request)
+    {
+        $requestData=$request->all();
+       
+        if ($request->hasFile('file')) {
+            $file=$request->file('file');
+            
+            $fayl=time().$file->getClientOriginalName();
+            $file->move('files/users/recipes', $fayl);
+            $requestData['file']=$fayl;
+        }
+        \App\RecipesFromUser::create($requestData);
+        return back();
+    }
+
+    public function sendStory(Request $request)
+    {
+        $requestData=$request->all();
+       
+        if ($request->hasFile('file')) {
+            $file=$request->file('file');
+            
+            $fayl=time().$file->getClientOriginalName();
+            $file->move('files/users/stories', $fayl);
+            $requestData['file']=$fayl;
+        }
+        \App\StoriesFromUser::create($requestData);
+        return back();
+    }
+
+    public function orderProduct(Request $request)
+    {
+        $requestData=$request->all();
+
+        \App\OrderProduct::create($requestData);
+        return back();
+    }
 }

@@ -2,7 +2,7 @@
     <div class="section-bg-floating ">
             <div class="bg-floating-interesting"></div>
         </div>
-    <div class="section-page__title">Это интересно</div>
+    <div class="section-page__title">@lang('messages.eto-int')</div>
     <div class="section__wrapper" style="background-image: url('/frontend/images/section-interes-bg.jpg')">
         <div class="container-section-interesting">
             <div class="row">

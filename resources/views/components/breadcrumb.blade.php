@@ -12,7 +12,7 @@
                 <div class="col-md-10">
                     <div class="header__breadcrumbs">
                         <ul>
-                            <li class="breadcrumb-item"><a href="/">Главная</a></li>
+                            <li class="breadcrumb-item"><a href="/">@lang('messages.home')</a></li>
                             
                             {{ $parent }}
                             

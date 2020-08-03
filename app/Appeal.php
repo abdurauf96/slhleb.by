@@ -29,7 +29,7 @@ class Appeal extends Model
      *
      * @var array
      */
-    protected $fillable = ['name', 'type', 'addres', 'fullname', 'email', 'msg', 'file'];
+    protected $fillable = ['name', 'type', 'addres', 'fullname', 'email', 'msg', 'file', 'phone'];
 
     
 

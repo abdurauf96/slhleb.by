@@ -4,7 +4,7 @@
     </div>
     <div class="row">
         <div class="col-md-12">
-            <p>Мы используем cookie-файлы на нашем сайте. Эти файлы cookie требуются для удобства пользования сайтом посетителями, включая выбранные пользователем параметры, средства навигации по сайту и т.д. Обычно данные файлы cookie не собирают персонально идентифицируемые сведения.</p>
+            <p>@lang('messages.cookie')</p>
         </div>
     </div>
 </div>
@@ -23,11 +23,12 @@
                     <a href="#" class="modal-logo">
                         <img src="/frontend/images/logo.png" alt="">
                     </a>
-                    <h5 class="header-title">Заказать</h5>
+                    <h5 class="header-title">@lang('messages.order')</h5>
                     <div class="form">
-                        <form action="">
+                        <form action="/order-product" method="POST">
+                            @csrf
                             <div class="form-group">
-                                <label for="name">Ваше имя <span>*</span></label>
+                                <label for="name">@lang('messages.name') <span>*</span></label>
                                 <input type="text" name="name" class="form-control" id="name" required="" value="">
                             </div>
                             <div class="form-group">
@@ -35,20 +36,20 @@
                                 <input type="text" name="email" class="form-control" id="email" required="" value="">
                             </div>
                             <div class="form-group">
-                                <label for="addres">Контактный телефон <span>*</span></label>
+                                <label for="addres">@lang('messages.tel') <span>*</span></label>
                                 <input type="text" name="phone" class="form-control" id="phone" required="" value="">
                             </div>
                             <div class="form-group">
-                                <label for="company">Компания <span>*</span></label>
+                                <label for="company">@lang('messages.company') <span>*</span></label>
                                 <input type="text" name="company" class="form-control" id="company" required="" value="">
                             </div>
                             <div class="form-group mb-0">
-                                <label for="message">Cообщения <span>*</span></label>
-                                <textarea class="form-control" id="message" required="" name="Вопрос" rows="6" value=""></textarea>
+                                <label for="message">@lang('messages.msg') <span>*</span></label>
+                                <textarea class="form-control" id="message" required="" name="msg" rows="6" value=""></textarea>
                             </div>
-                            <p class="my-4"><span class="mr-1">*</span>Поля, обязательные для заполнения</p>
+                            <p class="my-4"><span class="mr-1">*</span>@lang('messages.req')</p>
 
-                            <button type="submit" class="btn btn-red">Отправить</button>
+                            <button type="submit" class="btn btn-red">@lang('messages.send')</button>
                         </form>
                     </div>
                 </div>
@@ -371,36 +372,37 @@
                     <a href="#" class="modal-logo">
                         <img src="/frontend/images/logo.png" alt="">
                     </a>
-                    <h5 class="header-title">Отправить историю</h5>
+                    <h5 class="header-title">@lang('messages.send_hist')</h5>
                     <div class="form">
-                        <form action="">
+                        <form action="/send-story" method="POST" enctype="multipart/form-data">
+                            @csrf
                             <div class="form-group">
-                                <label for="name">Ваше имя <span>*</span></label>
+                                <label for="name">@lang('messages.name') <span>*</span></label>
                                 <input type="text" name="name" class="form-control" id="name" required="" value="">
                             </div>
                             <div class="form-group">
-                                <label for="addres">Контактный телефон <span>*</span></label>
+                                <label for="addres">@lang('messages.contact') <span>*</span></label>
                                 <input type="text" name="phone" class="form-control" id="phone" required="" value="">
                             </div>
                             <div class="form-group">
-                                <label for="email">E-mail для ответа<span>*</span></label>
+                                <label for="email">@lang('messages.email_for')<span>*</span></label>
                                 <input type="text" name="email" class="form-control" id="email" required="" value="">
                             </div>
                             <div class="form-group mb-0">
-                                <label for="message">Текст сообщения <span>*</span></label>
-                                <textarea class="form-control" id="message" required="" name="Вопрос" rows="6" value=""></textarea>
+                                <label for="message">@lang('messages.text') <span>*</span></label>
+                                <textarea class="form-control" id="message" required="" name="msg" rows="6" value=""></textarea>
                             </div>
-                            <p class="my-4"><span class="mr-1">*</span>Поля, обязательные для заполнения</p>
+                            <p class="my-4"><span class="mr-1">*</span>@lang('messages.req')</p>
                             <div class="form-group">
                                 <div class="custom-file">
                                     <input type="file" name="file" class="custom-file-input" id="file" value="">
-                                    <label class="file" for="file">Прикрепить файл
-                                        <div class="btn btn-transparent">Выбрать файл</div>
+                                    <label class="file" for="file">@lang('messages.prik')
+                                        <div class="btn btn-transparent">@lang('messages.choose')</div>
                                     </label>
                                     <p class="file-return"></p>
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-red">Отправить</button>
+                            <button type="submit" class="btn btn-red">@lang('messages.send')</button>
                         </form>
                     </div>
                 </div>
@@ -425,36 +427,34 @@
                     <a href="#" class="modal-logo">
                         <img src="/frontend/images/logo.png" alt="">
                     </a>
-                    <h5 class="header-title">Отправить рецепт</h5>
+                    <h5 class="header-title">@lang('messages.send_rec')</h5>
                     <div class="form">
-                        <form action="">
+                        <form action="/send-recipe" method="POST" enctype="multipart/form-data">
+                            @csrf
                             <div class="form-group">
-                                <label for="name">Ваше имя <span>*</span></label>
+                                <label for="name">@lang('messages.name') <span>*</span></label>
                                 <input type="text" name="name" class="form-control" id="name" required="" value="">
                             </div>
                             <div class="form-group">
-                                <label for="addres">Контактный телефон <span>*</span></label>
+                                <label for="addres">@lang('messages.contact') <span>*</span></label>
                                 <input type="text" name="phone" class="form-control" id="phone" required="" value="">
                             </div>
                             <div class="form-group">
-                                <label for="email">E-mail для ответа<span>*</span></label>
+                                <label for="email">@lang('messages.email_for')<span>*</span></label>
                                 <input type="text" name="email" class="form-control" id="email" required="" value="">
                             </div>
                             <div class="form-group mb-0">
-                                <label for="message">Текст сообщения <span>*</span></label>
-                                <textarea class="form-control" id="message" required="" name="Вопрос" rows="6" value=""></textarea>
+                                <label for="message">@lang('messages.text')<span>*</span></label>
+                                <textarea class="form-control" id="message" required="" name="msg" rows="6" value=""></textarea>
                             </div>
-                            <p class="my-4"><span class="mr-1">*</span>Поля, обязательные для заполнения</p>
+                            <p class="my-4"><span class="mr-1">*</span>@lang('messages.req')</p>
                             <div class="form-group">
                                 <div class="custom-file">
-                                    <input type="file" name="file" class="custom-file-input" id="file" value="">
-                                    <label class="file" for="file">Прикрепить файл
-                                        <div class="btn btn-transparent">Выбрать файл</div>
-                                    </label>
-                                    <p class="file-return"></p>
+                                    <input type="file" name="file"  id="file" value="">
+                                   
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-red">Отправить</button>
+                            <button type="submit" class="btn btn-red">@lang('messages.send')</button>
                         </form>
                     </div>
                 </div>

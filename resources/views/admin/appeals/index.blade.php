@@ -32,7 +32,7 @@
                                         <th>#</th>
                                         <th>Тип обрашения</th>
                                         <th>Имя</th>                    
-                                        <th>Полное наименование (если юридическое лицо)</th>
+                                       
                                         <th>Телефон</th>
                                         <th>Actions</th>
                                     </tr>
@@ -42,12 +42,12 @@
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td> 
-                                            {{ $item->type }}
+                                            {{ $item->type==''? 'Обратная связь' : $item->type }}
                                              
                                         </td>
                                         <td>{{ $item->name }}</td>
                                         
-                                        <td>{{ $item->fullname }}</td>
+                                      
                                         <td>{{ $item->phone }}</td>
                                         
                                         

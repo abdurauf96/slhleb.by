@@ -1,7 +1,7 @@
 @extends('layouts.site')
 
 @section('parent')
-<li class="breadcrumb-item"><a href="/page/interesting">Это интересно</a></li>
+<li class="breadcrumb-item"><a href="/page/interesting">@lang('messages.eto-int')</a></li>
 @endsection
 @section('child')
 {{ $page['title_'.\App::getLocale()] }}
@@ -26,7 +26,7 @@
                 </div>
             </div>
             <a href="#modal-quiz" data-toggle="modal" class="kvis-button">
-                <p>Какой хлеб подходит вам?</p>
+                <p>@lang('messages.kakoy')</p>
                 <img src="/frontend/images/slider-label.png" alt="">
             </a>
         </div>
@@ -42,7 +42,7 @@
                             <div class="row">
                                 <div class="col-md-10">
                                     <ul class="list-inline">
-                                        <li class="list-inline-item {{ \Request::get('tag')==''? 'active' : '' }} "><a href="{{ route('recipes') }}">Все рецепты</a></li>
+                                        <li class="list-inline-item {{ \Request::get('tag')==''? 'active' : '' }} "><a href="{{ route('recipes') }}">@lang('messages.all_rec')</a></li>
                                         @foreach ($tags as $tag)
                                         <li class="list-inline-item {{ \Request::get('tag')==$tag->id ? 'active' : '' }}"><a href="/page/recipes?tag={{ $tag->id }}">{{ $tag['name_'.\App::getLocale()] }}</a></li>
                                         @endforeach

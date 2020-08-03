@@ -3,7 +3,7 @@
         <div class="row mb-50">
             <div class="col-md-6 col-xl-4">
                 <div class="copy-right">
-                    © 2020 ОАО «Слуцкий хлебозавод»  Все права защищены
+                    © 2020 @lang('messages.prava')
                 </div>
             </div>
             <div class="col-md-6 col-xl-2">
@@ -17,7 +17,7 @@
                     <li><a href="" class="fab fa-instagram"></a></li>
                     <li><a href="" class="fab fa-instagram"></a></li>
                 </ul>
-                <a href="{{ route('appeals') }}" class="btn btn-transparent">Электронное обращение</a>
+                <a href="{{ route('appeals') }}" class="btn btn-transparent">@lang('messages.elek')</a>
             </div>
 
         </div>
@@ -29,10 +29,10 @@
                     </div>
                     <div class="slider-internet-portal">
                         <div class="internet-portal-item">
-                            <p>Интернет-портал Президента РБ: <a href="www.president.gov.by" target="_blank">www.president.gov.by</a></p>
+                            <p>@lang('messages.net'): <a href="www.president.gov.by" target="_blank">www.president.gov.by</a></p>
                         </div>
                         <div class="internet-portal-item">
-                            <p>Интернет-портал Президента РБ: <a href="www.president.gov.by" target="_blank">www.president.gov.by</a></p>
+                            <p>@lang('messages.net'): <a href="www.president.gov.by" target="_blank">www.president.gov.by</a></p>
                         </div>
                         
                     </div>

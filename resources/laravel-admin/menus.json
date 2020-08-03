@@ -1,1 +1,72 @@
-{"menus":[{"section":"Resources","items":[{"title":"Users","url":"\/admin\/users"},{"title":"Roles","url":"\/admin\/roles"},{"title":"Permissions","url":"\/admin\/permissions"},{"title":"Activity Logs","url":"\/admin\/activitylogs"},{"title":"Settings","url":"\/admin\/settings"},{"title":"Categories","url":"\/admin\/categories"},{"title":"Filters","url":"\/admin\/filters"},{"title":"Products","url":"\/admin\/products"},{"title":"Requisites","url":"\/admin\/requisites"},{"title":"Appeals","url":"\/admin\/appeals"},{"title":"Contacts","url":"\/admin\/contacts"},{"title":"Personals","url":"\/admin\/personals"},{"title":"Pages","url":"\/admin\/pages"},{"title":"Features","url":"\/admin\/features"},{"title":"Stores","url":"\/admin\/stores"},{"title":"Sertificats","url":"\/admin\/sertificats"},{"title":"Histories","url":"\/admin\/histories"},{"title":"Activities","url":"\/admin\/activities"},{"title":"Posts","url":"\/admin\/posts"},{"title":"Recipes","url":"\/admin\/recipes"},{"title":"Tags","url":"\/admin\/tags"},{"title":"StoryCategories","url":"\/admin\/story-categories"},{"title":"Stories","url":"\/admin\/stories"},{"title":"AboutCities","url":"\/admin\/about-cities"},{"title":"Scripts","url":"\/admin\/scripts"},{"title":"Holidays","url":"\/admin\/holidays"},{"title":"Stocks","url":"\/admin\/stocks"},{"title":"\u041a\u043e\u043d\u043a\u0443\u0440\u0446\u044b","url":"\/admin\/competitions"},{"title":"Menus","url":"\/admin\/menus"},{"title":"ProductBanners","url":"\/admin\/product-banners"},{"title":"Sliders","url":"\/admin\/sliders"},{"title":"MainBloks","url":"\/admin\/main-bloks"}]},{"section":"Tools","items":[{"title":"Generator","url":"\/admin\/generator"}]}]}
+{
+    "menus":
+    [
+        
+        {"section":"Главная страница",
+            "items":[
+                {"title":"Меню","url":"\/admin\/menus"},
+                {"title":"Слайдер","url":"\/admin\/sliders"},
+                {"title":"Блоки главной страницы","url":"\/admin\/main-bloks"},
+                {"title":"Страницы","url":"\/admin\/pages"}
+            ]
+        },
+
+        {"section":"Каталог",
+            "items":
+            [
+                {"title":"Категории","url":"\/admin\/categories"},
+                {"title":"Фильтры","url":"\/admin\/filters"},
+                {"title":"Товары","url":"\/admin\/products"},
+                {"title":"Баннеры","url":"\/admin\/product-banners"}  
+            ]
+        },
+        
+
+        {"section":"Компания",
+            "items":[
+                {"title":"Новости","url":"\/admin\/posts"},
+                {"title":"Характеристики","url":"\/admin\/features"},
+                {"title":"Сертификаты","url":"\/admin\/sertificats"},
+                {"title":"Слайдер для истории","url":"\/admin\/histories"},
+                {"title":"Информация о деятельности общества","url":"\/admin\/activities"}
+            ]
+        },
+
+        {"section":"Это интересно",
+            "items":[
+                {"title":"Теги для рецептов","url":"\/admin\/tags"},
+                {"title":"Рецепты","url":"\/admin\/recipes"},
+                
+                {"title":"Категории для рассказов","url":"\/admin\/story-categories"},
+                {"title":"Рассказы","url":"\/admin\/stories"},
+                {"title":"О городе Слуцк","url":"\/admin\/about-cities"},
+                {"title":"Сценарии для праздников","url":"\/admin\/scripts"},
+                {"title":"Праздники","url":"\/admin\/holidays"},
+                {"title":"Акции и Конкурсы","url":"\/admin\/stocks"},
+                {"title":"Участники конкурсов","url":"\/admin\/competitions"}
+            ]
+        },
+
+        {"section":"Контакты",
+            "items":[
+                {"title":"Контактные данные","url":"\/admin\/contacts"},
+                {"title":"Контакты сотрудников","url":"\/admin\/personals"},               
+                {"title":"Фирменная торговля","url":"\/admin\/stores"},
+                {"title":"Реквизиты","url":"\/admin\/requisites"}
+            ]
+        },
+
+
+        {"section":"Заявки и заказы",
+            "items":[
+                {"title":"Ре ","url":"\/admin\/recipes-from-users"},
+                {"title":"StoriesFromUsers","url":"\/admin\/stories-from-users"},
+                {"title":"OrderProducts","url":"\/admin\/order-products"},
+                {"title":"Appeals","url":"\/admin\/appeals"}
+            ]
+        }
+
+        
+
+    ]
+}

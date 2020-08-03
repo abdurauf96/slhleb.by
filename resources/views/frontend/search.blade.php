@@ -1,4 +1,8 @@
 @extends('layouts.site')
+
+@section('child')
+Поиск по сайту
+@endsection
 @section('content')
 <div class="section__wrapper">
     <div class="section__content section-contact s-search" style="background-image: url('/frontend/images/common-bg-section2.jpg')">
@@ -12,10 +16,11 @@
                             </div>
                         </div>
                         <div class="col-md-8 search-block">
-                            <p>Результаты поиска по зпросу «Молоко»</p>
-                            <form action="/poisk.html" method="GET" role="form">
+                            <p>Результаты поиска по зпросу «{{ $q }}»</p>
+                            <form action="/search" method="GET" role="form">
+                                @csrf
                                 <div class="form-group">
-                                    <input type="text" name="query" value="" class="form-control" placeholder="Введите ваш поисковый запрос" required="">
+                                    <input type="text" name="q" value="" class="form-control" placeholder="Введите ваш поисковый запрос" required="">
                                     <button type="submit" class="btn">
                                         <i class="fal fa-search"></i>
                                     </button>
@@ -23,79 +28,61 @@
                             </form>
                         </div>
                     </div>
+                    @isset($products)
                     <div class="row">
                         <div class="col-md-7">
+                            @foreach ($products as $prod)
                             <div class="item-result">
-                                <span class="tag">Хлеб</span>
-                                <h2><a href="/">Хлеб «Сафийски»</a></h2>
-                                <p>Хлеб с пышным мякишем, из пшеничной и рисовой муки и легким пикантными нотками тмина.</p>
+                                <span class="tag">{{ $prod->category->translate(\App::getLocale())->name }}</span>
+                                <h2><a href="{{ route('viewProduct', $prod->id) }}">{{ $prod->translate(\App::getLocale())->name }}</a></h2>
+                                <p>{{ $prod->translate(\App::getLocale())->name }}</p>
                             </div>
+                            @endforeach   
                         </div>
                     </div>
+                    @endisset
+
+                    @isset($posts)
                     <div class="row">
                         <div class="col-md-7">
-                            <div class="item-result">
-                                <span class="tag">Новости</span>
-                                <h2><a href="">Хлеб «Сафийски» выпущена первая партия</a></h2>
-                                <p>Хлеб с пышным мякишем, из пшеничной и рисовой муки и легким пикантными нотками тмина. <br>
-                                    Хлеб с пышным мякишем, из пшеничной и рисовой муки и легким пикантными нотками тмина.<br>
-                                    Хлеб с пышным мякишем, из пшеничной и рисовой муки и легким пикантными нотками тмина.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-7">
-                            <div class="item-result">
-                                <span class="tag">рецепты</span>
-                                <h2><a href="/">Гренки с хлебом «Сафийски»</a></h2>
-                                <p>Хлеб с пышным мякишем, из пшеничной и рисовой муки и легким пикантными нотками тмина.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-7">
-                            <div class="item-result">
-                                <span class="tag">Хлеб</span>
-                                <h2><a href="/">Хлеб «Сафийски»</a></h2>
-                                <p>Хлеб с пышным мякишем, из пшеничной и рисовой муки и легким пикантными нотками тмина.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-7">
+                            @foreach ($posts as $post)
                             <div class="item-result">
                                 <span class="tag">Новости</span>
-                                <h2><a href="">Хлеб «Сафийски» выпущена первая партия</a></h2>
-                                <p>Хлеб с пышным мякишем, из пшеничной и рисовой муки и легким пикантными нотками тмина. <br>
-                                    Хлеб с пышным мякишем, из пшеничной и рисовой муки и легким пикантными нотками тмина.<br>
-                                    Хлеб с пышным мякишем, из пшеничной и рисовой муки и легким пикантными нотками тмина.
-                                </p>
+                                <h2><a href="{{ route('viewNews', $post->id) }}">{{ $post['title_'.\App::getLocale()] }}</a></h2>
                             </div>
+                            @endforeach
                         </div>
                     </div>
+                    @endisset
+
+                    @isset($recipes)
                     <div class="row">
                         <div class="col-md-7">
+                            @foreach ($recipes as $rec)
                             <div class="item-result">
                                 <span class="tag">рецепты</span>
-                                <h2><a href="/">Гренки с хлебом «Сафийски»</a></h2>
-                                <p>Хлеб с пышным мякишем, из пшеничной и рисовой муки и легким пикантными нотками тмина.</p>
+                                <h2><a href="{{ route('viewRecipe', $rec->id) }}">{{ $rec['name_'.\App::getLocale()] }}</a></h2>
+                               
                             </div>
+                            @endforeach   
                         </div>
                     </div>
+                    @endisset
+
+                    @isset($stories)
                     <div class="row">
-                        <div class="col-md-12">
-                            <div class="pagination">
-                                <ul class="list-inline">
-                                    <li class="list-inline-item active"><a href="">1</a></li>
-                                    <li class="list-inline-item"><a href="">2</a></li>
-                                    <li class="list-inline-item"><a href="">3</a></li>
-                                    <li class="list-inline-item"><a href="">4</a></li>
-                                    <li class="list-inline-item"><a href="">5</a></li>
-                                </ul>
+                        <div class="col-md-7">
+                            @foreach ($stories as $story)
+                            <div class="item-result">
+                                <span class="tag">Истории</span>
+                                <h2><a href="{{ route('viewStory', $story->id) }}">{{ $story['title_'.\App::getLocale()] }}</a></h2>
+                               
                             </div>
+                            @endforeach   
                         </div>
                     </div>
+                    @endisset
+                   
                 </div>
                 
             </div>

@@ -14,7 +14,7 @@
                                 <h2>{{ $slid['desc_'.\App::getLocale()] }}</h2>
                             </div>
                             <a href="#modal-quiz" data-toggle="modal" class="kvis-button">
-                                <p>Какой хлеб подходит вам?</p>
+                                <p>@lang('messages.kakoy')</p>
                                 <img src="/frontend/images/slider-label.png" alt="">
                             </a>
                         </div>

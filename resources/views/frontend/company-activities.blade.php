@@ -1,7 +1,7 @@
 @extends('layouts.site')
 
 @section('parent')
-<li class="breadcrumb-item"><a href="/page/company">Компания</a></li>
+<li class="breadcrumb-item"><a href="/page/company">@lang('messages.company')</a></li>
 @endsection
 @section('child')
 {{ $page['title_'.\App::getLocale()] }}
@@ -38,7 +38,7 @@
                     @foreach ($activities as $act)
                     <div class="col-xl-6 doc-block" data-aos="fade-up" data-aos-delay="100">
                         <div class="doc-block__name"><span>{{ $loop->iteration }}.</span>{{  $act['title_'.\App::getLocale()] }}</div>
-                        <a href="/files/activities/{{ $act->file }}" target="_blank">смотреть
+                        <a href="/files/activities/{{ $act->file }}" target="_blank">@lang('messages.view')
                             {{ $act->format }} </a>
                     </div>
                     @endforeach

@@ -1,7 +1,7 @@
 @extends('layouts.site')
 
 @section('parent')
-<li class="breadcrumb-item"><a href="/page/company">Компания</a></li>
+<li class="breadcrumb-item"><a href="/page/company">@lang('messages.company')</a></li>
 @endsection
 @section('child')
 {{ $page['title_'.\App::getLocale()] }}
@@ -40,7 +40,7 @@
                         </div>
                         <div class="col-xl-5">
                             <div class="text">
-                                <h2 data-aos="fade-up" data-aos-delay="200">Заголовок</h2>
+                                <h2 data-aos="fade-up" data-aos-delay="200">@lang('messages.title')</h2>
                                 <div data-aos="fade-up" data-aos-delay="300">
                                     <p> {{ $page['content_'.\App::getLocale()] }}</p>
                                 </div>
@@ -51,7 +51,7 @@
                 </div>
                 <div class="certificate-block">
                     <div class="container certificate-slider-wrap">
-                        <h2 class="content-title" data-aos="fade-up" data-aos-delay="100"> Награды и сертификаты</h2>
+                        <h2 class="content-title" data-aos="fade-up" data-aos-delay="100"> @lang('messages.nagrads')</h2>
                         <div class="slider-nav style-dots">
                             <div class="cert__slider-dots"></div>
                             <div class="cert__slider-arrows d-flex"></div>

@@ -59,7 +59,10 @@ Route::group(['namespace'=>'Site'], function(){
 
     //sending messages
     Route::post('/appeal', 'IndexController@appeal')->name('appeal');
-    Route::post('/appeal2', 'IndexController@appeal')->name('appeal');
+    Route::post('/send-recipe', 'IndexController@sendRecipe')->name('sendRecipe');
+    Route::post('/send-story', 'IndexController@sendStory')->name('sendStory');
+    Route::post('/order-product', 'IndexController@orderProduct')->name('orderProduct');
+   
 
 });
 
@@ -142,3 +145,6 @@ Route::resource('admin/menus', 'Admin\\MenusController');
 Route::resource('admin/product-banners', 'Admin\\ProductBannersController');
 Route::resource('admin/sliders', 'Admin\\SlidersController');
 Route::resource('admin/main-bloks', 'Admin\\MainBloksController');
+Route::resource('admin/recipes-from-users', 'Admin\\RecipesFromUsersController');
+Route::resource('admin/stories-from-users', 'Admin\\StoriesFromUsersController');
+Route::resource('admin/order-products', 'Admin\\OrderProductsController');

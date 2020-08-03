@@ -1,1 +1,16 @@
-{"menus":[{"section":"Resources","items":[{"title":"Категория продукта","url":"\/admin\/categories"},{"title":"Теги продукта","url":"\/admin\/filters"},{"title":"Продукты","url":"\/admin\/products"},{"title":"Реквизиты","url":"\/admin\/requisites"},{"title":"Обращения","url":"\/admin\/appeals"},{"title":"Контакты","url":"\/admin\/contacts"},{"title":"Сотрудники","url":"\/admin\/personals"},{"title":"Страницы","url":"\/admin\/pages"},{"title":"Преимущества","url":"\/admin\/features"},{"title":"Магазины","url":"\/admin\/stores"},{"title":"Сертификаты","url":"\/admin\/sertificats"},{"title":"Истории","url":"\/admin\/histories"},{"title":"Статьи","url":"\/admin\/posts"},{"title":"Рецепты","url":"\/admin\/recipes"},{"title":"Теги для рецептов","url":"\/admin\/tags"},{"title":"Категория для сказок","url":"\/admin\/story-categories"},{"title":"Сказки","url":"\/admin\/stories"},{"title":"О Городе Слуцк","url":"\/admin\/about-cities"},{"title":"Сценарии","url":"\/admin\/scripts"},{"title":"Праздники","url":"\/admin\/holidays"},{"title":"Акции и Конкурцы","url":"\/admin\/stocks"}, {"title":"Участники конкурца","url":"\/admin\/competitions"}]}]}
+{"section":"Tools",
+    "items":[
+        {"title":"Generator","url":"\/admin\/generator"}
+    ]
+}
+
+{"section":"Админстратор",
+    "items":[
+        {"title":"Users","url":"\/admin\/users"},
+        {"title":"Roles","url":"\/admin\/roles"},
+        {"title":"Permissions","url":"\/admin\/permissions"},
+        {"title":"Activity Logs","url":"\/admin\/activitylogs"},
+        {"title":"Settings","url":"\/admin\/settings"},
+        {"title":"Generator","url":"\/admin\/generator"}
+    ]
+},

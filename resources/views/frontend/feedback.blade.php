@@ -28,7 +28,8 @@
                             <p>{{ $page['desc_'.\App::getLocale()] }}</p>
                         </div>
                         <div class="form">
-                            <form action="">
+                            <form action="/appeal" method="POST" enctype="multipart/form-data">
+                                @csrf
                                 <div class="form-group">
                                     <label for="name">Ваше имя <span>*</span></label>
                                       <input type="text" name="name" class="form-control" id="name" required="" value="">
@@ -43,7 +44,7 @@
                                   </div>
                                   <div class="form-group mb-0">
                                     <label for="message">Текст сообщения <span>*</span></label>
-                                      <textarea class="form-control" id="message" required="" name="Вопрос" rows="6" value=""></textarea>
+                                      <textarea class="form-control" id="message" required="" name="msg" rows="6" value=""></textarea>
                                   </div>
                                   <p class="my-4"><span class="mr-1">*</span>Поля, обязательные для заполнения</p>
                                   <div class="form-group">

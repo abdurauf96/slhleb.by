@@ -1,7 +1,7 @@
 @extends('layouts.site')
 
 @section('parent')
-<li class="breadcrumb-item"><a href="/page/interesting">Это интересно</a></li>
+<li class="breadcrumb-item"><a href="/page/interesting">@lang('messages.eto-int')</a></li>
 @endsection
 @section('child')
 {{ $page['title_'.\App::getLocale()] }}
@@ -30,22 +30,20 @@
             <a href="" id="scroll-down"><span></span></a>
         </div>
         <a href="#modal-quiz" data-toggle="modal" class="kvis-button">
-            <p>Какой хлеб подходит вам?</p>
+            <p>@lang('messages.kakoy')</p>
             <img src="/frontend/images/slider-label.png" alt="">
         </a>
     </div>
     <div class="section__content" style="background-image: url('/frontend/images/bg-main.jpg')">
         <div class="container-custom">
-            <a href="/page/city/history" class="item__card" style="background-image: url('/frontend/images/city-history.jpg')">
+            @foreach ($bloks as $blok)
+            <a href="/page/city/{{ $blok->key }}" class="item__card" style="background-image: url('/images/about/{{ $blok->image }}')">
                 <div class="item__card-tittle">
-                    <h2>История города Слуцк</h2>
+                    <h2>{{ $blok['title_'.\App::getLocale()] }}</h2>
                 </div>
             </a>
-            <a href="/page/city/travel" class="item__card" style="background-image: url('/frontend/images/city-history-2.jpg')">
-                <div class="item__card-tittle">
-                    <h2>Слуцк. Куда пойти?</h2>
-                </div>
-            </a>
+            @endforeach
+            
         </div>
         
         @include('layouts.footer')

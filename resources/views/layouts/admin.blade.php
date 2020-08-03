@@ -120,17 +120,21 @@
           <!-- sidebar menu: : style can be found in sidebar.less -->
           <ul class="sidebar-menu">
             
+          
             @foreach($laravelAdminMenus->menus as $section)
-            <li class="header">{{ $section->section }}</li>
-              @if($section->items)
-              @foreach($section->items as $menu)
-            <li>
-              <a href="{{ url($menu->url) }}">
-                <i class="fas fa-angle-double-right"></i> <span> {{ $menu->title }}</span>
+            <li class="treeview">
+              <a href="#">
+                <i class="fa fa-edit"></i> <span>{{ $section->section }}</span>
+                <i class="fa fa-angle-left pull-right"></i>
               </a>
-            </li>            
-             @endforeach
-             @endif
+              @if($section->items)
+              <ul class="treeview-menu" style="display: none;">
+                @foreach($section->items as $menu)
+                <li><a href="{{ url($menu->url) }}"><i class="fa fa-circle-o"></i> {{ $menu->title }}</a></li>
+                @endforeach
+              </ul>
+              @endif
+            </li>
             @endforeach
           </ul>
         </section>

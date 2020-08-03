@@ -117,7 +117,8 @@ class PageController extends Controller
     public function aboutCity(Request $request)
     {
         $page=Page::where('key', $request->path())->first();
-        return view('frontend.about-city', compact('page'));
+        $bloks=\App\AboutCity::all();
+        return view('frontend.about-city', compact('page', 'bloks'));
     }
 
     public function aboutView($key)
@@ -205,7 +206,39 @@ class PageController extends Controller
 
     public function search(Request $request)
     {
-        return view('frontend.search');
+        $q=$request->q;
+
+        $products=\App\Product::whereTranslationLike('name', '%'.$q.'%')
+        ->orWhereTranslationLike('description', '%'.$q.'%')
+        ->orWhereTranslationLike('about', '%'.$q.'%')
+        ->orWhereTranslationLike('consist', '%'.$q.'%')
+        ->get();
+
+        $posts=\App\Post::where('title_ru', 'LIKE', '%'.$q.'%')
+        ->orWhere('title_by', 'LIKE', '%'.$q.'%')
+        ->orWhere('title_en', 'LIKE', '%'.$q.'%')
+        ->orWhere('body_ru', 'LIKE', '%'.$q.'%')
+        ->orWhere('body_by', 'LIKE', '%'.$q.'%')
+        ->orWhere('body_en', 'LIKE', '%'.$q.'%')
+        ->get();
+
+        $recipes=\App\Recipe::where('name_ru', 'LIKE', '%'.$q.'%')
+        ->orWhere('name_by', 'LIKE', '%'.$q.'%')
+        ->orWhere('name_en', 'LIKE', '%'.$q.'%')
+        ->orWhere('consist_ru', 'LIKE', '%'.$q.'%')
+        ->orWhere('consist_by', 'LIKE', '%'.$q.'%')
+        ->orWhere('consist_en', 'LIKE', '%'.$q.'%')
+        ->get();
+
+        $stories=\App\Story::where('title_ru', 'LIKE', '%'.$q.'%')
+        ->orWhere('title_by', 'LIKE', '%'.$q.'%')
+        ->orWhere('title_en', 'LIKE', '%'.$q.'%')
+        ->orWhere('body_ru', 'LIKE', '%'.$q.'%')
+        ->orWhere('body_by', 'LIKE', '%'.$q.'%')
+        ->orWhere('body_en', 'LIKE', '%'.$q.'%')
+        ->get();
+
+        return view('frontend.search', compact('q','products', 'posts', 'recipes', 'stories'));
     }
 
     public function privacyPolicy(Request $request)

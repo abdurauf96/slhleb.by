@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use App\Stock;
+use App\ Stock;
 use App\Participant;
 use Illuminate\Http\Request;
 

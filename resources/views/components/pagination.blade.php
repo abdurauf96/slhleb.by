@@ -1,14 +1,5 @@
-{{-- <ul class="list-inline">
-    <li class="list-inline-item active"><a href="">1</a></li>
-    <li class="list-inline-item"><a href="">2</a></li>
-    <li class="list-inline-item"><a href="">3</a></li>
-    <li class="list-inline-item"><a href="">4</a></li>
-    <li class="list-inline-item"><a href="">5</a></li>
-</ul> --}}
 
 <ul class="list-inline ">
- 
-
     <!-- Pagination Elements -->
     @foreach ($elements as $element)
         <!-- "Three Dots" Separator -->
@@ -27,7 +18,5 @@
             @endforeach
         @endif
     @endforeach
-
-    
     
 </ul>
