@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8f23b639686b23b032791e6f2ec0d17e",
+    "content-hash": "6c68e82b0758841b4cf6fb9505b0d83f",
     "packages": [
         {
             "name": "anahkiasen/underscore-php",
@@ -239,6 +239,75 @@
                 "translation"
             ],
             "time": "2020-07-08T17:21:18+00:00"
+        },
+        {
+            "name": "chencha/share",
+            "version": "5.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/prodeveloper/social-share.git",
+                "reference": "bd1361dc70dd7879c80d325d5e8e2aaf1d5d9a81"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/prodeveloper/social-share/zipball/bd1361dc70dd7879c80d325d5e8e2aaf1d5d9a81",
+                "reference": "bd1361dc70dd7879c80d325d5e8e2aaf1d5d9a81",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "^5.0|^6.0",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "guzzlehttp/guzzle": ">=5.3",
+                "mockery/mockery": "^0.9.4",
+                "orchestra/testbench": "~3.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Chencha\\Share\\ShareServiceProvider"
+                    ],
+                    "aliases": {
+                        "Share": "Chencha\\Share\\ShareFacade"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Chencha\\Share": "src/"
+                },
+                "classmap": [
+                    "tests/TestCase.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "thujohn",
+                    "email": "jonathan.thuau@gmail.com"
+                },
+                {
+                    "name": "chencha",
+                    "email": "jacob@chenchatech.com"
+                },
+                {
+                    "name": "datashaman",
+                    "email": "marlinf@datashaman.com"
+                }
+            ],
+            "description": "Share links with Laravel 5/6",
+            "keywords": [
+                "laravel",
+                "laravel5",
+                "laravel6",
+                "share"
+            ],
+            "time": "2019-09-12T10:09:16+00:00"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",

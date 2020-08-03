@@ -92,10 +92,12 @@
                                                 <i class="fal fa-share-alt"></i>
                                             </div>	    	        
                                             <ul class="dropdown-menu dropdown-content">
-                                                <li><a href="https://facebook.com" target="_blank" class="fab fa-facebook-f"></a></li>
+                                                
+                                                <li><a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww.example.com&title={{ $product->translate(\App::getLocale())->name }}" target="_blank" class="fab fa-facebook-f"></a></li>
                                                 <li><a href="https://instagram.com" target="_blank" class="fab fa-instagram"></a></li>
                                                 <li><a href="https://odnoklassniki.ru" target="_blank" class="fab fa-odnoklassniki"></a></li>
-                                                <li><a href="https://vk.com" target="_blank" class="fab fa-vk"></a></li>
+                                                <li><a href="http://vk.com/share.php?url=http%3A%2F%2Fwww.example.com&title={{ $product->translate(\App::getLocale())->name }}&noparse=false" target="_blank" class="fab fa-vk"></a></li>
+                                                	
                                             </ul>	
                                         </div>	
                                     </div>

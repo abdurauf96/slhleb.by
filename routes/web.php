@@ -10,9 +10,13 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+// Route::get('/test', function()
+// {
+// 	return Share::load('http://www.example.com', 'Link description')->services();
+// });
 
 Route::group(['namespace'=>'Site'], function(){
-
+    
     Route::get('/', 'IndexController@index')->name('home');
     Route::get('/page/company', 'PageController@company')->name('company'); //done+
     Route::get('/page/company-today', 'PageController@companyToday')->name('companyToday'); // done++
