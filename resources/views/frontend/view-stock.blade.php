@@ -1,7 +1,7 @@
 @extends('layouts.site')
 
 @section('parent')
-<li class="breadcrumb-item"><a href="{{ route('stockCompetitions') }}">Акции и конкурсы</a></li>
+<li class="breadcrumb-item"><a href="{{ route('stockCompetitions') }}">@lang('messages.stocks')</a></li>
 @endsection
 @section('child')
 {{ $stock['title_'.\App::getLocale()] }}

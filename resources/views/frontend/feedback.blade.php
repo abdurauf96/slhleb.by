@@ -1,7 +1,7 @@
 @extends('layouts.site')
 
 @section('parent')
-<li class="breadcrumb-item"><a href="/page/contact">Контакт</a></li>
+<li class="breadcrumb-item"><a href="/page/contact">@lang('messages.cont')</a></li>
 @endsection
 @section('child')
 {{ $page['title_'.\App::getLocale()] }}
@@ -31,32 +31,32 @@
                             <form action="/appeal" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group">
-                                    <label for="name">Ваше имя <span>*</span></label>
+                                    <label for="name">@lang('messages.name') <span>*</span></label>
                                       <input type="text" name="name" class="form-control" id="name" required="" value="">
                                   </div>
                                   <div class="form-group">
-                                    <label for="phone">Контактный телефон <span>*</span></label>
+                                    <label for="phone">@lang('messages.contact') <span>*</span></label>
                                       <input type="text" name="phone" class="form-control" id="phone" required="" value="">
                                   </div>
                                   <div class="form-group">
-                                    <label for="email">E-mail для ответа <span>*</span></label>
+                                    <label for="email">@lang('messages.email_for')<span>*</span></label>
                                       <input type="text" name="email" class="form-control" id="email" required="" value="">
                                   </div>
                                   <div class="form-group mb-0">
-                                    <label for="message">Текст сообщения <span>*</span></label>
+                                    <label for="message">@lang('messages.text') <span>*</span></label>
                                       <textarea class="form-control" id="message" required="" name="msg" rows="6" value=""></textarea>
                                   </div>
-                                  <p class="my-4"><span class="mr-1">*</span>Поля, обязательные для заполнения</p>
+                                  <p class="my-4"><span class="mr-1">*</span>@lang('messages.req')</p>
                                   <div class="form-group">
                                       <div class="custom-file">
                                         <input type="file" name="file" class="custom-file-input" id="file" value="">
-                                        <label class="file" for="file">Прикрепить файл
-                                            <div class="btn btn-transparent">Выбрать файл</div>
+                                        <label class="file" for="file">@lang('messages.prik')
+                                            <div class="btn btn-transparent">@lang('messages.choose')</div>
                                         </label>
                                         <p class="file-return"></p>
                                     </div>
                                   </div>
-                                  <button type="submit" class="btn btn-red">Отправить</button>
+                                  <button type="submit" class="btn btn-red">@lang('messages.send')</button>
                             </form>
                         </div>
                         

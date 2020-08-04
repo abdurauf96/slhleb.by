@@ -1,6 +1,12 @@
 {
     "menus":
     [
+        {"section":"Админстратор",
+            "items":[
+                {"title":"Users","url":"\/admin\/users"}
+                
+            ]
+        },
         
         {"section":"Главная страница",
             "items":[
@@ -43,7 +49,8 @@
                 {"title":"Сценарии для праздников","url":"\/admin\/scripts"},
                 {"title":"Праздники","url":"\/admin\/holidays"},
                 {"title":"Акции и Конкурсы","url":"\/admin\/stocks"},
-                {"title":"Участники конкурсов","url":"\/admin\/competitions"}
+                {"title":"Участники конкурсов","url":"\/admin\/competitions"},
+                {"title":"Условия конкурса","url":"\/admin\/settings"}
             ]
         },
 
@@ -59,10 +66,10 @@
 
         {"section":"Заявки и заказы",
             "items":[
-                {"title":"Ре ","url":"\/admin\/recipes-from-users"},
-                {"title":"StoriesFromUsers","url":"\/admin\/stories-from-users"},
-                {"title":"OrderProducts","url":"\/admin\/order-products"},
-                {"title":"Appeals","url":"\/admin\/appeals"}
+                {"title":"Рецепты из клиентов ","url":"\/admin\/recipes-from-users"},
+                {"title":"Истории из клиентов","url":"\/admin\/stories-from-users"},
+                {"title":"Заказы","url":"\/admin\/order-products"},
+                {"title":"Обрашения","url":"\/admin\/appeals"}
             ]
         }
 

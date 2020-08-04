@@ -24,7 +24,7 @@
             <a href="" id="scroll-down"><span></span></a>
         </div>
         <a href="#modal-quiz" data-toggle="modal" class="kvis-button">
-            <p>Какой хлеб подходит вам?</p>
+            <p>@lang('messages.kakoy')</p>
             <img src="/frontend/images/slider-label.png" alt="">
         </a>
     </div>
@@ -38,7 +38,7 @@
                             <div class="row">
                                 <div class="col-md-8">
                                     <ul class="list-inline">
-                                        <li class="list-inline-item {{ \Request::get('filter')==''? 'active' : '' }} "><a href="{{ route('products', $category->id) }}">Все сценарии </a></li>
+                                        <li class="list-inline-item {{ \Request::get('filter')==''? 'active' : '' }} "><a href="{{ route('products', $category->id) }}">@lang('messages.all_scripts') </a></li>
                                         @foreach ($filters as $filter)
                                         <li class="list-inline-item {{ \Request::get('filter')==$filter->id ? 'active' : '' }}"><a href="?filter={{ $filter->id }}">{{ $filter->translate(\App::getLocale())->name }}</a></li>
                                         @endforeach
@@ -48,7 +48,7 @@
                                     <div class="ct-search__form">
                                         <form method="GET" action="/products/{{ $category->id }}">
                                             @csrf
-                                            <input type="search" name="q" class="ct-form-control form-control" placeholder="Поиск по названия">
+                                            <input type="search" name="q" class="ct-form-control form-control" placeholder="@lang('messages.search_po')">
                                         </form>
                                     </div>
                                 </div>

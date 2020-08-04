@@ -88,7 +88,7 @@
                                     <div class="navbar-info-share">
 
                                         <div class="dropdown-custom">			
-                                            <div class="dropdown-toggle">Поделиться
+                                            <div class="dropdown-toggle">@lang('messages.share')
                                                 <i class="fal fa-share-alt"></i>
                                             </div>	    	        
                                             <ul class="dropdown-menu dropdown-content">
@@ -112,7 +112,7 @@
                                                 <div class="panel-heading" role="tab" id="headingOne">
                                                     <h4 class="panel-title">
                                                         <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-1" aria-expanded="true" aria-controls="collapse-1">
-                                                            Состав продукта
+                                                            @lang('messages.sostav')
                                                             <span class="open"></span>
                                                         </a>
 
@@ -130,7 +130,7 @@
                                                 <div class="panel-heading" role="tab" id="headingTwo">
                                                     <h4 class="panel-title">
                                                         <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-2" aria-expanded="false" aria-controls="collapse-2">
-                                                            Описание
+                                                            @lang('messages.desc')
                                                             <span class="open"></span>
                                                         </a>
                                                     </h4>
@@ -143,11 +143,11 @@
                                             </div>
                                         </div>
                                         <div class="product-block-info">
-                                            <h3>В 100 г. продукта содежится:</h3>
+                                            <h3>@lang('messages.soderj'):</h3>
                                             <div class="wrap">
                                                 <div class="info-item">
                                                     <div class="info-item__title">
-                                                        Белков
+                                                        @lang('messages.belki')
                                                     </div>
                                                     <div class="info-item__body">
                                                         {{ $product->protein }}
@@ -155,7 +155,7 @@
                                                 </div>
                                                 <div class="info-item">
                                                     <div class="info-item__title">
-                                                        Углеводов
+                                                        @lang('messages.uglev')
                                                     </div>
                                                     <div class="info-item__body">
                                                         {{ $product->carbo }}
@@ -163,7 +163,7 @@
                                                 </div>
                                                 <div class="info-item">
                                                     <div class="info-item__title">
-                                                        Жиров
+                                                        @lang('messages.jirov')
                                                     </div>
                                                     <div class="info-item__body">
                                                         {{ $product->fat }}
@@ -171,8 +171,7 @@
                                                 </div>
                                                 <div class="info-item">
                                                     <div class="info-item__title">
-                                                        <small>Энергетическая ценность
-                                                        (калорийность)</small>
+                                                        <small>@lang('messages.energy')</small>
                                                     </div>
                                                     <div class="info-item__body">
                                                         <small>{{ $product->callory }}</small>	
@@ -185,19 +184,19 @@
                                             <table>
                                                 
                                                 <tr>
-                                                    <td class="td-desc"><img src="/images/icon/weight-icon.png" alt="">kg</td>
+                                                    <td class="td-desc"><img src="/images/icon/weight-icon.png" alt="">@lang('messages.ves')</td>
                                                     @foreach ($product->attributes  as $attr)
                                                     <td>{{ $attr->weight }}</td>
                                                     @endforeach
                                                 </tr>
                                                 <tr>
-                                                    <td class="td-desc">час</td>
+                                                    <td class="td-desc">@lang('messages.chas')</td>
                                                     @foreach ($product->attributes  as $attr)
                                                     <td>{{ $attr->time }}</td>
                                                     @endforeach
                                                 </tr>
                                                 <tr>
-                                                    <td class="td-desc">шт</td>
+                                                    <td class="td-desc">@lang('messages.sht')</td>
                                                     @foreach ($product->attributes  as $attr)
                                                     <td>{{ $attr->qty }}</td>
                                                     @endforeach
@@ -223,7 +222,7 @@
         <div class="section-recommend-wrap">
             <div class="container-custom">
                 <div class="title title-style">
-                    Рекомендуем с этим продуктом
+                    @lang('messages.recom')
                 </div>
                 <div class="recommend-slider-wrap">
                     <div class="slider-nav style-dots">

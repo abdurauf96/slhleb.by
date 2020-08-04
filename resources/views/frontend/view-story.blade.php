@@ -1,7 +1,7 @@
 @extends('layouts.site')
 
 @section('parent')
-<li class="breadcrumb-item"><a href="/page/stories">Истории</a></li>
+<li class="breadcrumb-item"><a href="/page/stories">@lang('messages.istori')</a></li>
 @endsection
 @section('child')
 {{ $story['title_'.\App::getLocale()] }}
@@ -13,7 +13,7 @@
 
         <div class="navbar-info-share">
             <div class="dropdown-custom">			
-                <a href="#" class="dropdown-toggle">Поделиться
+                <a href="#" class="dropdown-toggle">@lang('messages.share')
                     <i class="fal fa-share-alt"></i>
                 </a>	    	        
                 <ul class="dropdown-menu dropdown-content">
@@ -63,7 +63,7 @@
         <div class="section-recommend-wrap">
             <div class="container-custom">
                 <div class="title title-style">
-                    Похожие истории
+                    @lang('messages.poxoj_istori')
                 </div>
             </div>
             <div class="section-recipe__slider section-recipe-page">

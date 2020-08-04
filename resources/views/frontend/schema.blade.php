@@ -4,7 +4,7 @@
 <li class="breadcrumb-item"><a href="/page/contact">Контакты</a></li>
 @endsection
 @section('child')
-Схема проезда
+@lang('messages.schema')
 @endsection
 
 @section('content')
@@ -17,7 +17,7 @@
                     <div class="row">
                         <div class="col-xl-12">
                             <div class="header-title">
-                                Схема проезда
+                                @lang('messages.schema')
                             </div>
                         </div>
                     </div>

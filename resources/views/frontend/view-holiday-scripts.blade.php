@@ -1,7 +1,7 @@
 @extends('layouts.site')
 
 @section('parent')
-<li class="breadcrumb-item"><a href="{{ route('holidayScripts') }}">Сценарии праздников</a></li>
+<li class="breadcrumb-item"><a href="{{ route('holidayScripts') }}">@lang('messages.senariy')</a></li>
 @endsection
 @section('child')
 {{ $holiday['title_'.\App::getLocale()] }}

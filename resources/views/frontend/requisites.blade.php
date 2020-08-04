@@ -1,10 +1,10 @@
 @extends('layouts.site')
 
 @section('parent')
-<li class="breadcrumb-item"><a href="/page/contact">Контакты</a></li>
+<li class="breadcrumb-item"><a href="/page/contact">@lang('messages.contacts')</a></li>
 @endsection
 @section('child')
-Реквизиты
+@lang('messages.requisites')
 @endsection
 
 @section('content')
@@ -18,7 +18,7 @@
                     <div class="row">
                         <div class="col-xl-12">
                             <div class="header-title">
-                                Реквизиты
+                                @lang('messages.requisites')
                             </div>
                         </div>
                         <div class="col-xl-8">

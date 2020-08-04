@@ -1,16 +1,4 @@
-{"section":"Tools",
-    "items":[
-        {"title":"Generator","url":"\/admin\/generator"}
-    ]
-}
-
-{"section":"Админстратор",
-    "items":[
-        {"title":"Users","url":"\/admin\/users"},
-        {"title":"Roles","url":"\/admin\/roles"},
-        {"title":"Permissions","url":"\/admin\/permissions"},
-        {"title":"Activity Logs","url":"\/admin\/activitylogs"},
-        {"title":"Settings","url":"\/admin\/settings"},
-        {"title":"Generator","url":"\/admin\/generator"}
-    ]
-},
+{"title":"Roles","url":"\/admin\/roles"},
+                {"title":"Permissions","url":"\/admin\/permissions"},
+                {"title":"Activity Logs","url":"\/admin\/activitylogs"},
+                {"title":"Generator","url":"\/admin\/generator"}

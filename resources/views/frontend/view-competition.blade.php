@@ -1,7 +1,7 @@
 @extends('layouts.site')
 
 @section('parent')
-<li class="breadcrumb-item"><a href="{{ route('stockCompetitions') }}">Акции и конкурсы</a></li>
+<li class="breadcrumb-item"><a href="{{ route('stockCompetitions') }}">@lang('messages.stocks')</a></li>
 @endsection
 @section('child')
 {{ $competition['title_'.\App::getLocale()] }}
@@ -17,7 +17,7 @@
                         {{ $competition['title_'.\App::getLocale()] }}
                     </div>
                     <div class="block-group-btn">
-                        <h2>Ознакомиться подробнее:</h2>
+                        <h2>@lang('messages.ozna'):</h2>
                         <div class="block-info-btn">
                             <a href="#modal-competition-conditions" data-toggle="modal" class="btn btn-transparent">Условия проведения</a>
                             <a href="#modal-position" data-toggle="modal" class="btn btn-transparent">Положение</a>
@@ -40,14 +40,14 @@
             <div class="container">
                 <div class="section-stock-wrap">
                     <div class="title title-style">
-                        Победители
+                        @lang('messages.pobedi')
                     </div>
                     <div class="row">
                         @foreach ($competition->participants as $item)
                         @if ($item->point==1)
                         <div class="col-md-4">
                             <div class="item">
-                                <span><img src="/frontend/images/icon/place-1.png" alt="">1 место</span>
+                                <span><img src="/frontend/images/icon/place-1.png" alt="">1 @lang('messages.mesto')</span>
 
                                 <div class="item-thumbnail-gallery">
                                     <a href="/images/competitions/participiants/{{ $item->image }}" class="item-thumbnail">
@@ -64,7 +64,7 @@
                         @if ($item->point==2)
                         <div class="col-md-4">
                             <div class="item">
-                                <span><img src="/frontend/images/icon/place-2.png" alt="">2 место</span>
+                                <span><img src="/frontend/images/icon/place-2.png" alt="">2 @lang('messages.mesto')</span>
 
                                 <div class="item-thumbnail-gallery">
                                     <a href="/images/competitions/participiants/{{ $item->image }}" class="item-thumbnail">
@@ -81,7 +81,7 @@
                         @if ($item->point==3)
                         <div class="col-md-4">
                             <div class="item">
-                                <span><img src="/frontend/images/icon/place-3.png" alt="">3 место</span>
+                                <span><img src="/frontend/images/icon/place-3.png" alt="">3 @lang('messages.mesto')</span>
 
                                 <div class="item-thumbnail-gallery">
                                     <a href="/images/competitions/participiants/{{ $item->image }}" class="item-thumbnail">
@@ -101,7 +101,7 @@
                 </div>
                 <div class="section-stock-wrap">
                     <div class="title title-style">
-                        Участники
+                        @lang('messages.uchast')
                     </div>
                     <div class="row">
                         @foreach ($competition->participants as $part)
@@ -114,7 +114,7 @@
                                     </a>
                                 </div>
                                 <div class="item-name">
-                                    <h2>Участник № {{ $loop->iteration }}</h2>
+                                    <h2>@lang('messages.uchas') № {{ $loop->iteration }}</h2>
                                     <h3>{{ $part['name_'.\App::getLocale()] }}</h3>
                                     <p>{{ $part['desc_'.\App::getLocale()] }}</p>
                                 </div>
@@ -147,9 +147,9 @@
                     <a href="#" class="modal-logo">
                         <img src="/frontend/images/logo.png" alt="">
                     </a>
-                    <h5 class="header-title">Условия проведения</h5>
+                    <h5 class="header-title">@lang('messages.usloviya')</h5>
                     <div class="content">
-                        <p>Условия проведения конкурса</p>
+                        <p>{{ setting('usloviya_provedeniya') }}</p>
                     </div>
                 </div>
                 
@@ -171,9 +171,9 @@
                     <a href="#" class="modal-logo">
                         <img src="/frontend/images/logo.png" alt="">
                     </a>
-                    <h5 class="header-title">Положение</h5>
+                    <h5 class="header-title">@lang('messages.usloviya')</h5>
                     <div class="content">
-                        <p>Условия проведения конкурса</p>
+                        <p>{{ setting('polojenie') }}</p>
                     </div>
                 </div>
                 

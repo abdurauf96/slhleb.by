@@ -48,12 +48,14 @@
     {!! Form::file('image', null, ('' == 'required') ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control']) !!}
     {!! $errors->first('image', '<p class="help-block">:message</p>') !!}
 </div>
+
+@if(Auth::user()->hasRole('admin'))
 <div class="form-group{{ $errors->has('key') ? 'has-error' : ''}}">
     {!! Form::label('key', 'URL(ссылка)', ['class' => 'control-label']) !!}
     {!! Form::text('key', null, ('' == 'required') ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control']) !!}
     {!! $errors->first('key', '<p class="help-block">:message</p>') !!}
 </div>
-
+@endif
 
 <div class="form-group">
     {!! Form::submit($formMode === 'edit' ? 'Обновить' : 'Создать', ['class' => 'btn btn-primary']) !!}

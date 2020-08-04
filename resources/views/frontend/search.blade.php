@@ -1,7 +1,7 @@
 @extends('layouts.site')
 
 @section('child')
-Поиск по сайту
+@lang('messages.poisk')
 @endsection
 @section('content')
 <div class="section__wrapper">
@@ -12,15 +12,15 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="header-title">
-                                Поиск по сайту
+                                @lang('messages.poisk')
                             </div>
                         </div>
                         <div class="col-md-8 search-block">
-                            <p>Результаты поиска по зпросу «{{ $q }}»</p>
+                            <p>@lang('messages.results') «{{ $q }}»</p>
                             <form action="/search" method="GET" role="form">
                                 @csrf
                                 <div class="form-group">
-                                    <input type="text" name="q" value="" class="form-control" placeholder="Введите ваш поисковый запрос" required="">
+                                    <input type="text" name="q" value="" class="form-control" placeholder="@lang('messages.vvedite')" required="">
                                     <button type="submit" class="btn">
                                         <i class="fal fa-search"></i>
                                     </button>
@@ -47,7 +47,7 @@
                         <div class="col-md-7">
                             @foreach ($posts as $post)
                             <div class="item-result">
-                                <span class="tag">Новости</span>
+                                <span class="tag">@lang('messages.news')</span>
                                 <h2><a href="{{ route('viewNews', $post->id) }}">{{ $post['title_'.\App::getLocale()] }}</a></h2>
                             </div>
                             @endforeach
@@ -60,7 +60,7 @@
                         <div class="col-md-7">
                             @foreach ($recipes as $rec)
                             <div class="item-result">
-                                <span class="tag">рецепты</span>
+                                <span class="tag">@lang('messages.recipes')</span>
                                 <h2><a href="{{ route('viewRecipe', $rec->id) }}">{{ $rec['name_'.\App::getLocale()] }}</a></h2>
                                
                             </div>
@@ -74,7 +74,7 @@
                         <div class="col-md-7">
                             @foreach ($stories as $story)
                             <div class="item-result">
-                                <span class="tag">Истории</span>
+                                <span class="tag">@lang('messages.istori')</span>
                                 <h2><a href="{{ route('viewStory', $story->id) }}">{{ $story['title_'.\App::getLocale()] }}</a></h2>
                                
                             </div>

@@ -10,7 +10,7 @@
                 <div class="header-wrapper">
                     <div class="row">
                             <div class="header-title">
-                                Карта сайта
+                                @lang('messages.karta')
                             </div>
                         </div>
                     </div>
@@ -20,7 +20,7 @@
                         
                         <div class="col-xl-6 item" style="margin-bottom: 40px;">
                             <div class="item-title">
-                                <h2 style="margin-bottom: 10px;"><a href="" style="color: #ffd5a5;">Продукция</a></h2>
+                                <h2 style="margin-bottom: 10px;"><a href="" style="color: #ffd5a5;">@lang('messages.products')</a></h2>
                                 <ul style="padding-left: 1rem;">
                                     @foreach ($products as $prod)
                                     <li><a href="{{ route('viewProduct', $prod->id) }}">{{ $prod->translate(\App::getLocale())->name }}</a></li>

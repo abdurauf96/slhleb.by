@@ -12,7 +12,7 @@
             <div class="section-bg-floating ">
                     <div class="bg-floating-recipe"></div>
                 </div>
-            <div class="section-page__title">Рецепты</div>
+            <div class="section-page__title">@lang('messages.recipes')</div>
             <div class="section__wrapper" style="background-image: url('/frontend/images/section-interes-bg.jpg')">
                 @include('sections.recipes')
                 @include('layouts.footer')

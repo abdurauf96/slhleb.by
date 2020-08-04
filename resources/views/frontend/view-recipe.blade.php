@@ -1,7 +1,7 @@
 @extends('layouts.site')
 
 @section('parent')
-<li class="breadcrumb-item"><a href="/page/recipes">Рецепты</a></li>
+<li class="breadcrumb-item"><a href="/page/recipes">@lang('messages.recipes')</a></li>
 @endsection
 @section('child')
 {{ $recipe['name_'.\App::getLocale()] }}
@@ -12,7 +12,7 @@
     <div class="section__header h-100" style="background-image: url('/frontend/images/recipe-page-bg.jpg')">
         <div class="navbar-info-share">
             <div class="dropdown-custom">			
-                <a href="#" class="dropdown-toggle">Поделиться
+                <a href="#" class="dropdown-toggle">@lang('messages.share')
                     <i class="fal fa-share-alt"></i>
                 </a>	    	        
                 <ul class="dropdown-menu dropdown-content">
@@ -37,7 +37,7 @@
             </div>
         </div>
         <a href="#modal-quiz" data-toggle="modal" class="kvis-button">
-            <p>Какой хлеб подходит вам?</p>
+            <p>@lang('messages.kakoy')</p>
             <img src="/frontend/images/slider-label.png" alt="">
         </a>
     </div>
@@ -52,7 +52,7 @@
                     <div class="row mb-5">
                         <div class="col-xl-6">
                             <div class="recipe-page-title">
-                                <h2>Ингредиенты</h2>
+                                <h2>@lang('messages.ing')</h2>
                             </div>
                             <div class="recipe-page-description">
                                 {!! $recipe['consist_'.\App::getLocale()] !!}
@@ -60,7 +60,7 @@
                         </div>
                         <div class="col-xl-6">
                             <div class="recipe-page-title">
-                                <h2>Приготовление</h2>
+                                <h2>@lang('messages.prig')</h2>
                             </div>
                             @foreach ($recipe->steps as $step)
                             <div class="row">
@@ -75,7 +75,7 @@
                                 </div>
                                 <div class="col-xl-8">
                                     <div class="item-card__tittle">
-                                        <h2>Шаг {{ $loop->iteration }}</h2>
+                                        <h2>@lang('messages.shag') {{ $loop->iteration }}</h2>
                                         <p>{{ $step['title_'.\App::getLocale()] }}</p>
                                     </div>
                                 </div>	
@@ -95,7 +95,7 @@
         <div class="section-recommend-wrap">
             <div class="container-custom">
                 <div class="title title-style">
-                    Похожие рецепты
+                    @lang('messages.poxojie')
                 </div>
             </div>
             <div class="section-recipe__slider section-recipe-page">

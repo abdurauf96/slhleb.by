@@ -1,7 +1,7 @@
 @extends('layouts.site')
 
 @section('parent')
-<li class="breadcrumb-item"><a href="/page/company-news">Новости и достижения</a></li>
+<li class="breadcrumb-item"><a href="/page/company-news">@lang('messages.novosti')</a></li>
 @endsection
 @section('child')
 {{ $post['title_'.\App::getLocale()] }}
@@ -12,7 +12,7 @@
     <div class="section__header h-100" style="background-image: url('/frontend/images/news.jpg')">
         <div class="navbar-info-share">
             <div class="dropdown-custom">			
-                <a href="#" class="dropdown-toggle">Поделиться
+                <a href="#" class="dropdown-toggle">@lang('messages.share')
                     <i class="fal fa-share-alt"></i>
                 </a>	    	        
                 <ul class="dropdown-menu dropdown-content">
@@ -65,7 +65,7 @@
         <div class="section-recommend-wrap">
             <div class="container-custom offset-right">
                 <div class="title title-style">
-                    Другие новости
+                    @lang('messages.other_news')
                 </div>
                 <div class="recommend-slider-wrap">
                     
