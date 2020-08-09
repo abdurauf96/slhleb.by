@@ -1,7 +1,7 @@
 @extends('layouts.site')
 
 @section('parent')
-<li class="breadcrumb-item"><a href="/page/contact">Контакты</a></li>
+<li class="breadcrumb-item"><a href="/contact">Контакты</a></li>
 @endsection
 @section('child')
 @lang('messages.schema')

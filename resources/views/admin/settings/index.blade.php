@@ -5,10 +5,10 @@
         <div class="row">
             <div class="col-md-9">
                 <div class="card">
-                    <div class="card-header">Settings</div>
+                    <div class="card-header">Условия конкурса</div>
                     <div class="card-body">
                         <a href="{{ url('/admin/settings/create') }}" class="btn btn-success btn-sm" title="Add New Setting">
-                            <i class="fa fa-plus" aria-hidden="true"></i> Add New
+                            <i class="fa fa-plus" aria-hidden="true"></i>Добавить
                         </a>
 
                         {!! Form::open(['method' => 'GET', 'url' => '/admin/settings', 'class' => 'form-inline my-2 my-lg-0 float-right', 'role' => 'search'])  !!}
@@ -28,14 +28,17 @@
                             <table class="table table-borderless">
                                 <thead>
                                     <tr>
-                                        <th>Key</th><th>Value</th><th>Usage</th><th>Actions</th>
+                                        <th>Ключ</th>
+                                        <th>Файл</th>
+                                        <th>Пользование</th>
+                                        <th>Действия</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                 @foreach($settings as $item)
                                     <tr>
                                         <td>{{ $item->key }}</td>
-                                        <td>{{ $item->value }}</td>
+                                        <td>  <a href="/files/{{ $item->value }}">условия</a> </td>
                                         <td><code>setting('{{ $item->key }}')</code></td>
                                         <td>
                                             <a href="{{ url('/admin/settings/' . $item->id) }}" title="View Setting"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i></button></a>

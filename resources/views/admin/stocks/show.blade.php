@@ -40,6 +40,11 @@
                                     <tr><th> Содержимое Ru </th><td> {!! $stock->body_ru !!} </td></tr>
                                     <tr><th> Содержимое BY </th><td> {!! $stock->body_by !!} </td></tr>
                                     <tr><th> Содержимое EN </th><td> {!! $stock->body_en !!} </td></tr>
+                                    <tr><th> Фото фона </th><td> <img src="/images/stocks/{{ $stock->image_fon }}" width="100" height="80" alt=""> </td></tr>
+                                    @if($stock->type=='competition')
+                                    <tr><th> Условия конкурса </th><td> <a href="/images/stocks/{{ $stock->rules }}">скачать</a> </td></tr>
+                                    <tr><th> Положение  </th><td> <a href="/images/stocks/{{ $stock->state }}">скачать</a>  </td></tr>
+                                    @endif
                                 </tbody>
                             </table>
                         </div>

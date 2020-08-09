@@ -10,13 +10,16 @@
                     <div class="slider-wrapper">
                         <div class="slider-new__wrapper">
                             <div class="slider-new-product">
-                                @foreach ($new_products as $product)
+                                @foreach ($banners as $banner)
                                 <div class="new-products-item">
-                                    <a href="{{ route('viewProduct', $product->id) }}" class="item__card card__big" style="background-image: url('/frontend/images/new-bg.png')">
+                                    <a href="{{ $banner->url }}" class="item__card card__big" style="background-image: url('/images/homebanners/{{ $banner->image }}')">
                                         <div class="label__new">
-                                            <img src="/images/products/{{ $product->image }}" alt=""></div>
+                                            @if($banner->type=='xit')
+                                             <img src="/frontend/images/hit.png" width="80" height="100" alt=""> @else <img src="/frontend/images/new.png" width="80" height="100" alt="">  @endif
+                                            
+                                            </div>
                                         <div class="item__card-tittle">
-                                            <h2>{{ $product['name_'.\App::getLocale()] }}</h2>
+                                            <h2>{{ $banner['title_'.\App::getLocale()] }}</h2>
                                         </div>
                                     </a>
                                 </div> 

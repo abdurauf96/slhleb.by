@@ -18,42 +18,43 @@
 Route::group(['namespace'=>'Site'], function(){
     
     Route::get('/', 'IndexController@index')->name('home');
-    Route::get('/page/company', 'PageController@company')->name('company'); //done+
-    Route::get('/page/company-today', 'PageController@companyToday')->name('companyToday'); // done++
-    Route::get('/page/company-history', 'PageController@companyHistory')->name('companyHistory'); // done ++
-    Route::get('/page/company-activities', 'PageController@companyActivities')->name('companyActivities'); //done ++
-    Route::get('/page/company-news', 'PageController@companyNews')->name('companyNews'); //done ++
+    
+    Route::get('/company', 'PageController@company')->name('company'); //done+
+    Route::get('/company-today', 'PageController@companyToday')->name('companyToday'); // done++
+    Route::get('/company-history', 'PageController@companyHistory')->name('companyHistory'); // done ++
+    Route::get('/company-activities', 'PageController@companyActivities')->name('companyActivities'); //done ++
+    Route::get('/company-news', 'PageController@companyNews')->name('companyNews'); //done ++
     Route::get('/news/{id}', 'PageController@viewNews')->name('viewNews'); //done ++
 
-    Route::get('/page/cooperation', 'PageController@cooperation')->name('cooperation'); //done ++
-    Route::get('/page/interesting', 'PageController@interesting')->name('interesting'); //done ++
+    Route::get('/cooperation', 'PageController@cooperation')->name('cooperation'); //done ++
+    Route::get('/interesting', 'PageController@interesting')->name('interesting'); //done ++
 
-    Route::get('/page/recipes', 'PageController@companyRecipes')->name('recipes'); //done ++
+    Route::get('/recipes', 'PageController@companyRecipes')->name('recipes'); //done ++
     Route::get('/recipe/{id}', 'PageController@viewRecipe')->name('viewRecipe'); //done ++
 
-    Route::get('/page/stories', 'PageController@companyStories')->name('stories'); //done ++
+    Route::get('/stories', 'PageController@companyStories')->name('stories'); //done ++
     Route::get('/story/{id}', 'PageController@viewStory')->name('viewStory'); //done ++
 
-    Route::get('/page/about-city', 'PageController@aboutCity')->name('aboutCity'); //done ++
-    Route::get('/page/city/{key}', 'PageController@aboutView')->name('aboutView'); //done ++
+    Route::get('/about-city', 'PageController@aboutCity')->name('aboutCity'); //done ++
+    Route::get('/city/{key}', 'PageController@aboutView')->name('aboutView'); //done ++
 
-    Route::get('/page/holiday-scripts', 'PageController@holidayScripts')->name('holidayScripts'); //done ++
+    Route::get('/holiday-scripts', 'PageController@holidayScripts')->name('holidayScripts'); //done ++
     Route::get('/holiday-scripts/{id}', 'PageController@viewHolidayScript')->name('viewHolidayScript'); //done++
     
-    Route::get('/page/stock-competitions', 'PageController@stockCompetitions')->name('stockCompetitions'); //done ++
+    Route::get('/stock-competitions', 'PageController@stockCompetitions')->name('stockCompetitions'); //done ++
     Route::get('/stock/{id}', 'PageController@viewStock')->name('viewStock'); //done ++
     Route::get('/competition/{id}', 'PageController@viewCompetition')->name('viewCompetition'); //done ++
 
-    Route::get('/page/contact', 'PageController@contact')->name('contact'); //done++
-    Route::get('/page/feedback', 'PageController@feedback')->name('feedback'); //done ++
-    Route::get('/page/requisites', 'PageController@requisites')->name('requisites'); //done ++
-    Route::get('/page/schema', 'PageController@schema')->name('schema'); //done ++
-    Route::get('/page/stores', 'PageController@stores')->name('stores'); //done ++
-    Route::get('/page/appeals', 'PageController@appeals')->name('appeals'); //done ++
-    Route::get('/page/privacy-policy', 'PageController@privacyPolicy'); //done ++
+    Route::get('/contact', 'PageController@contact')->name('contact'); //done++
+    Route::get('/feedback', 'PageController@feedback')->name('feedback'); //done ++
+    Route::get('/requisites', 'PageController@requisites')->name('requisites'); //done ++
+    Route::get('/schema', 'PageController@schema')->name('schema'); //done ++
+    Route::get('/stores', 'PageController@stores')->name('stores'); //done ++
+    Route::get('/appeals', 'PageController@appeals')->name('appeals'); //done ++
+    Route::get('/privacy-policy', 'PageController@privacyPolicy'); //done ++
     Route::get('/search', 'PageController@search');
-    Route::get('/page/site-map', 'PageController@siteMap'); //done ++
-
+    Route::get('/site-map', 'PageController@siteMap'); //done ++
+    Route::get('/page/{key}', 'PageController@page')->name('page'); //done+
     Route::get('/products/{id}', 'ProductController@products')->name('products');
     Route::get('/product/{id}', 'ProductController@viewProduct')->name('viewProduct');
 
@@ -137,14 +138,18 @@ Route::group(['middleware'=>'auth'], function(){
     Route::post('/admin/participants/delete', 'Admin\\StocksController@participantDelete');
 
 
+    Route::resource('admin/menus', 'Admin\\MenusController');
+    Route::resource('admin/product-banners', 'Admin\\ProductBannersController');
+    Route::resource('admin/sliders', 'Admin\\SlidersController');
+    Route::resource('admin/main-bloks', 'Admin\\MainBloksController');
+    Route::resource('admin/recipes-from-users', 'Admin\\RecipesFromUsersController');
+    Route::resource('admin/stories-from-users', 'Admin\\StoriesFromUsersController');
+    Route::resource('admin/order-products', 'Admin\\OrderProductsController');
+
+
 });
 
 Route::get('logout', 'Auth\LoginController@logout');
 
-Route::resource('admin/menus', 'Admin\\MenusController');
-Route::resource('admin/product-banners', 'Admin\\ProductBannersController');
-Route::resource('admin/sliders', 'Admin\\SlidersController');
-Route::resource('admin/main-bloks', 'Admin\\MainBloksController');
-Route::resource('admin/recipes-from-users', 'Admin\\RecipesFromUsersController');
-Route::resource('admin/stories-from-users', 'Admin\\StoriesFromUsersController');
-Route::resource('admin/order-products', 'Admin\\OrderProductsController');
+
+Route::resource('admin/home-banners', 'Admin\\HomeBannersController');

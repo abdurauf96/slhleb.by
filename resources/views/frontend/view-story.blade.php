@@ -1,7 +1,7 @@
 @extends('layouts.site')
 
 @section('parent')
-<li class="breadcrumb-item"><a href="/page/stories">@lang('messages.istori')</a></li>
+<li class="breadcrumb-item"><a href="/stories">@lang('messages.istori')</a></li>
 @endsection
 @section('child')
 {{ $story['title_'.\App::getLocale()] }}

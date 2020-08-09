@@ -6,10 +6,10 @@
 
             <div class="col-md-9">
                 <div class="card">
-                    <div class="card-header">Mainbloks</div>
+                    <div class="card-header">Блоки</div>
                     <div class="card-body">
                         <a href="{{ url('/admin/main-bloks/create') }}" class="btn btn-success btn-sm" title="Add New MainBlok">
-                            <i class="fa fa-plus" aria-hidden="true"></i> Add New
+                            <i class="fa fa-plus" aria-hidden="true"></i>Добавить
                         </a>
 
                         {!! Form::open(['method' => 'GET', 'url' => '/admin/main-bloks', 'class' => 'form-inline my-2 my-lg-0 float-right', 'role' => 'search'])  !!}
@@ -29,14 +29,19 @@
                             <table class="table table-borderless">
                                 <thead>
                                     <tr>
-                                        <th>#</th><th>Title Ru</th><th>Title By</th><th>Title En</th><th>Actions</th>
+                                        <th>#</th><th>Заголовок</th>
+                                        <th>Фон блока By</th>
+                                        <th>Ссылка блока</th>
+                                        <th>Действия</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                 @foreach($mainbloks as $item)
                                     <tr>
-                                        <td>{{ $loop->iteration or $item->id }}</td>
-                                        <td>{{ $item->title_ru }}</td><td>{{ $item->title_by }}</td><td>{{ $item->title_en }}</td>
+                                        <td>{{ $loop->iteration  }}</td>
+                                        <td>{{ $item['title_'.\App::getLocale()] }}</td>
+                                        <td> <img src="/images/bloks/{{ $item->image }}" width="200" height="80" alt=""> {{ $item->title_by }}</td>
+                                        <td>{{ $item->url }}</td>
                                         <td>
                                             <a href="{{ url('/admin/main-bloks/' . $item->id) }}" title="View MainBlok"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i></button></a>
                                             <a href="{{ url('/admin/main-bloks/' . $item->id . '/edit') }}" title="Edit MainBlok"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a>

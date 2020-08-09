@@ -65,6 +65,26 @@ class StocksController extends Controller
             $file->move('images/stocks', $image);
             $requestData['image']=$image;
         }
+        if($request->hasFile('image_fon')){
+            $file=$request->file('image_fon');
+            $image_fon=time().$file->getClientOriginalName();
+            $file->move('images/stocks', $image_fon);
+            $requestData['image_fon']=$image_fon;
+        }
+
+        if($request->hasFile('rules')){
+            $file=$request->file('rules');
+            $rules=time().$file->getClientOriginalName();
+            $file->move('images/stocks', $rules);
+            $requestData['rules']=$rules;
+        }
+
+        if($request->hasFile('state')){
+            $file=$request->file('state');
+            $state=time().$file->getClientOriginalName();
+            $file->move('images/stocks', $state);
+            $requestData['state']=$state;
+        }
         Stock::create($requestData);
 
         return redirect('admin/stocks')->with('flash_message', 'Stock added!');
@@ -115,6 +135,26 @@ class StocksController extends Controller
             $image=time().$file->getClientOriginalName();
             $file->move('images/stocks', $image);
             $requestData['image']=$image;
+        }
+        if($request->hasFile('image_fon')){
+            $file=$request->file('image_fon');
+            $image_fon=time().$file->getClientOriginalName();
+            $file->move('images/stocks', $image_fon);
+            $requestData['image_fon']=$image_fon;
+        }
+
+        if($request->hasFile('rules')){
+            $file=$request->file('rules');
+            $rules=time().$file->getClientOriginalName();
+            $file->move('images/stocks', $rules);
+            $requestData['rules']=$rules;
+        }
+
+        if($request->hasFile('state')){
+            $file=$request->file('state');
+            $state=time().$file->getClientOriginalName();
+            $file->move('images/stocks', $state);
+            $requestData['state']=$state;
         }
         $stock = Stock::findOrFail($id);
         $stock->update($requestData);

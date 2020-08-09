@@ -3,20 +3,22 @@
 namespace App\Http\Controllers\Site;
 use App\Recipe;
 use App\Product;
-
+use App\Page;
+use App\Menu;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Appeal;
 
 class IndexController extends Controller
 {
+   
     public function index()
     {
         $recipes=Recipe::all();
-        $new_products=Product::where('status','new')->get();
+        $banners=\App\HomeBanner::all();
         $sliders=\App\Slider::all();
         $bloks=\App\MainBlok::all();
-        return view('frontend.welcome', compact('recipes', 'new_products', 'sliders', 'bloks'));
+        return view('frontend.welcome', compact('recipes', 'banners', 'sliders', 'bloks'));
     }
 
     public function appeal(Request $request)

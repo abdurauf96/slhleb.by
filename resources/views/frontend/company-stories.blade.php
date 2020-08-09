@@ -1,7 +1,7 @@
 @extends('layouts.site')
 
 @section('parent')
-<li class="breadcrumb-item"><a href="/page/company">@lang('messages.eto-int')</a></li>
+<li class="breadcrumb-item"><a href="/company">@lang('messages.eto-int')</a></li>
 @endsection
 @section('child')
 {{ $page['title_'.\App::getLocale()] }}

@@ -1,4 +1,89 @@
 {"title":"Roles","url":"\/admin\/roles"},
-                {"title":"Permissions","url":"\/admin\/permissions"},
-                {"title":"Activity Logs","url":"\/admin\/activitylogs"},
+{"title":"Permissions","url":"\/admin\/permissions"},
+{"title":"Activity Logs","url":"\/admin\/activitylogs"},
+{"title":"Generator","url":"\/admin\/generator"}
+{"title":"Страница 'Условия конкурса'","url":"\/admin\/settings"}
+
+
+
+{
+    "menus":
+    [
+        {"section":"Админстратор",
+            "items":[
+                {"title":"Users","url":"\/admin\/users"},
                 {"title":"Generator","url":"\/admin\/generator"}
+                
+            ]
+        },
+        
+        {"section":"Главная страница",
+            "items":[
+                {"title":"Меню","url":"\/admin\/menus"},
+                {"title":"Слайдер","url":"\/admin\/sliders"},
+                {"title":"Блоки главной страницы","url":"\/admin\/main-bloks"},
+                {"title":"Страницы","url":"\/admin\/pages"},
+                {"title":"Баннеры","url":"\/admin\/home-banners"}
+            ]
+        },
+
+        {"section":"Каталог",
+            "items":
+            [
+                {"title":"Категории","url":"\/admin\/categories"},
+                {"title":"Фильтры","url":"\/admin\/filters"},
+                {"title":"Товары","url":"\/admin\/products"},
+                {"title":"Баннеры","url":"\/admin\/product-banners"}  
+            ]
+        },
+        
+
+        {"section":"Компания",
+            "items":[
+                {"title":"Новости","url":"\/admin\/posts"},
+                {"title":"Характеристики","url":"\/admin\/features"},
+                {"title":"Сертификаты","url":"\/admin\/sertificats"},
+                {"title":"Слайдер для истории","url":"\/admin\/histories"},
+                {"title":"Информация о деятельности общества","url":"\/admin\/activities"}
+            ]
+        },
+
+        {"section":"Это интересно",
+            "items":[
+                {"title":"Теги для рецептов","url":"\/admin\/tags"},
+                {"title":"Рецепты","url":"\/admin\/recipes"},
+                
+                {"title":"Категории для рассказов","url":"\/admin\/story-categories"},
+                {"title":"Рассказы","url":"\/admin\/stories"},
+                {"title":"О городе Слуцк","url":"\/admin\/about-cities"},
+                {"title":"Сценарии для праздников","url":"\/admin\/scripts"},
+                {"title":"Праздники","url":"\/admin\/holidays"},
+                {"title":"Акции и Конкурсы","url":"\/admin\/stocks"},
+                {"title":"Участники конкурсов","url":"\/admin\/competitions"}
+                
+            ]
+        },
+
+        {"section":"Контакты",
+            "items":[
+                {"title":"Контактные данные","url":"\/admin\/contacts"},
+                {"title":"Контакты сотрудников","url":"\/admin\/personals"},               
+                {"title":"Фирменная торговля","url":"\/admin\/stores"},
+                {"title":"Реквизиты","url":"\/admin\/requisites"}
+            ]
+        },
+
+
+        {"section":"Заявки и заказы",
+            "items":[
+                {"title":"Рецепты из клиентов ","url":"\/admin\/recipes-from-users"},
+                {"title":"Истории из клиентов","url":"\/admin\/stories-from-users"},
+                {"title":"Заказы","url":"\/admin\/order-products"},
+                {"title":"Обрашения","url":"\/admin\/appeals"}
+            ]
+        }
+
+        
+
+    ]
+}

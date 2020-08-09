@@ -6,7 +6,7 @@
 
             <div class="col-md-9">
                 <div class="card">
-                    <div class="card-header"><h3>Конкурцы</h3></div>
+                    <div class="card-header"><h3>Конкурсы</h3></div>
                     <div class="card-body">
                         <br/>
                         <br/>
@@ -29,7 +29,7 @@
                                         <td>{{ $item->title_ru }}</td>
                                         
                                         <td>
-                                            <a class="btn btn-info" href="/admin/competitions/{{ $item->id }}/add-participant"> <i class="fa fa-plus"></i> Управлять участников этого конкурса</a>
+                                            <a class="btn btn-info" href="/admin/competitions/{{ $item->id }}/add-participant"> <i class="fa fa-plus"></i> Управление участниками</a>
                                             
                                         </td>
                                     </tr>

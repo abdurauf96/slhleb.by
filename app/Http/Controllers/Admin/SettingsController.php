@@ -57,8 +57,14 @@ class SettingsController extends Controller
                 'value' => 'required'
             ]
         );
-
         $requestData = $request->all();
+        if ($request->hasFile('value')) {
+            $file=$request->file('value');
+            $value=time().$file->getClientOriginalName();
+            $file->move('files', $value);
+            $requestData['value']=$value;
+        }
+        
 
         Setting::create($requestData);
 
@@ -111,7 +117,12 @@ class SettingsController extends Controller
             ]
         );
         $requestData = $request->all();
-
+        if ($request->hasFile('value')) {
+            $file=$request->file('value');
+            $value=time().$file->getClientOriginalName();
+            $file->move('files', $value);
+            $requestData['value']=$value;
+        }
         $setting = Setting::findOrFail($id);
         $setting->update($requestData);
 

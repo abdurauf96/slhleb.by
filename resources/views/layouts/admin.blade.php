@@ -166,6 +166,7 @@
     <script src='/plugins/fastclick/fastclick.min.js'></script>
     <!-- AdminLTE App -->
     <script src="/dist/js/app.min.js" type="text/javascript"></script>
+    <script src="/js/my.js" type="text/javascript"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/4.8.1/tinymce.min.js"></script>
     <script type="text/javascript">
         tinymce.init({

@@ -6,7 +6,7 @@
 
             <div class="col-md-9">
                 <div class="card">
-                    <div class="card-header">MainBlok {{ $mainblok->id }}</div>
+                    <div class="card-header">Блок {{ $mainblok->id }}</div>
                     <div class="card-body">
 
                         <a href="{{ url('/admin/main-bloks') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
@@ -32,11 +32,11 @@
                                     <tr>
                                         <th>ID</th><td>{{ $mainblok->id }}</td>
                                     </tr>
-                                    <tr><th> Title Ru </th><td> {{ $mainblok->title_ru }} </td></tr>
-                                    <tr><th> Title By </th><td> {{ $mainblok->title_by }} </td></tr>
-                                    <tr><th> Title En </th><td> {{ $mainblok->title_en }} </td></tr>
-                                    <tr><th> Image  </th><td> <img src="/images/bloks/{{ $mainblok->image }}" alt="" width="200"> </td></tr>
-                                    <tr><th> URL  </th><td> {{ $mainblok->url }} </td></tr>
+                                    <tr><th> Заголовок Ru </th><td> {{ $mainblok->title_ru }} </td></tr>
+                                    <tr><th> Заголовок By </th><td> {{ $mainblok->title_by }} </td></tr>
+                                    <tr><th> Заголовок En </th><td> {{ $mainblok->title_en }} </td></tr>
+                                    <tr><th> Фон  </th><td> <img src="/images/bloks/{{ $mainblok->image }}" alt="" width="200"> </td></tr>
+                                    <tr><th> Ссылка  </th><td> {{ $mainblok->url }} </td></tr>
                                 </tbody>
                             </table>
                         </div>

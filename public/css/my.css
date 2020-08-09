@@ -1,3 +1,7 @@
+.rules-block-hidden{
+    display: none;
+}
+
 .hide_form{
     display: none;
 }

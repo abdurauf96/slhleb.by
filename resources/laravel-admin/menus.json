@@ -3,7 +3,8 @@
     [
         {"section":"Админстратор",
             "items":[
-                {"title":"Users","url":"\/admin\/users"}
+                {"title":"Users","url":"\/admin\/users"},
+                {"title":"Generator","url":"\/admin\/generator"}
                 
             ]
         },
@@ -13,7 +14,8 @@
                 {"title":"Меню","url":"\/admin\/menus"},
                 {"title":"Слайдер","url":"\/admin\/sliders"},
                 {"title":"Блоки главной страницы","url":"\/admin\/main-bloks"},
-                {"title":"Страницы","url":"\/admin\/pages"}
+                {"title":"Страницы","url":"\/admin\/pages"},
+                {"title":"Баннеры","url":"\/admin\/home-banners"}
             ]
         },
 
@@ -49,8 +51,8 @@
                 {"title":"Сценарии для праздников","url":"\/admin\/scripts"},
                 {"title":"Праздники","url":"\/admin\/holidays"},
                 {"title":"Акции и Конкурсы","url":"\/admin\/stocks"},
-                {"title":"Участники конкурсов","url":"\/admin\/competitions"},
-                {"title":"Условия конкурса","url":"\/admin\/settings"}
+                {"title":"Участники конкурсов","url":"\/admin\/competitions"}
+               
             ]
         },
 

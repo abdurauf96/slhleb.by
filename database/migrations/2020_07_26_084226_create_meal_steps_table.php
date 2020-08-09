@@ -16,9 +16,9 @@ class CreateMealStepsTable extends Migration
         Schema::create('meal_steps', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('recipe_id');
-            $table->string('title_ru')->nullable();
-            $table->string('title_by')->nullable();
-            $table->string('title_en')->nullable();
+            $table->text('title_ru')->nullable();
+            $table->text('title_by')->nullable();
+            $table->text('title_en')->nullable();
             $table->string('image')->nullable();
             
             $table->timestamps();

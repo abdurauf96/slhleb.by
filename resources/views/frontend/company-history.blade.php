@@ -1,7 +1,7 @@
 @extends('layouts.site')
 
 @section('parent')
-<li class="breadcrumb-item"><a href="/page/company">@lang('messages.company')</a></li>
+<li class="breadcrumb-item"><a href="/company">@lang('messages.company')</a></li>
 @endsection
 @section('child')
 {{ $page['title_'.\App::getLocale()] }}
@@ -42,7 +42,7 @@
                             <div class="text">
                                 <h2 data-aos="fade-up" data-aos-delay="200">@lang('messages.title')</h2>
                                 <div data-aos="fade-up" data-aos-delay="300">
-                                    <p> {{ $page['content_'.\App::getLocale()] }}</p>
+                                    <p> {!! $page['content_'.\App::getLocale()] !!}</p>
                                 </div>
                                 
                             </div>

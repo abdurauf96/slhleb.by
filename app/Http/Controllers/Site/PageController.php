@@ -10,6 +10,14 @@ use App\Http\Controllers\Controller;
 
 class PageController extends Controller
 {
+    public function page(Request $request)
+    {
+        $page=Page::where('key', $request->path())->first();
+      
+        return view('frontend.page', compact('page'));
+    }
+
+
     public function company(Request $request)
     {
         $page=Page::where('key', $request->path())->first();
@@ -97,6 +105,7 @@ class PageController extends Controller
 
     public function companyStories(Request $request)
     {
+      
         $page=Page::where('key', $request->path())->first();
         $categories=\App\StoryCategory::all();
         if($cat_id=$request->get('category_id')){
@@ -149,6 +158,7 @@ class PageController extends Controller
     {
         $page=Page::where('key', $request->path())->first();
         $stocks=\App\Stock::paginate(6);
+        
         return view('frontend.stock-competitions', compact('page', 'stocks'));
     }
 
@@ -249,6 +259,14 @@ class PageController extends Controller
     }
 
     public function siteMap()
+    {
+        $menus=\App\Menu::whereNull('parent_id')->get();
+        $products=\App\Product::all();
+
+        return view('frontend.site-map', compact('menus', 'products'));
+    }
+
+    public function test()
     {
         $menus=\App\Menu::whereNull('parent_id')->get();
         $products=\App\Product::all();

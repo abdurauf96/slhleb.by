@@ -9,7 +9,7 @@
 
 @section('content')
 <div class="section__wrapper">
-    <div class="section__header h-100" style="background-image: url('/frontend/images/stocks-page-bg.jpg')">
+    <div class="section__header h-100" style="background-image: url('/images/stocks//{{ $competition->image_fon }}')">
         <div class="container">
             <div class="row">
                 <div class="col-xl-8 col-md-8">
@@ -19,8 +19,8 @@
                     <div class="block-group-btn">
                         <h2>@lang('messages.ozna'):</h2>
                         <div class="block-info-btn">
-                            <a href="#modal-competition-conditions" data-toggle="modal" class="btn btn-transparent">Условия проведения</a>
-                            <a href="#modal-position" data-toggle="modal" class="btn btn-transparent">Положение</a>
+                            <a href="#modal-competition-conditions" data-toggle="modal" class="btn btn-transparent">@lang('messages.usloviya')</a>
+                            <a href="#modal-position" data-toggle="modal" class="btn btn-transparent">@lang('messages.polojenie')</a>
                         </div>
                     </div>
                     
@@ -149,7 +149,7 @@
                     </a>
                     <h5 class="header-title">@lang('messages.usloviya')</h5>
                     <div class="content">
-                        <p>{{ setting('usloviya_provedeniya') }}</p>
+                        <p><a href="/images/stocks/{{ $competition->rules }}">Скачать</a></p>
                     </div>
                 </div>
                 
@@ -171,9 +171,9 @@
                     <a href="#" class="modal-logo">
                         <img src="/frontend/images/logo.png" alt="">
                     </a>
-                    <h5 class="header-title">@lang('messages.usloviya')</h5>
+                    <h5 class="header-title">@lang('messages.polojenie')</h5>
                     <div class="content">
-                        <p>{{ setting('polojenie') }}</p>
+                        <p> <a href="/images/stocks/{{ $competition->state }}">Скачать</a> </p>
                     </div>
                 </div>
                 

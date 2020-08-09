@@ -6,7 +6,7 @@
 
             <div class="col-md-9">
                 <div class="card">
-                    <div class="card-header">Акции и Конкурцы</div>
+                    <div class="card-header">Акции и Конкурсы</div>
                     <div class="card-body">
                         <a href="{{ url('/admin/stocks/create') }}" class="btn btn-success btn-sm" title="Add New Stock">
                             <i class="fa fa-plus" aria-hidden="true"></i> Добавить
