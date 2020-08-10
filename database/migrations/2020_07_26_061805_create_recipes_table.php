@@ -24,6 +24,8 @@ class CreateRecipesTable extends Migration
             $table->text('consist_en')->nullable();
             $table->string('time')->nullable();
             $table->string('image')->nullable();
+            $table->string('image_fon')->nullable();
+            $table->string('status')->integer()->default('null');
             });
     }
 

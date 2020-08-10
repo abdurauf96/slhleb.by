@@ -8,7 +8,8 @@ use App\Http\Controllers\Controller;
 use App\Product;
 use App\Category;
 use App\Filter;
-use App\ProductAttribute;
+use App\ProductAttribute;  
+use App\ProductImage;  
 use Illuminate\Http\Request;
 
 class ProductsController extends Controller
@@ -71,7 +72,7 @@ class ProductsController extends Controller
         $this->validate($request, [
 			'category_id' => 'required'
         ]);
-
+        dd($request->all());
         if ($request->hasFile('img')) {
             $file=$request->file('img');
             $img=time().$file->getClientOriginalName();
@@ -227,7 +228,7 @@ class ProductsController extends Controller
         $this->validate($request, [
 			'category_id' => 'required'
 		]);
-        
+        dd($request->all());
         if ($request->hasFile('new_img')) {
             $file=$request->file('new_img');
             $img=time().$file->getClientOriginalName();
@@ -309,5 +310,19 @@ class ProductsController extends Controller
         Product::find($id)->attributes()->delete();
         Product::destroy($id);
         return redirect('admin/products')->with('flash_message', 'Product deleted!');
+    }
+
+    public function uploadImages(Request $request)
+    {
+        foreach($request->file('images') as $image)
+        {
+            $img_name=$image->getClientOriginalName();
+            $image->move('images/products', $img_name);  
+              
+        }
+       
+
+        //ProductImage::create($request->all());
+        return response()->json(['uploaded'=>'uploaded successfully']);
     }
 }

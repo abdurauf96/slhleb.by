@@ -129,21 +129,24 @@
 </div>
 <div class="form-group{{ $errors->has('images') ? 'has-error' : ''}}">
     <label for="" class="control-label">Фото продукта для слайдера (можно прикрепить более одного)</label>
-    @if($formMode=='edit')
+    <input id="productImages" type="file" name="images[]" multiple class="form-control" >
     @php
-        $images=json_decode($product->images)
-    @endphp
-    @if(!empty($images))
-
-    @foreach ($images as $image)
-        <img src="/images/products/{{ $image }}" width="50" height="50" alt="">
-    @endforeach
+                $imgs=[];
+            @endphp
+    @if($formMode=='edit')
+        @php
+            $images=json_decode($product->images)
+        @endphp
+        @if(!empty($images))
+            
+            @foreach ($images as $image)
+            @php
+                array_push($imgs, "<img src='/images/products/$image' class='file-preview-image' width='225' height='260'  alt=''> ");
+            @endphp
+            @endforeach
+        @endif
     @endif
-    <input type="hidden" name="last_images" value="{{ $product->images }}" class="form-control" >
-    <input type="file" name="new_images[]" multiple class="form-control" >
-    @else
-    <input type="file" name="images[]" multiple class="form-control" >
-    @endif
+    
 </div>
 <div class="form-group{{ $errors->has('image_in') ? 'has-error' : ''}}">
     {!! Form::label('image_in', 'Внутренний вид продукта', ['class' => 'control-label']) !!}
@@ -184,3 +187,31 @@
 <div class="form-group">
     {!! Form::submit($formMode === 'edit' ? 'Обновить' : 'Создать', ['class' => 'btn btn-primary']) !!}
 </div>
+
+@section('scripts')
+<script>
+    $(document).ready(function() {
+        var edit_images=<?php echo json_encode($imgs); ?>;
+      
+        $('#productImages').fileinput({
+            initialPreview: $.each(edit_images, function( index, value ) {
+            value
+            }),
+            thema: 'fa',
+            uploadUrl: "/admin/upload-images",
+            uploadExtraData:function(){
+                return {
+                    _token:$("input[name='_token']").val()
+                };
+            },
+            allowedFileExtensions:['jpg', 'png', 'gif'],
+            overwriteInitial:false,
+            maxFileSize:1500,
+            slugCallback:function(filename){
+                return filename.replace('(','_').replace(']','_');
+            }
+        })
+    });
+    </script>
+
+@endsection

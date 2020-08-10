@@ -31,6 +31,9 @@ class Script extends Model
      */
     protected $fillable = ['name_ru', 'name_by', 'name_en'];
 
+    public function holidays(){
+        return $this->hasMany(Holiday::class);
+    }
     
 
     /**

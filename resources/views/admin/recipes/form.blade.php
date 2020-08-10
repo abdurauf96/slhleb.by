@@ -1,6 +1,6 @@
 <div class="form-group{{ $errors->has('tag_id') ? 'has-error' : ''}}">
     {!! Form::label('tag_id', 'Тег', ['class' => 'control-label']) !!}
-   <select name="tag_id" id="" class="form-control">
+   <select required name="tag_id" id="" class="form-control">
        @foreach ($tags as $item)
        <option @if($formMode=='edit') {{ $recipe->tag_id==$item->id ? 'selected' : '' }} @endif value="{{ $item->id }}">{{ $item->name_ru }}</option>
        @endforeach
@@ -46,8 +46,15 @@
     {!! Form::file('image', null, ('' == 'required') ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control']) !!}
     {!! $errors->first('image', '<p class="help-block">:message</p>') !!}
 </div>
-
-
+<div class="form-group{{ $errors->has('image') ? 'has-error' : ''}}">
+    {!! Form::label('image', 'Фото для фона', ['class' => 'control-label']) !!}
+    {!! Form::file('image_fon', null, ('' == 'required') ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control']) !!}
+    {!! $errors->first('image', '<p class="help-block">:message</p>') !!}
+</div>
+<div class="form-group">
+    <label class="control-label" for="">Для главной страницы</label>
+    <input type="checkbox" name="status" value="1" >
+</div>
 <div class="form-group">
     {!! Form::submit($formMode === 'edit' ? 'Обновить' : 'Создать', ['class' => 'btn btn-primary']) !!}
 </div>

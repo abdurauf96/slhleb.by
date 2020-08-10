@@ -115,6 +115,8 @@ class StoryCategoriesController extends Controller
      */
     public function destroy($id)
     {
+        $cat=StoryCategory::findOrFail($id);
+        $cat->stories()->delete();
         StoryCategory::destroy($id);
 
         return redirect('admin/story-categories')->with('flash_message', 'StoryCategory deleted!');

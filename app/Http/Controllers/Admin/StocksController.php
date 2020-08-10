@@ -171,6 +171,9 @@ class StocksController extends Controller
      */
     public function destroy($id)
     {
+        
+        $stock=Stock::findOrFail($id);
+        $stock->participants()->delete();
         Stock::destroy($id);
 
         return redirect('admin/stocks')->with('flash_message', 'Stock deleted!');

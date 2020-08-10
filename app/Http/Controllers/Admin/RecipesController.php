@@ -62,11 +62,18 @@ class RecipesController extends Controller
     {
         
         $requestData = $request->all();
+        
         if ($request->hasFile('image')) {
             $file=$request->file('image');
             $image=time().$file->getClientOriginalName();
             $file->move('images/recipes', $image);
             $requestData['image']=$image;
+        }
+        if ($request->hasFile('image_fon')) {
+            $file=$request->file('image_fon');
+            $image_fon=time().$file->getClientOriginalName();
+            $file->move('images/recipes', $image_fon);
+            $requestData['image_fon']=$image_fon;
         }
         $recipe=Recipe::create($requestData);
         $action='save';
@@ -119,6 +126,12 @@ class RecipesController extends Controller
             $image=time().$file->getClientOriginalName();
             $file->move('images/recipes', $image);
             $requestData['image']=$image;
+        }
+        if ($request->hasFile('image_fon')) {
+            $file=$request->file('image_fon');
+            $image_fon=time().$file->getClientOriginalName();
+            $file->move('images/recipes', $image_fon);
+            $requestData['image_fon']=$image_fon;
         }
         $recipe = Recipe::findOrFail($id);
         $recipe->update($requestData);

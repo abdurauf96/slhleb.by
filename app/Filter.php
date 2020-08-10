@@ -13,6 +13,7 @@ class Filter extends Model
     use Translatable;
     
     public $translatedAttributes = ['name'];
+    
     public function category()
     {
         return $this->belongsTo(Category::class);

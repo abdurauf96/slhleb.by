@@ -32,7 +32,7 @@
                                         <th>#</th>
                                         <th>Название </th>
                                      
-                                        <th>Actions</th>
+                                        <th>Действия</th>
                                     </tr>
                                 </thead>
                                 <tbody>

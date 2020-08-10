@@ -115,6 +115,8 @@ class ScriptsController extends Controller
      */
     public function destroy($id)
     {
+        $script=Script::findOrFail($id);
+        $script->holidays()->delete();
         Script::destroy($id);
 
         return redirect('admin/scripts')->with('flash_message', 'Script deleted!');

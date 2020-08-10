@@ -14,6 +14,8 @@
     <link href="http://code.ionicframework.com/ionicons/2.0.0/css/ionicons.min.css" rel="stylesheet" type="text/css" />
     <!-- Theme style -->
     <link href="/dist/css/AdminLTE.min.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.1.2/css/fileinput.min.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.1.2/themes/explorer/theme.min.css" rel="stylesheet" type="text/css" />
     <!-- AdminLTE Skins. Choose a skin from the css/skins 
          folder instead of downloading all of them to reduce the load. -->
     <link href="/dist/css/skins/_all-skins.min.css" rel="stylesheet" type="text/css" />
@@ -164,6 +166,8 @@
     <script src="/plugins/slimScroll/jquery.slimScroll.min.js" type="text/javascript"></script>
     <!-- FastClick -->
     <script src='/plugins/fastclick/fastclick.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.1.2/js/fileinput.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.1.2/themes/explorer/theme.min.css'></script>
     <!-- AdminLTE App -->
     <script src="/dist/js/app.min.js" type="text/javascript"></script>
     <script src="/js/my.js" type="text/javascript"></script>
@@ -173,6 +177,7 @@
             selector: '.crud-richtext'
         });
     </script>
+    
     {{-- <script type="text/javascript">
         $( document ).ready(function() {
             $(document).on('click', '.btn-add', function(e) {

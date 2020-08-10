@@ -122,6 +122,8 @@ class FiltersController extends Controller
      */
     public function destroy($id)
     {
+        $filter=Filter::findOrFail($id);
+        $filter->products()->delete();
         Filter::destroy($id);
 
         return redirect('admin/filters')->with('flash_message', 'Filter deleted!');

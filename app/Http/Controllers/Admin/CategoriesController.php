@@ -161,6 +161,9 @@ class CategoriesController extends Controller
      */
     public function destroy(Category $category)
     {
+        $category=Category::findOrFail($id);
+        $category->products()->delete();
+        $category->filters()->delete();
         $category->delete();
 
         return redirect('admin/categories')->with('flash_message', 'Category deleted!');

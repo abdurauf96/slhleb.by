@@ -32,3 +32,25 @@
         </div>
     </div>
 @endsection
+@section('scripts')
+<script>
+    $(document).ready(function() {
+        $('#productImages').fileinput({
+            thema: 'fa',
+            uploadUrl: "/admin/upload-images",
+            uploadExtraData:function(){
+                return {
+                    _token:$("input[name='_token']").val()
+                };
+            },
+            allowedFileExtensions:['jpg', 'png', 'gif'],
+            overwriteInitial:false,
+            maxFileSize:1500,
+            slugCallback:function(filename){
+                return filename.replace('(','_').replace(']','_');
+            }
+        })
+    });
+    </script>
+
+@endsection

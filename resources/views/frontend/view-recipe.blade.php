@@ -9,7 +9,7 @@
 
 @section('content')
 <div class="section__wrapper inner__page">
-    <div class="section__header h-100" style="background-image: url('/frontend/images/recipe-page-bg.jpg')">
+    <div class="section__header h-100" style="background-image: url('/images/recipes/{{ $recipe->image_fon }}')">
         <div class="navbar-info-share">
             <div class="dropdown-custom">			
                 <a href="#" class="dropdown-toggle">@lang('messages.share')

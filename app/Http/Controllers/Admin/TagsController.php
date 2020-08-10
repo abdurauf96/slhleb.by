@@ -115,6 +115,8 @@ class TagsController extends Controller
      */
     public function destroy($id)
     {
+        $tag=Tag::findOrFail($id);
+        $tag->recipes()->delete();
         Tag::destroy($id);
 
         return redirect('admin/tags')->with('flash_message', 'Tag deleted!');

@@ -14,7 +14,7 @@ class IndexController extends Controller
    
     public function index()
     {
-        $recipes=Recipe::all();
+        $recipes=Recipe::whereStatus(1)->get();
         $banners=\App\HomeBanner::all();
         $sliders=\App\Slider::all();
         $bloks=\App\MainBlok::all();
