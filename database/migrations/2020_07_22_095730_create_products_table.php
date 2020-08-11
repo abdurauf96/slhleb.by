@@ -22,12 +22,10 @@ class CreateProductsTable extends Migration
             $table->string('fat')->nullable();
             $table->string('callory')->nullable();
             $table->string('image')->nullable();
-            $table->string('images')->nullable();
             $table->string('image_in')->nullable();
             $table->string('image_out')->nullable();
             $table->string('weight')->nullable();
             $table->string('status')->nullable();
-            $table->string('slide_image')->nullable();
             });
     }
 

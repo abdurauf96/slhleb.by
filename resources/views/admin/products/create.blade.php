@@ -47,10 +47,9 @@
             overwriteInitial:false,
             maxFileSize:1500,
             slugCallback:function(filename){
-                return filename.replace('(','_').replace(']','_');
+                //return filename.replace('(','_').replace(']','_');
             }
         })
     });
     </script>
-
 @endsection

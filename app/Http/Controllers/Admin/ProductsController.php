@@ -72,7 +72,7 @@ class ProductsController extends Controller
         $this->validate($request, [
 			'category_id' => 'required'
         ]);
-        dd($request->all());
+        
         if ($request->hasFile('img')) {
             $file=$request->file('img');
             $img=time().$file->getClientOriginalName();
@@ -95,19 +95,7 @@ class ProductsController extends Controller
             $image_out=null;
         }
 
-        if($request->hasfile('images'))
-         {
-
-            foreach($request->file('images') as $image)
-            {
-                $name=time().$image->getClientOriginalName();
-                $image->move('images/products', $name);  
-                $images[] = $name;  
-            }
-         }else{
-             $images=null;
-         }
-
+        
          if ($request->hasFile('slide_image')) {
             $file=$request->file('slide_image');
             $slide_image=time().$file->getClientOriginalName();
@@ -127,7 +115,6 @@ class ProductsController extends Controller
             'image'=>$img,
             'image_in'=>$image_in,
             'image_out'=>$image_out,
-            'images'=>json_encode($images),
             'slide_image'=>$slide_image,
             'status'=>$request->status,
 
@@ -138,6 +125,18 @@ class ProductsController extends Controller
         
         Product::create($requestData);
         $product=Product::latest()->first();
+        if($request->hasfile('images'))
+         {
+
+            foreach($request->file('images') as $image)
+            {
+                $name=time().$image->getClientOriginalName();
+                $image->move('images/products', $name);  
+                ProductImage::create(['image'=>$name, 'product_id'=>$product->id]);
+            }
+         }
+
+        
         $action='save';
         return view('admin.products.add-attributes', compact('product', 'action'))->with('flash_message', 'Product added!');
     }
@@ -210,6 +209,7 @@ class ProductsController extends Controller
     public function edit($id)
     {
         $product = Product::findOrFail($id);
+       
         $filters=Filter::all();
         $categories=Category::all();
         return view('admin.products.edit', compact('product', 'categories', 'filters'));
@@ -228,7 +228,7 @@ class ProductsController extends Controller
         $this->validate($request, [
 			'category_id' => 'required'
 		]);
-        dd($request->all());
+       
         if ($request->hasFile('new_img')) {
             $file=$request->file('new_img');
             $img=time().$file->getClientOriginalName();
@@ -251,19 +251,6 @@ class ProductsController extends Controller
             $image_out=$request->last_image_out;
         }
 
-        if($request->hasfile('new_images'))
-         {
-
-            foreach($request->file('new_images') as $image)
-            {
-                $name=time().$image->getClientOriginalName();
-                $image->move('images/products', $name);  
-                $images[] = $name;  
-            }
-         }else{
-             $images=json_decode($request->last_images);
-         }
-
          if ($request->hasFile('slide_image')) {
             $file=$request->file('slide_image');
             $slide_image=time().$file->getClientOriginalName();
@@ -283,7 +270,6 @@ class ProductsController extends Controller
             'image'=>$img,
             'image_in'=>$image_in,
             'image_out'=>$image_out,
-            'images'=>json_encode($images),
             'slide_image'=>$slide_image,
             'status'=>$request->status,
             'ru'=>[ 'name'=>$request->name_ru, 'description'=>$request->description_ru, 'about'=>$request->about_ru, 'consist'=>$request->consist_ru ],
@@ -293,6 +279,16 @@ class ProductsController extends Controller
 
         $product = Product::findOrFail($id);
         $product->update($requestData);
+        if($request->hasfile('images'))
+         {
+
+            foreach($request->file('images') as $image)
+            {
+                $name=time().$image->getClientOriginalName();
+                $image->move('images/products', $name);  
+                ProductImage::create(['image'=>$name, 'product_id'=>$product->id]);
+            }
+         };
         $action='update';
         return view('admin.products.add-attributes', compact('product', 'action'))->with('flash_message', 'Product updated!');
        
@@ -318,11 +314,22 @@ class ProductsController extends Controller
         {
             $img_name=$image->getClientOriginalName();
             $image->move('images/products', $img_name);  
-              
+            ProductImage::create(['image'=>$img_name]);
         }
        
-
-        //ProductImage::create($request->all());
         return response()->json(['uploaded'=>'uploaded successfully']);
+    }
+
+    public function deleteProductPhoto($id)
+    {
+        ProductImage::destroy($id);
+
+    }
+
+    public function getfilters(Request $request)
+    {
+        
+        $filters=Filter::where('category_id', $request->id)->get();
+        return view('admin.products.ajax-filters', compact('filters'));
     }
 }

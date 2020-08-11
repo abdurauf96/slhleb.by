@@ -32,7 +32,7 @@ class Product extends Model
      *
      * @var array
      */
-    protected $fillable = ['category_id', 'filter_id', 'protein', 'carbo', 'fat', 'callory', 'image', 'images', 'image_in', 'image_out', 'weight','slide_image', 'status'];
+    protected $fillable = ['category_id', 'filter_id', 'protein', 'carbo', 'fat', 'callory', 'image', 'image_in', 'image_out', 'weight','slide_image', 'status'];
 
     public function category()
     {
@@ -48,6 +48,10 @@ class Product extends Model
         return $this->hasMany('App\ProductAttribute');
     }
 
+    public function photos()
+    {
+        return $this->hasMany('App\ProductImage', 'product_id');
+    }
     /**
      * Change activity log event description
      *

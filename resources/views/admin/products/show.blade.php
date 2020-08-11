@@ -80,12 +80,31 @@
                                         <td> <img src="/images/products/{{ $product->image }}" width="50" height="50" alt=""> </td>
                                     </tr>
                                     <tr>
+                                        <th>Фото для слайдера ДО/ПОСЛЕ (вид без упаковки) </th>
+                                        <td> <img src="/images/products/{{ $product->image_in }}" width="50" height="50" alt=""> </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Фото для слайдера ДО/ПОСЛЕ (вид с упаковкой) </th>
+                                        <td> <img src="/images/products/{{ $product->image_out }}" width="50" height="50" alt=""> </td>
+                                    </tr>
+                                    <tr>
                                         <th>Статус </th>
                                         <td> @if ($product->status=='new')
                                             Новинка
                                             @elseif($product->status=='xit')
                                             Хит
                                         @endif </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Фото для слайдера </th>
+                                        <td> 
+                                            <div class="photos-block">
+                                                @foreach ($product->photos as $photo)
+                                                
+                                                <img src="/images/products/{{ $photo->image }}" width="200" height="170" alt="">
+                                                 @endforeach
+                                            </div>
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table>

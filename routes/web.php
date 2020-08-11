@@ -99,12 +99,16 @@ Route::group(['middleware'=>'auth'], function(){
     Route::resource('admin/categories', 'Admin\\CategoriesController');
     Route::resource('admin/filters', 'Admin\\FiltersController');
     
+    //routes for products
     Route::post('ckeditor/image_upload', 'Admin\PostsController@uploadImage')->name('upload');
     Route::resource('admin/products', 'Admin\\ProductsController');
     Route::post('/admin/products/{id}/attribute', 'Admin\ProductsController@saveAttributes')->name('saveAttributes');
     Route::post('/admin/products/attribute/{id}/update', 'Admin\ProductsController@updateAttributes')->name('updateAttributes');
     Route::post('/admin/products/delete-attribute', 'Admin\ProductsController@deleteAttribute')->name('deleteProductAttribute');
     Route::post('/admin/upload-images', 'Admin\ProductsController@uploadImages')->name('uploadImages');
+    Route::get('/admin/photo/{id}/delete', 'Admin\ProductsController@deleteProductPhoto')->name('deleteProductPhoto');
+    Route::post('/admin/getfilters', 'Admin\ProductsController@getfilters');
+
     Route::resource('admin/requisites', 'Admin\\RequisitesController');
     Route::resource('admin/appeals', 'Admin\\AppealsController');
     Route::resource('admin/contacts', 'Admin\\ContactsController');
@@ -146,11 +150,10 @@ Route::group(['middleware'=>'auth'], function(){
     Route::resource('admin/recipes-from-users', 'Admin\\RecipesFromUsersController');
     Route::resource('admin/stories-from-users', 'Admin\\StoriesFromUsersController');
     Route::resource('admin/order-products', 'Admin\\OrderProductsController');
+    Route::resource('admin/home-banners', 'Admin\\HomeBannersController');
 
 
 });
 
 Route::get('logout', 'Auth\LoginController@logout');
 
-
-Route::resource('admin/home-banners', 'Admin\\HomeBannersController');

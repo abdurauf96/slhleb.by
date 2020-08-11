@@ -21,6 +21,7 @@
     <link href="/dist/css/skins/_all-skins.min.css" rel="stylesheet" type="text/css" />
     <link href="/css/my.css" rel="stylesheet" type="text/css" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -171,12 +172,7 @@
     <!-- AdminLTE App -->
     <script src="/dist/js/app.min.js" type="text/javascript"></script>
     <script src="/js/my.js" type="text/javascript"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/4.8.1/tinymce.min.js"></script>
-    <script type="text/javascript">
-        tinymce.init({
-            selector: '.crud-richtext'
-        });
-    </script>
+  
     
     {{-- <script type="text/javascript">
         $( document ).ready(function() {

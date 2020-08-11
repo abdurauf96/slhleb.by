@@ -1,3 +1,8 @@
+.photo-trash{
+    position: absolute;
+    font-size: 25   px;
+}
+
 .rules-block-hidden{
     display: none;
 }
