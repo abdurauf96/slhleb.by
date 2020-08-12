@@ -44,10 +44,10 @@
                                         <span>{{ Request::get('year') ? Request::get('year'): date('Y') }}<i class="far fa-chevron-down"></i></span>
                                     </div>	    	        
                                     <ul class="dropdown-menu dropdown-content">
-                                        <li><a href="/page/company-news?year=2018"  class="">2018</a></li>
-                                        <li><a href="/page/company-news?year=2019" class="">2019</a></li>
-                                        <li><a href="/page/company-news?year=2020" class="">2020</a></li>
-                                        <li><a href="/page/company-news?year=2021" class="">2021</a></li>
+                                        <li><a href="/company-news?year=2018"  class="">2018</a></li>
+                                        <li><a href="/company-news?year=2019" class="">2019</a></li>
+                                        <li><a href="/company-news?year=2020" class="">2020</a></li>
+                                        <li><a href="/company-news?year=2021" class="">2021</a></li>
                                     </ul>	
                                 </div>	
                             </div>
@@ -58,10 +58,10 @@
                         <div class="col-xl-12 item">
                             <a href="{{ route('viewNews', $post->id) }}" class="item__card" style="background-image: url('/frontend/images/news-item.jpg')">
                                 <div class="item__card-date">
-                                    <div class="day">{{ $post->created_at->format('d') }}</div>
+                                    <div class="day">{{ \Carbon\Carbon::parse($post->date)->format('d') }}</div>
                                     <div class="m-y">
-                                        <span>{{ $post->created_at->format('M') }}</span>
-                                        <span>{{ $post->created_at->format('Y') }}</span>
+                                        <span>{{\Carbon\Carbon::parse($post->date)->format('M')}}</span>
+                                        <span>{{\Carbon\Carbon::parse($post->date)->format('Y') }}</span>
                                     </div>
                                 </div>
                                 <div class="item__card-tittle">

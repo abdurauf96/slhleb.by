@@ -42,12 +42,21 @@
     {!! $errors->first('time', '<p class="help-block">:message</p>') !!}
 </div>
 <div class="form-group{{ $errors->has('image') ? 'has-error' : ''}}">
+    
     {!! Form::label('image', 'Фото', ['class' => 'control-label']) !!}
+    <br>
+    @if($formMode === 'edit')
+    <img src="/images/recipes/{{ $recipe->image }}" height="80" width="100" alt="">
+    @endif
     {!! Form::file('image', null, ('' == 'required') ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control']) !!}
     {!! $errors->first('image', '<p class="help-block">:message</p>') !!}
 </div>
 <div class="form-group{{ $errors->has('image') ? 'has-error' : ''}}">
     {!! Form::label('image', 'Фото для фона', ['class' => 'control-label']) !!}
+    <br>
+    @if($formMode === 'edit')
+    <img src="/images/recipes/{{ $recipe->image_fon }}" height="80" width="100" alt="">
+    @endif
     {!! Form::file('image_fon', null, ('' == 'required') ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control']) !!}
     {!! $errors->first('image', '<p class="help-block">:message</p>') !!}
 </div>

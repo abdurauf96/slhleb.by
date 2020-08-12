@@ -6,7 +6,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Post;
 use Illuminate\Http\Request;
-
+use Carbon\Carbon;
 class PostsController extends Controller
 {
     /**
@@ -62,6 +62,12 @@ class PostsController extends Controller
             $file->move('images/posts', $image);
             $requestData['image']=$image;
         }
+        if ($request->hasFile('image_fon')) {
+            $file=$request->file('image_fon');
+            $image_fon=time().$file->getClientOriginalName();
+            $file->move('images/posts', $image_fon);
+            $requestData['image_fon']=$image_fon;
+        }
         Post::create($requestData);
 
         return redirect('admin/posts')->with('flash_message', 'Post added!');
@@ -105,13 +111,19 @@ class PostsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+       
         $requestData = $request->all();
         if ($request->hasFile('image')) {
             $file=$request->file('image');
             $image=time().$file->getClientOriginalName();
             $file->move('images/posts', $image);
             $requestData['image']=$image;
+        }
+        if ($request->hasFile('image_fon')) {
+            $file=$request->file('image_fon');
+            $image_fon=time().$file->getClientOriginalName();
+            $file->move('images/posts', $image_fon);
+            $requestData['image_fon']=$image_fon;
         }
         $post = Post::findOrFail($id);
         $post->update($requestData);

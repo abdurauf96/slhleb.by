@@ -38,18 +38,11 @@
         $('#productImages').fileinput({
             thema: 'fa',
             uploadUrl: "/admin/upload-images",
-            uploadExtraData:function(){
-                return {
-                    _token:$("input[name='_token']").val()
-                };
-            },
+            showUpload: false,
             allowedFileExtensions:['jpg', 'png', 'gif'],
             overwriteInitial:false,
-            maxFileSize:1500,
-            slugCallback:function(filename){
-                //return filename.replace('(','_').replace(']','_');
-            }
+            maxFileSize:1500
         })
     });
-    </script>
+</script>
 @endsection

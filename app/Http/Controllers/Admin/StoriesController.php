@@ -66,6 +66,12 @@ class StoriesController extends Controller
             $file->move('images/stories', $image);
             $requestData['image']=$image;
         }
+        if ($request->hasFile('image_fon')) {
+            $file=$request->file('image_fon');
+            $image_fon=time().$file->getClientOriginalName();
+            $file->move('images/stories', $image_fon);
+            $requestData['image_fon']=$image_fon;
+        }
         Story::create($requestData);
 
         return redirect('admin/stories')->with('flash_message', 'Story added!');
@@ -116,6 +122,12 @@ class StoriesController extends Controller
             $image=time().$file->getClientOriginalName();
             $file->move('images/stories', $image);
             $requestData['image']=$image;
+        }
+        if ($request->hasFile('image_fon')) {
+            $file=$request->file('image_fon');
+            $image_fon=time().$file->getClientOriginalName();
+            $file->move('images/stories', $image_fon);
+            $requestData['image_fon']=$image_fon;
         }
         $story = Story::findOrFail($id);
         $story->update($requestData);

@@ -62,7 +62,7 @@
                     <div class="row mb-5">
                         @foreach ($stories as $story)             
                             <div class="col-xl-6">
-                                <a href="{{ route('viewStory', $story->id) }}" class="item-card item-small mb-5 f-large" style="background-image: url(/frontend/images/recipes-image.jpg)">
+                                <a href="{{ route('viewStory', $story->id) }}" class="item-card item-small mb-5 f-large" style="background-image: url(/images/stories/{{ $story->image }})">
                                     <div class="item-card-tags">
                                         <span>{{ $story->category['name_'.\App::getLocale()] }}</span>
                                     </div>

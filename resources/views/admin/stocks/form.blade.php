@@ -44,16 +44,28 @@
     {!! $errors->first('body_en', '<p class="help-block">:message</p>') !!}
 </div>
 <div class="form-group{{ $errors->has('image') ? 'has-error' : ''}}">
-    {!! Form::label('image', 'Фото', ['class' => 'control-label']) !!}
+    {!! Form::label('image', 'Фото (отображаеться на карточке)', ['class' => 'control-label']) !!}
+    <br>
+    @if($formMode === 'edit')
+    <img src="/images/stocks/{{ $stock->image }}" width="100" height="80" alt="">
+    @endif
     {!! Form::file('image', null, ('' == 'required') ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control']) !!}
     {!! $errors->first('image', '<p class="help-block">:message</p>') !!}
 </div>
 <div class="form-group{{ $errors->has('image') ? 'has-error' : ''}}">
-    {!! Form::label('image', 'Фото для фона', ['class' => 'control-label']) !!}
+    {!! Form::label('image', 'Фото (отображаеться на странице подробного чтения)', ['class' => 'control-label']) !!}
+    <br>
+    @if($formMode === 'edit')
+    <img src="/images/stocks/{{ $stock->image_fon }}" width="100" height="80" alt="">
+    @endif
     {!! Form::file('image_fon', null, ('' == 'required') ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control']) !!}
     {!! $errors->first('image', '<p class="help-block">:message</p>') !!}
 </div>
-
+<div class="form-group{{ $errors->has('image') ? 'has-error' : ''}}">
+    {!! Form::label('date', 'Дата', ['class' => 'control-label']) !!}
+    {!! Form::date('date', null, ('' == 'required') ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control']) !!}
+    {!! $errors->first('date', '<p class="help-block">:message</p>') !!}
+</div>
 <div class="form-group">
     {!! Form::submit($formMode === 'edit' ? 'Обновить' : 'Создать', ['class' => 'btn btn-primary']) !!}
 </div>

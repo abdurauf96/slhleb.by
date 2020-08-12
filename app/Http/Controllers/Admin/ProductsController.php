@@ -115,7 +115,6 @@ class ProductsController extends Controller
             'image'=>$img,
             'image_in'=>$image_in,
             'image_out'=>$image_out,
-            'slide_image'=>$slide_image,
             'status'=>$request->status,
 
             'ru'=>[ 'name'=>$request->name_ru, 'description'=>$request->description_ru, 'about'=>$request->about_ru, 'consist'=>$request->consist_ru ],
@@ -270,7 +269,6 @@ class ProductsController extends Controller
             'image'=>$img,
             'image_in'=>$image_in,
             'image_out'=>$image_out,
-            'slide_image'=>$slide_image,
             'status'=>$request->status,
             'ru'=>[ 'name'=>$request->name_ru, 'description'=>$request->description_ru, 'about'=>$request->about_ru, 'consist'=>$request->consist_ru ],
             'by'=>[ 'name'=>$request->name_by, 'description'=>$request->description_by, 'about'=>$request->about_by, 'consist'=>$request->consist_by ],

@@ -51,10 +51,10 @@ class PageController extends Controller
     {
         if($year=$request->get('year')){
             
-            $posts=\App\Post::whereYear('created_at', $year)->paginate(5);
+            $posts=\App\Post::whereYear('date', $year)->paginate(5);
             
         }else{
-            $posts=\App\Post::whereYear('created_at', date('Y'))->paginate(5);
+            $posts=\App\Post::whereYear('date', date('Y'))->paginate(5);
         }
         $page=Page::where('key', $request->path())->first();
         

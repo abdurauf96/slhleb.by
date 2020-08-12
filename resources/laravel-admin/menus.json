@@ -42,17 +42,34 @@
 
         {"section":"Это интересно",
             "items":[
+                {"title":"О городе Слуцк","url":"\/admin\/about-cities"}             
+            ]
+        },
+        {"section":"Рецепты",
+            "items":[
                 {"title":"Теги для рецептов","url":"\/admin\/tags"},
-                {"title":"Рецепты","url":"\/admin\/recipes"},
-                
-                {"title":"Категории для рассказов","url":"\/admin\/story-categories"},
-                {"title":"Рассказы","url":"\/admin\/stories"},
-                {"title":"О городе Слуцк","url":"\/admin\/about-cities"},
+                {"title":"Рецепты","url":"\/admin\/recipes"}
+            ]
+        },
+
+        {"section":"Рассказы",
+            "items":[
+               {"title":"Категории для рассказов","url":"\/admin\/story-categories"},
+                {"title":"Рассказы","url":"\/admin\/stories"} 
+            ]
+        },
+
+        {"section":"Праздники",
+            "items":[
                 {"title":"Сценарии для праздников","url":"\/admin\/scripts"},
-                {"title":"Праздники","url":"\/admin\/holidays"},
+                {"title":"Праздники","url":"\/admin\/holidays"}
+            ]
+        },
+
+        {"section":"Акции и Конкурсы",
+            "items":[
                 {"title":"Акции и Конкурсы","url":"\/admin\/stocks"},
                 {"title":"Участники конкурсов","url":"\/admin\/competitions"}
-               
             ]
         },
 

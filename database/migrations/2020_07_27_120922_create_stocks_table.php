@@ -26,6 +26,7 @@ class CreateStocksTable extends Migration
             $table->string('image_fon')->nullable();
             $table->string('rules')->nullable();
             $table->string('state')->nullable();
+            $table->string('date')->nullable();
             });
     }
 

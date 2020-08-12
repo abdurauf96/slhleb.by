@@ -44,15 +44,12 @@
                                                     <div class="product-weight"><p>{{ $product->weight }}</p></div>
                                                 </div>
                                                 
-                                                @php
-                                                    $images=json_decode($product->images);
-                                                @endphp
-                                                @isset($images)
-                                                @foreach ($images as $image)
-                                                <div class="product-slider-item" style="background-image: url('/images/products/{{ $image }}')">  
+                                                
+                                                @foreach ($product->photos as $image)
+                                                <div class="product-slider-item" style="background-image: url('/images/products/{{ $image->image }}')">  
                                                 </div>
                                                 @endforeach
-                                                @endisset
+                                                
                                                 
                                             </div>
                                         </div>
@@ -61,15 +58,12 @@
                                         <div class="product-nav-wrapper">
                                             <div class="product-nav-slider">
                                                 
-                                                @php
-                                                    $images=json_decode($product->images);
-                                                @endphp
-                                               @isset($images)
-                                                @foreach ($images as $image)
-                                                <div class="product-nav-slider-item" style="background-image: url('/images/products/{{ $image }}')">   
+                                               
+                                               @foreach ($product->photos as $image)
+                                                <div class="product-nav-slider-item" style="background-image: url('/images/products/{{ $image->image }}')">   
                                                 </div>
                                                 @endforeach
-                                                @endisset
+                                               
                                             </div>
                                             <div class="scrollbar">
                                                 <input type="range" id="range" min="1" value="1" step="1" max="" />

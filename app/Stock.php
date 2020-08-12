@@ -33,7 +33,7 @@ class Stock extends Model
      *
      * @var array
      */
-    protected $fillable = ['type', 'title_ru', 'title_by', 'title_en', 'body_ru', 'body_by', 'body_en', 'image', 'image_fon', 'rules', 'state'];
+    protected $fillable = ['type', 'title_ru', 'title_by', 'title_en', 'body_ru', 'body_by', 'body_en', 'image', 'image_fon', 'rules', 'state', 'date'];
 
     
 

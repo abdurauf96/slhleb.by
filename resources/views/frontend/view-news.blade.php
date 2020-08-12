@@ -9,7 +9,7 @@
 
 @section('content')
 <div class="section__wrapper news-page inner__page">
-    <div class="section__header h-100" style="background-image: url('/frontend/images/news.jpg')">
+    <div class="section__header h-100" style="background-image: url('/images/posts/{{ $post->image_fon }}')">
         <div class="navbar-info-share">
             <div class="dropdown-custom">			
                 <a href="#" class="dropdown-toggle">@lang('messages.share')
@@ -28,7 +28,7 @@
                 <div class="row">
                     <div class="col-xl-8 col-md-8">
                         <div class="header-date">
-                            <p><span>{{ $post->created_at->format('d') }} </span>{{ $post->created_at->format('M , Y') }}</p>
+                            <p><span>{{\Carbon\Carbon::parse($post->date)->format('d')}} </span>{{\Carbon\Carbon::parse($post->date)->format('M Y')}}</p>
                         </div>
                         <div class="header-title">
                             {{ $post['title_'.\App::getLocale()] }}
@@ -73,7 +73,7 @@
                         @foreach ($posts as $post)
                         <a href="{{ route('viewNews', $post->id) }}" class="slider-item item__card" style="background-image: url('/images/posts/{{ $post->image }}')">
                             <div class="item__card-date">
-                                <span>{{ $post->created_at->format('d M Y') }}</span>
+                                <span>{{\Carbon\Carbon::parse($post->date)->format('d M Y')}}</span>
                             </div>
                             <div class="item__card-tittle">
                                 <h2>{{ $post['title_'.\App::getLocale()] }}</h2>

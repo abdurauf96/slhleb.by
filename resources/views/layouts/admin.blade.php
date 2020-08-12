@@ -16,10 +16,12 @@
     <link href="/dist/css/AdminLTE.min.css" rel="stylesheet" type="text/css" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.1.2/css/fileinput.min.css" rel="stylesheet" type="text/css" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.1.2/themes/explorer/theme.min.css" rel="stylesheet" type="text/css" />
+    
     <!-- AdminLTE Skins. Choose a skin from the css/skins 
          folder instead of downloading all of them to reduce the load. -->
     <link href="/dist/css/skins/_all-skins.min.css" rel="stylesheet" type="text/css" />
     <link href="/css/my.css" rel="stylesheet" type="text/css" />
+    <link href="/css/dataTables.bootstrap.css" rel="stylesheet" type="text/css" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
     
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -97,7 +99,7 @@
             <div class="pull-left info">
               <p>Абдурауф Сайдалиев</p>
 
-              <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+              <a href="#"><i class="fa fa-circle text-success"></i> Online </a>
             </div>
           </div>
           <!-- search form -->
@@ -123,7 +125,7 @@
               @if($section->items)
               <ul class="treeview-menu" style="display: none;">
                 @foreach($section->items as $menu)
-                <li><a href="{{ url($menu->url) }}"><i class="fa fa-circle-o"></i> {{ $menu->title }}</a></li>
+                <li @if('/'.Request::path()==$menu->url) class="active" @endif ><a href="{{ url($menu->url) }}"><i class="fa fa-circle-o"></i> {{ $menu->title }}</a></li>
                 @endforeach
               </ul>
               @endif
@@ -172,6 +174,8 @@
     <!-- AdminLTE App -->
     <script src="/dist/js/app.min.js" type="text/javascript"></script>
     <script src="/js/my.js" type="text/javascript"></script>
+    <script src="/js/jquery.dataTables.js" type="text/javascript"></script>
+    <script src="/js/dataTables.bootstrap.js" type="text/javascript"></script>
   
     
     {{-- <script type="text/javascript">

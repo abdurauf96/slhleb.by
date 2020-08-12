@@ -39,19 +39,16 @@
 @endsection
 @section('scripts')
 <script>
-    $(document).ready(function() {
-       
-        $('#productImages').fileinput({
-            
-            thema: 'fa',
-            allowedFileExtensions:['jpg', 'png', 'gif'],
-            overwriteInitial:false,
-            maxFileSize:1500,
-            slugCallback:function(filename){
-                //return filename.replace('(','_').replace(']','_');
-            }
-        })
-    });
-    </script>
+$(document).ready(function() {
+    $('#productImages').fileinput({
+        thema: 'fa',
+        uploadUrl: "/admin/upload-images",
+        showUpload: false,
+        allowedFileExtensions:['jpg', 'png', 'gif'],
+        overwriteInitial:false,
+        maxFileSize:1500
+    })
+});    
+</script>
 
 @endsection
