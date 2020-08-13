@@ -36,7 +36,7 @@ Route::group(['namespace'=>'Site'], function(){
     Route::get('/story/{id}', 'PageController@viewStory')->name('viewStory'); //done ++
 
     Route::get('/about-city', 'PageController@aboutCity')->name('aboutCity'); //done ++
-    Route::get('/city/{key}', 'PageController@aboutView')->name('aboutView'); //done ++
+    Route::get('/slutsk/{key}', 'PageController@aboutView')->name('aboutView'); //done ++
 
     Route::get('/holiday-scripts', 'PageController@holidayScripts')->name('holidayScripts'); //done ++
     Route::get('/holiday-scripts/{id}', 'PageController@viewHolidayScript')->name('viewHolidayScript'); //done++

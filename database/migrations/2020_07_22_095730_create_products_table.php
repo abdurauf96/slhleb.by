@@ -26,6 +26,7 @@ class CreateProductsTable extends Migration
             $table->string('image_out')->nullable();
             $table->string('weight')->nullable();
             $table->string('status')->nullable();
+            $table->string('recommend')->nullable();
             });
     }
 

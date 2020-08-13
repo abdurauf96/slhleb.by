@@ -176,7 +176,10 @@
    Новинка <input type="radio" value="new" @if($formMode === 'edit') {{ $product->status=='new' ? 'checked' : '' }} @endif name="status"> &nbsp &nbsp &nbsp
    Обычный <input type="radio" value="default" @if($formMode === 'edit') {{ $product->status=='default' ? 'checked' : '' }} @endif name="status">
 </div>
-
+<div class="form-group">
+    <label class="control-label" for="">Рекомендуемый</label> <br>
+    <input type="checkbox" value="1" @if($formMode === 'edit')  {{ $product->recommend=='1' ? 'checked' : '' }} @endif name="recommend"> 
+ </div>
 <div class="form-group">
     {!! Form::submit($formMode === 'edit' ? 'Обновить' : 'Создать', ['class' => 'btn btn-primary']) !!}
 </div>

@@ -224,7 +224,7 @@
                         <div class="recommend__slider-arrows d-flex"></div>
                     </div>
                     <div class="recommend-slider">
-                        @foreach ($product->filter->products as $prod)
+                        @foreach ($recommends as $prod)
                         <a href="{{ route('viewProduct', $prod->id) }}" class="recommend-slider-item catalog-list__item">
                             <div class="item-image">
                                 <img src="/images/products/{{ $prod->image }}" alt="">

@@ -42,10 +42,10 @@
                             <div class="row">
                                 <div class="col-md-10">
                                     <ul class="list-inline">
-                                        <li class="list-inline-item {{ \Request::get('category_id')==''? 'active' : '' }} "><a href="/page/stories">Все истории</a></li>
+                                        <li class="list-inline-item {{ \Request::get('category_id')==''? 'active' : '' }} "><a href="/stories">Все истории</a></li>
                                         @foreach ($categories as $cat)
                                         <li class="list-inline-item {{ \Request::get('category_id')==$cat->id? 'active' : '' }}" >
-                                            <a href="/page/stories?category_id={{ $cat->id }}">{{ $cat['name_'.\App::getLocale()] }}</a></li> 
+                                            <a href="/stories?category_id={{ $cat->id }}">{{ $cat['name_'.\App::getLocale()] }}</a></li> 
                                         @endforeach
                                     </ul>
                                 </div>

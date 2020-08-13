@@ -38,9 +38,9 @@
                             <div class="row">
                                 <div class="col-md-10">
                                     <ul class="list-inline">
-                                        <li class="list-inline-item {{ \Request::get('script')==''? 'active' : '' }} "><a href="{{ route('holidayScripts') }}">Все сценарии </a></li>
+                                        <li class="list-inline-item {{ \Request::get('script')==''? 'active' : '' }} "><a href="{{ route('holidayScripts') }}">@lang('messages.all_scripts') </a></li>
                                         @foreach ($scripts as $script)
-                                        <li class="list-inline-item {{ \Request::get('script')==$script->id ? 'active' : '' }}"><a href="/page/holiday-scripts?script={{ $script->id }}">{{ $script['name_'.\App::getLocale()] }}</a></li>
+                                        <li class="list-inline-item {{ \Request::get('script')==$script->id ? 'active' : '' }}"><a href="/holiday-scripts?script={{ $script->id }}">{{ $script['name_'.\App::getLocale()] }}</a></li>
                                         @endforeach
                                          
                                     </ul>

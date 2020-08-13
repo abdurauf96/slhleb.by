@@ -37,7 +37,7 @@
     <div class="section__content" style="background-image: url('/frontend/images/bg-main.jpg')">
         <div class="container-custom">
             @foreach ($bloks as $blok)
-            <a href="/page/city/{{ $blok->key }}" class="item__card" style="background-image: url('/images/about/{{ $blok->image }}')">
+            <a href="/slutsk/{{ $blok->key }}" class="item__card" style="background-image: url('/images/about/{{ $blok->image }}')">
                 <div class="item__card-tittle">
                     <h2>{{ $blok['title_'.\App::getLocale()] }}</h2>
                 </div>

@@ -64,6 +64,12 @@ class AboutCitiesController extends Controller
             $file->move('images/about', $image);
             $requestData['image']=$image;
         }
+        if ($request->hasFile('image_fon')) {
+            $file=$request->file('image_fon');
+            $image_fon=time().$file->getClientOriginalName();
+            $file->move('images/about', $image_fon);
+            $requestData['image_fon']=$image_fon;
+        }
         AboutCity::create($requestData);
 
         return redirect('admin/about-cities')->with('flash_message', 'AboutCity added!');
@@ -114,6 +120,12 @@ class AboutCitiesController extends Controller
             $image=time().$file->getClientOriginalName();
             $file->move('images/about', $image);
             $requestData['image']=$image;
+        }
+        if ($request->hasFile('image_fon')) {
+            $file=$request->file('image_fon');
+            $image_fon=time().$file->getClientOriginalName();
+            $file->move('images/about', $image_fon);
+            $requestData['image_fon']=$image_fon;
         }
         $aboutcity = AboutCity::findOrFail($id);
         $aboutcity->update($requestData);

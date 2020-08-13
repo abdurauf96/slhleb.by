@@ -33,6 +33,11 @@
     {!! Form::file('image', null, ('' == 'required') ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control']) !!}
     {!! $errors->first('image', '<p class="help-block">:message</p>') !!}
 </div>
+<div class="form-group{{ $errors->has('image') ? 'has-error' : ''}}">
+    {!! Form::label('image', 'Фото (отображаеться на странице подробного чтения) ', ['class' => 'control-label']) !!}
+    {!! Form::file('image_fon', null, ('' == 'required') ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control']) !!}
+    {!! $errors->first('image', '<p class="help-block">:message</p>') !!}
+</div>
 <div class="form-group{{ $errors->has('key') ? 'has-error' : ''}}">
     {!! Form::label('key', 'Key', ['class' => 'control-label']) !!}
     {!! Form::text('key', null, ('' == 'required') ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control']) !!}

@@ -44,7 +44,7 @@
                                     <ul class="list-inline">
                                         <li class="list-inline-item {{ \Request::get('tag')==''? 'active' : '' }} "><a href="{{ route('recipes') }}">@lang('messages.all_rec')</a></li>
                                         @foreach ($tags as $tag)
-                                        <li class="list-inline-item {{ \Request::get('tag')==$tag->id ? 'active' : '' }}"><a href="/page/recipes?tag={{ $tag->id }}">{{ $tag['name_'.\App::getLocale()] }}</a></li>
+                                        <li class="list-inline-item {{ \Request::get('tag')==$tag->id ? 'active' : '' }}"><a href="/recipes?tag={{ $tag->id }}">{{ $tag['name_'.\App::getLocale()] }}</a></li>
                                         @endforeach
                                     </ul>
                                 </div>

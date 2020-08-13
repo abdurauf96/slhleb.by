@@ -72,7 +72,7 @@ class ProductsController extends Controller
         $this->validate($request, [
 			'category_id' => 'required'
         ]);
-        
+        dd($request->all());
         if ($request->hasFile('img')) {
             $file=$request->file('img');
             $img=time().$file->getClientOriginalName();

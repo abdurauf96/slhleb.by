@@ -31,6 +31,7 @@ class ProductController extends Controller
     public function viewProduct(Request $request, $id)
     {
         $product=Product::findOrFail($id);
-        return view('frontend.view-product', compact('product'));
+        $recommends=Product::where('recommend', 1)->get();
+        return view('frontend.view-product', compact('product', 'recommends'));
     }
 }
