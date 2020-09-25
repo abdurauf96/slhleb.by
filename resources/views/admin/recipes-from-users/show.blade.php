@@ -32,7 +32,11 @@
                                     <tr>
                                         <th>ID</th><td>{{ $recipesfromuser->id }}</td>
                                     </tr>
-                                    <tr><th> Name </th><td> {{ $recipesfromuser->name }} </td></tr><tr><th> Phone </th><td> {{ $recipesfromuser->phone }} </td></tr><tr><th> Email </th><td> {{ $recipesfromuser->email }} </td></tr>
+                                    <tr><th> Имя </th><td> {{ $recipesfromuser->name }} </td></tr>
+                                    <tr><th> Телефон </th><td> {{ $recipesfromuser->phone }} </td></tr>
+                                    <tr><th> Email </th><td> {{ $recipesfromuser->email }} </td></tr>
+                                    <tr><th> Сообщение </th><td> {{ $recipesfromuser->msg }} </td></tr>
+                                    <tr><th> Файл </th><td><img src="/files/users/recipes/{{ $recipesfromuser->file }}" style="width:350px;">  </td></tr>
                                 </tbody>
                             </table>
                         </div>

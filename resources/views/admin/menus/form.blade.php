@@ -1,9 +1,9 @@
 <div class="form-group{{ $errors->has('parent_id') ? 'has-error' : ''}}">
     {!! Form::label('parent_id', 'Тип меню', ['class' => 'control-label']) !!}
-    <select name="parent_id" class="form-control" id="">
+    <select name="parent_id" class="form-control" id="choose_menu">
         <option value="">Родительское меню</option>
         @foreach ($parent_menus as $item)
-            <option @if(isset($menu)) @if($menu->parent_id==$item->id) selected @endif @endif value="{{ $item->id }}">{{ $item->title_ru }}</option>
+            <option @if(isset($menu)) @if($menu->parent_id==$item->id) selected @endif @endif data-url={{ $item->url }} value="{{ $item->id }}">{{ $item->title_ru }}</option>
             
         @endforeach
     </select>
@@ -25,7 +25,7 @@
 </div>
 <div class="form-group{{ $errors->has('url') ? 'has-error' : ''}}">
     {!! Form::label('url', 'Url', ['class' => 'control-label']) !!}
-    {!! Form::text('url', null, ('' == 'required') ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control']) !!}
+    {!! Form::text('url', null, ('' == 'required') ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control', 'id'=>'url']) !!}
     {!! $errors->first('url', '<p class="help-block">:message</p>') !!}
 </div>
 
@@ -37,3 +37,11 @@
 <div class="form-group">
     {!! Form::submit($formMode === 'edit' ? 'Обновить' : 'Создать', ['class' => 'btn btn-primary']) !!}
 </div>
+@section('scripts')
+    <script>
+        $('#choose_menu').change(function(){
+            var slug=$(this).find(':selected').data('url');
+            $('#url').val(slug);
+        })
+    </script>
+@endsection

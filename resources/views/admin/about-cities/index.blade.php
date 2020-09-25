@@ -6,15 +6,15 @@
 
             <div class="col-md-9">
                 <div class="card">
-                    <div class="card-header">Aboutcities</div>
+                    <div class="card-header">О городе Слуцк</div>
                     <div class="card-body">
                         <a href="{{ url('/admin/about-cities/create') }}" class="btn btn-success btn-sm" title="Add New AboutCity">
-                            <i class="fa fa-plus" aria-hidden="true"></i> Add New
+                            <i class="fa fa-plus" aria-hidden="true"></i> Добавить
                         </a>
                            <hr>
                         {!! Form::open(['method' => 'GET', 'url' => '/admin/about-cities', 'class' => 'form-inline my-2 my-lg-0 float-right', 'role' => 'search'])  !!}
                         <div class="input-group">
-                            <input type="text" class="form-control" name="search" placeholder="Search..." value="{{ request('search') }}">
+                            <input type="text" class="form-control" name="search" placeholder="Поиск..." value="{{ request('search') }}">
                             <span class="input-group-append">
                                 <button class="btn btn-secondary" type="submit">
                                     <i class="fa fa-search"></i>

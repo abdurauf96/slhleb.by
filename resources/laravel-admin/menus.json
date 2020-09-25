@@ -36,42 +36,25 @@
                 {"title":"Характеристики","url":"\/admin\/features"},
                 {"title":"Сертификаты","url":"\/admin\/sertificats"},
                 {"title":"Слайдер для истории","url":"\/admin\/histories"},
-                {"title":"Информация о деятельности общества","url":"\/admin\/activities"}
+                {"title":"Информация о деятельности общества","url":"\/admin\/activities"},
+                {"title":"Видео","url":"\/admin\/videos"}
             ]
         },
 
         {"section":"Это интересно",
             "items":[
-                {"title":"О городе Слуцк","url":"\/admin\/about-cities"}             
-            ]
-        },
-        {"section":"Рецепты",
-            "items":[
                 {"title":"Теги для рецептов","url":"\/admin\/tags"},
-                {"title":"Рецепты","url":"\/admin\/recipes"}
-            ]
-        },
-
-        {"section":"Рассказы",
-            "items":[
-               {"title":"Категории для рассказов","url":"\/admin\/story-categories"},
-                {"title":"Рассказы","url":"\/admin\/stories"} 
-            ]
-        },
-
-        {"section":"Праздники",
-            "items":[
-                {"title":"Сценарии для праздников","url":"\/admin\/scripts"},
-                {"title":"Праздники","url":"\/admin\/holidays"}
-            ]
-        },
-
-        {"section":"Акции и Конкурсы",
-            "items":[
+                {"title":"Рецепты","url":"\/admin\/recipes"},
+                {"title":"Категории историй","url":"\/admin\/story-categories"},
+                {"title":"Истории","url":"\/admin\/stories"},
+                {"title":"Праздники","url":"\/admin\/scripts"},
+                {"title":"Сценарии  праздников","url":"\/admin\/holidays"},
                 {"title":"Акции и Конкурсы","url":"\/admin\/stocks"},
                 {"title":"Участники конкурсов","url":"\/admin\/competitions"}
             ]
         },
+          
+
 
         {"section":"Контакты",
             "items":[
@@ -85,10 +68,10 @@
 
         {"section":"Заявки и заказы",
             "items":[
-                {"title":"Рецепты из клиентов ","url":"\/admin\/recipes-from-users"},
-                {"title":"Истории из клиентов","url":"\/admin\/stories-from-users"},
+                {"title":"Рецепты от клиентов ","url":"\/admin\/recipes-from-users"},
+                {"title":"Истории от клиентов","url":"\/admin\/stories-from-users"},
                 {"title":"Заказы","url":"\/admin\/order-products"},
-                {"title":"Обрашения","url":"\/admin\/appeals"}
+                {"title":"Обращения","url":"\/admin\/appeals"}
             ]
         }
 

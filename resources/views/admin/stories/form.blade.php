@@ -8,7 +8,7 @@
 </div>
 <div class="form-group{{ $errors->has('title_ru') ? 'has-error' : ''}}">
     {!! Form::label('title_ru', 'Заголовок Ru', ['class' => 'control-label']) !!}
-    {!! Form::text('title_ru', null, ('' == 'required') ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control']) !!}
+    {!! Form::text('title_ru', null, ('' == 'required') ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control', 'id'=>'title']) !!}
     {!! $errors->first('title_ru', '<p class="help-block">:message</p>') !!}
 </div>
 <div class="form-group{{ $errors->has('title_by') ? 'has-error' : ''}}">
@@ -46,12 +46,28 @@
     {!! $errors->first('image', '<p class="help-block">:message</p>') !!}
 </div>
 <div class="form-group{{ $errors->has('image') ? 'has-error' : ''}}">
-    {!! Form::label('image', 'Фото (отображаеться на странице подробного чтения)', ['class' => 'control-label']) !!}
+    {!! Form::label('image', 'Фото (отображается на странице подробного чтения)', ['class' => 'control-label']) !!}
     @if($formMode === 'edit')
     <img src="/images/stories/{{ $story->image_fon }}" height="80" width="100" alt="">
     @endif
     {!! Form::file('image_fon', null, ('' == 'required') ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control']) !!}
     {!! $errors->first('image', '<p class="help-block">:message</p>') !!}
+</div>
+
+
+<div class="form-group">
+    {!! Form::label('meta_title', ' SEO Заголовок', ['class' => 'control-label']) !!}
+    {!! Form::textarea('meta_title', null, ['rows'=>3, 'class'=>'form-control'], ('' == 'required') ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control']) !!}
+</div>
+
+<div class="form-group">
+    {!! Form::label('meta_title', ' SEO Описание', ['class' => 'control-label']) !!}
+    {!! Form::textarea('meta_description', null, ['rows'=>3, 'class'=>'form-control'], ('' == 'required') ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control']) !!}
+</div>
+
+<div class="form-group">
+    {!! Form::label('slug', 'Slug', ['class' => 'control-label']) !!}
+    {!! Form::text('slug', null, ('' == 'required') ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control', 'id'=>'slug']) !!}
 </div>
 
 <div class="form-group">

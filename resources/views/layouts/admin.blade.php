@@ -36,7 +36,9 @@
     <div class="wrapper">
       
       <header class="main-header">
-        <a href="/admin/dashboard" class="logo"><b>Админка</b></a>
+        <a href="/admin/dashboard" class="logo">
+            <img src="/frontend/images/logo.png" style="width:33px;" alt="">
+            <b>Админка</b></a>
         <!-- Header Navbar: style can be found in header.less -->
         <nav class="navbar navbar-static-top" role="navigation">
           <!-- Sidebar toggle button-->
@@ -51,16 +53,16 @@
               <!-- User Account: style can be found in dropdown.less -->
               <li class="dropdown user user-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  <img src="/dist/img/admin.jpg" class="user-image" alt="User Image"/>
-                  <span class="hidden-xs">Абдурауф Сайдалиев</span>
+                  <img src="/frontend/images/logo.png" class="user-image" alt="User Image"/>
+                  <span class="hidden-xs">Слуцкий хлебозавод</span>
                 </a>
                 <ul class="dropdown-menu">
                   <!-- User image -->
                   <li class="user-header">
-                    <img src="/dist/img/admin.jpg" class="img-circle" alt="User Image" />
+                    <img src="/frontend/images/logo.png" class="img-circle" alt="User Image" />
                     <p>
-                      Abdurauf Saydaliyev - Web Developer
-                      <small>since 2018</small>
+                      Слуцкий хлебозавод
+                      <small>2020</small>
                     </p>
                   </li>
                   <!-- Menu Body -->
@@ -68,11 +70,11 @@
                   <!-- Menu Footer-->
                   <li class="user-footer">
                     <div class="pull-left">
-                      <a href="#" class="btn btn-default btn-flat">Profile</a>
+                      <a href="#" class="btn btn-default btn-flat">Профиль</a>
                     </div>
                     <div class="pull-right">
                       <a href="{{ route('logout') }}" class="btn btn-default btn-flat"   onclick="event.preventDefault();
-                      document.getElementById('logout-form').submit();">Sign out</a>
+                      document.getElementById('logout-form').submit();">Выйти</a>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                             @csrf
                         </form>
@@ -94,28 +96,18 @@
           <!-- Sidebar user panel -->
           <div class="user-panel">
             <div class="pull-left image">
-              <img src="/dist/img/admin.jpg" class="img-circle" alt="User Image" />
+              <!--<img src="/dist/img/admin.jpg" class="img-circle" alt="User Image" />-->
             </div>
             <div class="pull-left info">
-              <p>Абдурауф Сайдалиев</p>
+              <!--<p>Абдурауф Сайдалиев</p>-->
 
               <a href="#"><i class="fa fa-circle text-success"></i> Online </a>
             </div>
           </div>
-          <!-- search form -->
-          <form action="#" method="get" class="sidebar-form">
-            <div class="input-group">
-              <input type="text" name="q" class="form-control" placeholder="Search..."/>
-              <span class="input-group-btn">
-                <button type='submit' name='seach' id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i></button>
-              </span>
-            </div>
-          </form>
-          <!-- /.search form -->
-          <!-- sidebar menu: : style can be found in sidebar.less -->
-          <ul class="sidebar-menu">
-            
           
+          <!-- sidebar menu: : style can be found in sidebar.less -->
+          
+          <ul class="sidebar-menu "> 
             @foreach($laravelAdminMenus->menus as $section)
             <li class="treeview">
               <a href="#">
@@ -123,15 +115,35 @@
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               @if($section->items)
-              <ul class="treeview-menu" style="display: none;">
+              <ul class="treeview-menu" >
                 @foreach($section->items as $menu)
-                <li @if('/'.Request::path()==$menu->url) class="active" @endif ><a href="{{ url($menu->url) }}"><i class="fa fa-circle-o"></i> {{ $menu->title }}</a></li>
+                <li><a class="menu-url" href="{{ url($menu->url) }}"><i class="fa fa-circle-o"></i> {{ $menu->title }}</a></li>
                 @endforeach
               </ul>
               @endif
             </li>
             @endforeach
           </ul>
+          
+          <!--<ul class="sidebar-menu">-->
+            
+          
+          <!--  @foreach($laravelAdminMenus->menus as $section)-->
+          <!--  <li class="treeview">-->
+          <!--    <a href="#">-->
+          <!--      <i class="fa fa-edit"></i> <span>{{ $section->section }}</span>-->
+          <!--      <i class="fa fa-angle-left pull-right"></i>-->
+          <!--    </a>-->
+          <!--    @if($section->items)-->
+          <!--    <ul class="treeview-menu" style="display: none;">-->
+          <!--      @foreach($section->items as $menu)-->
+          <!--      <li @if('/'.Request::path()==$menu->url) class="active" @endif ><a href="{{ url($menu->url) }}"><i class="fa fa-circle-o"></i> {{ $menu->title }}</a></li>-->
+          <!--      @endforeach-->
+          <!--    </ul>-->
+          <!--    @endif-->
+          <!--  </li>-->
+          <!--  @endforeach-->
+          <!--</ul>-->
         </section>
         <!-- /.sidebar -->
       </aside>
@@ -201,6 +213,16 @@
 
         });
     </script> --}}
+    <script>
+      $('#title').keyup(function(e) {
+        $.get('/admin/check_slug', 
+          { 'title': $(this).val() }, 
+          function( data ) {
+            $('#slug').val(data.slug);
+          }
+        );
+      });
+    </script>
     @yield('scripts')
     
   </body>

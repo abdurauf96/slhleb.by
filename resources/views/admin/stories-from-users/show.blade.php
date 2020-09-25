@@ -32,7 +32,11 @@
                                     <tr>
                                         <th>ID</th><td>{{ $storiesfromuser->id }}</td>
                                     </tr>
-                                    <tr><th> Name </th><td> {{ $storiesfromuser->name }} </td></tr><tr><th> Phone </th><td> {{ $storiesfromuser->phone }} </td></tr><tr><th> Email </th><td> {{ $storiesfromuser->email }} </td></tr>
+                                    <tr><th> Имя </th><td> {{ $storiesfromuser->name }} </td></tr>
+                                    <tr><th> Телефон </th><td> {{ $storiesfromuser->phone }} </td></tr>
+                                    <tr><th> Email </th><td> {{ $storiesfromuser->email }} </td></tr>
+                                    <tr><th> Сообщение </th><td> {{ $storiesfromuser->msg }} </td></tr>
+                                    <tr><th> Фото </th><td><img src="/files/users/stories/{{ $storiesfromuser->file }}" style="width:350px;">  </td></tr>
                                 </tbody>
                             </table>
                         </div>

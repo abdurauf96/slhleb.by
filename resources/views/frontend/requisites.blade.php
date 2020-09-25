@@ -1,7 +1,7 @@
 @extends('layouts.site')
 
 @section('parent')
-<li class="breadcrumb-item"><a href="/contact">@lang('messages.contacts')</a></li>
+<li class="breadcrumb-item"><a href="{{ route('contact') }}">@lang('messages.contacts')</a></li>
 @endsection
 @section('child')
 @lang('messages.requisites')
@@ -10,8 +10,13 @@
 @section('content')
 <div class="section__wrapper">
     <div class="section__content section-contact s-requisite" style="background-image: url('/frontend/images/common-bg-section2.jpg')">
-        <div class="bg-right"><img src="/frontend/images/page-images/s-requisite-book.png" alt=""></div>
-        <div class="bg-right bg-bottom"><img src="/frontend/images/page-images/s-requisite-pen.png" alt=""></div>
+        <div class="bg-right section-bg-floating bg-book">
+            <div class="bg-floating no-repeat" style="background-image:url(/frontend/images/page-images/s-requisite-book.png);" >
+            </div>
+    </div>
+        <div class="bg-right bg-bottom section-bg-floating bg-pen">
+            <div class="bg-floating no-repeat" style="background-image:url(/frontend/images/page-images/s-requisite-pen.png);"></div>
+        </div>
         <div class="container">
             <div class="section__content-wrap">
                 <div class="header-wrapper">

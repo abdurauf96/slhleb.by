@@ -9,13 +9,15 @@
 
         <!-- Array Of Links -->
         @if (is_array($element))
-            @foreach ($element as $page => $url)
-                @if ($page == $paginator->currentPage())
-                    <li class="list-inline-item active "><span class="disabled" >{{ $page }}</span></li>
-                @else
-                    <li class="list-inline-item" ><a href="{{ $url }}">{{ $page }}</a></li>
-                @endif
-            @endforeach
+            @if(count($element)>1)
+                @foreach ($element as $page => $url)
+                    @if ($page == $paginator->currentPage())
+                        <li class="list-inline-item active "><span class="disabled" >{{ $page }}</span></li>
+                    @else
+                        <li class="list-inline-item" ><a href="{{ $url }}">{{ $page }}</a></li>
+                    @endif
+                @endforeach
+            @endif
         @endif
     @endforeach
     

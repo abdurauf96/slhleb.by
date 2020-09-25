@@ -14,7 +14,7 @@
 
                         {!! Form::open(['method' => 'GET', 'url' => '/admin/order-products', 'class' => 'form-inline my-2 my-lg-0 float-right', 'role' => 'search'])  !!}
                         <div class="input-group">
-                            <input type="text" class="form-control" name="search" placeholder="Search..." value="{{ request('search') }}">
+                            <input type="text" class="form-control" name="search" placeholder="Поиск..." value="{{ request('search') }}">
                             <span class="input-group-append">
                                 <button class="btn btn-secondary" type="submit">
                                     <i class="fa fa-search"></i>
@@ -29,14 +29,16 @@
                             <table class="table table-borderless">
                                 <thead>
                                     <tr>
-                                        <th>#</th><th>Name</th><th>Email</th><th>Phone</th><th>Actions</th>
+                                        <th>#</th><th>Имя</th><th>Email</th><th>Телефон</th><th>Сообщение</th><th>Действие</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                 @foreach($orderproducts as $item)
                                     <tr>
                                         <td>{{ $loop->iteration or $item->id }}</td>
-                                        <td>{{ $item->name }}</td><td>{{ $item->email }}</td><td>{{ $item->phone }}</td>
+                                        <td>{{ $item->name }}</td><td>{{ $item->email }}</td>
+                                        <td>{{ $item->phone }}</td>
+                                        <td>{{ $item->msg }}</td>
                                         <td>
                                             <a href="{{ url('/admin/order-products/' . $item->id) }}" title="View OrderProduct"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i></button></a>
                                             <a href="{{ url('/admin/order-products/' . $item->id . '/edit') }}" title="Edit OrderProduct"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a>

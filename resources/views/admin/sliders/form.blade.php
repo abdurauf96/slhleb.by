@@ -29,12 +29,12 @@
     {!! $errors->first('desc_en', '<p class="help-block">:message</p>') !!}
 </div>
 <div class="form-group{{ $errors->has('image_fon') ? 'has-error' : ''}}">
-    {!! Form::label('image_fon', 'фото для фона ', ['class' => 'control-label']) !!}
+    {!! Form::label('image_fon', 'Фото для фона ', ['class' => 'control-label']) !!}
     {!! Form::file('image_fon', null, ('' == 'required') ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control']) !!}
     {!! $errors->first('image_fon', '<p class="help-block">:message</p>') !!}
 </div>
 <div class="form-group{{ $errors->has('image_effekt') ? 'has-error' : ''}}">
-    {!! Form::label('image_effekt', 'Фото для колосока', ['class' => 'control-label']) !!}
+    {!! Form::label('image_effekt', 'Фото анимированного элемента', ['class' => 'control-label']) !!}
     {!! Form::file('image_effekt', null, ('' == 'required') ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control']) !!}
     {!! $errors->first('image_effekt', '<p class="help-block">:message</p>') !!}
 </div>

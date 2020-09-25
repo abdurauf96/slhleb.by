@@ -37,7 +37,7 @@ class Recipe extends Model
      *
      * @var array
      */
-    protected $fillable = ['time','tag_id', 'name_ru', 'name_by', 'name_en', 'consist_ru', 'consist_by', 'consist_en', 'image', 'image_fon', 'status'];
+    protected $fillable = ['time','tag_id', 'name_ru', 'name_by', 'name_en', 'consist_ru', 'consist_by', 'consist_en', 'image', 'image_fon', 'status','meta_title','meta_description', 'slug'];
 
     
 

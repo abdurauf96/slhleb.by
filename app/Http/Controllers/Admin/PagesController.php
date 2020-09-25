@@ -18,7 +18,6 @@ class PagesController extends Controller
     public function index(Request $request)
     {
         $keyword = $request->get('search');
-        $perPage = 25;
 
         if (!empty($keyword)) {
             $pages = Page::where('title_ru', 'LIKE', "%$keyword%")
@@ -34,7 +33,7 @@ class PagesController extends Controller
                 ->orWhere('key', 'LIKE', "%$keyword%")
                 ->latest()->paginate($perPage);
         } else {
-            $pages = Page::latest()->paginate($perPage);
+            $pages = Page::latest()->get();
         }
 
         return view('admin.pages.index', compact('pages'));

@@ -1,6 +1,6 @@
 <div class="form-group{{ $errors->has('name_ru') ? 'has-error' : ''}}">
     {!! Form::label('name_ru', 'Название Ru', ['class' => 'control-label']) !!}
-    {!! Form::text('name_ru', null, ('' == 'required') ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control']) !!}
+    {!! Form::text('name_ru', null, ('' == 'required') ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control', 'id'=>'title']) !!}
     {!! $errors->first('name_ru', '<p class="help-block">:message</p>') !!}
 </div>
 <div class="form-group{{ $errors->has('name_by') ? 'has-error' : ''}}">
@@ -14,6 +14,10 @@
     {!! $errors->first('name_en', '<p class="help-block">:message</p>') !!}
 </div>
 
+<div class="form-group">
+    {!! Form::label('slug', 'Slug', ['class' => 'control-label']) !!}
+    {!! Form::text('slug', null, ('' == 'required') ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control', 'id'=>'slug']) !!}
+</div>
 
 <div class="form-group">
     {!! Form::submit($formMode === 'edit' ? 'Обновить' : 'Создать', ['class' => 'btn btn-primary']) !!}

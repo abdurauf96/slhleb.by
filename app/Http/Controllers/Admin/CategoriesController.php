@@ -73,6 +73,9 @@ class CategoriesController extends Controller
         $data=[
             'icon'=>$icon,
             'image'=>$image,
+            'meta_title'=>$request->meta_title,
+            'meta_description'=>$request->meta_description,
+            'slug'=>$request->slug,
             'ru'=>[ 'name'=>$request->ru_name, 'description'=>$request->ru_description ],
             'en'=>[ 'name'=>$request->en_name, 'description'=>$request->en_description ],
             'by'=>[ 'name'=>$request->by_name, 'description'=>$request->by_description ],
@@ -142,6 +145,9 @@ class CategoriesController extends Controller
         $data=[
             'icon'=>$icon,
             'image'=>$image,
+            'meta_title'=>$request->meta_title,
+            'meta_description'=>$request->meta_description,
+            'slug'=>$request->slug,
             'ru'=>[ 'name'=>$request->ru_name, 'description'=>$request->ru_description ],
             'en'=>[ 'name'=>$request->en_name, 'description'=>$request->en_description ],
             'by'=>[ 'name'=>$request->by_name, 'description'=>$request->by_description ],

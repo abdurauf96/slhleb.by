@@ -6,7 +6,7 @@
 
             <div class="col-md-9">
                 <div class="card">
-                    <div class="card-header">Create New AboutCity</div>
+                    <div class="card-header">Создание</div>
                     <div class="card-body">
                         <a href="{{ url('/admin/about-cities') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
                         <br />

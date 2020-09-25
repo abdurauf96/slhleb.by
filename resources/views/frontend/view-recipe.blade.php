@@ -1,13 +1,21 @@
 @extends('layouts.site')
 
 @section('parent')
-<li class="breadcrumb-item"><a href="/recipes">@lang('messages.recipes')</a></li>
+<li class="breadcrumb-item"><a href="{{ route('interesting') }}">@lang('messages.eto-int')</a></li>
+<li class="breadcrumb-item"><a href="/interesno/recipes">@lang('messages.recipes')</a></li>
 @endsection
 @section('child')
 {{ $recipe['name_'.\App::getLocale()] }}
 @endsection
 
 @section('content')
+<div class="wrapper-kwiz">
+        <p class="close-kvis"><i class="fal fa-times"></i></p>
+        <a href="#modal-quiz" data-toggle="modal" class="kvis-button">
+                <p>@lang('messages.kakoy')</p>
+                <img src="/frontend/images/slider-label.png" alt="">
+            </a>
+    </div>
 <div class="section__wrapper inner__page">
     <div class="section__header h-100" style="background-image: url('/images/recipes/{{ $recipe->image_fon }}')">
         <div class="navbar-info-share">
@@ -36,10 +44,7 @@
                 </div>
             </div>
         </div>
-        <a href="#modal-quiz" data-toggle="modal" class="kvis-button">
-            <p>@lang('messages.kakoy')</p>
-            <img src="/frontend/images/slider-label.png" alt="">
-        </a>
+
     </div>
 
     <div class="section-recipe section__content recipe-page" style="background-image: url('/frontend/images/bg-main.jpg')">
@@ -101,7 +106,7 @@
             <div class="section-recipe__slider section-recipe-page">
                 <div class="recipie-slider">
                     @foreach ($recipe->tag->recipes as $item)
-                    <a href="{{ route('viewRecipe', $item->id) }}" class="recipie-slider__item">
+                    <a href="{{ route('viewRecipe', $item->slug) }}" class="recipie-slider__item">
                         <div class="slider__item-image" style="background-image: url('/images/recipes/{{ $item->image }}')"></div>
                         <div class="slider__item-info">                   
                             <div class="top">

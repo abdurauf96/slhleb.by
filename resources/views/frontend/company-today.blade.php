@@ -8,6 +8,13 @@
 @endsection
 
 @section('content')
+<div class="wrapper-kwiz">
+        <p class="close-kvis"><i class="fal fa-times"></i></p>
+        <a href="#modal-quiz" data-toggle="modal" class="kvis-button">
+                <p>@lang('messages.kakoy')</p>
+                <img src="/frontend/images/slider-label.png" alt="">
+            </a>
+    </div>
 <div class="section__wrapper company-activity">
     <div class="section__header h-100" style="background-image: url('/images/pages/{{ $page->image }}')">
         <div class="container">
@@ -28,10 +35,6 @@
         <div class="scroll-down">
             <a href="" id="scroll-down"><span></span></a>
         </div>
-        <a href="#modal-quiz" data-toggle="modal" class="kvis-button">
-            <p>@lang('messages.kakoy')</p>
-            <img src="/frontend/images/slider-label.png" alt="">
-        </a>
     </div>
     <div class="section__content section-today" style="background-image: url('/frontend/images/bg-main.jpg')">
         <div class="container-fluid">
@@ -40,7 +43,7 @@
                     <div class="container">
                         <div class="row">
                             @foreach ($features as $f)
-                            <div class="col-xl-4 item" data-aos="fade-up" data-aos-delay="100">
+                            <div class="col-md-4 item" data-aos="fade-up" data-aos-delay="100">
                                 <div class="item-image">
                                     <img src="/images/features/{{ $f->image }}" alt="">
                                 </div>

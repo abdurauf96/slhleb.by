@@ -1,13 +1,20 @@
 @extends('layouts.site')
 
 @section('parent')
-<li class="breadcrumb-item"><a href="/company">@lang('messages.eto-int')</a></li>
+<li class="breadcrumb-item"><a href="/interesno">@lang('messages.eto-int')</a></li>
 @endsection
 @section('child')
 {{ $page['title_'.\App::getLocale()] }}
 @endsection
 
 @section('content')
+<div class="wrapper-kwiz">
+        <p class="close-kvis"><i class="fal fa-times"></i></p>
+        <a href="#modal-quiz" data-toggle="modal" class="kvis-button">
+                <p>@lang('messages.kakoy')</p>
+                <img src="/frontend/images/slider-label.png" alt="">
+            </a>
+    </div>
 <div class="section__wrapper">
     <div class="section__header h-100" style="background-image: url('/images/pages/{{ $page->image }}')">
         <div class="container">
@@ -25,10 +32,7 @@
                   <a href="" id="scroll-down"><span></span></a>
                 </div>
             </div>
-            <a href="#modal-quiz" data-toggle="modal" class="kvis-button">
-                <p>@lang('messages.kakoy')</p>
-                <img src="/frontend/images/slider-label.png" alt="">
-            </a>
+            
         </div>
 
     </div>
@@ -42,10 +46,10 @@
                             <div class="row">
                                 <div class="col-md-10">
                                     <ul class="list-inline">
-                                        <li class="list-inline-item {{ \Request::get('category_id')==''? 'active' : '' }} "><a href="/stories">Все истории</a></li>
+                                        <li class="list-inline-item {{ \Request::route('slug')==''? 'active' : '' }} "><a href="/interesno/stories">Все истории</a></li>
                                         @foreach ($categories as $cat)
-                                        <li class="list-inline-item {{ \Request::get('category_id')==$cat->id? 'active' : '' }}" >
-                                            <a href="/stories?category_id={{ $cat->id }}">{{ $cat['name_'.\App::getLocale()] }}</a></li> 
+                                        <li class="list-inline-item {{ \Request::route('slug')==$cat->slug ? 'active' : '' }}" >
+                                            <a href="/interesno/stories/category/{{ $cat->slug }}">{{ $cat['name_'.\App::getLocale()] }}</a></li> 
                                         @endforeach
                                     </ul>
                                 </div>
@@ -62,7 +66,7 @@
                     <div class="row mb-5">
                         @foreach ($stories as $story)             
                             <div class="col-xl-6">
-                                <a href="{{ route('viewStory', $story->id) }}" class="item-card item-small mb-5 f-large" style="background-image: url(/images/stories/{{ $story->image }})">
+                                <a href="{{ route('viewStory', $story->slug) }}" class="item-card item-small mb-5 f-large" style="background-image: url(/images/stories/{{ $story->image }})">
                                     <div class="item-card-tags">
                                         <span>{{ $story->category['name_'.\App::getLocale()] }}</span>
                                     </div>

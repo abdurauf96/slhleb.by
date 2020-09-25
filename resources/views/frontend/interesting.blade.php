@@ -5,7 +5,13 @@
 @endsection
 
 @section('content')
-
+<div class="wrapper-kwiz">
+        <p class="close-kvis"><i class="fal fa-times"></i></p>
+        <a href="#modal-quiz" data-toggle="modal" class="kvis-button">
+                <p>@lang('messages.kakoy')</p>
+                <img src="/frontend/images/slider-label.png" alt="">
+            </a>
+    </div>
 <div class="section__wrapper company">
     <div class="section__header h-100" style="background-image: url('/images/pages/{{ $page->image }}')">
         <div class="container">
@@ -32,10 +38,7 @@
         <div class="scroll-down">
             <a href="" id="scroll-down"><span></span></a>
         </div>
-        <a href="#modal-quiz" data-toggle="modal" class="kvis-button">
-            <p>Какой хлеб подходит вам?</p>
-            <img src="/frontend/images/slider-label.png" alt="">
-        </a>
+
     </div>
     <div class="section__content" style="background-image: url('/frontend/images/bg-main.jpg')">
         <div class="container-custom">

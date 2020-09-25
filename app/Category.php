@@ -34,7 +34,7 @@ class Category extends Model
      *
      * @var array
      */
-    protected $fillable = [ 'icon', 'image'];
+    protected $fillable = [ 'icon', 'image', 'slug'];
 
     public function products()
     {

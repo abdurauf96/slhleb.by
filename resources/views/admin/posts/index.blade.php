@@ -7,7 +7,7 @@
                 <h3 class="box-title">Новости</h3>
                 <div class="add-btn">
                     <a href="{{ url('/admin/posts/create') }}" class="btn btn-success " title="Add New Product">
-                    <i class="fa fa-plus" aria-hidden="true"></i> Добавить новый
+                    <i class="fa fa-plus" aria-hidden="true"></i> Добавить
                     </a>
                 </div>
             </div><!-- /.box-header -->

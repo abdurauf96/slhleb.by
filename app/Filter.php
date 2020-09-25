@@ -43,7 +43,7 @@ class Filter extends Model
      *
      * @var array
      */
-    protected $fillable = ['category_id'];
+    protected $fillable = ['category_id', 'slug'];
 
     
 

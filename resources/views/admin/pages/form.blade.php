@@ -57,6 +57,17 @@
 </div>
 @endif
 
+
+<div class="form-group">
+    {!! Form::label('meta_title', ' SEO Заголовок', ['class' => 'control-label']) !!}
+    {!! Form::textarea('meta_title', null, ['rows'=>3, 'class'=>'form-control'], ('' == 'required') ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control']) !!}
+</div>
+
+<div class="form-group">
+    {!! Form::label('meta_title', ' SEO Описание', ['class' => 'control-label']) !!}
+    {!! Form::textarea('meta_description', null, ['rows'=>3, 'class'=>'form-control'], ('' == 'required') ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control']) !!}
+</div>
+
 <div class="form-group">
     {!! Form::submit($formMode === 'edit' ? 'Обновить' : 'Создать', ['class' => 'btn btn-primary']) !!}
 </div>

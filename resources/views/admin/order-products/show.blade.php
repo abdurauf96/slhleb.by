@@ -32,7 +32,10 @@
                                     <tr>
                                         <th>ID</th><td>{{ $orderproduct->id }}</td>
                                     </tr>
-                                    <tr><th> Name </th><td> {{ $orderproduct->name }} </td></tr><tr><th> Email </th><td> {{ $orderproduct->email }} </td></tr><tr><th> Phone </th><td> {{ $orderproduct->phone }} </td></tr>
+                                    <tr><th> Имя </th><td> {{ $orderproduct->name }} </td></tr>
+                                    <tr><th> Email </th><td> {{ $orderproduct->email }} </td></tr>
+                                    <tr><th> Телефон </th><td> {{ $orderproduct->phone }} </td></tr>
+                                    <tr><th> Сообщение </th><td> {{ $orderproduct->msg }} </td></tr>
                                 </tbody>
                             </table>
                         </div>

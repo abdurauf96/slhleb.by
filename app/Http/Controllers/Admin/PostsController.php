@@ -17,7 +17,6 @@ class PostsController extends Controller
     public function index(Request $request)
     {
         $keyword = $request->get('search');
-        $perPage = 25;
 
         if (!empty($keyword)) {
             $posts = Post::where('title_ru', 'LIKE', "%$keyword%")
@@ -27,9 +26,9 @@ class PostsController extends Controller
                 ->orWhere('body_by', 'LIKE', "%$keyword%")
                 ->orWhere('body_en', 'LIKE', "%$keyword%")
                 ->orWhere('image', 'LIKE', "%$keyword%")
-                ->latest()->paginate($perPage);
+                ->latest()->get();
         } else {
-            $posts = Post::latest()->paginate($perPage);
+            $posts = Post::latest()->get();
         }
 
         return view('admin.posts.index', compact('posts'));

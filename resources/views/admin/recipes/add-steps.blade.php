@@ -7,7 +7,7 @@
                 <div class="card">
                     <div class="card-header">{{ $action=='update' ? 'Обновить шаги' : 'Добавить шаг' }} </div>
                     <div class="card-body">
-                        <a href="{{ url('/admin/products') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
+                        <a href="{{ url('/admin/recipes') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
                         <br />
                         <br />
 

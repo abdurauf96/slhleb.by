@@ -6,31 +6,51 @@ use Illuminate\Http\Request;
 use App\Category;
 use App\Product;
 use App\Filter;
+use MetaTag;
+
 
 use App\Http\Controllers\Controller;
 
 class ProductController extends Controller
 {
-    public function products(Request $request, $id)
+    public function __construct()
     {
-        $category=Category::findOrFail($id);
-        $filters=Filter::where('category_id', $id)->get();
-        $banners=\App\ProductBanner::all();
+        // Defaults
+        MetaTag::set('description', '');
+        MetaTag::set('title', '');
+    }
+    
+    
+    public function products(Request $request, $slug, $filter_slug=null)
+    {
+        $category=Category::where('slug', $slug)->first();
+        MetaTag::set('title',$category->meta_title);
+        MetaTag::set('description',$category->meta_description);
 
-        if($filter_id=$request->get('filter')){
-            $products=Product::where('category_id', $id)->where('filter_id', $filter_id)->paginate(6);
+        $filters=Filter::where('category_id', $category->id)->get();
+        $banners=\App\ProductBanner::all();
+        
+        if(!empty($request->filter_slug)){
+           
+            $filter=Filter::where('slug', $request->filter_slug)->first();
+           
+            $products=Product::where('category_id', $category->id)->where('filter_id', $filter->id)->paginate(6);
         }elseif($q=$request->get('q')){
-            $products=Product::where('category_id', $id)->whereTranslationLike('name', '%'.$q.'%')->paginate(6);
+            $products=Product::where('category_id', $category->id)->whereTranslationLike('name', '%'.$q.'%')->paginate(6);
         }else{
-            $products=Product::where('category_id', $id)->paginate(6);
+            $products=Product::where('category_id', $category->id)->paginate(6);
         }
         
         return view('frontend.products', compact('filters', 'products', 'category', 'banners'));
     }
 
-    public function viewProduct(Request $request, $id)
+    public function viewProduct(Request $request, $slug)
     {
-        $product=Product::findOrFail($id);
+        $product=Product::where('slug', $slug)->first();
+        MetaTag::set('title',$product->meta_title);
+        MetaTag::set('description',$product->meta_description);
+        
+        
         $recommends=Product::where('recommend', 1)->get();
         return view('frontend.view-product', compact('product', 'recommends'));
     }

@@ -5,10 +5,9 @@
         <div class="row">
             <div class="col-md-9">
                 <div class="card">
-                    <div class="card-header">Dashboard</div>
 
                     <div class="card-body">
-                        Your application's dashboard.
+                        <h2>Добро пожаловать в административную панель сайта</h2>
                     </div>
                 </div>
             </div>

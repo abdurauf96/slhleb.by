@@ -20,7 +20,6 @@ class RecipesController extends Controller
     public function index(Request $request)
     {
         $keyword = $request->get('search');
-        $perPage = 25;
 
         if (!empty($keyword)) {
             $recipes = Recipe::where('tag_id', 'LIKE', "%$keyword%")
@@ -31,9 +30,9 @@ class RecipesController extends Controller
                 ->orWhere('consist_by', 'LIKE', "%$keyword%")
                 ->orWhere('consist_en', 'LIKE', "%$keyword%")
                 ->orWhere('image', 'LIKE', "%$keyword%")
-                ->latest()->paginate($perPage);
+                ->latest()->get();
         } else {
-            $recipes = Recipe::latest()->paginate($perPage);
+            $recipes = Recipe::latest()->get();
         }
 
         return view('admin.recipes.index', compact('recipes'));
@@ -211,5 +210,11 @@ class RecipesController extends Controller
     public function deleteStep(Request $request)
     {
         MealStep::destroy($request->step_id);
+    }
+
+    public function check_slug(Request $request)
+    {
+        $slug = str_slug($request->title);
+        return response()->json(['slug' => $slug]);
     }
 }

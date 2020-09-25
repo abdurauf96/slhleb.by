@@ -6,10 +6,10 @@
 
             <div class="col-md-9">
                 <div class="card">
-                    <div class="card-header">Stories from users</div>
+                    <div class="card-header">Истории от клиентов</div>
                     <div class="card-body">
                         <a href="{{ url('/admin/stories-from-users/create') }}" class="btn btn-success btn-sm" title="Add New StoriesFromUser">
-                            <i class="fa fa-plus" aria-hidden="true"></i> Add New
+                            <i class="fa fa-plus" aria-hidden="true"></i> Добавить
                         </a>
 
                         {!! Form::open(['method' => 'GET', 'url' => '/admin/stories-from-users', 'class' => 'form-inline my-2 my-lg-0 float-right', 'role' => 'search'])  !!}

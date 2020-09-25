@@ -6,15 +6,15 @@
 
             <div class="col-md-9">
                 <div class="card">
-                    <div class="card-header">Sliders</div>
+                    <div class="card-header">Слайдеры</div>
                     <div class="card-body">
                         <a href="{{ url('/admin/sliders/create') }}" class="btn btn-success btn-sm" title="Add New Slider">
-                            <i class="fa fa-plus" aria-hidden="true"></i> Add New
+                            <i class="fa fa-plus" aria-hidden="true"></i> Добавить
                         </a>
 
                         {!! Form::open(['method' => 'GET', 'url' => '/admin/sliders', 'class' => 'form-inline my-2 my-lg-0 float-right', 'role' => 'search'])  !!}
                         <div class="input-group">
-                            <input type="text" class="form-control" name="search" placeholder="Search..." value="{{ request('search') }}">
+                            <input type="text" class="form-control" name="search" placeholder="Поиск..." value="{{ request('search') }}">
                             <span class="input-group-append">
                                 <button class="btn btn-secondary" type="submit">
                                     <i class="fa fa-search"></i>
@@ -29,7 +29,7 @@
                             <table class="table table-borderless">
                                 <thead>
                                     <tr>
-                                        <th>#</th><th>Title Ru</th><th>Title By</th><th>Title En</th><th>Actions</th>
+                                        <th>#</th><th>Заголовок Ru</th><th>Заголовок By</th><th>Заголовок En</th><th>Действия</th>
                                     </tr>
                                 </thead>
                                 <tbody>

@@ -7,22 +7,20 @@
                     <div class="ear-image">
                         <img src="/images/sliders/{{ $slid->image_effekt }}" alt="">
                     </div>
-                    <div class="container h-100">
+                    <div class="container">
                         <div class="slider-item-text">
                             <div>
                                 <span class="slow">{{ $slid['title_'.\App::getLocale()] }}</span>
                                 <h2>{{ $slid['desc_'.\App::getLocale()] }}</h2>
                             </div>
-                            <a href="#modal-quiz" data-toggle="modal" class="kvis-button">
-                                <p>@lang('messages.kakoy')</p>
-                                <img src="/frontend/images/slider-label.png" alt="">
-                            </a>
+                            
                         </div>
                     </div>
                 </div>
                 @endforeach
                 
             </div>
+            
         </div>
         
         <div class="slider-nav">

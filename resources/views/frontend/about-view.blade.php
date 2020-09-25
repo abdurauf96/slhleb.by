@@ -1,7 +1,8 @@
 @extends('layouts.site')
 
 @section('parent')
-<li class="breadcrumb-item"><a href="/interesting">@lang('messages.eto-int')</a></li>
+<li class="breadcrumb-item"><a href="{{ route('interesting') }}">@lang('messages.eto-int')</a></li>
+<li class="breadcrumb-item"><a href="{{ route('aboutCity') }}">О городе Слуцк</a></li>
 @endsection
 @section('child')
 {{ $page['title_'.\App::getLocale()] }}
@@ -35,7 +36,7 @@
                 <div class="row">
                     <div class="col-xl-8 offset-xl-2 item">
                         <div class="content">
-                            {{ $page['body_'.\App::getLocale()] }}
+                            {!! $page['body_'.\App::getLocale()] !!}
                         </div>
 
                     </div>

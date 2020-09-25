@@ -1,9 +1,9 @@
-<div class="section section-interesting">
+<div class="section section-interesting" style="background-image: url('/frontend/images/section-interes-bg1.jpg')">
     <div class="section-bg-floating ">
             <div class="bg-floating-interesting"></div>
         </div>
     <div class="section-page__title">@lang('messages.eto-int')</div>
-    <div class="section__wrapper" style="background-image: url('/frontend/images/section-interes-bg.jpg')">
+    <div class="section__wrapper">
         <div class="container-section-interesting">
             <div class="row">
                 <div class="col-lg-6">

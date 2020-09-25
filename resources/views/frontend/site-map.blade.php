@@ -23,7 +23,7 @@
                                 <h2 style="margin-bottom: 10px;"><a href="" style="color: #ffd5a5;">@lang('messages.products')</a></h2>
                                 <ul style="padding-left: 1rem;">
                                     @foreach ($products as $prod)
-                                    <li><a href="{{ route('viewProduct', $prod->id) }}">{{ $prod->translate(\App::getLocale())->name }}</a></li>
+                                    <li><a href="{{ route('viewProduct', $prod->slug) }}">{{ $prod->translate(\App::getLocale())->name }}</a></li>
                                     @endforeach
                                 </ul>
                             </div>

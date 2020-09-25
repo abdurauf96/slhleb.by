@@ -1,10 +1,18 @@
 @extends('layouts.site')
 
+
 @section('child')
 {{ $category->translate(\App::getLocale())->name }}
 @endsection
 
 @section('content')
+<div class="wrapper-kwiz">
+        <p class="close-kvis"><i class="fal fa-times"></i></p>
+        <a href="#modal-quiz" data-toggle="modal" class="kvis-button">
+                <p>@lang('messages.kakoy')</p>
+                <img src="/frontend/images/slider-label.png" alt="">
+            </a>
+    </div>
 <div class="section__wrapper">
     <div class="section__header" style="background-image: url('/images/categories/{{ $category->image }}')">
         <div class="container">
@@ -23,10 +31,7 @@
         <div class="scroll-down">
             <a href="" id="scroll-down"><span></span></a>
         </div>
-        <a href="#modal-quiz" data-toggle="modal" class="kvis-button">
-            <p>@lang('messages.kakoy')</p>
-            <img src="/frontend/images/slider-label.png" alt="">
-        </a>
+
     </div>
 
     <div class="section-catalog">
@@ -38,15 +43,15 @@
                             <div class="row">
                                 <div class="col-md-8">
                                     <ul class="list-inline">
-                                        <li class="list-inline-item {{ \Request::get('filter')==''? 'active' : '' }} "><a href="{{ route('products', $category->id) }}">@lang('messages.all_scripts') </a></li>
+                                        <li class="list-inline-item {{ \Request::route('filter_slug')==''? 'active' : '' }} "><a href="{{ route('products', $category->slug) }}">@lang('messages.all_products') </a></li>
                                         @foreach ($filters as $filter)
-                                        <li class="list-inline-item {{ \Request::get('filter')==$filter->id ? 'active' : '' }}"><a href="?filter={{ $filter->id }}">{{ $filter->translate(\App::getLocale())->name }}</a></li>
+                                        <li class="list-inline-item {{ \Request::route('filter_slug')==$filter->slug ? 'active' : '' }}"><a href="/products/{{ $category->slug }}/filter/{{ $filter->slug }}">{{ $filter->translate(\App::getLocale())->name }}</a></li>
                                         @endforeach
                                     </ul>
                                 </div>
                                 <div class="ct-search">
                                     <div class="ct-search__form">
-                                        <form method="GET" action="/products/{{ $category->id }}">
+                                        <form method="GET" action="/products/{{ $category->slug }}">
                                             @csrf
                                             <input type="search" name="q" class="ct-form-control form-control" placeholder="@lang('messages.search_po')">
                                         </form>
@@ -66,7 +71,7 @@
                 <div class="catalog-list">
                     <div class="row">
                         @foreach ($products as $prod)
-                        <a href="{{ route('viewProduct', $prod->id) }}" class="col-md-6 col-lg-4 catalog-list__item">
+                        <a href="{{ route('viewProduct', $prod->slug) }}" class="col-md-6 col-lg-4 catalog-list__item">
                             <div class="item-image">
                                 <img src="/images/products/{{ $prod->image }}" alt="">
                             </div>
@@ -74,10 +79,12 @@
                                 <div class="item-info-title">
                                     <h2>{{ $prod->translate(\App::getLocale())->name }}</h2>
                                 </div>
+                                @if($prod->weight)
                                 <div class="item-info-weight">
                                     <span><img src="/frontend/images/icon/weight-icon.png" alt=""></span>
                                     <p>{{ $prod->weight }}</p>
                                 </div>
+                                @endif
                             </div>
                             <div class="new">
                                 @if($prod->status=='new')

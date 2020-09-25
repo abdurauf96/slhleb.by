@@ -29,7 +29,7 @@ class Script extends Model
      *
      * @var array
      */
-    protected $fillable = ['name_ru', 'name_by', 'name_en'];
+    protected $fillable = ['name_ru', 'name_by', 'name_en', 'slug'];
 
     public function holidays(){
         return $this->hasMany(Holiday::class);

@@ -29,7 +29,7 @@ class AboutCity extends Model
      *
      * @var array
      */
-    protected $fillable = ['title_ru', 'title_by', 'title_en', 'body_ru', 'body_by', 'body_en', 'image', 'key', 'image_fon'];
+    protected $fillable = ['title_ru', 'title_by', 'title_en', 'body_ru', 'body_by', 'body_en', 'image', 'key', 'image_fon','meta_title','meta_description'];
 
     
 

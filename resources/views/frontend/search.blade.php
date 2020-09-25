@@ -7,7 +7,7 @@
 <div class="section__wrapper">
     <div class="section__content section-contact s-search" style="background-image: url('/frontend/images/common-bg-section2.jpg')">
         <div class="container">
-            <div class="section__content-wrap">
+            <div class="section__content-wrap" style="padding-bottom:100px;">
                 <div class="header-wrapper">
                     <div class="row">
                         <div class="col-md-12">
@@ -34,7 +34,7 @@
                             @foreach ($products as $prod)
                             <div class="item-result">
                                 <span class="tag">{{ $prod->category->translate(\App::getLocale())->name }}</span>
-                                <h2><a href="{{ route('viewProduct', $prod->id) }}">{{ $prod->translate(\App::getLocale())->name }}</a></h2>
+                                <h2><a href="{{ route('viewProduct', $prod->slug) }}">{{ $prod->translate(\App::getLocale())->name }}</a></h2>
                                 <p>{{ $prod->translate(\App::getLocale())->name }}</p>
                             </div>
                             @endforeach   
@@ -48,7 +48,7 @@
                             @foreach ($posts as $post)
                             <div class="item-result">
                                 <span class="tag">@lang('messages.news')</span>
-                                <h2><a href="{{ route('viewNews', $post->id) }}">{{ $post['title_'.\App::getLocale()] }}</a></h2>
+                                <h2><a href="{{ route('viewNews', $post->slug) }}">{{ $post['title_'.\App::getLocale()] }}</a></h2>
                             </div>
                             @endforeach
                         </div>
@@ -61,7 +61,7 @@
                             @foreach ($recipes as $rec)
                             <div class="item-result">
                                 <span class="tag">@lang('messages.recipes')</span>
-                                <h2><a href="{{ route('viewRecipe', $rec->id) }}">{{ $rec['name_'.\App::getLocale()] }}</a></h2>
+                                <h2><a href="{{ route('viewRecipe', $rec->slug) }}">{{ $rec['name_'.\App::getLocale()] }}</a></h2>
                                
                             </div>
                             @endforeach   
@@ -75,7 +75,23 @@
                             @foreach ($stories as $story)
                             <div class="item-result">
                                 <span class="tag">@lang('messages.istori')</span>
-                                <h2><a href="{{ route('viewStory', $story->id) }}">{{ $story['title_'.\App::getLocale()] }}</a></h2>
+                                <h2><a href="{{ route('viewStory', $story->slug) }}">{{ $story['title_'.\App::getLocale()] }}</a></h2>
+                               
+                            </div>
+                            @endforeach   
+                        </div>
+                    </div>
+                    @endisset
+                    
+                    @isset($holidays)
+                    <div class="row">
+                        <div class="col-md-7">
+                            @foreach ($holidays as $holiday)
+                            <div class="item-result">
+                                <span class="tag">@lang('messages.senariy')</span>
+                                <h2>
+                                    <a href="{{ route('viewHolidayScript', $holiday->slug) }}">{{ $holiday['title_'.\App::getLocale()] }}</a>
+                                </h2>
                                
                             </div>
                             @endforeach   

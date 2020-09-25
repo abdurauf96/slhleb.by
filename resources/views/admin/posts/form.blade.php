@@ -1,6 +1,6 @@
 <div class="form-group{{ $errors->has('title_ru') ? 'has-error' : ''}}">
     {!! Form::label('title_ru', 'Заголовок Ru', ['class' => 'control-label']) !!}
-    {!! Form::text('title_ru', null, ('' == 'required') ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control']) !!}
+    {!! Form::text('title_ru', null, ('' == 'required') ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control', 'id'=>'title']) !!}
     {!! $errors->first('title_ru', '<p class="help-block">:message</p>') !!}
 </div>
 <div class="form-group{{ $errors->has('title_by') ? 'has-error' : ''}}">
@@ -29,7 +29,7 @@
     {!! $errors->first('body_en', '<p class="help-block">:message</p>') !!}
 </div>
 <div class="form-group{{ $errors->has('image') ? 'has-error' : ''}}">
-    {!! Form::label('image', 'Фото (отображаеться на карточке)', ['class' => 'control-label']) !!}
+    {!! Form::label('image', 'Фото (отображается на карточке)', ['class' => 'control-label']) !!}
     <br>
     @if($formMode === 'edit')
     <img src="/images/posts/{{ $post->image }}" width="100" height="80" alt="">
@@ -38,7 +38,7 @@
     {!! $errors->first('image', '<p class="help-block">:message</p>') !!}
 </div>
 <div class="form-group{{ $errors->has('image') ? 'has-error' : ''}}">
-    {!! Form::label('image', 'Фото (отображаеться на странице подробного чтения)', ['class' => 'control-label']) !!}
+    {!! Form::label('image', 'Фото (отображается на странице подробного чтения)', ['class' => 'control-label']) !!}
     <br>
     @if($formMode === 'edit')
     <img src="/images/posts/{{ $post->image_fon }}" width="100" height="80" alt="">
@@ -51,7 +51,10 @@
     {!! Form::date('date', null, ('' == 'required') ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control']) !!}
     {!! $errors->first('image', '<p class="help-block">:message</p>') !!}
 </div>
-
+<div class="form-group">
+    {!! Form::label('slug', 'Slug', ['class' => 'control-label']) !!}
+    {!! Form::text('slug', null, ('' == 'required') ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control', 'id'=>'slug']) !!}
+</div>
 <div class="form-group">
     {!! Form::submit($formMode === 'edit' ? 'Обновить' : 'Создать', ['class' => 'btn btn-primary']) !!}
 </div>

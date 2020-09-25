@@ -1,5 +1,9 @@
 <div class="menu-wrapper">
     <div class="menu-wrapper__container">
+        <a href="#" class="burger-menu">
+				<span></span>
+				<span></span>
+			</a>
         <ul class="parent-menu">
             <div class="dot-menu"></div>
             @foreach ($menus as $menu)

@@ -8,6 +8,13 @@
 @endsection
 
 @section('content')
+<div class="wrapper-kwiz">
+        <p class="close-kvis"><i class="fal fa-times"></i></p>
+        <a href="#modal-quiz" data-toggle="modal" class="kvis-button">
+                <p>@lang('messages.kakoy')</p>
+                <img src="/frontend/images/slider-label.png" alt="">
+            </a>
+    </div>
 <div class="section__wrapper company-activity">
     <div class="section__header h-100" style="background-image: url('/images/pages/{{ $page->image }}')">
         <div class="container">
@@ -31,7 +38,7 @@
     <div class="section__content section-histiry" style="background-image: url('/frontend/images/bg-main.jpg')">
         <div class="container-fluid">
             <div class="section__content-wrap">
-                <div class="description-block">
+                <div class="description-block history-block-page">
                     <div class="row">
                         <div class="col-xl-6">
                             <div class="image" data-aos="fade-right" data-aos-delay="100">
@@ -40,8 +47,8 @@
                         </div>
                         <div class="col-xl-5">
                             <div class="text">
-                                <h2 data-aos="fade-up" data-aos-delay="200">@lang('messages.title')</h2>
-                                <div data-aos="fade-up" data-aos-delay="300">
+                                <h2 data-aos="fade-up" data-aos-delay="200" style="word-break: break-word;">@lang('messages.title_company_history')</h2>
+                                <div data-aos="fade-up" data-aos-delay="300" class="text-scroll pr-4">
                                     <p> {!! $page['content_'.\App::getLocale()] !!}</p>
                                 </div>
                                 

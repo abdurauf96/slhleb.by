@@ -1,7 +1,7 @@
 @extends('layouts.site')
 
 @section('parent')
-<li class="breadcrumb-item"><a href="/contact">@lang('messages.contacts')</a></li>
+<li class="breadcrumb-item"><a href="{{ route('contact') }}">@lang('messages.contacts')</a></li>
 @endsection
 @section('child')
 {{ $page['title_'.\App::getLocale()] }}
@@ -10,9 +10,19 @@
 @section('content')
 <div class="section__wrapper">
     <div class="section__content section-contact s-trade" style="background-image: url('/frontend/images/common-bg-section2.jpg')">
-        <div class="bg-left bg-bottom"><img src="/frontend/images/page-images/s-bread-trade.png" alt=""></div>
-        <div class="bg-right bg-top"><img src="/frontend/images/page-images/s-bread-tradecirkle.png" alt=""></div>
-        <div class="bg-right bg-bottom"><img src="/frontend/images/page-images/s-cake-trade.png" alt=""></div>
+        
+        <div class="bg-right section-bg-floating" style="width:600px;top:25%;right:-10%;height:600px;">
+            <div class="bg-floating no-repeat" style="background-image:url(/frontend/images/page-images/s-bread-tradecirkle.png);"></div>
+        </div>
+        
+        <div class="bg-right section-bg-floating" style="width:600px;bottom:5%;top:auto!important;right:-10%;height:600px;">
+            <div class="bg-floating no-repeat" style="background-image:url(/frontend/images/page-images/s-cake-trade.png);"></div>
+        </div>
+        
+        <div class="bg-left section-bg-floating" style="width:600px;bottom:5%;top:auto!important;right:-10%;height:600px;">
+            <div class="bg-floating no-repeat" style="background-image:url(/frontend/images/page-images/s-bread-trade.png);"></div>
+        </div>
+        
         <div class="container">
             <div class="section__content-wrap">
                 <div class="header-wrapper">

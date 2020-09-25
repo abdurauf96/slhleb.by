@@ -6,15 +6,15 @@
 
             <div class="col-md-9">
                 <div class="card">
-                    <div class="card-header">Recipes from users</div>
+                    <div class="card-header">Рецепты от клиентов </div>
                     <div class="card-body">
                         <a href="{{ url('/admin/recipes-from-users/create') }}" class="btn btn-success btn-sm" title="Add New RecipesFromUser">
-                            <i class="fa fa-plus" aria-hidden="true"></i> Add New
+                            <i class="fa fa-plus" aria-hidden="true"></i> Добавить
                         </a>
 
                         {!! Form::open(['method' => 'GET', 'url' => '/admin/recipes-from-users', 'class' => 'form-inline my-2 my-lg-0 float-right', 'role' => 'search'])  !!}
                         <div class="input-group">
-                            <input type="text" class="form-control" name="search" placeholder="Search..." value="{{ request('search') }}">
+                            <input type="text" class="form-control" name="search" placeholder="Поиск..." value="{{ request('search') }}">
                             <span class="input-group-append">
                                 <button class="btn btn-secondary" type="submit">
                                     <i class="fa fa-search"></i>
@@ -30,12 +30,12 @@
                                 <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>Name</th>
-                                        <th>Phone</th>
+                                        <th>Имя</th>
+                                        <th>Телефон</th>
                                         <th>Email</th>
-                                        <th>Message</th>
-                                        <th>File</th>
-                                        <th>Actions</th>
+                                        <th>Сообщения</th>
+                                        <th>Файл</th>
+                                        <th>Действия</th>
                                     </tr>
                                 </thead>
                                 <tbody>

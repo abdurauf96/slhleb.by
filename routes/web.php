@@ -10,59 +10,70 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-// Route::get('/test', function()
-// {
-// 	return Share::load('http://www.example.com', 'Link description')->services();
-// });
 
 Route::group(['namespace'=>'Site'], function(){
     
     Route::get('/', 'IndexController@index')->name('home');
     
     Route::get('/company', 'PageController@company')->name('company'); //done+
-    Route::get('/company-today', 'PageController@companyToday')->name('companyToday'); // done++
-    Route::get('/company-history', 'PageController@companyHistory')->name('companyHistory'); // done ++
-    Route::get('/company-activities', 'PageController@companyActivities')->name('companyActivities'); //done ++
-    Route::get('/company-news', 'PageController@companyNews')->name('companyNews'); //done ++
-    Route::get('/news/{id}', 'PageController@viewNews')->name('viewNews'); //done ++
+    Route::get('/company/today', 'PageController@companyToday')->name('companyToday'); // done++
+    Route::get('/company/history', 'PageController@companyHistory')->name('companyHistory'); // done ++
+    Route::get('/company/activities', 'PageController@companyActivities')->name('companyActivities'); //done ++
+    Route::get('/company/videos', 'PageController@companyVideos')->name('companyVideos'); //done ++
+    Route::get('/company/news', 'PageController@companyNews')->name('companyNews'); //done ++
+    Route::get('/company/news/year/{year}', 'PageController@companyNews')->name('companyNewsYear'); //done ++
+    Route::get('/company/news/{slug?}', 'PageController@viewNews')->name('viewNews'); //done ++
 
     Route::get('/cooperation', 'PageController@cooperation')->name('cooperation'); //done ++
-    Route::get('/interesting', 'PageController@interesting')->name('interesting'); //done ++
+    Route::get('/interesno', 'PageController@interesting')->name('interesting'); //done ++
 
-    Route::get('/recipes', 'PageController@companyRecipes')->name('recipes'); //done ++
-    Route::get('/recipe/{id}', 'PageController@viewRecipe')->name('viewRecipe'); //done ++
+    Route::get('/interesno/recipes', 'PageController@companyRecipes')->name('recipes'); //done ++
+    Route::get('/interesno/recipes/tag/{slug}', 'PageController@companyRecipes'); //done ++
+    Route::get('/interesno/recipe/{slug?}', 'PageController@viewRecipe')->name('viewRecipe'); //done ++
 
-    Route::get('/stories', 'PageController@companyStories')->name('stories'); //done ++
-    Route::get('/story/{id}', 'PageController@viewStory')->name('viewStory'); //done ++
+    Route::get('/interesno/stories', 'PageController@companyStories')->name('stories'); //done ++
+    Route::get('/interesno/stories/category/{slug}', 'PageController@companyStories'); //done ++
+    Route::get('/interesno/story/{slug?}', 'PageController@viewStory')->name('viewStory'); //done ++
 
-    Route::get('/about-city', 'PageController@aboutCity')->name('aboutCity'); //done ++
-    Route::get('/slutsk/{key}', 'PageController@aboutView')->name('aboutView'); //done ++
+    Route::get('/interesno/o-gorode-slutsk', 'PageController@aboutCity')->name('aboutCity'); //done ++
+    Route::get('/interesno/o-gorode-slutsk/{key}', 'PageController@aboutView')->name('aboutView'); //done ++
 
-    Route::get('/holiday-scripts', 'PageController@holidayScripts')->name('holidayScripts'); //done ++
-    Route::get('/holiday-scripts/{id}', 'PageController@viewHolidayScript')->name('viewHolidayScript'); //done++
+    Route::get('/interesno/holiday-scripts', 'PageController@holidayScripts')->name('holidayScripts'); //done ++
+    Route::get('/interesno/holiday-scripts/category/{slug}', 'PageController@holidayScripts'); //done ++
+    Route::get('/interesno/holiday-script/{slug?}', 'PageController@viewHolidayScript')->name('viewHolidayScript'); //done++
     
-    Route::get('/stock-competitions', 'PageController@stockCompetitions')->name('stockCompetitions'); //done ++
-    Route::get('/stock/{id}', 'PageController@viewStock')->name('viewStock'); //done ++
-    Route::get('/competition/{id}', 'PageController@viewCompetition')->name('viewCompetition'); //done ++
+    Route::get('/interesno/stock-competitions', 'PageController@stockCompetitions')->name('stockCompetitions'); //done ++
+    Route::get('/interesno/stock-competitions/stock/{slug?}', 'PageController@viewStock')->name('viewStock'); //done ++
+    Route::get('/interesno/stock-competitions/competition/{slug?}', 'PageController@viewCompetition')->name('viewCompetition'); //done ++
 
-    Route::get('/contact', 'PageController@contact')->name('contact'); //done++
-    Route::get('/feedback', 'PageController@feedback')->name('feedback'); //done ++
-    Route::get('/requisites', 'PageController@requisites')->name('requisites'); //done ++
-    Route::get('/schema', 'PageController@schema')->name('schema'); //done ++
-    Route::get('/stores', 'PageController@stores')->name('stores'); //done ++
-    Route::get('/appeals', 'PageController@appeals')->name('appeals'); //done ++
+    Route::get('/contact/contact-details', 'PageController@contact')->name('contact'); //done++
+    Route::get('/contact/feedback', 'PageController@feedback')->name('feedback'); //done ++
+    Route::get('/contact/requisites', 'PageController@requisites')->name('requisites'); //done ++
+    Route::get('/contact/schema', 'PageController@schema')->name('schema'); //done ++
+    Route::get('/contact/stores', 'PageController@stores')->name('stores'); //done ++
+    Route::get('/contact/appeals', 'PageController@appeals')->name('appeals'); //done ++
     Route::get('/privacy-policy', 'PageController@privacyPolicy'); //done ++
     Route::get('/search', 'PageController@search');
     Route::get('/site-map', 'PageController@siteMap'); //done ++
-    Route::get('/page/{key}', 'PageController@page')->name('page'); //done+
-    Route::get('/products/{id}', 'ProductController@products')->name('products');
-    Route::get('/product/{id}', 'ProductController@viewProduct')->name('viewProduct');
+    
+    Route::get('/company/{page}', 'PageController@companyPage')->name('companyPage'); //done+
+    Route::get('/cooperation/{page}', 'PageController@cooperationPage')->name('contactPage'); //done+
+    Route::get('/contact/{page}', 'PageController@contactPage')->name('interesnoPage'); //done+
+    Route::get('/interesno/{page}', 'PageController@interesnoPage')->name('cooperationPage'); //done+
+    
+
+    Route::get('/products/{slug?}', 'ProductController@products')->name('products');
+    Route::get('/products/{slug?}/filter/{filter_slug}', 'ProductController@products');
+    Route::get('/product/{cate}/{slug?}', 'ProductController@viewProduct')->name('viewProduct');
 
     //sending messages
     Route::post('/appeal', 'IndexController@appeal')->name('appeal');
     Route::post('/send-recipe', 'IndexController@sendRecipe')->name('sendRecipe');
     Route::post('/send-story', 'IndexController@sendStory')->name('sendStory');
     Route::post('/order-product', 'IndexController@orderProduct')->name('orderProduct');
+    Route::post('/call-back', 'IndexController@callBack')->name('callBack');
+    
+    Route::post('/getQuizProducts', 'IndexController@getQuizProducts');
    
 
 });
@@ -107,6 +118,7 @@ Route::group(['middleware'=>'auth'], function(){
     Route::post('/admin/products/delete-attribute', 'Admin\ProductsController@deleteAttribute')->name('deleteProductAttribute');
     //Route::post('/admin/upload-images', 'Admin\ProductsController@uploadImages')->name('uploadImages');
     Route::get('/admin/photo/{id}/delete', 'Admin\ProductsController@deleteProductPhoto')->name('deleteProductPhoto');
+    Route::get('/admin/product/{id}/delete/{key}', 'Admin\ProductsController@deletePhotoByKey');
     Route::post('/admin/getfilters', 'Admin\ProductsController@getfilters');
 
     Route::resource('admin/requisites', 'Admin\\RequisitesController');
@@ -122,6 +134,7 @@ Route::group(['middleware'=>'auth'], function(){
     Route::resource('admin/posts', 'Admin\\PostsController');
     Route::resource('admin/recipes', 'Admin\\RecipesController');
     Route::resource('admin/tags', 'Admin\\TagsController');
+    
     //routes for Meal steps
     Route::post('admin/recipes/add-step', 'Admin\\RecipesController@saveStep')->name('saveStep');
     Route::post('admin/recipes/update-step', 'Admin\\RecipesController@updateStep')->name('updateStep');
@@ -151,9 +164,13 @@ Route::group(['middleware'=>'auth'], function(){
     Route::resource('admin/stories-from-users', 'Admin\\StoriesFromUsersController');
     Route::resource('admin/order-products', 'Admin\\OrderProductsController');
     Route::resource('admin/home-banners', 'Admin\\HomeBannersController');
-
+    Route::get('admin/check_slug', 'Admin\\RecipesController@check_slug');
 
 });
 
 Route::get('logout', 'Auth\LoginController@logout');
 
+
+Route::resource('admin/quiz-categories', 'Admin\\QuizCategoriesController');
+Route::resource('admin/quiz-products', 'Admin\\QuizProductsController');
+Route::resource('admin/videos', 'Admin\\VideosController');

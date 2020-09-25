@@ -1,7 +1,8 @@
 @extends('layouts.site')
 
 @section('parent')
-<li class="breadcrumb-item"><a href="/company-news">@lang('messages.novosti')</a></li>
+<li class="breadcrumb-item"><a href="{{ route('company') }}">@lang('messages.company')</a></li>
+<li class="breadcrumb-item"><a href="{{ route('companyNews') }}">@lang('messages.novosti')</a></li>
 @endsection
 @section('child')
 {{ $post['title_'.\App::getLocale()] }}
@@ -19,16 +20,16 @@
                     <li><a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww.example.com&title={{ $post['title_'.\App::getLocale()] }}" target="_blank" class="fab fa-facebook-f"></a></li>
                     <li><a href="https://instagram.com" target="_blank" class="fab fa-instagram"></a></li>
                     <li><a href="https://odnoklassniki.ru" target="_blank" class="fab fa-odnoklassniki"></a></li>
-                    <li><a href="http://vk.com/share.php?url=http%3A%2F%2Fwww.example.com&title={{ $post['title_'.\App::getLocale()] }}&noparse=false" target="_blank" class="fab fa-vk"></a></li>
+                    <li><a href="https://vk.com/share.php?url=http%3A%2F%2Fwww.example.com&title={{ $post['title_'.\App::getLocale()] }}&noparse=false" target="_blank" class="fab fa-vk"></a></li>
                 </ul>	
             </div>	
         </div>
         <div class="container">
             <div class="header-wrapper">
                 <div class="row">
-                    <div class="col-xl-8 col-md-8">
+                    <div class="col-xl-10 col-md-10">
                         <div class="header-date">
-                            <p><span>{{\Carbon\Carbon::parse($post->date)->format('d')}} </span>{{\Carbon\Carbon::parse($post->date)->format('M Y')}}</p>
+                            <p><span>{{\Carbon\Carbon::parse($post->date)->format('d')}} </span>{{\Carbon\Carbon::parse($post->date)->shortMonthName}} {{\Carbon\Carbon::parse($post->date)->format('Y')}}</p>
                         </div>
                         <div class="header-title">
                             {{ $post['title_'.\App::getLocale()] }}
@@ -41,11 +42,11 @@
         </div>
 
         <div class="scroll-down">
-            <a href="#section04"><span></span></a>
+            <a href="" id="scroll-down"><span></span></a>
         </div>
     </div>
-    <div class="section__content section-news-page" style="background-image: url('/frontend/images/bg-main.jpg')">
-        <div class="section__content-wrap">
+    <div class="section__content section-news-page news-bg" style="background-image: url('/frontend/images/bg-main.jpg')">
+        <div class="section__content-wrap news-content">
             <div class="container">
                 <div class="row">
                     <div class="col-xl-8 offset-xl-2 item">
@@ -71,9 +72,10 @@
                     
                     <div class="news-slider">
                         @foreach ($posts as $post)
-                        <a href="{{ route('viewNews', $post->id) }}" class="slider-item item__card" style="background-image: url('/images/posts/{{ $post->image }}')">
+                        <a href="{{ route('viewNews', $post->slug) }}" class="slider-item item__card">
+                            <img src="/images/posts/{{ $post->image }}">
                             <div class="item__card-date">
-                                <span>{{\Carbon\Carbon::parse($post->date)->format('d M Y')}}</span>
+                                <span>{{\Carbon\Carbon::parse($post->date)->format('d')}} {{\Carbon\Carbon::parse($post->date)->shortMonthName}} {{\Carbon\Carbon::parse($post->date)->format('Y')}}</span>
                             </div>
                             <div class="item__card-tittle">
                                 <h2>{{ $post['title_'.\App::getLocale()] }}</h2>
@@ -82,7 +84,7 @@
                         @endforeach
                         
                     </div>
-                    <div class="slider-nav">
+                    <div class="slider-nav news-paginate">
                         <div class="news__slider-dots"></div>
                         <div class="news__slider-arrows d-flex"></div>
                     </div>

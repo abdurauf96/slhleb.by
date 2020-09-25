@@ -1,7 +1,8 @@
 @extends('layouts.site')
 
 @section('parent')
-<li class="breadcrumb-item"><a href="/stories">@lang('messages.istori')</a></li>
+<li class="breadcrumb-item"><a href="{{ route('interesting') }}">@lang('messages.eto-int')</a></li>
+<li class="breadcrumb-item"><a href="{{ route('stories') }}">@lang('messages.istori')</a></li>
 @endsection
 @section('child')
 {{ $story['title_'.\App::getLocale()] }}
@@ -49,8 +50,8 @@
             <div class="container">
                 <div class="row">
                     <div class="col-xl-8 offset-xl-2 item">
-                        <div class="content">
-                            {{ $story['body_'.\App::getLocale()] }}
+                        <div class="content story-content">
+                            {!! $story['body_'.\App::getLocale()] !!}
                         </div>
 
                     </div>
@@ -67,13 +68,13 @@
                 </div>
             </div>
             <div class="section-recipe__slider section-recipe-page">
-                <div class="recipie-slider">
+                <div class="recipie-slider history__page">
                     @foreach ($story->category->stories as $item)
-                    <a href="{{ route('viewStory', $item->id) }}" class="recipie-slider__item">
+                    <a href="{{ route('viewStory', $item->slug) }}" class="recipie-slider__item">
                         <div class="slider__item-image" style="background-image: url('/images/stories/{{ $item->image }}')"></div>
                         <div class="slider__item-info">                   
                             <div class="top">
-                                <h2>{{ $story['title_'.\App::getLocale()]  }}</h2>
+                                <h2>{{ $item['title_'.\App::getLocale()]  }}</h2>
                             </div>                        
                             <div class="absolute">  
                                 

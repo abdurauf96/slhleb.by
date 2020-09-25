@@ -1,13 +1,20 @@
 @extends('layouts.site')
 
 @section('parent')
-<li class="breadcrumb-item"><a href="/interesting">@lang('messages.eto-int')</a></li>
+<li class="breadcrumb-item"><a href="{{ route('interesting') }}">@lang('messages.eto-int')</a></li>
 @endsection
 @section('child')
 {{ $page['title_'.\App::getLocale()] }}
 @endsection
 
 @section('content')
+<div class="wrapper-kwiz">
+        <p class="close-kvis"><i class="fal fa-times"></i></p>
+        <a href="#modal-quiz" data-toggle="modal" class="kvis-button">
+                <p>@lang('messages.kakoy')</p>
+                <img src="/frontend/images/slider-label.png" alt="">
+            </a>
+    </div>
 <div class="section__wrapper">
     <div class="section__header h-100" style="background-image: url('/images/pages/{{ $page->image }}')">
         <div class="container">
@@ -16,14 +23,17 @@
                     <div class="title title-style">
                         {{ $page['title_'.\App::getLocale()] }}
                     </div>
+                    @if($page['desc_'.\App::getLocale()])
                     <div class="text scroll-pane">
                         <p>{{ $page['desc_'.\App::getLocale()] }}</p>
 
                     </div>
+                    @endif
                 </div>
                 <div class="scroll-down">
                     <a href="" id="scroll-down"><span></span></a>
                 </div>
+
             </div>
         </div>
 
@@ -38,9 +48,11 @@
                             <div class="row">
                                 <div class="col-md-10">
                                     <ul class="list-inline">
-                                        <li class="list-inline-item {{ \Request::get('script')==''? 'active' : '' }} "><a href="{{ route('holidayScripts') }}">@lang('messages.all_scripts') </a></li>
+                                        <li class="list-inline-item {{ \Request::route('slug')==''? 'active' : '' }} "><a href="{{ route('holidayScripts') }}">@lang('messages.all_scripts') </a></li>
                                         @foreach ($scripts as $script)
-                                        <li class="list-inline-item {{ \Request::get('script')==$script->id ? 'active' : '' }}"><a href="/holiday-scripts?script={{ $script->id }}">{{ $script['name_'.\App::getLocale()] }}</a></li>
+                                        <li class="list-inline-item {{ \Request::route('slug')==$script->slug ? 'active' : '' }}">
+                                            <a href="/interesno/holiday-scripts/category/{{ $script->slug }}">{{ $script['name_'.\App::getLocale()] }}</a>
+                                        </li>
                                         @endforeach
                                          
                                     </ul>
@@ -58,7 +70,7 @@
                     <div class="row mb-5">
                         @foreach ($holidays as $holiday)
                         <div class="col-xl-6">
-                            <a href="{{ route('viewHolidayScript', $holiday->id) }}" class="item-card item-small mb-5 f-large" style="background-image: url(/images/holidays/{{$holiday->image}})">
+                            <a href="{{ route('viewHolidayScript', $holiday->slug) }}" class="item-card item-small mb-5 f-large" style="background-image: url(/images/holidays/{{$holiday->image}})">
 
                                 <div class="item-card__tittle">
                                     <h2>{{ $holiday['title_'.\App::getLocale()] }} </h2>

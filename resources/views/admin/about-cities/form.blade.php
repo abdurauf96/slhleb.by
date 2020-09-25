@@ -1,6 +1,6 @@
 <div class="form-group{{ $errors->has('title_ru') ? 'has-error' : ''}}">
     {!! Form::label('title_ru', 'Заголовок Ru', ['class' => 'control-label']) !!}
-    {!! Form::text('title_ru', null, ('' == 'required') ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control']) !!}
+    {!! Form::text('title_ru', null, ('' == 'required') ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control','id'=>'title']) !!}
     {!! $errors->first('title_ru', '<p class="help-block">:message</p>') !!}
 </div>
 <div class="form-group{{ $errors->has('title_by') ? 'has-error' : ''}}">
@@ -40,8 +40,18 @@
 </div>
 <div class="form-group{{ $errors->has('key') ? 'has-error' : ''}}">
     {!! Form::label('key', 'Key', ['class' => 'control-label']) !!}
-    {!! Form::text('key', null, ('' == 'required') ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control']) !!}
+    {!! Form::text('key', null, ('' == 'required') ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control','id'=>'slug']) !!}
     {!! $errors->first('key', '<p class="help-block">:message</p>') !!}
+</div>
+
+<div class="form-group">
+    {!! Form::label('meta_title', ' SEO Заголовок', ['class' => 'control-label']) !!}
+    {!! Form::textarea('meta_title', null, ['rows'=>3, 'class'=>'form-control'], ('' == 'required') ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control']) !!}
+</div>
+
+<div class="form-group">
+    {!! Form::label('meta_title', ' SEO Описание', ['class' => 'control-label']) !!}
+    {!! Form::textarea('meta_description', null, ['rows'=>3, 'class'=>'form-control'], ('' == 'required') ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control']) !!}
 </div>
 
 

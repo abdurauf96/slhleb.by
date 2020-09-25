@@ -40,4 +40,25 @@ $(document).ready(function(){
         }
         
     })
+    
+    $('.delete_foto').click(function(e){
+        e.preventDefault();
+        var id=$(this).data('id');
+        var key=$(this).data('key');
+        if(confirm('вы действительно хотите удалить фото ?')){
+            $.get('/admin/product/'+id+'/delete/'+ key, function(){
+                location.reload();
+            })
+        }else{
+            return false;
+        }
+        
+    })
+    
+    
+    var url=window.location.href;
+    $('[href="'+ url +'"]').parent().parent().parent().addClass('active');
+    $('[href="'+ url +'"]').parent().parent().parent().addClass('menu-open');
+    $('[href="'+ url +'"]').parent().addClass('active');
+    
 })

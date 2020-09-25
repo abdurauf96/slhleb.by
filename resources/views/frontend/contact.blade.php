@@ -1,7 +1,7 @@
 @extends('layouts.site')
 
 @section('parent')
-<li class="breadcrumb-item"><a href="/contact">@lang('messages.contacts')</a></li>
+<li class="breadcrumb-item"><a href="{{route('contact')}}">@lang('messages.contacts')</a></li>
 @endsection
 @section('child')
 @lang('messages.contact_dan')
@@ -14,9 +14,12 @@
             <div class="section__content-wrap">
                 <div class="header-wrapper">
                     <div class="row">
+                        <div class="col-md-12">
                             <div class="header-title">
                                 @lang('messages.contact_dan')
                             </div>
+                        </div>
+                            
                         </div>
                     </div>
                 </div>

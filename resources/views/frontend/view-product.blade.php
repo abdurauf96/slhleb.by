@@ -2,7 +2,7 @@
 
 
 @section('parent')
-<li class="breadcrumb-item"><a href="{{ route('products',$product->category->id) }}">{{ $product->category->translate(\App::getLocale())->name }}</a></li>
+<li class="breadcrumb-item"><a href="{{ route('products',$product->category->slug) }}">{{ $product->category->translate(\App::getLocale())->name }}</a></li>
 @endsection
 @section('child')
 {{ $product->translate(\App::getLocale())->name }}
@@ -21,29 +21,38 @@
                                     <div class="col-xl-12">
                                         <div class="section-product-slider">
                                             <div class="product-slider">
-                                                <div class="product-slider-item">
-                                                    <div class="product-hit">
-                                                        @if($product->status=='new')
-                                                        <img src="/frontend/images/new-catalog.png" alt="">
-                                                        @elseif($product->status=='xit')
-                                                        <img src="/frontend/images/hit-catalog.png" alt="">
-                                                        @else
-                                                        @endif
-                                                    </div>
-                                                    <div class="img-comp-container">
+                                                @if($product->image_out || $product->image_in)
+                                                    <div class="product-slider-item">
+                                                        <div class="product-hit">
+                                                            @if($product->status=='new')
+                                                            <img src="/frontend/images/new-catalog.png" alt="">
+                                                            @elseif($product->status=='xit')
+                                                            <img src="/frontend/images/hit-catalog.png" alt="">
+                                                            @else
+                                                            @endif
+                                                        </div>
+                                                        
                                                         <div class="img-comp-container">
-                                                            <div class="img-comp-img img-comp-overlay">
-                                                                <img src="/images/products/{{ $product->image_out }}">
-                                                            </div>
-                                                            <div class="img-comp-img ">
-                                                                
-                                                                <img src="/images/products/{{ $product->image_in}}">
-                                                            </div>
-                                                        </div>									
+                                                                 <!-- The before image is first -->
+                                                                 <img src="/images/products/{{ $product->image_out }}"
+                                                                 <!-- The after image is last -->
+                                                                 <img src="/images/products/{{ $product->image_in}}">
+                                                                </div>
+                                                        
+                                                        <!--<div class="img-comp-container">-->
+                                                        <!--    <div class="img-comp-container">-->
+                                                        <!--        <div class="img-comp-img img-comp-overlay">-->
+                                                        <!--            <img src="/images/products/{{ $product->image_out }}">-->
+                                                        <!--        </div>-->
+                                                        <!--        <div class="img-comp-img ">-->
+                                                                    
+                                                        <!--            <img src="/images/products/{{ $product->image_in}}">-->
+                                                        <!--        </div>-->
+                                                        <!--    </div>									-->
+                                                        <!--</div>-->
+                                                        <div class="product-weight"><p>{{ $product->weight }}</p></div>
                                                     </div>
-                                                    <div class="product-weight"><p>{{ $product->weight }}</p></div>
-                                                </div>
-                                                
+                                                @endif
                                                 
                                                 @foreach ($product->photos as $image)
                                                 <div class="product-slider-item" style="background-image: url('/images/products/{{ $image->image }}')">  
@@ -57,17 +66,22 @@
                                     <div class="col-xl-12">
                                         <div class="product-nav-wrapper">
                                             <div class="product-nav-slider">
-                                                
-                                               
+                                                @if($product->image_out || $product->image_in)
+                                                    <div class="product-nav-slider-item" style="background-image: url('/images/products/{{ $product->image_out}}')">   
+                                                    </div>
+                                                @endif
+                                                    
                                                @foreach ($product->photos as $image)
                                                 <div class="product-nav-slider-item" style="background-image: url('/images/products/{{ $image->image }}')">   
                                                 </div>
                                                 @endforeach
                                                
                                             </div>
+                                            @if(count($product->photos) >1)
                                             <div class="scrollbar">
                                                 <input type="range" id="range" min="1" value="1" step="1" max="" />
                                             </div>
+                                            @endif
                                             <!-- <div class="product-nav-slider-scrollbar scrollbar">
 
                                                 <div class="scrollbar-thumb"></div>
@@ -102,6 +116,7 @@
                                             <p data-aos="fade-left" data-aos-delay="300">{{ $product->translate(\App::getLocale())->description }}</p>
                                         </div>
                                         <div class="panel-product panel-group wrap" id="accordion" role="tablist" aria-multiselectable="true" data-aos="fade-left" data-aos-delay="400">
+                                             @if($product->consist)
                                             <div class="panel">
                                                 <div class="panel-heading" role="tab" id="headingOne">
                                                     <h4 class="panel-title">
@@ -118,8 +133,9 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            @endif
                                             <!-- end of panel -->
-
+                                            @if($product->about)
                                             <div class="panel">
                                                 <div class="panel-heading" role="tab" id="headingTwo">
                                                     <h4 class="panel-title">
@@ -135,6 +151,7 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            @endif
                                         </div>
                                         <div class="product-block-info">
                                             <h3>@lang('messages.soderj'):</h3>
@@ -178,21 +195,21 @@
                                             <table>
                                                 
                                                 <tr>
-                                                    <td class="td-desc"><img src="/images/icon/weight-icon.png" alt="">@lang('messages.ves')</td>
+                                                    <td class="td-desc"><img src="/frontend/images/icon/weight-icon.png" alt="">@lang('messages.ves')</td>
                                                     @foreach ($product->attributes  as $attr)
                                                     <td>{{ $attr->weight }}</td>
                                                     @endforeach
                                                 </tr>
                                                 <tr>
-                                                    <td class="td-desc">@lang('messages.chas')</td>
+                                                    <td class="td-desc"><img src="/frontend/images/icon/icon-time.png" alt="">@lang('messages.chas')</td>
                                                     @foreach ($product->attributes  as $attr)
                                                     <td>{{ $attr->time }}</td>
                                                     @endforeach
                                                 </tr>
                                                 <tr>
-                                                    <td class="td-desc">@lang('messages.sht')</td>
+                                                    <td class="td-desc bb-none"><img src="/frontend//images/icon/icon-count.png" alt="">@lang('messages.sht')</td>
                                                     @foreach ($product->attributes  as $attr)
-                                                    <td>{{ $attr->qty }}</td>
+                                                    <td class="bb-none">{{ $attr->qty }}</td>
                                                     @endforeach
                                                 </tr>
                                                 
@@ -215,9 +232,11 @@
     <div class="section-recommend" style="background-image: url('/frontend/images/section-recommend-bg.png')">
         <div class="section-recommend-wrap">
             <div class="container-custom">
-                <div class="title title-style">
-                    @lang('messages.recom')
-                </div>
+                @if(count($recommends)>0)
+                    <div class="title title-style">
+                        @lang('messages.recom')
+                    </div>
+                @endif
                 <div class="recommend-slider-wrap">
                     <div class="slider-nav style-dots">
                         <div class="recommend__slider-dots"></div>
@@ -225,8 +244,9 @@
                     </div>
                     <div class="recommend-slider">
                         @foreach ($recommends as $prod)
-                        <a href="{{ route('viewProduct', $prod->id) }}" class="recommend-slider-item catalog-list__item">
+                        <a href="{{ route('viewProduct', $prod->slug) }}" class="recommend-slider-item catalog-list__item">
                             <div class="item-image">
+                                <span class="shadow-prd"></span>
                                 <img src="/images/products/{{ $prod->image }}" alt="">
                             </div>
                             <div class="item-info">
@@ -250,4 +270,68 @@
     </div>
 
 </div>
+<div class="modal fade modal-order" id="modal-order">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"><i class="fal fa-times"></i></span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="container">
+                    <a href="#" class="modal-logo">
+                        <img src="/frontend/images/logo.png" alt="">
+                    </a>
+                    <h5 class="header-title">@lang('messages.order')</h5>
+                    <div class="form">
+                        <form action="" id="order-product" method="POST">
+                            @csrf
+                            <input type="hidden" name="name_product" value="{{$product->slug}}">
+                            <div class="form-group">
+                                <label for="name">@lang('messages.name') <span>*</span></label>
+                                <input type="text" name="name" class="form-control" id="name" required="" value="">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">E-mail<span>*</span></label>
+                                <input type="text" name="email" class="form-control" id="email" required="" value="">
+                            </div>
+                            <div class="form-group">
+                                <label for="addres">@lang('messages.tel') <span>*</span></label>
+                                <input type="text" name="phone" class="form-control" id="phone" required="" value="">
+                            </div>
+                            <div class="form-group">
+                                <label for="company">@lang('messages.company') <span>*</span></label>
+                                <input type="text" name="company" class="form-control" id="company" required="" value="">
+                            </div>
+                            <div class="form-group mb-0">
+                                <label for="message">@lang('messages.msg') <span>*</span></label>
+                                <textarea class="form-control" id="message" required="" name="msg" rows="6" value=""></textarea>
+                            </div>
+                            <p class="my-4 d-flex"><span class="mr-1">*</span>@lang('messages.req')</p>
+                            
+                            <div class="g-recaptcha-wrap" style="text-align:center;">
+                                                <div class="g-recaptcha" data-sitekey="6LdjZ8wZAAAAAAJVyzY0xLgl_OQGcGeJkBJXTZDV"  data-callback="enableBtnOrder" data-theme="dark"></div>
+                                            </div>
+
+                            <button type="submit" id="order-button" class="btn btn-red">@lang('messages.send')</button>
+                        </form>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
 @endsection
+
+@section('scripts')
+    <script type="text/javascript">
+        var submitOrder = $('.g-recaptcha').closest('#order-product').find('[type="submit"]');
+                submitOrder.prop("disabled",true);
+                function enableBtnOrder(){
+                    $('#order-button').prop("disabled",false);
+                }
+    </script>
+@endsection
+

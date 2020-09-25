@@ -33,7 +33,7 @@ class Tag extends Model
      *
      * @var array
      */
-    protected $fillable = ['name_ru', 'name_by', 'name_by'];
+    protected $fillable = ['name_ru', 'name_by', 'name_by', 'slug'];
 
     
 

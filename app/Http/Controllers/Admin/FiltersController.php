@@ -58,6 +58,7 @@ class FiltersController extends Controller
             'by'=>[ 'name'=> $request->by_name],
             'en'=>[ 'name'=> $request->en_name],
             'category_id'=>$request->category_id,
+            'slug'=>$request->slug,
         ];
         
         Filter::create($request->all());

@@ -11,7 +11,7 @@ class Stock extends Model
     
     public function participants()
     {
-        return $this->hasMany(Participant::class, 'competition_id');
+        return $this->hasMany(Participant::class, 'competition_id')->orderBy('point', 'asc');
     }
 
     /**
@@ -33,7 +33,7 @@ class Stock extends Model
      *
      * @var array
      */
-    protected $fillable = ['type', 'title_ru', 'title_by', 'title_en', 'body_ru', 'body_by', 'body_en', 'image', 'image_fon', 'rules', 'state', 'date'];
+    protected $fillable = ['type', 'title_ru', 'title_by', 'title_en', 'body_ru', 'body_by', 'body_en', 'image', 'image_fon', 'rules', 'state', 'date','meta_title','meta_description', 'slug'];
 
     
 

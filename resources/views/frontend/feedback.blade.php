@@ -1,7 +1,7 @@
 @extends('layouts.site')
 
 @section('parent')
-<li class="breadcrumb-item"><a href="/contact">@lang('messages.cont')</a></li>
+<li class="breadcrumb-item"><a href="{{route('contact')}}">@lang('messages.contacts')</a></li>
 @endsection
 @section('child')
 {{ $page['title_'.\App::getLocale()] }}
@@ -28,7 +28,7 @@
                             <p>{{ $page['desc_'.\App::getLocale()] }}</p>
                         </div>
                         <div class="form">
-                            <form action="/appeal" method="POST" enctype="multipart/form-data">
+                            <form action="" id="call-back" enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group">
                                     <label for="name">@lang('messages.name') <span>*</span></label>
@@ -56,7 +56,11 @@
                                         <p class="file-return"></p>
                                     </div>
                                   </div>
-                                  <button type="submit" class="btn btn-red">@lang('messages.send')</button>
+                                  <div class="g-recaptcha-wrap" style="text-align:center;">
+                                        <div class="g-recaptcha" data-sitekey="6LdjZ8wZAAAAAAJVyzY0xLgl_OQGcGeJkBJXTZDV"  data-callback="enableBtnFeedback" data-theme="dark"></div>
+                                    </div>
+                                  
+                                  <button type="submit" id="btn-feedback" class="btn btn-red">@lang('messages.send')</button>
                             </form>
                         </div>
                         
@@ -71,4 +75,13 @@
 
     </div>
 </div>
+@endsection
+@section('scripts')
+    <script type="text/javascript">
+        var submitCallback = $('.g-recaptcha').closest('form').find('[type="submit"]');
+                submitCallback.prop("disabled",true);
+                function enableBtnFeedback(){
+                    $('#btn-feedback').prop("disabled",false);
+                }
+    </script>
 @endsection

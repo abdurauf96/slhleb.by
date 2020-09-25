@@ -22,8 +22,6 @@ class ProductsController extends Controller
     public function index(Request $request)
     {
         $keyword = $request->get('search');
-        $perPage = 25;
-
         if (!empty($keyword)) {
             $products = Product::where('category_id', 'LIKE', "%$keyword%")
                 ->orWhere('filter_id', 'LIKE', "%$keyword%")
@@ -40,11 +38,10 @@ class ProductsController extends Controller
                 ->orWhere('image_in', 'LIKE', "%$keyword%")
                 ->orWhere('image_out', 'LIKE', "%$keyword%")
                 ->orWhere('weight', 'LIKE', "%$keyword%")
-                ->latest()->paginate($perPage);
+                ->latest()->get();
         } else {
-            $products = Product::latest()->paginate($perPage);
+            $products = Product::latest()->get();
         }
-
         return view('admin.products.index', compact('products'));
     }
 
@@ -72,7 +69,6 @@ class ProductsController extends Controller
         $this->validate($request, [
 			'category_id' => 'required'
         ]);
-        dd($request->all());
         if ($request->hasFile('img')) {
             $file=$request->file('img');
             $img=time().$file->getClientOriginalName();
@@ -109,6 +105,7 @@ class ProductsController extends Controller
             'filter_id'=>$request->filter_id,
             'protein'=>$request->protein,
             'carbo'=>$request->carbo,
+            'recommend'=>$request->recommend,
             'fat'=>$request->fat,
             'callory'=>$request->callory,
             'weight'=>$request->weight,
@@ -116,7 +113,9 @@ class ProductsController extends Controller
             'image_in'=>$image_in,
             'image_out'=>$image_out,
             'status'=>$request->status,
-
+            'meta_title'=>$request->meta_title,
+            'meta_description'=>$request->meta_description,
+            'slug'=>$request->slug,
             'ru'=>[ 'name'=>$request->name_ru, 'description'=>$request->description_ru, 'about'=>$request->about_ru, 'consist'=>$request->consist_ru ],
             'by'=>[ 'name'=>$request->name_by, 'description'=>$request->description_by, 'about'=>$request->about_by, 'consist'=>$request->consist_by ],
             'en'=>[ 'name'=>$request->name_en, 'description'=>$request->description_en, 'about'=>$request->about_en, 'consist'=>$request->consist_en ],
@@ -227,7 +226,7 @@ class ProductsController extends Controller
         $this->validate($request, [
 			'category_id' => 'required'
 		]);
-       
+        
         if ($request->hasFile('new_img')) {
             $file=$request->file('new_img');
             $img=time().$file->getClientOriginalName();
@@ -264,12 +263,16 @@ class ProductsController extends Controller
             'protein'=>$request->protein,
             'carbo'=>$request->carbo,
             'fat'=>$request->fat,
+            'recommend'=>$request->recommend,
             'callory'=>$request->callory,
             'weight'=>$request->weight,
             'image'=>$img,
             'image_in'=>$image_in,
             'image_out'=>$image_out,
             'status'=>$request->status,
+            'meta_title'=>$request->meta_title,
+            'meta_description'=>$request->meta_description,
+            'slug'=>$request->slug,
             'ru'=>[ 'name'=>$request->name_ru, 'description'=>$request->description_ru, 'about'=>$request->about_ru, 'consist'=>$request->consist_ru ],
             'by'=>[ 'name'=>$request->name_by, 'description'=>$request->description_by, 'about'=>$request->about_by, 'consist'=>$request->consist_by ],
             'en'=>[ 'name'=>$request->name_en, 'description'=>$request->description_en, 'about'=>$request->about_en, 'consist'=>$request->consist_en ],
@@ -322,6 +325,17 @@ class ProductsController extends Controller
     {
         ProductImage::destroy($id);
 
+    }
+    
+    public function deletePhotoByKey($id, $key)
+    {
+        $product=Product::findOrFail($id);
+        if($key=='image_in'){
+            $product->image_in=null;
+        }else{
+            $product->image_out=null;
+        }
+        $product->save();
     }
 
     public function getfilters(Request $request)

@@ -8,9 +8,10 @@
 </div>
 <div class="form-group{{ $errors->has('name_ru') ? 'has-error' : ''}}">
     {!! Form::label('name_ru', 'Название Ru', ['class' => 'control-label']) !!}
-    {!! Form::text('name_ru', null, ('' == 'required') ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control']) !!}
+    {!! Form::text('name_ru', null, ('' == 'required') ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control', 'id'=>'title']) !!}
     {!! $errors->first('name_ru', '<p class="help-block">:message</p>') !!}
 </div>
+
 <div class="form-group{{ $errors->has('name_by') ? 'has-error' : ''}}">
     {!! Form::label('name_by', 'Название By', ['class' => 'control-label']) !!}
     {!! Form::text('name_by', null, ('' == 'required') ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control']) !!}
@@ -64,6 +65,22 @@
     <label class="control-label" for="">Для главной страницы</label>
     <input type="checkbox" name="status" value="1" >
 </div>
+
+<div class="form-group">
+    {!! Form::label('slug', 'Slug', ['class' => 'control-label']) !!}
+    {!! Form::text('slug', null, ('' == 'required') ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control', 'id'=>'slug']) !!}
+</div>
+
+<div class="form-group">
+    {!! Form::label('meta_title', ' SEO Заголовок', ['class' => 'control-label']) !!}
+    {!! Form::textarea('meta_title', null, ['rows'=>3, 'class'=>'form-control'], ('' == 'required') ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control']) !!}
+</div>
+
+<div class="form-group">
+    {!! Form::label('meta_title', ' SEO Описание', ['class' => 'control-label']) !!}
+    {!! Form::textarea('meta_description', null, ['rows'=>3, 'class'=>'form-control'], ('' == 'required') ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control']) !!}
+</div>
+
 <div class="form-group">
     {!! Form::submit($formMode === 'edit' ? 'Обновить' : 'Создать', ['class' => 'btn btn-primary']) !!}
 </div>

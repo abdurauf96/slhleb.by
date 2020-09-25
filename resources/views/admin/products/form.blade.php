@@ -19,7 +19,7 @@
 
 <div class="form-group{{ $errors->has('name') ? 'has-error' : ''}}">
     <label class="control-label" for="name">Название RU</label>
-    <input type="text" name="name_ru" required="required" class="form-control" value="@isset($product) {{ $product->translate('ru')->name }} @endisset ">
+    <input type="text" name="name_ru" id="title" required="required" class="form-control" value="@isset($product) {{ $product->translate('ru')->name }} @endisset ">
     {!! $errors->first('name', '<p class="help-block">:message</p>') !!}
 </div>
 <div class="form-group{{ $errors->has('name') ? 'has-error' : ''}}">
@@ -147,6 +147,7 @@
     {!! Form::label('image_in', 'Фото для слайдера ДО/ПОСЛЕ (вид без упаковки)', ['class' => 'control-label']) !!}
     @if($formMode=='edit')
     <img src="/images/products/{{ $product->image_in }}" width="50" height="50" alt="">
+    <a class="delete_foto" data-key="image_in" data-id="{{  $product->id }}" ><i class="fa fa-trash"></i></a>
     <input type="file" name="new_image_in"  class="form-control" >
     <input type="hidden" name="last_image_in" value="{{ $product->image_in }}"  class="form-control" >
     @else
@@ -158,6 +159,7 @@
     {!! Form::label('image_out', 'Фото для слайдера ДО/ПОСЛЕ (вид с упаковкой)', ['class' => 'control-label']) !!}
     @if($formMode=='edit')
     <img src="/images/products/{{ $product->image_out }}" width="50" height="50" alt="">
+    <a class="delete_foto" data-key="image_out" data-id="{{  $product->id }}" ><i class="fa fa-trash"></i></a>
     <input type="file" name="new_image_out"  class="form-control" >
     <input type="hidden" name="last_image_out" value="{{ $product->image_out }}"  class="form-control" >
     @else
@@ -180,6 +182,22 @@
     <label class="control-label" for="">Рекомендуемый</label> <br>
     <input type="checkbox" value="1" @if($formMode === 'edit')  {{ $product->recommend=='1' ? 'checked' : '' }} @endif name="recommend"> 
  </div>
+ 
+<div class="form-group">
+    {!! Form::label('meta_title', ' SEO Заголовок', ['class' => 'control-label']) !!}
+    {!! Form::textarea('meta_title', null, ['rows'=>3, 'class'=>'form-control'], ('' == 'required') ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control']) !!}
+</div>
+
+<div class="form-group">
+    {!! Form::label('meta_title', ' SEO Описание', ['class' => 'control-label']) !!}
+    {!! Form::textarea('meta_description', null, ['rows'=>3, 'class'=>'form-control'], ('' == 'required') ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control']) !!}
+</div> 
+ 
+<div class="form-group">
+    {!! Form::label('slug', 'Slug', ['class' => 'control-label']) !!}
+    {!! Form::text('slug', null, ('' == 'required') ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control', 'id'=>'slug']) !!}
+</div>
+
 <div class="form-group">
     {!! Form::submit($formMode === 'edit' ? 'Обновить' : 'Создать', ['class' => 'btn btn-primary']) !!}
 </div>

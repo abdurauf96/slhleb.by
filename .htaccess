@@ -1,0 +1,30 @@
+<IfModule mod_rewrite.c>
+    <IfModule mod_negotiation.c>
+        Options -MultiViews
+    </IfModule>
+    RewriteEngine On
+    RewriteBase /
+    RewriteRule ^(.*)index\.php$ $1 [R=301,L]
+    RewriteCond %{HTTP_HOST} ^www\.(.*)$
+    RewriteRule ^(.*)$ http://%1/$1 [L,R=301]
+    RewriteCond %{SERVER_PORT} 80
+    RewriteRule ^(.*)$ https://slhleb.by/$1 [R,L]
+    RewriteCond %{REQUEST_FILENAME} -d [OR]
+    RewriteCond %{REQUEST_FILENAME} -f
+    RewriteRule ^ ^$1 [N]
+    RewriteRule ^$ public/ [L]
+    RewriteRule ((?s).*) public/$1 [L]
+    # RewriteCond %{REQUEST_URI} (\.\w+$) [NC]
+    # RewriteRule ^(.*)$ public/$1
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^ server.php
+    RewriteCond %{HTTP_HOST} ^www.slhleb.by\.by$ [NC]
+    RewriteRule ^(.*)$ https://slhleb.by/$1 [R=301,L]
+    RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /index\.(php|html|htm)\ HTTP/
+    RewriteRule ^(.*)index\.(php|html|htm)$ https://slhleb.by/$1 [R=301,L]
+    RewriteRule ^(.*)$ https://slhleb.by/$1 [R=301,L]
+    RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /index\.(php|html|htm)\ HTTP/
+    RewriteRule ^(.*)index\.(php|html|htm)$ https://slhleb.by/$1 [R=301,L]
+    RewriteRule ^(.*)$ public/$1 [L]
+</IfModule>

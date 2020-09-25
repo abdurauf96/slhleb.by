@@ -10,9 +10,11 @@
 </div>
 
 
-<div class="modal fade modal-order" id="modal-order">
+
+
+<div class="modal fade procedure-consideration modal-order" id="procedure-consideration">
     <div class="modal-dialog" role="document">
-        <div class="modal-content">
+        <div class="modal-content" style="padding-bottom: 100px;">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true"><i class="fal fa-times"></i></span>
@@ -23,34 +25,9 @@
                     <a href="#" class="modal-logo">
                         <img src="/frontend/images/logo.png" alt="">
                     </a>
-                    <h5 class="header-title">@lang('messages.order')</h5>
-                    <div class="form">
-                        <form action="/order-product" method="POST">
-                            @csrf
-                            <div class="form-group">
-                                <label for="name">@lang('messages.name') <span>*</span></label>
-                                <input type="text" name="name" class="form-control" id="name" required="" value="">
-                            </div>
-                            <div class="form-group">
-                                <label for="email">E-mail<span>*</span></label>
-                                <input type="text" name="email" class="form-control" id="email" required="" value="">
-                            </div>
-                            <div class="form-group">
-                                <label for="addres">@lang('messages.tel') <span>*</span></label>
-                                <input type="text" name="phone" class="form-control" id="phone" required="" value="">
-                            </div>
-                            <div class="form-group">
-                                <label for="company">@lang('messages.company') <span>*</span></label>
-                                <input type="text" name="company" class="form-control" id="company" required="" value="">
-                            </div>
-                            <div class="form-group mb-0">
-                                <label for="message">@lang('messages.msg') <span>*</span></label>
-                                <textarea class="form-control" id="message" required="" name="msg" rows="6" value=""></textarea>
-                            </div>
-                            <p class="my-4"><span class="mr-1">*</span>@lang('messages.req')</p>
+                    <h5 class="header-title">@lang('messages.procedure_consideration')</h5>
+                    <div class="content">
 
-                            <button type="submit" class="btn btn-red">@lang('messages.send')</button>
-                        </form>
                     </div>
                 </div>
                 
@@ -58,7 +35,6 @@
         </div>
     </div>
 </div>
-
 
 
 
@@ -72,26 +48,27 @@
             </div>
             <div class="modal-body">
                 <div class="container">
-                    <div class="col-md-8 offset-md-4">
+                    <div class="col-md-12 col-lg-8 offset-lg-4">
                         <a href="#" class="modal-logo">
                             <img src="/frontend/images/logo.png" alt="">
                         </a>
                         <div class="form">
-                            <h4 class="title-red f-30">Какой хлеб подходит Вам?</h4>
+                            <h4 class="title-red f-30">Какой продукт подходит Вам?</h4>
                             <div class="step-counter">
                                 <div class="step-current"></div>из <div class="step-total"></div>
                             </div>
-                            <form action="">
+                            <form action="" class="quiz-form">
                                 <div class="step step-1 animate-in">
-                                    <h2 class="title title-style">Какой хлеб <br>подходит вам?</h2>
+                                    <img src="/frontend/images/5pic-coffee.png" class="stem-img">
+                                    <h2 class="title title-style">Какой продукт <br>подходит вам?</h2>
                                     <h4>Пройдите простой тест, который займет всего 5 минут, и узнайте, какие продукты подходят имено Вам!</h4>
-
+                                    <meta name="csrf-token" content="{{ csrf_token() }}">
                                     <p class="f-30">Расскажите о себе</p>
                                     <div class="row">
                                         <div class="col-md-10">
                                             <div class="form-group">
-                                                <label for="name">Ваше имя</label>
-                                                <input type="text" name="name" class="form-control fc-name" id="name" required="" value="">
+                                                <label for="name">Ваше имя *</label>
+                                                <input type="text" name="name" class="form-control fc-name username" id="name" required="" value="">
                                             </div>
                                             <div class="form-group">
                                                 <div class="form_radio_name">
@@ -109,242 +86,244 @@
                                                 </div>
 
                                             </div>
-                                            <div class="form-group-wrap">
-                                                <div class="form-group">
-                                                    <label for="weight">Вес</label>
-                                                    <input type="text" name="weight" class="form-control" id="weight" required="" value="" placeholder="кг">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="growth">Рост</label>
-                                                    <input type="text" name="growth" class="form-control" id="growth" required="" value="" placeholder="см">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="age">Возраст</label>
-                                                    <input type="text" name="age" class="form-control" id="age" required="" value="" placeholder="лет">
-                                                </div>
+                                            <!--<div class="form-group-wrap">-->
+                                            <!--    <div class="form-group">-->
+                                            <!--        <label for="weight">Вес *</label>-->
+                                            <!--        <input type="text" name="weight" class="form-control weight" id="weight" required="" value="" placeholder="кг">-->
+                                            <!--    </div>-->
+                                            <!--    <div class="form-group">-->
+                                            <!--        <label for="growth">Рост *</label>-->
+                                            <!--        <input type="text" name="growth" class="form-control height" id="growth" required="" value="" placeholder="см">-->
+                                            <!--    </div>-->
+                                            <!--    <div class="form-group">-->
+                                            <!--        <label for="age">Возраст </label>-->
+                                            <!--        <input type="text" name="age" class="form-control" id="age" required="" value="" placeholder="лет">-->
+                                            <!--    </div>-->
+                                                
+                                            <!--</div>-->
+                                            <div class="form-group-wrap req_block" style="display: none">
+                                                <p class="req_info">пожалуйста заполните все обязательные поля</p>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="step step-2 animate-in">
-                                    <h2 class="title title-style">сколько часов в неделю вы уделяете спорту?</h2>
+                                    <img src="/frontend/images/1pic-fruits.png" class="stem-img">
+                                    <h2 class="title title-style">1. Выберите цвет??</h2>
                                     <div class="form-group form-group-radio">
-                                        <input type="radio" name="time-sport" value="более 8 часов" class="option-input_radio" id="time-sport-1" placeholder="" checked>
-                                        <label for="time-sport-1">более 8 часов</label>
+                                        <input type="radio" name="step1" value="1" class="option-input_radio" id="time-sport-1" placeholder="" checked>
+                                        <label for="time-sport-1">Красный</label>
                                     </div>
                                     <div class="form-group form-group-radio">
-                                        <input type="radio" name="time-sport" value="3-7 часов в неделю" class="option-input_radio" id="time-sports-2" placeholder="">
-                                        <label for="time-sports-2">3-7 часов в неделю</label>
+                                        <input type="radio" name="step1" value="2" class="option-input_radio" id="time-sports-2" placeholder="">
+                                        <label for="time-sports-2">Коричневый</label>
                                     </div>
                                      <div class="form-group form-group-radio">
-                                        <input type="radio" name="time-sport" value="Менее 2 часов в неделю или совсем не занимаюсь спортом" class="option-input_radio" id="time-sport-3" placeholder="">
-                                        <label for="time-sport-3">Менее 2 часов в неделю или совсем не занимаюсь спортом</label>
+                                        <input type="radio" name="step1" value="3" class="option-input_radio" id="time-sport-3" placeholder="">
+                                        <label for="time-sport-3">Зелёный</label>
+                                    </div>
+                                    <div class="form-group form-group-radio">
+                                        <input type="radio" name="step1" value="4" class="option-input_radio" id="time-sport-3" placeholder="">
+                                        <label for="time-sport-3">Синий</label>
+                                    </div>
+                                    <div class="form-group form-group-radio">
+                                        <input type="radio" name="step1" value="5" class="option-input_radio" id="time-sport-3" placeholder="">
+                                        <label for="time-sport-3">Жёлтый</label>
+                                    </div>
+                                    <div class="form-group form-group-radio">
+                                        <input type="radio" name="step1" value="6" class="option-input_radio" id="time-sport-3" placeholder="">
+                                        <label for="time-sport-3">Белый</label>
                                     </div>
                                 </div>
                                 <div class="step step-3 animate-in">
-                                    <h2 class="title title-style">Какое у вас отношение к своему весу</h2>
+                                    <img src="/frontend/images/4pic-pizza.png" class="stem-img">
+                                    <h2 class="title title-style">2. Выберите любое число?</h2>
                                     <div class="form-group form-group-radio">
-                                        <input type="radio" name="relation-weight" value="Полностью удовлетворяет" class="option-input_radio" id="relation-1" placeholder="" checked="">
-                                        <label for="relation-1">Полностью удовлетворяет</label>
+                                        <input type="radio" name="step2" value="1" class="option-input_radio" id="relation-1" placeholder="" checked="">
+                                        <label for="relation-1">1</label>
                                     </div>
                                     <div class="form-group form-group-radio">
-                                        <input type="radio" name="relation-weight" value="Хочу похудеть" class="option-input_radio" id="relation-2" placeholder="">
-                                        <label for="relation-2">Хочу похудеть</label>
+                                        <input type="radio" name="step2" value="2" class="option-input_radio" id="relation-2" placeholder="">
+                                        <label for="relation-2">2</label>
                                     </div>
                                      <div class="form-group form-group-radio">
-                                        <input type="radio" name="relation-weight" value="Хочу поправиться" class="option-input_radio" id="relation-3" placeholder="">
-                                        <label for="relation-3">Хочу поправиться</label>
+                                        <input type="radio" name="step2" value="3" class="option-input_radio" id="relation-3" placeholder="">
+                                        <label for="relation-3">3</label>
+                                    </div>
+                                    <div class="form-group form-group-radio">
+                                        <input type="radio" name="step2" value="4" class="option-input_radio" id="relation-3" placeholder="">
+                                        <label for="relation-3">4</label>
+                                    </div>
+                                    <div class="form-group form-group-radio">
+                                        <input type="radio" name="step2" value="5" class="option-input_radio" id="relation-3" placeholder="">
+                                        <label for="relation-3">5</label>
+                                    </div>
+                                    <div class="form-group form-group-radio">
+                                        <input type="radio" name="step2" value="6" class="option-input_radio" id="relation-3" placeholder="">
+                                        <label for="relation-3">6</label>
+                                    </div>
+                                    <div class="form-group form-group-radio">
+                                        <input type="radio" name="step2" value="7" class="option-input_radio" id="relation-3" placeholder="">
+                                        <label for="relation-3">7</label>
                                     </div>
                                 </div>
 
                                 <div class="step step-4 animate-in">
-                                    <h2 class="title title-style">Завтракаете ли Вы <br>обычно по утрам?</h2>
+                                    <img src="/frontend/images/2pic-bread.png" class="stem-img">
+                                    <h2 class="title title-style">3. Какой хлеб вы бы заказали в ресторане?</h2>
                                     <div class="form-group form-group-radio">
-                                        <input type="radio" name="breakfast-morning" value="Не завтракаю совсем" class="option-input_radio" id="breakfast-morning-1" placeholder="" checked="">
-                                        <label for="breakfast-morning-1">Не завтракаю совсем</label>
+                                        <input type="radio" name="step3" value="1" class="option-input_radio" id="breakfast-morning-1" placeholder="" checked="">
+                                        <label for="breakfast-morning-1">Ржаной</label>
                                     </div>
                                     <div class="form-group form-group-radio">
-                                        <input type="radio" name="breakfast-morning" value="Обязательно завтракаю" class="option-input_radio" id="breakfast-morning-2" placeholder="">
-                                        <label for="breakfast-morning-2">Обязательно завтракаю</label>
+                                        <input type="radio" name="step3" value="2" class="option-input_radio" id="breakfast-morning-2" placeholder="">
+                                        <label for="breakfast-morning-2">Пшеничный</label>
                                     </div>
-                                     <div class="form-group form-group-radio">
-                                        <input type="radio" name="breakfast-morning" value="Пью кофе или чай на работе" class="option-input_radio" id="breakfast-morning-3" placeholder="">
-                                        <label for="breakfast-morning-3">Пью кофе или чай на работе</label>
+                                    <div class="form-group form-group-radio">
+                                        <input type="radio" name="step3" value="3" class="option-input_radio" id="breakfast-morning-3" placeholder="">
+                                        <label for="breakfast-morning-3">Ржано – пшеничный</label>
+                                    </div>
+                                    <div class="form-group form-group-radio">
+                                        <input type="radio" name="step3" value="4" class="option-input_radio" id="breakfast-morning-3" placeholder="">
+                                        <label for="breakfast-morning-3">Батон</label>
+                                    </div>
+                                    <div class="form-group form-group-radio">
+                                        <input type="radio" name="step3" value="5" class="option-input_radio" id="breakfast-morning-3" placeholder="">
+                                        <label for="breakfast-morning-3">Любой</label>
+                                    </div>
+                                    <div class="form-group form-group-radio">
+                                        <input type="radio" name="step3" value="6" class="option-input_radio" id="breakfast-morning-3" placeholder="">
+                                        <label for="breakfast-morning-3">Не ем хлеб</label>
                                     </div>
                                 </div>
 
                                 <div class="step step-5 animate-in">
-                                    <h2 class="title title-style">какой хлеб <br> вы любите?</h2>
-                                    <p><small>Выберите не более 2-ух вариантов</small></p>
+                                    <img src="/frontend/images/6pic-ketchup-maionnaise.png" class="stem-img">
+                                    <h2 class="title title-style">4. В какую страну Вы бы хотели сейчас поехать?</h2>
+                                    
                                     <div class="form-group form-group-radio">
-                                        <input type="checkbox" name="favorite-bread" value="Белый хлеб" class="option-input_radio" id="favorite-bread-1" placeholder="" checked="">
-                                        <label for="favorite-bread-1">Белый хлеб</label>
+                                        <input type="radio" name="step4" value="1" class="option-input_radio"  placeholder="" checked="">
+                                        <label for="breakfast-morning-1">Беларусь</label>
                                     </div>
                                     <div class="form-group form-group-radio">
-                                        <input type="checkbox" name="favorite-bread" value="Батон, багет" class="option-input_radio" id="favorite-bread-2">
-                                        <label for="favorite-bread-2">Батон, багет</label>
+                                        <input type="radio" name="step4" value="2" class="option-input_radio" placeholder="">
+                                        <label for="breakfast-morning-2">Украина</label>
                                     </div>
                                     <div class="form-group form-group-radio">
-                                        <input type="checkbox" name="favorite-bread" value="Ржаной хлеб, черный" class="option-input_radio" id="favorite-bread-3">
-                                        <label for="favorite-bread-3">жаной хлеб, черный</label>
+                                        <input type="radio" name="step4" value="3" class="option-input_radio"  placeholder="">
+                                        <label for="breakfast-morning-3">Сказочная</label>
                                     </div>
                                     <div class="form-group form-group-radio">
-                                        <input type="checkbox" name="favorite-bread" value="Бездрожжевой" class="option-input_radio" id="favorite-bread-4">
-                                        <label for="favorite-bread-4">Бездрожжевой</label>
+                                        <input type="radio" name="step4" value="4" class="option-input_radio"  placeholder="">
+                                        <label for="breakfast-morning-3">Россия</label>
                                     </div>
                                     <div class="form-group form-group-radio">
-                                        <input type="checkbox" name="favorite-bread" value="Хлебцы, криспы" class="option-input_radio" id="favorite-bread-5">
-                                        <label for="favorite-bread-5">Не завтракаю совсем</label>
+                                        <input type="radio" name="step4" value="5" class="option-input_radio"  placeholder="">
+                                        <label for="breakfast-morning-3">Австрия</label>
                                     </div>
                                     <div class="form-group form-group-radio">
-                                        <input type="checkbox" name="favorite-bread" value="Совсем не ем хлеб" class="option-input_radio" id="favorite-bread-6">
-                                        <label for="favorite-bread-6">Совсем не ем хлеб</label>
+                                        <input type="radio" name="step4" value="6" class="option-input_radio"  placeholder="">
+                                        <label for="breakfast-morning-3">Германия</label>
                                     </div>
-
                                 </div>
 
                                 <div class="step step-6 animate-in">
-                                    <h2 class="title title-style">есть ли в вашей семье дети младше 16 лет?</h2>
+                                    <img src="/frontend/images/8pic-salad.png" class="stem-img">
+                                    <h2 class="title title-style">5. Как Вы будете проводить ближайшие выходные?</h2>
                                     <div class="form-group form-group-radio">
-                                        <input type="radio" name="children" value="да" class="option-input_radio" id="children-1"checked="">
-                                        <label for="children-1">Да</label>
+                                        <input type="radio" name="step5" value="1" class="option-input_radio"  placeholder="" checked="">
+                                        <label for="breakfast-morning-1">Активно</label>
                                     </div>
                                     <div class="form-group form-group-radio">
-                                        <input type="radio" name="children" value="нет" class="option-input_radio" id="children-2">
-                                        <label for="children-2">Нет</label>
+                                        <input type="radio" name="step5" value="2" class="option-input_radio" placeholder="">
+                                        <label for="breakfast-morning-2">Просто отдых </label>
                                     </div>
-
+                                    <div class="form-group form-group-radio">
+                                        <input type="radio" name="step5" value="3" class="option-input_radio"  placeholder="">
+                                        <label for="breakfast-morning-3">Встречаться с друзьями</label>
+                                    </div>
+                                    <div class="form-group form-group-radio">
+                                        <input type="radio" name="step5" value="4" class="option-input_radio"  placeholder="">
+                                        <label for="breakfast-morning-3">Буду убирать и готовить</label>
+                                    </div>
                                 </div>
-
                                 <div class="step step-7 animate-in">
-                                    <h3 class="title title-style">вот что получилось, александр!</h3>
-                                    <span class="my-3 f-30">Уверены, Вам подойдет:</span>
+                                    <img src="/frontend/images/7pic-food.png" class="stem-img">
+                                    <h2 class="title title-style">6. Кого из авторов Вы выберете?</h2>
+                                    <div class="form-group form-group-radio">
+                                        <input type="radio" name="step6" value="1" class="option-input_radio"  placeholder="" checked="">
+                                        <label for="breakfast-morning-1">Марк Твен</label>
+                                    </div>
+                                    <div class="form-group form-group-radio">
+                                        <input type="radio" name="step6" value="2" class="option-input_radio" placeholder="">
+                                        <label for="breakfast-morning-2">Конфуций  </label>
+                                    </div>
+                                    <div class="form-group form-group-radio">
+                                        <input type="radio" name="step6" value="3" class="option-input_radio"  placeholder="">
+                                        <label for="breakfast-morning-3">Дейл Карнеги </label>
+                                    </div>
+                                    <div class="form-group form-group-radio">
+                                        <input type="radio" name="step6" value="4" class="option-input_radio"  placeholder="">
+                                        <label for="breakfast-morning-3">Эрих Мария Ремарк</label>
+                                    </div>
+                                </div>
+                                
+
+                                <div class="step step-8 animate-in" >
+                                    <h3 class="title title-style quiz_name"></h3>
+                                    {{-- <span class="my-3 f-30">Уверены, Вам подойдет:</span> --}}
                                     <div class="quiz-result">
-                                        <div class="slider-nav style-dots">
-                                            <div class="quiz__slider-dots"></div>
-                                            <div class="quiz__slider-arrows d-flex"></div>
-                                        </div>
-                                        <div class="quiz-slider">
-                                            <div class="slider-item recommend-slider-item">
-                                                <div class="slider-item-image">
-                                                    <img src="/frontend/images/product-2.png" alt="">
-                                                </div>
-                                                <div class="item-info">
-                                                    <div class="item-info-title">
-                                                        <h2>Хлеб «Слуцкий»</h2>
-                                                    </div>
-                                                    <div class="item-info-weight">
-                                                        <span><img src="/frontend/images/icon//weight-icon.png" alt=""></span>
-                                                        <p>10 / 20</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="slider-item recommend-slider-item">
-                                                <div class="slider-item-image">
-                                                    <img src="/frontend/images/product-2.png" alt="">
-                                                </div>
-                                                <div class="item-info">
-                                                    <div class="item-info-title">
-                                                        <h2>Хлеб «Слуцкий»</h2>
-                                                    </div>
-                                                    <div class="item-info-weight">
-                                                        <span><img src="/frontend/images/icon//weight-icon.png" alt=""></span>
-                                                        <p>10 / 20</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="slider-item recommend-slider-item">
-                                                <div class="slider-item-image">
-                                                    <img src="/frontend/images/product-2.png" alt="">
-                                                </div>
-                                                <div class="item-info">
-                                                    <div class="item-info-title">
-                                                        <h2>Хлеб «Слуцкий»</h2>
-                                                    </div>
-                                                    <div class="item-info-weight">
-                                                        <span><img src="/frontend/images/icon//weight-icon.png" alt=""></span>
-                                                        <p>10 / 20</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="slider-item recommend-slider-item">
-                                                <div class="slider-item-image">
-                                                    <img src="/frontend/images/chusovskoy1.png" alt="">
-                                                </div>
-                                                <div class="item-info">
-                                                    <div class="item-info-title">
-                                                        <h2>Хлеб «Слуцкий»</h2>
-                                                    </div>
-                                                    <div class="item-info-weight">
-                                                        <span><img src="/frontend/images/icon//weight-icon.png" alt=""></span>
-                                                        <p>10 / 20</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="result-description">
-                                            <div>
-                                                <p>Ваш индекс массы тела: 37.88</p>
-                                                <p>Классификация:<small>ожирение высокой степени <br>
-                                                Высокий риск для здоровья, настоятельно рекомендуется снижение массы тела.</small></p>
-                                            </div>
+       
+                                        <div class="result-description " id="content">
                                             <br>
-                                            <div>
-                                                <p>Ваша любовь к спорту похвальна!</p>
-                                                <p><small>Вашему организму требуется много энергии, поэтому выбирайте продукты, богатые медленными (сложными) углеводами: овощи, бобовые, крупы, цельнозерновой хлеб.</small></p>
-                                                <br>
-                                                <p><small>Например, мультизерновой хлеб «Сафийски» состоит из 25 компонентов, в том числе, из резаного ржаного зерна, зародышей пшеницы, геркулесовых и спельтовых хлопьев и растительных пищевых волокон. Что важно: «Сафийски» не содержит сахар!</small></p>
-                                            </div>
-                                            <br>
-                                            <div>
-                                                <p>Завтрак — <small>это важный источник энергии и залог отличного настроения на весь день! Утренний прием пищи помогает избежать неконтролируемые приступы голода. Поэтому правильный завтрак поможет тем, кто хочет быть в отличной  форме.</small></p>
-                                                <p>Ваш завтрак должны составлять полезные продукты: горячая каша, зерновые продукты и хлеб, блюда из яиц.</p>
-                                            </div>
-                                            <br>
-                                            <div>
-                                                <p>Для самых занятых рецепт завтрака за 2,5 минуты: <small>возьмите слойку Греческую с сырной начинкой или Слойку с сыром, распакуйте и поставьте на 20 секунд в микроволновку. За это время налейте горячий чай или кофе. Помешивайте напиток в течение 10 секунд, чтобы остыл, и в оставшиеся 2 минуты наслаждайтесь отличным питательным завтраком! </small></p>
-                                            </div>
-                                            <br>
-                                            <div>
-                                                <p>Рецепт вкусного и питательного бутерброда:</p>
-                                                <p><small>
-                                                    
-                                                зерновой хлеб «Сафийски » — 1 ломтик,<br>
-                                                сыр фета,<br>
-                                                вяленые помидоры – 4 шт.,<br>
-                                                оливки без косточки – 6 шт.,<br>
-                                                рукола (или другая зелень),<br>
-                                                кедровые орешки или кешью – 1 горсть, соль, специи по вкусу<br>
-                                                Кедровые орехи выложите в сковороду и обжаривайте до золотисто-коричневого цвета. Вяленые помидоры нарежьте тонкой соломкой, предварительно убрав излишки масла при помощи салфетки. Оливки без косточек нарежьте кружочками. На хлеб СМАК Кайзер (или СМАК Польза) покрошите сыр фета, выложите помидоры, оливки, зелень, посыпьте орехами. 
-                                                </small></p>
+                                            <div class="res_step1">
                                                 
                                             </div>
-                                            <div>
-                                                <p>Растущий организм вашего ребенка также нуждается в сбалансированном питании, и хлеб должен занимать особое место в рационе.</p>
-                                                <p><small>Белый пшеничный хлеб или батон детям можно давать в виде немного подсушенных сухариков с 8-мимесячного возраста.<br>Однако стоит помнить, что ферментная система ребёнка готова усваивать ржаные хлеба не ранее, чем с 3 лет. Для питания можно выбрать традиционные виды хлеба: СМАК Русский, Деревенский, Домашний, батон Фирменный, Булка с отрубями<br>Перед введением хлеба в рацион ребенка обязательно проконсультируйтесь с педиатром.</small></p>
+                                            <br>
+                                            <div class="res_step2">
+                                               
                                             </div>
+                                            <br>
+                                            <h2>Для вас мы предлагаем!</h2>
+                                            <br>
+                                            <div class="res_step3">
+                                                
+                                            </div>
+                                            <div class="res_step4">
+                                                
+                                            </div>
+                                            <br>
+                                            <div class="res_step5">
+                                                
+                                            </div>
+                                            <br>
+                                            <div class="res_step6">
+                                                
+                                            </div>
+                                            
 
                                         </div>
                                         <div class="navbar-info-share">
                                             <div class="navbar-info-share-wrapper">
-                                                <h3>Поделиться</h3>
+                                                <h3>Присоединяйтесь к нам в соцсетях:</h3>
                                             </div>
                                             <ul>
-                                                <li><a href="https://facebook.com" target="_blank" class="fab fa-facebook-f"></a></li>
-                                                <li><a href="https://odnoklassniki.ru" target="_blank" class="fab fa-odnoklassniki"></a></li>
-                                                <li><a href="https://facebook.com" target="_blank" class="fab fa-vk"></a></li>
+                                                <li><a href="https://www.instagram.com/slucki.karavai/" class="fab fa-instagram"></a></li>
+                                                <li><a href="https://www.facebook.com/slucki.karavai" class="fab fa-facebook-f"></a></li>
+                                                <li><a href="https://vk.com/slucki.karavai" class="fab fa-vk"></a></li>
                                             </ul>
                                         </div>
                                     </div>
                                 </div>
                             </form>
+                            <div id="editor"></div>
                             <div class="form-btn-growp">
-                                    <a href="" class="next btn btn-red">Начать тест</a>
+                                    <a href="#" class="next btn btn-red start_test">Начать тест</a>
                                 
                                 <div class="last-step-block-btn">
                                     <a href="" class="start-over btn btn-red" style="display: none;">Начать заново</a>
-                                    <a href="" class="btn btn-transparent" style="display: none">Сохранить</a>
-                                    <a href="" class="btn btn-transparent" style="display: none">Распечатать</a>
+                                    
+                                    <a href="#" class="btn btn-transparent" onclick="window.print()" style="display: none">Распечатать</a>
                                 </div>
                                 
                             </div>
@@ -392,7 +371,7 @@
                                 <label for="message">@lang('messages.text') <span>*</span></label>
                                 <textarea class="form-control" id="message" required="" name="msg" rows="6" value=""></textarea>
                             </div>
-                            <p class="my-4"><span class="mr-1">*</span>@lang('messages.req')</p>
+                            <p class="my-4 d-flex"><span class="mr-1">*</span>@lang('messages.req')</p>
                             <div class="form-group">
                                 <div class="custom-file">
                                     <input type="file" name="file" class="custom-file-input" id="file" value="">
@@ -447,13 +426,18 @@
                                 <label for="message">@lang('messages.text')<span>*</span></label>
                                 <textarea class="form-control" id="message" required="" name="msg" rows="6" value=""></textarea>
                             </div>
-                            <p class="my-4"><span class="mr-1">*</span>@lang('messages.req')</p>
+                            <p class="my-4 d-flex"><span class="mr-1">*</span>@lang('messages.req')</p>
+                            
                             <div class="form-group">
                                 <div class="custom-file">
-                                    <input type="file" name="file"  id="file" value="">
-                                   
+                                    <input type="file" name="file" class="custom-file-input" id="file-recipe" value="">
+                                    <label class="file" for="file-recipe">@lang('messages.prik')
+                                        <div class="btn btn-transparent">@lang('messages.choose')</div>
+                                    </label>
+                                    <p class="file-return"></p>
                                 </div>
                             </div>
+                            
                             <button type="submit" class="btn btn-red">@lang('messages.send')</button>
                         </form>
                     </div>
@@ -463,4 +447,23 @@
         </div>
     </div>
 </div>
+
+<div class="modal fade success" id="success">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" style="padding-bottom: 100px;">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"><i class="fal fa-times"></i></span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="container">
+                    <h5 class="header-title">Спасибо, ваша заявка принята!</h5>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
 

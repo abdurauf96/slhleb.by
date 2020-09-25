@@ -2,7 +2,7 @@
     <div class="section-recipe__slider">
         <div class="recipie-slider">
             @foreach ($recipes as $item)
-            <a href="{{ route('viewRecipe', $item->id) }}" class="recipie-slider__item">
+            <a href="{{ route('viewRecipe', $item->slug) }}" class="recipie-slider__item">
                 <div class="slider__item-image" style="background-image: url('/images/recipes/{{ $item->image }}')"></div>
                 <div class="slider__item-info">                   
                     <div class="top">
