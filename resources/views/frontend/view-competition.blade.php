@@ -17,6 +17,7 @@
                     <div class="title title-style">
                         {{ $competition['title_'.\App::getLocale()] }}
                     </div>
+                    <div>{{ \Carbon\Carbon::parse($competition->end_time) > \Carbon\Carbon::today()? "" : "(конкурс завершено)" }}</div>
                     <div class="block-group-btn">
                         <h2>@lang('messages.ozna'):</h2>
                         <div class="block-info-btn">
@@ -39,16 +40,17 @@
         </div> -->
         <div class="section-recipe__list">
             <div class="container">
+                @if(\Carbon\Carbon::parse($competition->end_time) < \Carbon\Carbon::today() )   
                 <div class="section-stock-wrap">
                     <div class="title title-style">
                         @lang('messages.pobedi')
                     </div>
                     <div class="row">
-                        @foreach ($competition->participants as $item)
-                        @if ($item->point==1)
+                        @foreach ($participants as $item)
+                       
                         <div class="col-md-4">
                             <div class="item">
-                                <span><img src="/frontend/images/icon/place-1.png" alt="">1 @lang('messages.mesto')</span>
+                                <span><img src="/frontend/images/icon/place-{{ $loop->iteration }}.png" alt="">{{ $loop->iteration }} @lang('messages.mesto')</span>
 
                                 <div class="item-thumbnail-gallery">
                                     <a href="/images/competitions/participiants/{{ $item->image }}" class="item-thumbnail">
@@ -58,54 +60,27 @@
                                 </div>
                                 <div class="item-name">
                                     <h3>{{ $item['name_'.\App::getLocale()] }}</h3>
+                                    <div class="votes" style="display: flex">
+                                        <p>Всего голосов:   </p> 
+                                        <p class="num_votes">{{ $item ->vote }}</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        @endif
-                        @if ($item->point==2)
-                        <div class="col-md-4">
-                            <div class="item">
-                                <span><img src="/frontend/images/icon/place-2.png" alt="">2 @lang('messages.mesto')</span>
-
-                                <div class="item-thumbnail-gallery">
-                                    <a href="/images/competitions/participiants/{{ $item->image }}" class="item-thumbnail">
-                                        <div class="zoom"><i class="fal fa-search-plus"></i></div>
-                                        <img src="/images/competitions/participiants/{{ $item->image }}" alt="">
-                                    </a>
-                                </div>
-                                <div class="item-name">
-                                    <h3>{{ $item['name_'.\App::getLocale()] }}</h3>
-                                </div>
-                            </div>
-                        </div>
-                        @endif
-                        @if ($item->point==3)
-                        <div class="col-md-4">
-                            <div class="item">
-                                <span><img src="/frontend/images/icon/place-3.png" alt="">3 @lang('messages.mesto')</span>
-
-                                <div class="item-thumbnail-gallery">
-                                    <a href="/images/competitions/participiants/{{ $item->image }}" class="item-thumbnail">
-                                        <div class="zoom"><i class="fal fa-search-plus"></i></div>
-                                        <img src="/images/competitions/participiants/{{ $item->image }}" alt="">
-                                    </a>
-                                </div>
-                                <div class="item-name">
-                                    <h3>{{ $item['name_'.\App::getLocale()] }}</h3>
-                                </div>
-                            </div>
-                        </div>
-                        @endif
+                        @if($loop->iteration==3)
+                        @break
+                        @endif  
                         @endforeach
                       
                     </div>
                 </div>
+                @endif
                 <div class="section-stock-wrap">
                     <div class="title title-style">
                         @lang('messages.uchast')
                     </div>
                     <div class="row">
-                        @foreach ($competition->participants as $part)
+                        @foreach ($participants as $part)
                         <div class="col-md-4">
                             <div class="item">
                                 <div class="item-thumbnail-gallery">
@@ -118,6 +93,14 @@
                                     <h2>@lang('messages.uchas') № {{ $loop->iteration }}</h2>
                                     <h3>{{ $part['name_'.\App::getLocale()] }}</h3>
                                     <p>{{ $part['desc_'.\App::getLocale()] }}</p>
+                                    <div class="votes" style="display: flex">
+                                        <p>Всего голосов:   </p> 
+                                        <p class="num_votes">{{ $part->vote }}</p>
+                                    </div>
+                                    @if(\Carbon\Carbon::parse($competition->end_time) > \Carbon\Carbon::today() ) 
+                                    <a class="btn btn-info to_vote" href="#" data-participant_id="{{ $part->id }}" data-user_ip="{{ $_SERVER['REMOTE_ADDR'] }}" data-competition_id="{{ $competition->id }}" >Голосовать</a>
+                                    @endif
+                                    <h6 class="vote_res"></h6>
                                 </div>
                             </div>
                         </div>

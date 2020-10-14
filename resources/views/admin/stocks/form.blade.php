@@ -13,6 +13,17 @@
     {!! Form::file('state', null, ('' == 'required') ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control']) !!}
     {!! $errors->first('image', '<p class="help-block">:message</p>') !!}
 </div>
+
+<div class="form-group  start_time  @if($formMode === 'edit')  {{ $stock->type=='competition' ? '': 'rules-block-hidden' }} @endif  {{ $errors->has('image') ? 'has-error' : ''}}">
+    {!! Form::label('start_time', 'Время начала конкурса', ['class' => 'control-label']) !!}
+    {!! Form::date('start_time', null, ('' == 'required') ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control']) !!}
+</div>
+
+<div class="form-group  end_time  @if($formMode === 'edit')  {{ $stock->type=='competition' ? '': 'rules-block-hidden' }} @endif  {{ $errors->has('image') ? 'has-error' : ''}}">
+    {!! Form::label('end_time', 'Время конца конкурса', ['class' => 'control-label']) !!}
+    {!! Form::date('end_time', null, ('' == 'required') ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control']) !!}
+</div>
+
 <div class="form-group{{ $errors->has('title_ru') ? 'has-error' : ''}}">
     {!! Form::label('title_ru', 'Заголовок Ru', ['class' => 'control-label']) !!}
     {!! Form::text('title_ru', null, ('' == 'required') ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control', 'id'=>'title']) !!}

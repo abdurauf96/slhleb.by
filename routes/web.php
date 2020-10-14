@@ -67,6 +67,7 @@ Route::group(['namespace'=>'Site'], function(){
     Route::get('/product/{cate}/{slug?}', 'ProductController@viewProduct')->name('viewProduct');
 
     //sending messages
+    Route::post('/to-vote', 'IndexController@toVote');
     Route::post('/appeal', 'IndexController@appeal')->name('appeal');
     Route::post('/send-recipe', 'IndexController@sendRecipe')->name('sendRecipe');
     Route::post('/send-story', 'IndexController@sendStory')->name('sendStory');

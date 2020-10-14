@@ -1,4 +1,36 @@
+
 $(document).ready(function(){
+
+
+    $('.to_vote').click(function(e){
+        e.preventDefault();
+       
+        var user_ip=$(this).data('user_ip');
+        var participant_id=$(this).data('participant_id');
+        var competition_id=$(this).data('competition_id');
+        
+        _this=$(this);
+        $.ajax({
+            headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            type: 'POST',
+            url: '/to-vote',
+            data: {user_ip:user_ip, participant_id:participant_id, competition_id:competition_id },
+            success: function(response){
+                console.log(response);
+                _this.parent().parent().parent().siblings().find('.to_vote').css('display', 'none');
+                _this.html('вы голосовали');
+                _this.siblings('h6').html(response.text);
+                _this.siblings('.votes').children('.num_votes').html(response.num_votes);
+            },
+            error:function(err){
+                console.log(err);
+            },
+        });
+        
+    })
+
 
     $('.start_test').click(function(e){
 

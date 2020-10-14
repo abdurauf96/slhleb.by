@@ -24,6 +24,7 @@ class CreateParticipantsTable extends Migration
             $table->string('desc_en')->nullable();
             $table->string('image')->nullable();
             $table->integer('point')->nullable();
+            $table->integer('votes')->nullable();
             $table->timestamps();
         });
     }

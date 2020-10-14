@@ -25,6 +25,29 @@ class IndexController extends Controller
         return view('frontend.welcome', compact('recipes', 'banners', 'sliders', 'bloks'));
     }
 
+    public function toVote(Request $request)
+    {
+        $user_ip=$request->user_ip;
+        $participant_id=$request->participant_id;
+        $competition_id=$request->competition_id;
+        $participant=\App\Participant::find($participant_id);
+        
+        $vote=\App\Vote::where('user_ip', $user_ip)->where('competition_id', $competition_id)->first();
+        if($vote){
+            $data=['text'=>'Вы уже голосовали !', 'num_votes'=>$participant->vote];
+        }else{
+            \App\Vote::create([
+                'competition_id'=>$competition_id,
+                'participant_id'=>$participant_id, 
+                'user_ip'=>$user_ip
+            ]);
+            $participant->vote=$participant->vote+1;
+            $participant->save();
+            $data=['text'=>'Спасибо! Ваш голос принят', 'num_votes'=>$participant->vote];
+        }
+        return response()->json($data);
+    }
+
     public function appeal(Request $request)
     {
         
