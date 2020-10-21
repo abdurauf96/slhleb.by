@@ -36,7 +36,6 @@
 
 
 
-
 <div class="form-group{{ $errors->has('description') ? 'has-error' : ''}}">
     <label class="control-label" for="name">Описание RU</label>
     <textarea name="description_ru" id=""  class="form-control" required="required">
@@ -178,10 +177,7 @@
    Новинка <input type="radio" value="new" @if($formMode === 'edit') {{ $product->status=='new' ? 'checked' : '' }} @endif name="status"> &nbsp &nbsp &nbsp
    Обычный <input type="radio" value="default" @if($formMode === 'edit') {{ $product->status=='default' ? 'checked' : '' }} @endif name="status">
 </div>
-<div class="form-group">
-    <label class="control-label" for="">Рекомендуемый</label> <br>
-    <input type="checkbox" value="1" @if($formMode === 'edit')  {{ $product->recommend=='1' ? 'checked' : '' }} @endif name="recommend"> 
- </div>
+
  
 <div class="form-group">
     {!! Form::label('meta_title', ' SEO Заголовок', ['class' => 'control-label']) !!}
@@ -193,6 +189,19 @@
     {!! Form::textarea('meta_description', null, ['rows'=>3, 'class'=>'form-control'], ('' == 'required') ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control']) !!}
 </div> 
  
+<div class="form-group{{ $errors->has('filter_id') ? 'has-error' : ''}}">
+    <label for="filter_id" class="control-label">Рекомендуемые товары</label>
+    <select name="rec_product_id[]" class="form-control " multiple>
+    	@foreach($products as $pro)
+    	<option @if($formMode=='edit') @foreach ($product->recommends as $rec)
+            @if ($rec->recommend_product_id==$pro->id)
+                selected
+            @endif
+        @endforeach  @endif  value="{{ $pro->id }}">{{ $pro->translate(\App::getLocale())->name }}</option>
+    	@endforeach
+    </select>
+</div>
+
 <div class="form-group">
     {!! Form::label('slug', 'Slug', ['class' => 'control-label']) !!}
     {!! Form::text('slug', null, ('' == 'required') ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control', 'id'=>'slug']) !!}

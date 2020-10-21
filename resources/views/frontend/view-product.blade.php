@@ -197,7 +197,7 @@
                                                 <tr>
                                                     <td class="td-desc"><img src="/frontend/images/icon/weight-icon.png" alt="">@lang('messages.ves')</td>
                                                     @foreach ($product->attributes  as $attr)
-                                                    <td>{{ $attr->weight }}</td>
+                                                    <td>{{ $attr['weight'.\App::getLocale()] }}</td>
                                                     @endforeach
                                                 </tr>
                                                 <tr>
@@ -232,7 +232,7 @@
     <div class="section-recommend" style="background-image: url('/frontend/images/section-recommend-bg.png')">
         <div class="section-recommend-wrap">
             <div class="container-custom">
-                @if(count($recommends)>0)
+                @if(count($rec_products)>0)
                     <div class="title title-style">
                         @lang('messages.recom')
                     </div>
@@ -243,7 +243,7 @@
                         <div class="recommend__slider-arrows d-flex"></div>
                     </div>
                     <div class="recommend-slider">
-                        @foreach ($recommends as $prod)
+                        @foreach ($rec_products as $prod)
                         <a href="{{ route('viewProduct', $prod->slug) }}" class="recommend-slider-item catalog-list__item">
                             <div class="item-image">
                                 <span class="shadow-prd"></span>

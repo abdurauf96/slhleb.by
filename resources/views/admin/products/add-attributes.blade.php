@@ -25,8 +25,16 @@
                                
                                 <div class="form-block">
                                     <div class="form-group">
-                                        <label for="">Вес</label>
-                                        <input type="text" value="{{ $action=='update' ? $attr->weight : '' }}" class="form-control" id="" placeholder="Вес" name="weights[]">
+                                        <label for="">Вес РУ</label>
+                                        <input type="text" value="{{ $action=='update' ? $attr['weight_'.\App::getLocale()] : '' }}" class="form-control" id="" placeholder="Вес" name="weights_ru[]">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="">Вес BY</label>
+                                        <input type="text" value="{{ $action=='update' ? $attr['weight_'.\App::getLocale()] : '' }}" class="form-control" id="" placeholder="Вес" name="weights_by[]">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="">Вес EN</label>
+                                        <input type="text" value="{{ $action=='update' ? $attr['weight_'.\App::getLocale()] : '' }}" class="form-control" id="" placeholder="Вес" name="weights_en[]">
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputPassword1">Срок хранения</label>
@@ -47,8 +55,16 @@
                                 
                                 <div class="form-block">
                                     <div class="form-group">
-                                        <label for="exampleInputEmail1">Вес</label>
-                                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Вес" name="weights[]">
+                                        <label for="">Вес РУ</label>
+                                        <input type="text" value="{{ $action=='update' ? $attr['weight_'.\App::getLocale()] : '' }}" class="form-control" id="" placeholder="Вес" name="weights_ru[]">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="">Вес BY</label>
+                                        <input type="text" value="{{ $action=='update' ? $attr['weight_'.\App::getLocale()] : '' }}" class="form-control" id="" placeholder="Вес" name="weights_by[]">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="">Вес EN</label>
+                                        <input type="text" value="{{ $action=='update' ? $attr['weight_'.\App::getLocale()] : '' }}" class="form-control" id="" placeholder="Вес" name="weights_en[]">
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputPassword1">Срок хранения</label>
@@ -73,8 +89,16 @@
                        <div class="hide_form">
                         <div class="form-block hide-group ">
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Вес</label>
-                                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Вес" name="weights[]">
+                                <label for="">Вес РУ</label>
+                                <input type="text" value="{{ $action=='update' ? $attr['weight_'.\App::getLocale()] : '' }}" class="form-control" id="" placeholder="Вес" name="weights_ru[]">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Вес BY</label>
+                                <input type="text" value="{{ $action=='update' ? $attr['weight_'.\App::getLocale()] : '' }}" class="form-control" id="" placeholder="Вес" name="weights_by[]">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Вес EN</label>
+                                <input type="text" value="{{ $action=='update' ? $attr['weight_'.\App::getLocale()] : '' }}" class="form-control" id="" placeholder="Вес" name="weights_en[]">
                             </div>
                             <div class="form-group">
                                 <label >Срок хранения</label>

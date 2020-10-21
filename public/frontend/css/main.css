@@ -5378,4 +5378,17 @@ html body .bvi-body .modal-header .close:hover {
 .req_block p{
   margin: 0;
 }
- 
+.btn.to_vote{
+  border:#fd8900;
+  text-align: center;
+  display: block;
+  height:35px;
+
+}
+.btn.to_vote:focus,.btn.to_vote:active{
+  box-shadow: none!important;
+  outline: none;
+}
+.item-name .votes p{
+  font-family: introBook, sans-serif;
+}

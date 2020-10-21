@@ -66,6 +66,8 @@ Route::group(['namespace'=>'Site'], function(){
     Route::get('/products/{slug?}/filter/{filter_slug}', 'ProductController@products');
     Route::get('/product/{cate}/{slug?}', 'ProductController@viewProduct')->name('viewProduct');
 
+    Route::get('/who-is-voted/{id}', 'IndexController@whoIsVoted');
+    Route::post('/get-regions', 'IndexController@getRegions');
     //sending messages
     Route::post('/to-vote', 'IndexController@toVote');
     Route::post('/appeal', 'IndexController@appeal')->name('appeal');

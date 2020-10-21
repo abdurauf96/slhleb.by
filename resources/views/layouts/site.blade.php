@@ -145,8 +145,12 @@
 	<script src="/frontend/js/jquery.nicescroll.min.js"></script>
 	<script src="https://www.google.com/recaptcha/api.js"></script>
     <script src="/frontend/js/app.min.js"></script>
-    <script src="/frontend/js/my.js"></script>
+	<script src="/frontend/js/my.js"></script>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"> </script> 
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-mapael/2.2.0/js/jquery.mapael.min.js"></script>
 
+	<script src="/frontend/js/countries.js"></script>
+        
     @yield('scripts')
 	
     <script>

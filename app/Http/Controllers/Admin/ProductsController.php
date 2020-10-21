@@ -54,7 +54,8 @@ class ProductsController extends Controller
     {
         $filters=Filter::all();
         $categories=Category::all();
-        return view('admin.products.create', compact('categories','filters'));
+        $products=Product::all();
+        return view('admin.products.create', compact('categories','filters', 'products'));
     }
 
     /**
@@ -99,7 +100,7 @@ class ProductsController extends Controller
         }else{
             $slide_image=null;
         }
-
+        
         $requestData=[
             'category_id'=>$request->category_id,
             'filter_id'=>$request->filter_id,
@@ -123,6 +124,10 @@ class ProductsController extends Controller
         
         Product::create($requestData);
         $product=Product::latest()->first();
+        foreach($request->rec_product_id as $rec_id){
+            \App\RecommendProduct::create(['product_id'=>$product->id, 'recommend_product_id'=>$rec_id]);
+        };
+        
         if($request->hasfile('images'))
          {
 
@@ -142,10 +147,12 @@ class ProductsController extends Controller
     public function saveAttributes(Request $request, $id)
     {
              
-        for ($i=0; $i <count($request->weights) ; $i++) { 
+        for ($i=0; $i <count($request->weights_ru) ; $i++) { 
 
             $data=[
-                'weight'=>$request->weights[$i],
+                'weight_ru'=>$request->weights_ru[$i],
+                'weight_by'=>$request->weights_by[$i],
+                'weight_en'=>$request->weights_en[$i],
                 'time'=>$request->times[$i],
                 'qty'=>$request->qtys[$i],
                 'product_id'=>$request->id,
@@ -159,9 +166,11 @@ class ProductsController extends Controller
     public function updateAttributes(Request $request, $id)
     {
         
-        for ($i=0; $i <count($request->weights) ; $i++) { 
+        for ($i=0; $i <count($request->weights_ru) ; $i++) { 
             $data=[
-                'weight'=>$request->weights[$i],
+                'weight_ru'=>$request->weights_ru[$i],
+                'weight_by'=>$request->weights_by[$i],
+                'weight_en'=>$request->weights_en[$i],
                 'time'=>$request->times[$i],
                 'qty'=>$request->qtys[$i],
                 'product_id'=>$request->id,
@@ -207,10 +216,10 @@ class ProductsController extends Controller
     public function edit($id)
     {
         $product = Product::findOrFail($id);
-       
+        $products=Product::where('id', '!=', $product->id)->get();
         $filters=Filter::all();
         $categories=Category::all();
-        return view('admin.products.edit', compact('product', 'categories', 'filters'));
+        return view('admin.products.edit', compact('product', 'categories', 'filters', 'products'));
     }
 
     /**
@@ -280,6 +289,10 @@ class ProductsController extends Controller
 
         $product = Product::findOrFail($id);
         $product->update($requestData);
+        $product->recommends()->delete();
+        foreach($request->rec_product_id as $rec_id){
+            \App\RecommendProduct::create(['product_id'=>$product->id, 'recommend_product_id'=>$rec_id]);
+        };
         if($request->hasfile('images'))
          {
 

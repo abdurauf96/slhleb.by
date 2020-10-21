@@ -5,6 +5,7 @@ use App\Recipe;
 use App\Product;
 use App\Page;
 use App\Menu;
+use App\Participant;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Appeal;
@@ -47,6 +48,58 @@ class IndexController extends Controller
         }
         return response()->json($data);
     }
+
+     public function whoIsVoted($id)
+    {
+        
+        $participant=Participant::findOrFail($id);
+        $votes=$participant->votes;
+       
+        $client = new \GuzzleHttp\Client([
+            'headers' => ['Content-Type' => 'application/json']
+        ]);
+        $regions=[];
+
+        foreach ($votes as $vote) {
+            $url='http://api.ipstack.com/'.$vote->user_ip.'?access_key=ff895b339fe2b1e7cfee73f396cb673d&format=1';
+            $response = $client->get($url);
+            $response = json_decode($response->getBody(), true);
+            $data['lat']=$response['latitude'];
+            $data['lon']=$response['longitude'];
+            array_push($regions, $data);
+        }
+        
+        return view('frontend.who-is-voted', compact('regions', 'participant'));
+    }
+
+    public function getRegions()
+    {
+        $id=$_POST['id'];
+        $participant=Participant::findOrFail($id);
+        $votes=$participant->votes;
+        
+        $client = new \GuzzleHttp\Client([
+            'headers' => ['Content-Type' => 'application/json']
+        ]);
+        $regions=[];
+        $num=0;
+        foreach ($votes as $vote) {
+            $url='http://api.ipstack.com/'.$vote->user_ip.'?access_key=ff895b339fe2b1e7cfee73f396cb673d&format=1';
+            $response = $client->get($url);
+            $response = json_decode($response->getBody(), true);
+            $data['lat']=$response['latitude'];
+            $data['lon']=$response['longitude'];
+            $data['name']=$response['region_name'];
+            $data['code']=$response['region_code'];
+           
+            //$data="'city".$num."' : { latitude : ".$response['latitude'].", longitude : ".$response['longitude'].", text: {content: ".$response['region_name']."}}";
+
+            array_push($regions, $data);
+            $num+=1;
+        }
+       return response()->json($regions);
+    }
+
 
     public function appeal(Request $request)
     {

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class ProductAttribute extends Model
 {
-    protected $fillable=['product_id', 'weight', 'time', 'qty'];
+    protected $fillable=['product_id', 'weight_ru', 'weight_by', 'weight_en', 'time', 'qty'];
 
     public function product()
     {

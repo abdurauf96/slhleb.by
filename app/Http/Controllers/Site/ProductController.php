@@ -50,8 +50,13 @@ class ProductController extends Controller
         MetaTag::set('title',$product->meta_title);
         MetaTag::set('description',$product->meta_description);
         
-        
-        $recommends=Product::where('recommend', 1)->get();
-        return view('frontend.view-product', compact('product', 'recommends'));
+        $ids=[];
+        foreach ($product->recommends as $rec) {
+            array_push($ids, $rec->recommend_product_id);
+        }
+        $rec_products=Product::whereIn('id', $ids)->get();
+       
+
+        return view('frontend.view-product', compact('product', 'rec_products'));
     }
 }
