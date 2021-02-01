@@ -11,4 +11,8 @@ class Participant extends Model
     {
         return $this->belongsTo(Stock::class, 'competition_id');
     }
+    public function votes()
+    {
+        return $this->hasMany(Vote::class);
+    }
 }

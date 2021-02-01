@@ -4,12 +4,16 @@ namespace App\Http\Controllers\Site;
 use App\Recipe;
 use App\Product;
 use App\Page;
+use App\Participant;
 use App\Menu;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Appeal;
 use Illuminate\Support\Facades\Mail;
 use MetaTag;
+use GuzzleHttp\Client;
+
+
 class IndexController extends Controller
 {
    
@@ -20,9 +24,102 @@ class IndexController extends Controller
         $banners=\App\HomeBanner::all();
         $sliders=\App\Slider::all();
         $bloks=\App\MainBlok::all();
-         MetaTag::set('title','Слуцкий хлебозавод');
+        MetaTag::set('title','Слуцкий хлебозавод');
         MetaTag::set('description','Главная страница ');
         return view('frontend.welcome', compact('recipes', 'banners', 'sliders', 'bloks'));
+    }
+
+   public function toVote(Request $request)
+    {
+        $user_ip=$request->user_ip;
+        $participant_id=$request->participant_id;
+        $competition_id=$request->competition_id;
+        $participant=\App\Participant::find($participant_id);
+        
+        $vote=\App\Vote::where('user_ip', $user_ip)->where('participant_id', $participant_id)->first();
+        if($vote){
+            $data=['text'=>'Вы уже голосовали !', 'num_votes'=>count($participant->votes)];
+        }else{
+            \App\Vote::create([
+                'competition_id'=>$competition_id,
+                'participant_id'=>$participant_id, 
+                'user_ip'=>$user_ip
+            ]);
+            $participant->vote=$participant->vote+1;
+            $participant->save();
+            $data=['text'=>'Спасибо! Ваш голос принят', 'num_votes'=>count($participant->votes)];
+        }
+        return response()->json($data);
+    }
+
+    public function whoIsVoted($id)
+    {
+        
+        $participant=Participant::findOrFail($id);
+        $votes=$participant->votes;
+       
+        $client = new \GuzzleHttp\Client([
+            'headers' => ['Content-Type' => 'application/json']
+        ]);
+       
+        $cities=[];
+        $number_all_cities=[];
+        $data=[];
+        
+        foreach ($votes as $vote) {
+            $url='http://api.ipstack.com/'.$vote->user_ip.'?access_key=ff895b339fe2b1e7cfee73f396cb673d&format=1';
+            $response = $client->get($url);
+            $response = json_decode($response->getBody(), true);
+            $data['lat']=$response['latitude'];
+            $data['lon']=$response['longitude'];
+            $data['name']=$response['region_name'];
+            $data['country_code']=$response['country_code'];
+            array_push($number_all_cities, $data);
+            if($data['country_code']=="BY"){
+                
+                
+                $num=0;
+                foreach($cities as $city){
+                    if($city['name']==$data['name']){
+                        $num++;
+                    }
+                }
+                if($num==0){
+                    array_push($cities, $data);
+                }   
+            }
+            
+        }
+        
+        return view('frontend.who-is-voted', compact('cities', 'number_all_cities', 'participant'));
+    }
+
+    public function getRegions()
+    {
+        $id=$_POST['id'];
+        $participant=Participant::findOrFail($id);
+        $votes=$participant->votes;
+        
+        $client = new \GuzzleHttp\Client([
+            'headers' => ['Content-Type' => 'application/json']
+        ]);
+        $regions=[];
+        $num=0;
+        foreach ($votes as $vote) {
+            $url='http://api.ipstack.com/'.$vote->user_ip.'?access_key=ff895b339fe2b1e7cfee73f396cb673d&format=1';
+            $response = $client->get($url);
+            $response = json_decode($response->getBody(), true);
+            $data['lat']=$response['latitude'];
+            $data['lon']=$response['longitude'];
+            $data['name']=$response['region_name'];
+            $data['code']=$response['region_code'];
+           
+            //$data="'city".$num."' : { latitude : ".$response['latitude'].", longitude : ".$response['longitude'].", text: {content: ".$response['region_name']."}}";
+
+            array_push($regions, $data);
+            $num+=1;
+        }
+       return response()->json($regions);
     }
 
     public function appeal(Request $request)

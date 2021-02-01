@@ -27,6 +27,8 @@ class CreateStocksTable extends Migration
             $table->string('rules')->nullable();
             $table->string('state')->nullable();
             $table->string('date')->nullable();
+            $table->string('start_time')->nullable();
+            $table->string('end_time')->nullable();
             });
     }
 

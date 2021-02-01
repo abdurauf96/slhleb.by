@@ -52,6 +52,11 @@ class Product extends Model
     {
         return $this->hasMany('App\ProductImage', 'product_id');
     }
+
+    public function recommends()
+    {
+        return $this->hasMany('App\RecommendProduct');
+    }
     /**
      * Change activity log event description
      *

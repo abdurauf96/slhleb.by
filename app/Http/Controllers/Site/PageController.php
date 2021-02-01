@@ -253,7 +253,7 @@ class PageController extends Controller
         $page=Page::where('key', $request->path())->first();
         MetaTag::set('title',$page->meta_title);
         MetaTag::set('description',$page->meta_description);
-        $stocks=\App\Stock::paginate(6);
+        $stocks=\App\Stock::latest()->paginate(6);
         
         return view('frontend.stock-competitions', compact('page', 'stocks'));
     }
@@ -271,7 +271,15 @@ class PageController extends Controller
         $competition=\App\Stock::where('slug', $slug)->first();
         MetaTag::set('title',$competition->meta_title);
         MetaTag::set('description',$competition->meta_description);
-        return view('frontend.view-competition', compact('competition'));
+        $ids=[];
+        foreach ($competition->participants as $participant) {
+            array_push($ids, $participant->id);
+        };
+
+        $participants=\App\Participant::where('competition_id', $competition->id)->orderBy('vote', 'desc')->get();
+
+        $winners=\App\Vote::whereIn('participant_id', $ids)->get();
+        return view('frontend.view-competition', compact('competition', 'participants'));
     }
 
     public function contact(Request $request)

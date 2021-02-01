@@ -32,9 +32,7 @@
                             @foreach($products as $item)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
-                                <td>{{ $item->translate(app()->getLocale())->name }}</td>
-                                <td>{{ $item->category->translate(app()->getLocale())->name }}</td>
-                                <td>{{ $item->filter->translate(app()->getLocale())->name }}</td>
+                                
                                 <td>{{ $item->recommend!=null? 'рекомендуемый' : '' }}</td>
                                 <td><img src="/images/products/{{ $item->image }}" width="50" height="50" alt=""></td>
                                 <td>
