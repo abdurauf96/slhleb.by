@@ -199,7 +199,7 @@
 
                                     @if(\Carbon\Carbon::parse($competition->end_time) > \Carbon\Carbon::today() ) 
 
-                                    <a class="btn btn-info to_vote" style="background-color: #fd8900;" href="#" data-participant_id="{{ $part->id }}" data-user_ip="{{ $_SERVER['REMOTE_ADDR'] }}" data-competition_id="{{ $competition->id }}" >Ð“Ð¾Ð»Ð¾ÑÐ¾Ð²Ð°Ñ‚ÑŒ</a>
+                                    <a class="btn btn-info to_vote" style="background-color: #fd8900;" href="#" data-participant_id="{{ $part->id }}" data-user_ip="{{ $_SERVER['REMOTE_ADDR'] }}" data-competition_id="{{ $competition->id }}" >Голосовать </a>
 
                                     @endif
 

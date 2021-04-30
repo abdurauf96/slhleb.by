@@ -31,7 +31,7 @@ class IndexController extends Controller
 
    public function toVote(Request $request)
     {
-        $user_ip=$request->user_ip;
+        $username=$request->user_ip;
         $participant_id=$request->participant_id;
         $competition_id=$request->competition_id;
         $participant=\App\Participant::find($participant_id);

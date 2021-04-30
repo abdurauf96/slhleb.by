@@ -60,7 +60,11 @@ Route::group(['namespace'=>'Site'], function(){
     Route::get('/cooperation/{page}', 'PageController@cooperationPage')->name('contactPage'); //done+
     Route::get('/contact/{page}', 'PageController@contactPage')->name('interesnoPage'); //done+
     Route::get('/interesno/{page}', 'PageController@interesnoPage')->name('cooperationPage'); //done+
+
+
+    Route::get('/interesno/{page}/{slug}', 'PageController@viewElement')->name('viewElement'); //done+
     
+
 
     Route::get('/products/{slug?}', 'ProductController@products')->name('products');
     Route::get('/products/{slug?}/filter/{filter_slug}', 'ProductController@products');
@@ -129,6 +133,12 @@ Route::group(['middleware'=>'auth'], function(){
     Route::resource('admin/contacts', 'Admin\\ContactsController');
     Route::resource('admin/personals', 'Admin\\PersonalsController');
     Route::resource('admin/pages', 'Admin\\PagesController');
+    
+    Route::get('admin/pages/{id}/add-elements', 'Admin\\PagesController@addElements')->name('addElements');
+    Route::post('admin/pages/{id}/save-elements', 'Admin\\PagesController@saveElements')->name('saveElements');
+    Route::post('/admin/pages/elements/delete', 'Admin\\PagesController@deleteElements');
+    
+    
     Route::resource('admin/features', 'Admin\\FeaturesController');
     Route::resource('admin/stores', 'Admin\\StoresController');
     Route::resource('admin/sertificats', 'Admin\\SertificatsController');

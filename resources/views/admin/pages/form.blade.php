@@ -1,3 +1,5 @@
+
+
 <div class="form-group{{ $errors->has('title_ru') ? 'has-error' : ''}}">
     {!! Form::label('title_ru', 'Заголовок Ru', ['class' => 'control-label']) !!}
     {!! Form::text('title_ru', null, ('' == 'required') ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control']) !!}
@@ -47,6 +49,15 @@
     {!! Form::label('image', 'Фото', ['class' => 'control-label']) !!}
     {!! Form::file('image', null, ('' == 'required') ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control']) !!}
     {!! $errors->first('image', '<p class="help-block">:message</p>') !!}
+</div>
+
+<div class="form-group">
+    <label for="" class="control-label">Тип страницы</label>
+    <div>
+        <input type="radio" name="type"  value="default" @if($page) {{ $page->type=='default'? 'checked' : '' }} @endif> Обычный &nbsp; &nbsp;
+        <input type="radio" name="type"  value="custom" @if($page) {{ $page->type=='custom'? 'checked' : '' }} @endif> Кастомный
+    </div>
+    
 </div>
 
 @if(Auth::user()->hasRole('admin'))

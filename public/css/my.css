@@ -23,12 +23,25 @@
 .form-block-participant{
     display: flex;
     flex-wrap: wrap;
+    flex-direction: column;   
+}
+
+.flex4, .flex5{
+    width: 40%;
+}
+
+.lang-block{
+    display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
-    align-items: center; 
 }
-.flex1,.flex2,.flex3, .flex4, .flex5, .flex6{
-    flex-basis: 350px;
+.flex1,.flex2{
+    flex-basis: 45%;
 }
+.flex3{
+    flex-basis: 100%;
+}
+
 .kv-file-upload{
     display: none;
 }

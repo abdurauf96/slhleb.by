@@ -9,6 +9,10 @@ class Page extends Model
 {
     use LogsActivity;
     
+    public function elements()
+    {
+        return $this->hasMany(Element::class);
+    }
     public function getTitle()
     {
         $title='title_'.\App::getLocale();
@@ -44,7 +48,7 @@ class Page extends Model
      *
      * @var array
      */
-    protected $fillable = ['title_ru', 'title_by', 'title_en', 'desc_ru', 'desc_by', 'desc_en', 'content_ru', 'content_by', 'content_en', 'image', 'key','meta_title','meta_description'];
+    protected $fillable = ['title_ru', 'title_by', 'title_en', 'desc_ru', 'desc_by', 'desc_en', 'content_ru', 'content_by', 'content_en', 'image', 'key','meta_title','meta_description', 'type'];
 
     
 

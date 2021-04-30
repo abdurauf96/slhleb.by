@@ -4,7 +4,9 @@
         {"section":"Админстратор",
             "items":[
                 {"title":"Users","url":"\/admin\/users"},
-                {"title":"Generator","url":"\/admin\/generator"}
+                {"title":"Generator","url":"\/admin\/generator"},
+                {"title":"Roles","url":"\/admin\/roles"},
+                {"title":"Permissions","url":"\/admin\/permissions"}
                 
             ]
         },

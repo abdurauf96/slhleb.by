@@ -51,6 +51,26 @@
                 </div>
                 
             </div>
+            @if(count($page->elements)>0)
+            <div class="item-list">
+                <div class="row mb-5">
+                    @foreach ($page->elements as $element)
+                    <div class="col-xl-6">
+                        <a href="{{ route('viewElement', ['page'=>$page->key, 'slug'=>$element->slug]  )  }}" class="item-card item-small mb-5 f-large" style="background-image: url(/images/pages/elements/{{ $element->image }})">
+                            <div class="item-card-tags">
+                                <span>{{ $element['tag_'.\App::getLocale()] }}</span>
+                            </div>
+                            <div class="item-card__tittle">
+                                <h2>{{ $element['title_'.\App::getLocale()] }}</h2>
+                            </div>
+                        </a>
+                    </div>
+                    @endforeach
+                    
+                </div>
+            </div>
+            @endif
+
         </div>
         
         @include('layouts.footer')
