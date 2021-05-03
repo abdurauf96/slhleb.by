@@ -72,6 +72,9 @@
 					@slot('child')
 						@yield('child')	
 					@endslot
+					@slot('subchild')
+						@yield('subchild')
+					@endslot
 				@endcomponent
 			@endif
 			

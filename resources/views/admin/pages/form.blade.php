@@ -54,8 +54,8 @@
 <div class="form-group">
     <label for="" class="control-label">Тип страницы</label>
     <div>
-        <input type="radio" name="type"  value="default" @if($page) {{ $page->type=='default'? 'checked' : '' }} @endif> Обычный &nbsp; &nbsp;
-        <input type="radio" name="type"  value="custom" @if($page) {{ $page->type=='custom'? 'checked' : '' }} @endif> Кастомный
+        <input type="radio" name="type"  value="default" @isset($page) {{ $page->type=='default'? 'checked' : '' }} @endisset> Обычный &nbsp; &nbsp;
+        <input type="radio" name="type"  value="custom" @isset($page) {{ $page->type=='custom'? 'checked' : '' }} @endisset> Кастомный
     </div>
     
 </div>

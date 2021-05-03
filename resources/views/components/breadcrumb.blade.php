@@ -17,6 +17,7 @@
                             {{ $parent }}
                             
                             <li class="breadcrumb-item"> {{ $child }}</li>
+                            {{ $subchild }}
                         </ul>
                     </div>
                 </div>	

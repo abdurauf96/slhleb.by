@@ -56,13 +56,12 @@ Route::group(['namespace'=>'Site'], function(){
     Route::get('/search', 'PageController@search');
     Route::get('/site-map', 'PageController@siteMap'); //done ++
     
-    Route::get('/company/{page}', 'PageController@companyPage')->name('companyPage'); //done+
-    Route::get('/cooperation/{page}', 'PageController@cooperationPage')->name('contactPage'); //done+
-    Route::get('/contact/{page}', 'PageController@contactPage')->name('interesnoPage'); //done+
-    Route::get('/interesno/{page}', 'PageController@interesnoPage')->name('cooperationPage'); //done+
+    // Route::get('/company/{page}', 'PageController@companyPage')->name('companyPage'); //done+
+    // Route::get('/cooperation/{page}', 'PageController@cooperationPage')->name('contactPage'); //done+
+    // Route::get('/contact/{page}', 'PageController@contactPage')->name('interesnoPage'); //done+
+    // Route::get('/interesno/{page}', 'PageController@interesnoPage')->name('cooperationPage'); //done+
 
-
-    Route::get('/interesno/{page}/{slug}', 'PageController@viewElement')->name('viewElement'); //done+
+   
     
 
 
@@ -91,12 +90,6 @@ Route::get('/lang/{locale}', function ($locale) {
     session(['locale'=>$locale]);
     return back();
 });
-
-
-
-
-
-
 
 Auth::routes();
 //routes for admin panel
@@ -184,6 +177,11 @@ Route::group(['middleware'=>'auth'], function(){
 Route::get('logout', 'Auth\LoginController@logout');
 
 
+
+
 Route::resource('admin/quiz-categories', 'Admin\\QuizCategoriesController');
 Route::resource('admin/quiz-products', 'Admin\\QuizProductsController');
 Route::resource('admin/videos', 'Admin\\VideosController');
+
+Route::get('/{parent_slug}/{child_slug}', 'Site\\PageController@page');
+Route::get('/{parent_page_url}/{page}/{slug}', 'Site\\PageController@viewElement')->name('viewElement'); //done+

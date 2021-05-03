@@ -5432,3 +5432,40 @@ html body .bvi-body .modal-header .close:hover {
     .map__block p span {
       color: #666666;
       margin-left: 5px; }
+      .element_item{
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: end;
+        -ms-flex-align: end;
+        align-items: flex-end;
+        padding: 36px;
+        border-radius: 30px;
+        overflow: hidden;
+        position: relative;
+        height: 400px;
+      }
+      .section-recipe__list .item-card-tags {
+        position: absolute;
+        top: 30px;
+        left: 40px;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-wrap: wrap;
+            flex-wrap: wrap; }
+        .section-recipe__list .item-card-tags span {
+          display: -webkit-box;
+          display: -ms-flexbox;
+          display: flex;
+          background-color: #fff;
+          padding: 5px 13px;
+          font-size: 16px;
+          color: #000;
+          border-radius: 30px;
+          margin-right: 10px;
+          margin-bottom: 10px;
+          z-index: 1; }

@@ -6,8 +6,12 @@
 @endisset
 @endsection
 @section('child')
-{{ $menu['title_'.\App::getLocale()] }}
+{{ $menu['title_'.\App::getLocale()] }} 
 @endsection
+@section('subchild')
+<li class="breadcrumb-item">{{ $element['title_'.\App::getLocale()] }}</li>
+@endsection
+
 
 @section('content')
 <div class="wrapper-kwiz">
@@ -18,18 +22,18 @@
             </a>
     </div>
 <div class="section__wrapper company-activity">
-    <div class="section__header h-100" style="background-image: url('/images/pages/{{ $page->image }}')">
+    <div class="section__header h-100" style="background-image: url('/images/pages/elements/{{ $element->image }}')">
         <div class="container">
             <div class="header-wrapper">
                 <div class="row">
                     <div class="col-xl-8 col-md-8">
                         <div class="header-title" data-aos="fade-down" data-aos-delay="100">
-                            {{ $page['title_'.\App::getLocale()] }}
+                            {{ $element['title_'.\App::getLocale()] }}
                         </div>
-                        <div class="text scroll-pane">
+                        {{-- <div class="text scroll-pane">
                             <p>{{ $page['desc_'.\App::getLocale()] }}</p>
 
-                        </div>
+                        </div> --}}
 
                     </div>
                 </div>              
@@ -45,31 +49,13 @@
             <div class="section__content-wrap">
                 <div class="row">
                     <div class="col-lg-10">
-                    {!! $page['content_'.\App::getLocale()] !!}
+                    {{ $element['content_'.\App::getLocale()] }}
                     
                 </div>
                 </div>
                 
             </div>
-            @if(count($page->elements)>0)
-            <div class="item-list">
-                <div class="row mb-5">
-                    @foreach ($page->elements as $element)
-                    <div class="col-xl-6">
-                        <a href="{{ route('viewElement', [ 'parent_page_url'=>request()->segment(1), 'page'=>$page->key, 'slug'=>$element->slug]  )  }}" class="item-card item-small mb-5 f-large element_item" style="background-image: url(/images/pages/elements/{{ $element->image }})">
-                            <div class="item-card-tags">
-                                <span>{{ $element['tag_'.\App::getLocale()] }}</span>
-                            </div>
-                            <div class="item-card__tittle">
-                                <h2>{{ $element['title_'.\App::getLocale()] }}</h2>
-                            </div>
-                        </a>
-                    </div>
-                    @endforeach
-                    
-                </div>
-            </div>
-            @endif
+            
 
         </div>
         

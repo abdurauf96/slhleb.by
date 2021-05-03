@@ -303,17 +303,17 @@ $(function () {
     
         if(lang=="by"){
             $('.about_ru').addClass('hide');
-            $('.about_by').addClass('show');
+            //$('.about_by').addClass('show');
             $('.about_by').removeClass('hide');
             $('.about_en').addClass('hide');
         }else if(lang=="ru"){
             $('.about_by').addClass('hide');
-            $('.about_ru').addClass('show');
+            //$('.about_ru').addClass('show');
             $('.about_ru').removeClass('hide');
             $('.about_en').addClass('hide');
         }else{
             $('.about_by').addClass('hide');
-            $('.about_en').addClass('show');
+            //$('.about_en').addClass('show');
             $('.about_en').removeClass('hide');
             $('.about_ru').addClass('hide');
         }

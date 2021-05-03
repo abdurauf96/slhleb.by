@@ -75,7 +75,7 @@ class PagesController extends Controller
         if($requestData['type']=='default'){
             return redirect('admin/pages')->with('flash_message', 'Page added!');
         }else{
-            return redirect('admin/pages/{{ $page->id }}/add-elements')->with('flash_message', 'Page added!');
+            return redirect('admin/pages/'.$page->id.'/add-elements')->with('flash_message', 'Page added!');
         }
 
     }
@@ -123,7 +123,7 @@ class PagesController extends Controller
 
         }
         
-        return back()->with(compact('page'))->with('flash_message', 'добавлено!');
+        return redirect('admin/pages')->with('flash_message', 'Page added!');
     }
 
     public function deleteElements(Request $request)
@@ -199,8 +199,9 @@ class PagesController extends Controller
      */
     public function destroy($id)
     {
+        $page=Page::findOrFail($id);
+        $page->elements()->delete();
         Page::destroy($id);
-
         return redirect('admin/pages')->with('flash_message', 'Page deleted!');
     }
 }

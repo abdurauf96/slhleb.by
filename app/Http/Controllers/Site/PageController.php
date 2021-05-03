@@ -19,47 +19,49 @@ class PageController extends Controller
         MetaTag::set('title', '');
     }
 
-    public function companyPage(Request $request)
-    {
-        $page=Page::where('key', $request->page)->first();
-        $menu=Menu::where('url', '/company/'.$request->page)->first();
+    
 
-        MetaTag::set('title',$page->meta_title);
-        MetaTag::set('description',$page->meta_description);
+    // public function companyPage(Request $request)
+    // {
+    //     $page=Page::where('key', $request->page)->first();
+    //     $menu=Menu::where('url', '/company/'.$request->page)->first();
+
+    //     MetaTag::set('title',$page->meta_title);
+    //     MetaTag::set('description',$page->meta_description);
         
-        return view('frontend.page', compact('page', 'menu'));
-    }
+    //     return view('frontend.page', compact('page', 'menu'));
+    // }
 
-    public function cooperationPage(Request $request)
-    {
-        $page=Page::where('key', $request->page)->first();
+    // public function cooperationPage(Request $request)
+    // {
+    //     $page=Page::where('key', $request->page)->first();
         
-        $menu=Menu::where('url', '/cooperation/'.$request->page)->first();
-        MetaTag::set('title',$page->meta_title);
-        MetaTag::set('description',$page->meta_description);
-        return view('frontend.page', compact('page', 'menu'));
-    }
+    //     $menu=Menu::where('url', '/cooperation/'.$request->page)->first();
+    //     MetaTag::set('title',$page->meta_title);
+    //     MetaTag::set('description',$page->meta_description);
+    //     return view('frontend.page', compact('page', 'menu'));
+    // }
 
-    public function interesnoPage(Request $request)
-    {
-        $page=Page::where('key', $request->page)->first();
-        $menu=Menu::where('url', '/interesno/'.$request->page)->first();
+    // public function interesnoPage(Request $request)
+    // {
+    //     $page=Page::where('key', $request->page)->first();
+    //     $menu=Menu::where('url', '/interesno/'.$request->page)->first();
 
-        MetaTag::set('title',$page->meta_title);
-        MetaTag::set('description',$page->meta_description);
+    //     MetaTag::set('title',$page->meta_title);
+    //     MetaTag::set('description',$page->meta_description);
         
-        return view('frontend.page', compact('page', 'menu'));
-    }
-    public function contactPage(Request $request)
-    {
-        $page=Page::where('key', $request->page)->first();
-        $menu=Menu::where('url', '/contact/'.$request->page)->first();
+    //     return view('frontend.page', compact('page', 'menu'));
+    // }
+    // public function contactPage(Request $request)
+    // {
+    //     $page=Page::where('key', $request->page)->first();
+    //     $menu=Menu::where('url', '/contact/'.$request->page)->first();
 
-        MetaTag::set('title',$page->meta_title);
-        MetaTag::set('description',$page->meta_description);
+    //     MetaTag::set('title',$page->meta_title);
+    //     MetaTag::set('description',$page->meta_description);
         
-        return view('frontend.page', compact('page', 'menu'));
-    }
+    //     return view('frontend.page', compact('page', 'menu'));
+    // }
 
 
     public function company(Request $request)
@@ -391,13 +393,30 @@ class PageController extends Controller
         return view('frontend.site-map', compact('menus', 'products'));
     }
 
-    public function test()
-    {
-        $menus=\App\Menu::whereNull('parent_id')->get();
-        $products=\App\Product::all();
 
-        return view('frontend.site-map', compact('menus', 'products'));
+    public function page(Request $request)
+    {
+        $page=Page::where('key', $request->child_slug)->first();
+        
+        $menu=Menu::where('url', '/'.$request->path())->first();
+        
+        MetaTag::set('title',$page->meta_title);
+        MetaTag::set('description',$page->meta_description);
+        
+        return view('frontend.page', compact('page', 'menu'));
     }
+
+    public function viewElement($parent_page_url, $page,$slug)
+    {
+        $element=\App\Element::whereSlug($slug)->first();
+        $parent_menu='/'.request()->segment(1).'/'.request()->segment(2);
+        $menu=Menu::where('url', $parent_menu )->first();
+        MetaTag::set('title',$element->title_ru);
+        
+        return view('frontend.view-element', compact('element', 'menu'));
+    }
+
+
 
    
 }
